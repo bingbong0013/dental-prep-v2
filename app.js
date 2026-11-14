@@ -313,6 +313,9 @@ function renderCatalog() {
       const active = s.id === subj.id;
       const mCount = s.concepts.filter((c) => state.masteredConcepts[c.id]).length;
       const pct = s.concepts.length ? Math.round((mCount / s.concepts.length) * 100) : 0;
+      const badgeCls = active
+        ? 'bg-white/15 dark:bg-slate-900/15 text-white dark:text-slate-900'
+        : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400';
       return `
         <button
           data-catalog-subject="${s.id}"
@@ -324,11 +327,10 @@ function renderCatalog() {
         >
           <span class="w-2 h-2 rounded-full shrink-0" style="background-color: ${s.color}"></span>
           <span class="text-sm font-bold">${escapeHtml(s.name)}</span>
-          <span class="text-[11px] font-semibold px-1.5 py-0.5 rounded-md tabular-nums ${
-            active
-              ? 'bg-white/15 dark:bg-slate-900/15 text-white dark:text-slate-900'
-              : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
-          }">${mCount}/${s.concepts.length} ${pct}%</span>
+          <span class="flex items-center gap-1">
+            <span class="text-[11px] font-semibold px-1.5 py-0.5 rounded-md tabular-nums ${badgeCls}">${mCount}/${s.concepts.length}</span>
+            <span class="text-[11px] font-semibold px-1.5 py-0.5 rounded-md tabular-nums ${badgeCls}">${pct}%</span>
+          </span>
         </button>
       `;
     })
