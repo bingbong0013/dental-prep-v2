@@ -204,8 +204,53 @@ function renderDashboard() {
     0
   );
 
-  const overallPct = totalConcepts ? Math.round((masteredCount / totalConcepts) * 100) : 0;
-  const subjectNames = state.subjects.map((s) => s.name).join(' · ');
+  const subjectCards = state.subjects
+    .map((subj) => {
+      const cCount = subj.concepts.length;
+      const mCount = subj.concepts.filter((c) => state.masteredConcepts[c.id]).length;
+      const pct = cCount ? Math.round((mCount / cCount) * 100) : 0;
+      const qCount = subj.concepts.reduce(
+        (sum, c) => sum + c.pastQuestions.length + c.aiQuestions.length,
+        0
+      );
+
+      return `
+        <div class="group bg-white dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 hover:shadow-xl hover:shadow-slate-900/5 hover:border-blue-400/70 dark:hover:border-blue-500/60 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <div>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 mb-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full" style="background-color: ${subj.color}"></span>
+                  기말고사 · PDF ${subj.totalPages}p
+                </span>
+                <h3 class="text-lg font-extrabold tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">${escapeHtml(subj.name)}</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">${escapeHtml(subj.engName)}</p>
+              </div>
+              <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-extrabold text-sm border tabular-nums" style="background-color: ${subj.color}12; border-color: ${subj.color}30; color: ${subj.color}">
+                ${pct}%
+              </div>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 truncate mb-4" title="${escapeHtml(subj.pdfName)}">
+              📑 ${escapeHtml(subj.pdfName)}
+            </p>
+          </div>
+
+          <div>
+            <div class="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden mb-3">
+              <div class="h-full rounded-full transition-all duration-500" style="width: ${pct}%; background-color: ${subj.color}"></div>
+            </div>
+            <div class="flex items-center justify-between text-xs text-slate-600 dark:text-slate-400 mb-4 tabular-nums">
+              <span>핵심 개념 <strong class="text-slate-900 dark:text-slate-100">${mCount}/${cCount}</strong></span>
+              <span>연결 기출 <strong class="text-slate-900 dark:text-slate-100">${qCount}문항</strong></span>
+            </div>
+            <button data-open-subject="${subj.id}" class="w-full py-2.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 hover:bg-blue-600 dark:hover:bg-blue-500 dark:hover:text-white text-xs font-bold transition shadow-sm">
+              개념 목차 보기 →
+            </button>
+          </div>
+        </div>
+      `;
+    })
+    .join('');
 
   return `
     <div class="bg-grid-subtle min-h-[calc(100dvh-3.5rem)]">
@@ -261,44 +306,14 @@ function renderDashboard() {
           </div>
         </div>
 
-        <!-- Exam Term Menu -->
+        <!-- Subject Grid -->
         <div>
           <div class="flex items-center justify-between mb-4">
-            <h2 class="text-base font-extrabold tracking-tight">시험 범위별 학습 메뉴</h2>
+            <h2 class="text-base font-extrabold tracking-tight">기말고사 과목별 트랙</h2>
             <span class="text-xs text-slate-500 dark:text-slate-400">총 ${totalQuestions}문항 수록</span>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <button
-              type="button"
-              data-go-catalog="true"
-              class="group text-left bg-white dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 hover:shadow-xl hover:shadow-slate-900/5 hover:border-blue-400/70 dark:hover:border-blue-500/60 transition-all duration-200 flex flex-col justify-between"
-            >
-              <div>
-                <div class="flex items-start justify-between gap-3 mb-4">
-                  <div>
-                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/60 mb-2.5">
-                      <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                      ${state.subjects.length}과목 · PDF 727p
-                    </span>
-                    <h3 class="text-lg font-extrabold tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">1학년 2학기 기말고사</h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${escapeHtml(subjectNames)}</p>
-                  </div>
-                  <div class="px-2.5 py-1.5 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-800/60 text-blue-700 dark:text-blue-300 font-extrabold text-xs tabular-nums shrink-0">
-                    ${masteredCount}/${totalConcepts} ${overallPct}%
-                  </div>
-                </div>
-              </div>
-
-              <div class="pt-3 border-t border-slate-100 dark:border-slate-800/80">
-                <div class="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden mb-3">
-                  <div class="h-full rounded-full bg-blue-600 transition-all duration-500" style="width: ${overallPct}%"></div>
-                </div>
-                <div class="flex items-center justify-between text-xs">
-                  <span class="text-slate-500 dark:text-slate-400 tabular-nums">핵심개념 ${totalConcepts} · 기출 ${totalQuestions}문항</span>
-                  <span class="font-bold text-blue-600 dark:text-blue-400 group-hover:translate-x-0.5 transition">개념 목차 열기 →</span>
-                </div>
-              </div>
-            </button>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            ${subjectCards}
           </div>
         </div>
       </div>
@@ -822,7 +837,7 @@ function renderWorkspace() {
                   : 'border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-emerald-500'
               }"
             >
-              ${isMastered ? '✓ 마스터 완료' : '마스터 체크'}
+              ${isMastered ? '✓ 마스터 완료' : '완료 체크'}
             </button>
           </div>
           <h2 class="text-xl font-extrabold tracking-tight mb-3">${escapeHtml(concept.title)}</h2>
@@ -1002,12 +1017,19 @@ function bindEvents() {
     render({ resetConceptScroll: true });
     window.scrollTo({ top: 0 });
   });
-  document.querySelectorAll('[data-go-catalog]').forEach((btn) => {
+  document.querySelectorAll('[data-open-subject]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      state.view = 'catalog';
-      saveState();
-      render();
-      window.scrollTo({ top: 0 });
+      const subjId = btn.dataset.openSubject;
+      const subj = state.subjects.find((s) => s.id === subjId);
+      if (subj) {
+        state.selectedSubjectId = subj.id;
+        state.selectedConceptId = subj.concepts[0].id;
+        state.activePdfPage = subj.concepts[0].pdfPages[0];
+        state.view = 'catalog';
+        saveState();
+        render();
+        window.scrollTo({ top: 0 });
+      }
     });
   });
 
