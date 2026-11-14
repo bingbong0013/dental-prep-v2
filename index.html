@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>DentaSync AI — 치과대학 기말고사 개념 · PDF 원문 · 기출 통합 플랫폼</title>
+  <title>치과대학</title>
+  <link rel="icon" type="image/svg+xml" href="./tooth-crown.svg" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -18,29 +19,29 @@
     };
   </script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
-  <link rel="stylesheet" href="./styles.css?v=20261114d" />
+  <link rel="stylesheet" href="./styles.css?v=20261114e" />
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased selection:bg-blue-500/20 overflow-x-hidden">
   <!-- Top Navigation -->
   <header class="sticky top-0 z-40 h-14 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/85 dark:bg-slate-950/85 backdrop-blur-md flex items-center justify-between px-4 lg:px-6">
     <div class="flex items-center gap-6">
       <button id="brandBtn" class="flex items-center gap-2.5 font-bold text-base tracking-tight group">
-        <span class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 text-white flex items-center justify-center text-xs font-extrabold shadow-sm shadow-blue-500/20 group-hover:scale-105 transition">DS</span>
-        <span>DentaSync <span class="text-blue-600 dark:text-blue-400 font-extrabold">AI</span></span>
+        <svg class="w-8 h-8 rounded-xl shadow-sm group-hover:scale-105 transition shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true">
+          <rect width="48" height="48" rx="13" fill="#087e82"/>
+          <path d="M11 24c-2-6-1-13 5-14 3-1 6 2 8 2s5-3 8-2c6 1 7 8 5 14l-3 11c-.5 2-2 3-4 3H18c-2 0-3.5-1-4-3z" fill="#fff"/>
+          <path d="M16 17c2-1 5 0 8 3 3-3 6-4 8-3M24 20v7" fill="none" stroke="#b7dedc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="font-extrabold text-slate-900 dark:text-white">치과대학</span>
       </button>
 
       <nav class="hidden md:flex items-center gap-1 p-1 rounded-xl bg-slate-100/80 dark:bg-slate-900/90 border border-slate-200/60 dark:border-slate-800" id="mainNav">
         <button data-view="dashboard" class="nav-btn px-3 py-1 rounded-lg text-xs font-semibold transition">대시보드</button>
         <button data-view="catalog" class="nav-btn px-3 py-1 rounded-lg text-xs font-semibold transition">개념 목차</button>
-        <button data-view="workspace" class="nav-btn px-3 py-1 rounded-lg text-xs font-semibold transition">학습 화면 (2-Pane)</button>
+        <button data-view="review" class="nav-btn px-3 py-1 rounded-lg text-xs font-semibold transition">복습</button>
       </nav>
     </div>
 
     <div class="flex items-center gap-2.5">
-      <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950/40 border border-amber-200/80 dark:border-amber-800/60 text-amber-700 dark:text-amber-300 text-xs font-semibold tabular-nums" title="누적 해결 문제 수">
-        <span>🔥</span>
-        <span id="streakCount">0</span><span>문제 해결</span>
-      </div>
       <button id="themeToggle" class="w-8 h-8 flex items-center justify-center rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm transition" title="다크모드 전환">
         🌓
       </button>
@@ -51,7 +52,7 @@
   <div class="md:hidden flex border-b border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-950/95 backdrop-blur px-3 py-1.5 gap-1.5 overflow-x-auto">
     <button data-view="dashboard" class="nav-btn-m flex-1 py-1.5 px-2.5 rounded-lg text-xs font-semibold whitespace-nowrap text-center">대시보드</button>
     <button data-view="catalog" class="nav-btn-m flex-1 py-1.5 px-2.5 rounded-lg text-xs font-semibold whitespace-nowrap text-center">개념 목차</button>
-    <button data-view="workspace" class="nav-btn-m flex-1 py-1.5 px-2.5 rounded-lg text-xs font-semibold whitespace-nowrap text-center">학습 화면</button>
+    <button data-view="review" class="nav-btn-m flex-1 py-1.5 px-2.5 rounded-lg text-xs font-semibold whitespace-nowrap text-center">복습</button>
   </div>
 
   <!-- Main Content Container -->
@@ -71,6 +72,20 @@
     </div>
   </div>
 
-  <script type="module" src="./app.js?v=20261114d"></script>
+  <!-- PDF Fullscreen Modal (Google Drive-style) -->
+  <div id="pdfFullscreenModal" class="hidden fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-sm flex flex-col">
+    <div class="shrink-0 h-14 px-4 sm:px-6 flex items-center justify-between gap-3 border-b border-white/10 bg-slate-950/80">
+      <div id="pdfFsPageButtons" class="flex items-center gap-1.5 overflow-x-auto py-1"></div>
+      <div class="flex items-center gap-3 shrink-0">
+        <span id="pdfFsIndicator" class="text-xs sm:text-sm font-bold text-slate-200 tabular-nums">p.1 / 1</span>
+        <button id="closePdfFullscreen" type="button" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition" title="닫기 (Esc)">✕ 닫기</button>
+      </div>
+    </div>
+    <div id="pdfFsBackdrop" class="flex-1 min-h-0 flex items-center justify-center p-2 sm:p-6 overflow-auto">
+      <img id="pdfFsImg" src="" alt="" class="max-h-full max-w-full object-contain rounded-lg shadow-2xl select-none" />
+    </div>
+  </div>
+
+  <script type="module" src="./app.js?v=20261114e"></script>
 </body>
 </html>

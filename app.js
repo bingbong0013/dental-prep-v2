@@ -3,7 +3,7 @@ import { INITIAL_SUBJECTS } from './data/sampleData.js?v=20261114d';
 const STORAGE_KEY = 'dentasync_state_v2';
 
 const defaultState = {
-  view: 'dashboard', // 'dashboard' | 'catalog' | 'workspace'
+  view: 'dashboard', // 'dashboard' | 'catalog' | 'workspace' | 'review'
   subjects: INITIAL_SUBJECTS,
   selectedSubjectId: INITIAL_SUBJECTS[0].id,
   selectedConceptId: INITIAL_SUBJECTS[0].concepts[0].id,
@@ -12,14 +12,32 @@ const defaultState = {
   mobilePane: 'center', // 'center' | 'right' (for < lg viewports in 2-pane workspace)
   searchQuery: '',
   catalogFilter: 'all', // 'all' | 'pending' | 'mastered'
+  reviewFilter: 'wrong', // 'wrong' | 'favorites' | 'both'
+  reviewSearchQuery: '',
   masteredConcepts: {}, // { [conceptId]: true }
   solvedQuestions: {}, // { [qId]: { selectedIdx, selectedIndices, isCorrect } }
+  favorites: {}, // { [qId]: true }
   multiSelections: {}, // { [qId]: number[] }
   shortRevealed: {}, // { [qId]: true }
   strikethroughs: {}, // { [qId]: number[] }
   streak: 0,
   theme: 'light',
 };
+
+let pdfFullscreen = false;
+const reviewSessionIds = new Set();
+
+function findQuestionContext(qId) {
+  for (const subj of state.subjects) {
+    for (const concept of subj.concepts) {
+      const pq = concept.pastQuestions.find((item) => item.id === qId);
+      if (pq) return { subj, concept, q: pq, isPast: true };
+      const aq = concept.aiQuestions.find((item) => item.id === qId);
+      if (aq) return { subj, concept, q: aq, isPast: false };
+    }
+  }
+  return null;
+}
 
 function loadState() {
   try {
@@ -44,9 +62,13 @@ function loadState() {
     merged.masteredConcepts = Object.fromEntries(
       Object.entries(merged.masteredConcepts || {}).filter(([k, v]) => v && validConceptIds.has(k))
     );
-    if (!['dashboard', 'catalog', 'workspace'].includes(merged.view)) {
+    if (!['dashboard', 'catalog', 'workspace', 'review'].includes(merged.view)) {
       merged.view = 'dashboard';
     }
+    if (!['wrong', 'favorites', 'both'].includes(merged.reviewFilter)) {
+      merged.reviewFilter = 'wrong';
+    }
+    merged.favorites = merged.favorites && typeof merged.favorites === 'object' ? merged.favorites : {};
     if (!['center', 'right'].includes(merged.mobilePane)) {
       merged.mobilePane = 'center';
     }
@@ -67,8 +89,10 @@ function saveState() {
     rightTab: state.rightTab,
     mobilePane: state.mobilePane,
     catalogFilter: state.catalogFilter,
+    reviewFilter: state.reviewFilter,
     masteredConcepts: state.masteredConcepts,
     solvedQuestions: state.solvedQuestions,
+    favorites: state.favorites,
     multiSelections: state.multiSelections,
     shortRevealed: state.shortRevealed,
     strikethroughs: state.strikethroughs,
@@ -187,7 +211,6 @@ function updateNavUI() {
             : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
         }`;
   });
-  document.getElementById('streakCount').textContent = state.streak;
 }
 
 // ========================
@@ -219,12 +242,9 @@ function renderDashboard() {
               <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               기말고사 범위 3과목 · ${totalConcepts}개 핵심개념 · ${totalQuestions}문항 연동
             </div>
-            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight mb-3">
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight mb-6">
               개념 목차에서 선택하고,<br />강의자료 원문과 기출을 한 화면에.
             </h1>
-            <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
-              단원·주차별로 구조화된 개념 목차에서 주제를 고르면, 2-Pane 학습 화면에서 핵심 요약·원문 PDF 슬라이드·기출문제를 나란히 풀 수 있습니다.
-            </p>
             <div class="flex flex-wrap gap-3">
               <button id="goCatalogBtn" class="px-5 py-2.5 rounded-xl bg-white text-slate-950 hover:bg-blue-50 font-bold text-sm shadow-lg transition">
                 개념 목차 탐색하기 →
@@ -490,8 +510,9 @@ function renderCatalog() {
 // ========================
 // 3. 2-PANE LEARNING WORKSPACE VIEW (Center + Right Panes)
 // ========================
-function renderQuestionCard(q, typeLabel, badgeColor) {
+function renderQuestionCard(q, typeLabel, badgeColor, extraMeta = null) {
   const solved = state.solvedQuestions[q.id];
+  const isFav = !!state.favorites[q.id];
   const strikes = state.strikethroughs[q.id] || [];
   const isMulti = q.qType === 'multi' && Array.isArray(q.answerIndices);
   const isShort = q.qType === 'short' || !q.choices || q.choices.length === 0;
@@ -638,13 +659,41 @@ function renderQuestionCard(q, typeLabel, badgeColor) {
     bodyHtml = `<div class="${isOx ? 'grid grid-cols-2 gap-2' : 'space-y-1.5'}">${choicesHtml}</div>`;
   }
 
+  const sourceTagHtml = extraMeta
+    ? `<span class="px-2 py-0.5 rounded-md text-[11px] font-bold ${
+        extraMeta.isPast
+          ? 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-800/70'
+          : 'bg-violet-100 text-violet-800 dark:bg-violet-950/60 dark:text-violet-300 border border-violet-200 dark:border-violet-800/70'
+      }">${extraMeta.isPast ? '기출' : 'AI'}</span>`
+    : '';
+
+  const jumpAttrs = extraMeta
+    ? `data-jump-page="${q.pdfRefPage}" data-jump-concept="${extraMeta.conceptId}" data-jump-subj="${extraMeta.subjId}"`
+    : `data-jump-page="${q.pdfRefPage}"`;
+
   return `
     <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 shadow-xs">
       <div class="flex items-center justify-between gap-2 mb-2.5">
-        <span class="px-2 py-0.5 rounded-md text-[11px] font-bold ${badgeColor}">${escapeHtml(typeLabel)}</span>
-        <button data-jump-page="${q.pdfRefPage}" class="text-[11px] font-semibold text-blue-600 dark:text-blue-400 hover:underline tabular-nums">
-          📄 PDF p.${q.pdfRefPage} 보기
-        </button>
+        <div class="flex items-center gap-1.5 min-w-0 flex-wrap">
+          ${sourceTagHtml}
+          <span class="px-2 py-0.5 rounded-md text-[11px] font-bold ${badgeColor}">${escapeHtml(typeLabel)}</span>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <button
+            type="button"
+            data-toggle-fav="${q.id}"
+            title="${isFav ? '즐겨찾기 해제' : '즐겨찾기 추가'}"
+            aria-label="${isFav ? '즐겨찾기 해제' : '즐겨찾기 추가'}"
+            class="w-7 h-7 rounded-lg flex items-center justify-center text-base leading-none transition ${
+              isFav
+                ? 'text-amber-500 bg-amber-50 dark:bg-amber-950/50 hover:bg-amber-100 dark:hover:bg-amber-900/50'
+                : 'text-slate-300 dark:text-slate-600 hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+            }"
+          >${isFav ? '★' : '☆'}</button>
+          <button ${jumpAttrs} class="text-[11px] font-semibold text-blue-600 dark:text-blue-400 hover:underline tabular-nums">
+            📄 PDF p.${q.pdfRefPage} 보기
+          </button>
+        </div>
       </div>
       <p class="text-sm font-semibold leading-relaxed mb-3 whitespace-pre-line">${escapeHtml(q.stem)}</p>
       ${bodyHtml}
@@ -705,29 +754,18 @@ function renderWorkspace() {
             <span class="text-xs font-semibold text-slate-700 dark:text-slate-300 truncate max-w-[180px] sm:max-w-xs" title="${escapeHtml(docInfo.label)}">
               📑 ${escapeHtml(docInfo.label)}
             </span>
-            <span class="hidden sm:inline-flex items-center gap-1 text-[10px] text-slate-400">
-              <span class="kbd-key">←</span><span class="kbd-key">→</span>
-            </span>
           </div>
-          <div class="flex items-center gap-1.5">
-            <button
-              type="button"
-              data-pdf-prev
-              ${activePage <= 1 ? 'disabled' : ''}
-              class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 transition"
-            >
-              ◀ 이전
-            </button>
+          <div class="flex items-center gap-2">
             <span id="pdfPageIndicator" class="px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold tabular-nums">
               p.${activePage} / ${docInfo.totalPages}
             </span>
             <button
+              id="pdfFullscreenBtn"
               type="button"
-              data-pdf-next
-              ${activePage >= docInfo.totalPages ? 'disabled' : ''}
-              class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 transition"
+              class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+              title="전체화면으로 보기"
             >
-              다음 ▶
+              ⛶ 확대
             </button>
           </div>
         </div>
@@ -908,6 +946,147 @@ function renderWorkspace() {
 }
 
 // ========================
+// 4. REVIEW VIEW (복습)
+// ========================
+function matchesReviewFilter(q, filter) {
+  const solved = state.solvedQuestions[q.id];
+  const isWrong = (solved && solved.isCorrect === false) || reviewSessionIds.has(q.id);
+  const isFav = !!state.favorites[q.id];
+  if (filter === 'wrong') return isWrong;
+  if (filter === 'favorites') return isFav;
+  return isWrong || isFav;
+}
+
+function renderReview() {
+  const subj = getCurrentSubject();
+  const qText = state.reviewSearchQuery.trim().toLowerCase();
+
+  const subjectTabsHtml = state.subjects
+    .map((s) => {
+      const active = s.id === subj.id;
+      let count = 0;
+      s.concepts.forEach((c) => {
+        c.pastQuestions.forEach((pq) => {
+          if (matchesReviewFilter(pq, state.reviewFilter)) count += 1;
+        });
+        c.aiQuestions.forEach((aq) => {
+          if (matchesReviewFilter(aq, state.reviewFilter)) count += 1;
+        });
+      });
+      return `
+        <button
+          data-review-subject="${s.id}"
+          class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border text-left transition whitespace-nowrap ${
+            active
+              ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-950 border-slate-900 dark:border-white shadow-sm'
+              : 'bg-white dark:bg-slate-900 border-slate-200/80 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700'
+          }"
+        >
+          <span class="w-2 h-2 rounded-full shrink-0" style="background-color: ${s.color}"></span>
+          <span class="text-sm font-bold">${escapeHtml(s.name)}</span>
+          <span class="text-[11px] font-semibold px-1.5 py-0.5 rounded-md tabular-nums ${
+            active
+              ? 'bg-white/15 dark:bg-slate-900/15 text-white dark:text-slate-900'
+              : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+          }">${count}문항</span>
+        </button>
+      `;
+    })
+    .join('');
+
+  // Flatten questions in existing chapter -> week -> concept order
+  const items = [];
+  subj.concepts.forEach((concept) => {
+    const matchText = (qObj) => {
+      if (!qText) return true;
+      return (
+        qObj.stem.toLowerCase().includes(qText) ||
+        (qObj.rationale || '').toLowerCase().includes(qText) ||
+        (qObj.choices || []).some((ch) => ch.toLowerCase().includes(qText)) ||
+        concept.title.toLowerCase().includes(qText) ||
+        concept.chapter.toLowerCase().includes(qText)
+      );
+    };
+    concept.pastQuestions.forEach((pq) => {
+      if (matchesReviewFilter(pq, state.reviewFilter) && matchText(pq)) {
+        items.push({ q: pq, concept, isPast: true });
+      }
+    });
+    concept.aiQuestions.forEach((aq) => {
+      if (matchesReviewFilter(aq, state.reviewFilter) && matchText(aq)) {
+        items.push({ q: aq, concept, isPast: false });
+      }
+    });
+  });
+
+  const filterBtnCls = (f) =>
+    state.reviewFilter === f
+      ? 'px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 dark:bg-white text-white dark:text-slate-950 transition'
+      : 'px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition';
+
+  const cardsHtml = items
+    .map(({ q, concept, isPast }) => {
+      const typeLabel = isPast ? q.year : 'AI 변형';
+      const badgeColor = isPast
+        ? 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
+        : 'bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300';
+      return renderQuestionCard(q, typeLabel, badgeColor, {
+        isPast,
+        conceptId: concept.id,
+        subjId: subj.id,
+      });
+    })
+    .join('');
+
+  const emptyMessage =
+    state.reviewFilter === 'wrong'
+      ? '틀린 문제가 없습니다. 오답이 생기면 이곳에 자동으로 모입니다.'
+      : state.reviewFilter === 'favorites'
+        ? '즐겨찾기한 문제가 없습니다. 문제 카드의 ☆ 별표를 눌러 추가해 보세요.'
+        : '오답이거나 즐겨찾기한 문제가 없습니다.';
+
+  return `
+    <div class="bg-grid-subtle min-h-[calc(100dvh-3.5rem)]">
+      <div class="max-w-4xl mx-auto px-4 lg:px-6 py-6 space-y-6">
+        <!-- Subject Tabs -->
+        <div class="flex items-center gap-2.5 overflow-x-auto pb-1">
+          ${subjectTabsHtml}
+        </div>
+
+        <!-- Search & Filter Bar -->
+        <div class="bg-white dark:bg-slate-900/95 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-3 sm:p-4 shadow-sm flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div class="relative flex-1">
+            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔍</span>
+            <input
+              id="reviewSearch"
+              type="text"
+              value="${escapeHtml(state.reviewSearchQuery)}"
+              placeholder="문제 내용, 선지, 해설, 개념명 검색..."
+              class="w-full pl-9 pr-4 py-2 text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 transition"
+            />
+          </div>
+          <div class="flex items-center gap-1 p-1 rounded-xl bg-slate-100/80 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800 shrink-0">
+            <button data-review-filter="wrong" class="${filterBtnCls('wrong')}">오답</button>
+            <button data-review-filter="favorites" class="${filterBtnCls('favorites')}">즐겨찾기</button>
+            <button data-review-filter="both" class="${filterBtnCls('both')}">오답 및 즐겨찾기</button>
+          </div>
+        </div>
+
+        <!-- Flat Question List -->
+        <div class="space-y-3.5 pb-8">
+          ${
+            cardsHtml ||
+            `<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-10 text-center text-sm text-slate-400">
+              ${emptyMessage}
+            </div>`
+          }
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ========================
 // RENDER & EVENT BINDING
 // ========================
 function render(options = {}) {
@@ -920,6 +1099,7 @@ function render(options = {}) {
   const root = document.getElementById('appRoot');
   if (state.view === 'catalog') root.innerHTML = renderCatalog();
   else if (state.view === 'workspace') root.innerHTML = renderWorkspace();
+  else if (state.view === 'review') root.innerHTML = renderReview();
   else root.innerHTML = renderDashboard();
 
   bindEvents();
@@ -929,7 +1109,71 @@ function render(options = {}) {
     const rightEl = document.getElementById('workspaceRightScroll');
     if (centerEl) centerEl.scrollTop = options.resetConceptScroll ? 0 : prevCenterTop;
     if (rightEl) rightEl.scrollTop = options.resetConceptScroll ? 0 : prevRightTop;
+  } else if (pdfFullscreen) {
+    closePdfFullscreen();
   }
+}
+
+function syncPdfFullscreenModal() {
+  const modal = document.getElementById('pdfFullscreenModal');
+  if (!modal || !pdfFullscreen) return;
+  const subj = getCurrentSubject();
+  const concept = getCurrentConcept();
+  const docInfo = getPdfDocInfo(subj, concept);
+  if (!docInfo) return;
+  const activePage = Math.max(1, Math.min(Number(state.activePdfPage) || 1, docInfo.totalPages));
+
+  const fsImg = document.getElementById('pdfFsImg');
+  if (fsImg) {
+    fsImg.src = `./slides/${docInfo.docId}/p${activePage}.webp`;
+    fsImg.alt = `${docInfo.label} ${activePage}페이지`;
+  }
+  const fsIndicator = document.getElementById('pdfFsIndicator');
+  if (fsIndicator) {
+    fsIndicator.textContent = `p.${activePage} / ${docInfo.totalPages}`;
+  }
+  const fsPageButtons = document.getElementById('pdfFsPageButtons');
+  if (fsPageButtons) {
+    fsPageButtons.innerHTML = (concept.pdfPages || [])
+      .map((p) => {
+        const active = activePage === p;
+        return `
+          <button
+            type="button"
+            data-fs-jump-page="${p}"
+            class="px-2.5 py-1 rounded-lg text-xs font-bold transition tabular-nums shrink-0 ${
+              active
+                ? 'bg-blue-600 text-white shadow-sm'
+                : 'bg-white/10 text-slate-200 hover:bg-white/20'
+            }"
+          >
+            p.${p}
+          </button>
+        `;
+      })
+      .join('');
+    fsPageButtons.querySelectorAll('[data-fs-jump-page]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        setActivePdfPage(Number(btn.dataset.fsJumpPage));
+      });
+    });
+  }
+}
+
+function openPdfFullscreen() {
+  const modal = document.getElementById('pdfFullscreenModal');
+  if (!modal) return;
+  pdfFullscreen = true;
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  syncPdfFullscreenModal();
+}
+
+function closePdfFullscreen() {
+  const modal = document.getElementById('pdfFullscreenModal');
+  pdfFullscreen = false;
+  if (modal) modal.classList.add('hidden');
+  document.body.style.overflow = '';
 }
 
 function setActivePdfPage(targetPage) {
@@ -965,17 +1209,17 @@ function setActivePdfPage(targetPage) {
   const indicator = document.getElementById('pdfPageIndicator');
   if (indicator) indicator.textContent = `p.${nextPage} / ${docInfo.totalPages}`;
 
-  const prevBtn = document.querySelector('[data-pdf-prev]');
-  if (prevBtn) prevBtn.disabled = nextPage <= 1;
-
-  const nextBtn = document.querySelector('[data-pdf-next]');
-  if (nextBtn) nextBtn.disabled = nextPage >= docInfo.totalPages;
-
   const activeCls = 'px-2.5 py-1 rounded-lg text-xs font-bold transition tabular-nums bg-blue-600 text-white shadow-sm';
   const inactiveCls = 'px-2.5 py-1 rounded-lg text-xs font-bold transition tabular-nums bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700';
   document.querySelectorAll('[data-jump-page]').forEach((btn) => {
-    btn.className = Number(btn.dataset.jumpPage) === nextPage ? activeCls : inactiveCls;
+    if (btn.closest('#pdfSlideFrame') || btn.textContent.trim().startsWith('p.')) {
+      btn.className = Number(btn.dataset.jumpPage) === nextPage ? activeCls : inactiveCls;
+    }
   });
+
+  if (pdfFullscreen) {
+    syncPdfFullscreenModal();
+  }
 }
 
 function stepPdfPage(delta) {
@@ -1111,16 +1355,70 @@ function bindEvents() {
 
   document.querySelectorAll('[data-jump-page]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      setActivePdfPage(Number(btn.dataset.jumpPage));
+      const targetPage = Number(btn.dataset.jumpPage);
+      const jumpConcept = btn.dataset.jumpConcept;
+      const jumpSubj = btn.dataset.jumpSubj;
+      if (jumpConcept && jumpSubj && state.view !== 'workspace') {
+        state.selectedSubjectId = jumpSubj;
+        state.selectedConceptId = jumpConcept;
+        state.activePdfPage = targetPage;
+        state.mobilePane = 'center';
+        state.view = 'workspace';
+        saveState();
+        render({ resetConceptScroll: true });
+        window.scrollTo({ top: 0 });
+        return;
+      }
+      setActivePdfPage(targetPage);
     });
   });
 
-  document.querySelector('[data-pdf-prev]')?.addEventListener('click', () => {
-    stepPdfPage(-1);
+  document.getElementById('pdfFullscreenBtn')?.addEventListener('click', () => {
+    openPdfFullscreen();
   });
 
-  document.querySelector('[data-pdf-next]')?.addEventListener('click', () => {
-    stepPdfPage(1);
+  // Review view events
+  document.querySelectorAll('[data-review-subject]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const subj = state.subjects.find((s) => s.id === btn.dataset.reviewSubject);
+      if (subj) {
+        reviewSessionIds.clear();
+        state.selectedSubjectId = subj.id;
+        state.selectedConceptId = subj.concepts[0].id;
+        state.activePdfPage = subj.concepts[0].pdfPages[0];
+        saveState();
+        render();
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-review-filter]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      reviewSessionIds.clear();
+      state.reviewFilter = btn.dataset.reviewFilter;
+      saveState();
+      render();
+    });
+  });
+
+  document.getElementById('reviewSearch')?.addEventListener('input', (e) => {
+    state.reviewSearchQuery = e.target.value;
+    render();
+    const input = document.getElementById('reviewSearch');
+    if (input) {
+      input.focus();
+      input.setSelectionRange(input.value.length, input.value.length);
+    }
+  });
+
+  document.querySelectorAll('[data-toggle-fav]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const qId = btn.dataset.toggleFav;
+      if (state.favorites[qId]) delete state.favorites[qId];
+      else state.favorites[qId] = true;
+      saveState();
+      render();
+    });
   });
 
   document.querySelectorAll('[data-right-tab]').forEach((btn) => {
@@ -1137,12 +1435,11 @@ function bindEvents() {
       const qId = btn.dataset.answerQ;
       if (state.solvedQuestions[qId]) return;
       const choiceIdx = Number(btn.dataset.choiceIdx);
-      const concept = getCurrentConcept();
-      const allQ = [...concept.pastQuestions, ...concept.aiQuestions];
-      const q = allQ.find((item) => item.id === qId);
-      if (!q) return;
-      const isCorrect = choiceIdx === q.answerIndex;
+      const ctx = findQuestionContext(qId);
+      if (!ctx) return;
+      const isCorrect = choiceIdx === ctx.q.answerIndex;
       state.solvedQuestions[qId] = { selectedIdx: choiceIdx, isCorrect };
+      if (isCorrect) reviewSessionIds.delete(qId);
       state.streak += 1;
       saveState();
       render();
@@ -1167,16 +1464,16 @@ function bindEvents() {
     btn.addEventListener('click', () => {
       const qId = btn.dataset.multiSubmit;
       if (state.solvedQuestions[qId]) return;
-      const concept = getCurrentConcept();
-      const allQ = [...concept.pastQuestions, ...concept.aiQuestions];
-      const q = allQ.find((item) => item.id === qId);
-      if (!q) return;
+      const ctx = findQuestionContext(qId);
+      if (!ctx) return;
+      const q = ctx.q;
       const selected = [...(state.multiSelections[qId] || [])].sort((a, b) => a - b);
       const expected = [...(q.answerIndices || [])].sort((a, b) => a - b);
       const isCorrect =
         selected.length === expected.length &&
         selected.every((val, i) => val === expected[i]);
       state.solvedQuestions[qId] = { selectedIndices: selected, isCorrect };
+      if (isCorrect) reviewSessionIds.delete(qId);
       state.streak += 1;
       saveState();
       render();
@@ -1198,6 +1495,7 @@ function bindEvents() {
       if (state.solvedQuestions[qId]) return;
       const isCorrect = btn.dataset.gradeCorrect === 'true';
       state.solvedQuestions[qId] = { isCorrect };
+      if (isCorrect) reviewSessionIds.delete(qId);
       state.streak += 1;
       saveState();
       render();
@@ -1217,7 +1515,13 @@ function bindEvents() {
 
   document.querySelectorAll('[data-reset-q]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      delete state.solvedQuestions[btn.dataset.resetQ];
+      const qId = btn.dataset.resetQ;
+      if (state.view === 'review' && state.solvedQuestions[qId]?.isCorrect === false) {
+        reviewSessionIds.add(qId);
+      }
+      delete state.solvedQuestions[qId];
+      delete state.multiSelections[qId];
+      delete state.shortRevealed[qId];
       saveState();
       render();
     });
@@ -1240,6 +1544,7 @@ function bindEvents() {
 // Global header & keyboard events
 document.querySelectorAll('.nav-btn, .nav-btn-m').forEach((btn) => {
   btn.addEventListener('click', () => {
+    reviewSessionIds.clear();
     state.view = btn.dataset.view;
     saveState();
     render();
@@ -1248,6 +1553,7 @@ document.querySelectorAll('.nav-btn, .nav-btn-m').forEach((btn) => {
 });
 
 document.getElementById('brandBtn').addEventListener('click', () => {
+  reviewSessionIds.clear();
   state.view = 'dashboard';
   saveState();
   render();
@@ -1269,7 +1575,21 @@ document.getElementById('glossaryModal').addEventListener('click', (e) => {
   }
 });
 
+document.getElementById('closePdfFullscreen')?.addEventListener('click', () => {
+  closePdfFullscreen();
+});
+document.getElementById('pdfFsBackdrop')?.addEventListener('click', (e) => {
+  if (e.target.id === 'pdfFsBackdrop') {
+    closePdfFullscreen();
+  }
+});
+
 document.addEventListener('keydown', (e) => {
+  if (pdfFullscreen && e.key === 'Escape') {
+    e.preventDefault();
+    closePdfFullscreen();
+    return;
+  }
   if (state.view !== 'workspace') return;
   if (e.ctrlKey || e.metaKey || e.altKey) return;
   const activeEl = document.activeElement;
