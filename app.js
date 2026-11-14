@@ -1,20 +1,24 @@
 import { INITIAL_SUBJECTS } from './data/sampleData.js';
 
-const STORAGE_KEY = 'dentasync_state_v1';
+const STORAGE_KEY = 'dentasync_state_v2';
 
 const defaultState = {
-  view: 'dashboard',
+  view: 'dashboard', // 'dashboard' | 'workspace' | 'exam' | 'importer'
   subjects: INITIAL_SUBJECTS,
   selectedSubjectId: INITIAL_SUBJECTS[0].id,
   selectedConceptId: INITIAL_SUBJECTS[0].concepts[0].id,
   activePdfPage: INITIAL_SUBJECTS[0].concepts[0].pdfPages[0],
-  rightTab: 'past',
+  rightTab: 'past', // 'past' | 'ai'
+  mobilePane: 'center', // 'left' | 'center' | 'right' (for < lg viewports)
   searchQuery: '',
-  masteredConcepts: {},
-  solvedQuestions: {},
-  strikethroughs: {},
+  masteredConcepts: {}, // { [conceptId]: true }
+  solvedQuestions: {}, // { [qId]: { selectedIdx, selectedIndices, isCorrect } }
+  multiSelections: {}, // { [qId]: number[] }
+  shortRevealed: {}, // { [qId]: true }
+  strikethroughs: {}, // { [qId]: number[] }
   streak: 0,
   theme: 'light',
+  // Exam CBT state
   exam: {
     active: false,
     questions: [],
@@ -26,6 +30,7 @@ const defaultState = {
   },
 };
 
+// Runtime-only local PDF blob URLs (per subjectId)
 const localPdfUrls = {};
 
 function loadState() {
@@ -83,6 +88,7 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+// Highlight AMBOSS-style glossary terms inside text
 function renderWithGlossary(text, glossary = {}) {
   let html = escapeHtml(text);
   const terms = Object.keys(glossary);
@@ -115,6 +121,9 @@ function updateNavUI() {
   document.getElementById('streakCount').textContent = state.streak;
 }
 
+// ========================
+// 1. DASHBOARD VIEW
+// ========================
 function renderDashboard() {
   const totalConcepts = state.subjects.reduce((acc, s) => acc + s.concepts.length, 0);
   const masteredCount = Object.keys(state.masteredConcepts).filter((k) => state.masteredConcepts[k]).length;
@@ -171,6 +180,7 @@ function renderDashboard() {
 
   return `
     <div class="max-w-6xl mx-auto px-4 lg:px-6 py-8">
+      <!-- Hero Banner -->
       <div class="rounded-3xl bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 text-white p-6 lg:p-8 mb-8 shadow-xl relative overflow-hidden">
         <div class="relative z-10 max-w-2xl">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-medium mb-4">
@@ -194,6 +204,7 @@ function renderDashboard() {
         </div>
       </div>
 
+      <!-- Stats Row -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 flex items-center gap-4">
           <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl">📚</div>
@@ -218,6 +229,7 @@ function renderDashboard() {
         </div>
       </div>
 
+      <!-- Subject Grid -->
       <div class="flex items-center justify-between mb-4">
         <h2 class="text-lg font-bold">과목별 강의자료 · 개념 · 기출 트랙</h2>
         <button id="goImporterFromDash" class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline">
@@ -231,59 +243,163 @@ function renderDashboard() {
   `;
 }
 
+// ========================
+// 2. 3-PANE WORKSPACE VIEW
+// ========================
 function renderQuestionCard(q, typeLabel, badgeColor) {
   const solved = state.solvedQuestions[q.id];
   const strikes = state.strikethroughs[q.id] || [];
+  const isMulti = q.qType === 'multi' && Array.isArray(q.answerIndices);
+  const isShort = q.qType === 'short' || (!q.choices || q.choices.length === 0);
 
-  const choicesHtml = q.choices
-    .map((choice, idx) => {
-      const isSelected = solved && solved.selectedIdx === idx;
-      const isCorrectChoice = idx === q.answerIndex;
-      const isStruck = strikes.includes(idx);
+  let bodyHtml = '';
 
-      let btnClass =
-        'border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 bg-white dark:bg-slate-900';
-      if (solved) {
-        if (isCorrectChoice) {
-          btnClass = 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200';
-        } else if (isSelected && !isCorrectChoice) {
-          btnClass = 'border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200';
-        } else {
-          btnClass = 'border-slate-200 dark:border-slate-800 opacity-65';
+  if (isShort) {
+    const revealed = !!state.shortRevealed?.[q.id] || !!solved;
+    bodyHtml = `
+      <div class="space-y-3 mb-3">
+        ${
+          !revealed
+            ? `<button data-short-reveal="${q.id}" class="w-full py-2.5 px-4 rounded-xl bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-300 text-sm font-semibold border border-blue-200 dark:border-blue-800 transition">
+                모범 답안 확인하기
+               </button>`
+            : `<div class="p-3.5 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
+                 <div class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-1">모범 답안</div>
+                 <div class="text-sm font-bold text-slate-900 dark:text-white">${escapeHtml(q.shortAnswer || '해설 참고')}</div>
+               </div>
+               ${
+                 !solved
+                   ? `<div class="flex gap-2">
+                        <button data-short-grade="${q.id}" data-grade="ok" class="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition">✓ 맞았음</button>
+                        <button data-short-grade="${q.id}" data-grade="no" class="flex-1 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition">✕ 틀렸음</button>
+                      </div>`
+                   : ''
+               }`
         }
-      }
+      </div>
+    `;
+  } else if (isMulti) {
+    const picked = state.multiSelections?.[q.id] || [];
+    const choicesHtml = q.choices
+      .map((choice, idx) => {
+        const isPicked = solved ? (solved.selectedIndices || []).includes(idx) : picked.includes(idx);
+        const isCorrectChoice = q.answerIndices.includes(idx);
+        const isStruck = strikes.includes(idx);
 
-      return `
-        <div class="flex items-center gap-1.5">
-          <button
-            data-answer-q="${q.id}"
-            data-choice-idx="${idx}"
-            class="flex-1 text-left px-3.5 py-2.5 rounded-xl border text-sm transition flex items-start gap-2.5 ${btnClass}"
-          >
-            <span class="w-5 h-5 rounded-full border border-current flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
-              ${idx + 1}
-            </span>
-            <span class="${isStruck ? 'choice-strikethrough' : ''}">${escapeHtml(choice)}</span>
-          </button>
-          <button
-            data-strike-q="${q.id}"
-            data-strike-idx="${idx}"
-            title="보기 취소선 (UWorld 스타일 소거법)"
-            class="p-2 rounded-lg text-xs text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
-          >
-            ✕
-          </button>
-        </div>
-      `;
-    })
-    .join('');
+        let btnClass =
+          'border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 bg-white dark:bg-slate-900';
+        if (solved) {
+          if (isCorrectChoice) {
+            btnClass = 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200';
+          } else if (isPicked && !isCorrectChoice) {
+            btnClass = 'border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200';
+          } else {
+            btnClass = 'border-slate-200 dark:border-slate-800 opacity-65';
+          }
+        } else if (isPicked) {
+          btnClass = 'border-blue-500 bg-blue-50 dark:bg-blue-950/40 text-blue-900 dark:text-blue-200 font-semibold';
+        }
+
+        return `
+          <div class="flex items-center gap-1.5">
+            <button
+              data-multi-toggle="${q.id}"
+              data-choice-idx="${idx}"
+              class="flex-1 text-left px-3.5 py-2.5 rounded-xl border text-sm transition flex items-start gap-2.5 ${btnClass}"
+            >
+              <span class="w-5 h-5 rounded-md border border-current flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                ${isPicked ? '✓' : idx + 1}
+              </span>
+              <span class="${isStruck ? 'choice-strikethrough' : ''}">${escapeHtml(choice)}</span>
+            </button>
+            <button
+              data-strike-q="${q.id}"
+              data-strike-idx="${idx}"
+              title="보기 취소선 (UWorld 스타일 소거법)"
+              class="p-2 rounded-lg text-xs text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+            >
+              ✕
+            </button>
+          </div>
+        `;
+      })
+      .join('');
+
+    bodyHtml = `
+      <div class="space-y-2 mb-3">
+        ${choicesHtml}
+        ${
+          !solved
+            ? `<button data-multi-submit="${q.id}" class="w-full mt-2 py-2 rounded-xl bg-slate-900 dark:bg-blue-600 hover:bg-blue-600 text-white text-xs font-bold transition">
+                 복수 정답 제출 (${picked.length}개 선택)
+               </button>`
+            : ''
+        }
+      </div>
+    `;
+  } else {
+    const choicesHtml = q.choices
+      .map((choice, idx) => {
+        const isSelected = solved && solved.selectedIdx === idx;
+        const isCorrectChoice = idx === q.answerIndex;
+        const isStruck = strikes.includes(idx);
+
+        let btnClass =
+          'border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 bg-white dark:bg-slate-900';
+        if (solved) {
+          if (isCorrectChoice) {
+            btnClass = 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200';
+          } else if (isSelected && !isCorrectChoice) {
+            btnClass = 'border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200';
+          } else {
+            btnClass = 'border-slate-200 dark:border-slate-800 opacity-65';
+          }
+        }
+
+        return `
+          <div class="flex items-center gap-1.5">
+            <button
+              data-answer-q="${q.id}"
+              data-choice-idx="${idx}"
+              class="flex-1 text-left px-3.5 py-2.5 rounded-xl border text-sm transition flex items-start gap-2.5 ${btnClass}"
+            >
+              <span class="w-5 h-5 rounded-full border border-current flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                ${idx + 1}
+              </span>
+              <span class="${isStruck ? 'choice-strikethrough' : ''}">${escapeHtml(choice)}</span>
+            </button>
+            <button
+              data-strike-q="${q.id}"
+              data-strike-idx="${idx}"
+              title="보기 취소선 (UWorld 스타일 소거법)"
+              class="p-2 rounded-lg text-xs text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+            >
+              ✕
+            </button>
+          </div>
+        `;
+      })
+      .join('');
+
+    bodyHtml = `<div class="space-y-2 mb-3">${choicesHtml}</div>`;
+  }
+
+  const answerText = isShort
+    ? escapeHtml(q.shortAnswer || '')
+    : isMulti
+    ? q.answerIndices.map((i) => `${i + 1}번`).join(', ')
+    : `${q.answerIndex + 1}번`;
 
   return `
     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-sm">
-      <div class="flex items-center justify-between gap-2 mb-3">
-        <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold ${badgeColor}">
-          ${escapeHtml(typeLabel)}
-        </span>
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <div class="flex items-center gap-1.5">
+          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold ${badgeColor}">
+            ${escapeHtml(typeLabel)}
+          </span>
+          ${isMulti ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300">복수정답</span>' : ''}
+          ${isShort ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300">단답형</span>' : ''}
+        </div>
         <button
           data-jump-page="${q.pdfRefPage}"
           class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-[11px] font-semibold hover:bg-blue-100 transition"
@@ -293,11 +409,9 @@ function renderQuestionCard(q, typeLabel, badgeColor) {
         </button>
       </div>
 
-      <p class="text-sm font-medium leading-relaxed mb-4">${escapeHtml(q.stem)}</p>
+      <p class="text-sm font-medium leading-relaxed mb-4 whitespace-pre-line">${escapeHtml(q.stem)}</p>
 
-      <div class="space-y-2 mb-3">
-        ${choicesHtml}
-      </div>
+      ${bodyHtml}
 
       ${
         solved
@@ -305,7 +419,7 @@ function renderQuestionCard(q, typeLabel, badgeColor) {
         <div class="mt-4 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-xs leading-relaxed">
           <div class="flex items-center justify-between mb-1.5">
             <span class="font-bold ${solved.isCorrect ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}">
-              ${solved.isCorrect ? '✅ 정답입니다!' : `❌ 오답입니다 (정답: ${q.answerIndex + 1}번)`}
+              ${solved.isCorrect ? '✅ 정답입니다!' : `❌ 오답입니다 (정답: ${answerText})`}
             </span>
             <button data-reset-q="${q.id}" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 underline">다시 풀기</button>
           </div>
@@ -422,9 +536,24 @@ function renderWorkspace() {
           renderQuestionCard(q, q.difficulty || 'AI 연습문제', 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300')
         );
 
+  const mp = state.mobilePane || 'center';
+  const leftVis = mp === 'left' ? 'flex' : 'hidden lg:flex';
+  const centerVis = mp === 'center' ? 'block' : 'hidden lg:block';
+  const rightVis = mp === 'right' ? 'block' : 'hidden lg:block';
+  const tabBtnCls = (pane) =>
+    mp === pane
+      ? 'flex-1 py-2 px-2 text-xs font-bold rounded-lg bg-blue-600 text-white shadow-sm transition'
+      : 'flex-1 py-2 px-2 text-xs font-semibold rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition';
+
   return `
-    <div class="grid grid-cols-1 lg:grid-cols-12 lg:h-[calc(100vh-3.5rem)]">
-      <aside class="lg:col-span-3 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col lg:h-full overflow-hidden">
+    <div class="lg:hidden sticky top-14 z-20 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-200 dark:border-slate-800 px-3 py-2 flex items-center gap-1.5">
+      <button type="button" data-mobile-pane="left" class="${tabBtnCls('left')}">📚 목차/개념</button>
+      <button type="button" data-mobile-pane="center" class="${tabBtnCls('center')}">📖 개념 요약·PDF</button>
+      <button type="button" data-mobile-pane="right" class="${tabBtnCls('right')}">📝 기출 (${concept.pastQuestions.length})</button>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 lg:h-[calc(100dvh-3.5rem)]">
+      <!-- LEFT PANE: Subject & Concept Tree -->
+      <aside class="${leftVis} lg:col-span-3 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex-col lg:h-full overflow-hidden">
         <div class="p-3.5 border-b border-slate-200 dark:border-slate-800 space-y-2.5">
           <select id="subjectSelect" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-bold">
             ${state.subjects
@@ -447,7 +576,9 @@ function renderWorkspace() {
         </div>
       </aside>
 
-      <section class="lg:col-span-5 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 overflow-y-auto p-5 space-y-5 bg-slate-50/50 dark:bg-slate-950">
+      <!-- CENTER PANE: AI Concept Summary + PDF Page Sync Viewer -->
+      <section class="${centerVis} lg:col-span-5 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 overflow-y-auto p-4 sm:p-5 space-y-5 bg-slate-50/50 dark:bg-slate-950">
+        <!-- Concept Header -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
           <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
             <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">${escapeHtml(concept.chapter)}</span>
@@ -472,6 +603,7 @@ function renderWorkspace() {
               .join('')}
           </div>
 
+          <!-- AI Summary -->
           <div class="p-4 rounded-xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/50 mb-4">
             <div class="flex items-center gap-1.5 text-xs font-bold text-blue-700 dark:text-blue-300 mb-1.5">
               <span>✨</span> 강의자료 기반 AI 핵심 요약 <span class="font-normal text-blue-500">(밑줄 용어 클릭 시 팝업)</span>
@@ -481,6 +613,7 @@ function renderWorkspace() {
             </p>
           </div>
 
+          <!-- Key Points -->
           <div>
             <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">고빈출 핵심 포인트</h3>
             <ul class="space-y-1.5">
@@ -498,11 +631,12 @@ function renderWorkspace() {
           </div>
         </div>
 
+        <!-- PDF Page Sync Card -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
           <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-            <div class="flex items-center gap-2">
+            <div class="flex flex-wrap items-center gap-2">
               <span class="text-sm font-bold">📖 강의자료 PDF 매칭</span>
-              <div class="flex items-center gap-1">${pageButtonsHtml}</div>
+              <div class="flex flex-wrap items-center gap-1">${pageButtonsHtml}</div>
             </div>
             <label class="cursor-pointer px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-semibold transition">
               로컬 PDF 연결
@@ -513,7 +647,8 @@ function renderWorkspace() {
         </div>
       </section>
 
-      <section class="lg:col-span-4 overflow-y-auto p-5 bg-slate-100/60 dark:bg-slate-900/40">
+      <!-- RIGHT PANE: Linked Past Questions & AI Practice Questions -->
+      <section class="${rightVis} lg:col-span-4 overflow-y-auto p-4 sm:p-5 bg-slate-100/60 dark:bg-slate-900/40">
         <div class="flex items-center gap-2 p-1 rounded-xl bg-slate-200/80 dark:bg-slate-800 mb-4">
           <button
             data-right-tab="past"
@@ -545,18 +680,23 @@ function renderWorkspace() {
   `;
 }
 
+// ========================
+// 3. EXAM CBT VIEW (UWorld Style)
+// ========================
 function buildExamQuestions() {
   const list = [];
   state.subjects.forEach((subj) => {
     subj.concepts.forEach((c) => {
       [...c.pastQuestions, ...c.aiQuestions].forEach((q) => {
-        list.push({
-          ...q,
-          subjectId: subj.id,
-          subjectName: subj.name,
-          conceptId: c.id,
-          conceptTitle: c.title,
-        });
+        if (q.choices && q.choices.length > 0 && q.qType !== 'multi') {
+          list.push({
+            ...q,
+            subjectId: subj.id,
+            subjectName: subj.name,
+            conceptId: c.id,
+            conceptTitle: c.title,
+          });
+        }
       });
     });
   });
@@ -639,9 +779,9 @@ function renderExam() {
 
   return `
     <div class="max-w-4xl mx-auto px-4 py-6">
-      <div class="flex items-center justify-between bg-slate-900 text-white px-5 py-3 rounded-2xl mb-5">
+      <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-900 text-white px-4 sm:px-5 py-3 rounded-2xl mb-5">
         <div class="text-sm font-bold">문항 ${currentIndex + 1} / ${questions.length} · <span class="text-blue-300">${escapeHtml(q.subjectName)}</span></div>
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-3 sm:gap-4">
           <span id="examTimer" class="font-mono text-sm font-bold text-amber-300">⏱ ${formatTime(secondsLeft)}</span>
           <button id="submitExamBtn" class="px-3.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-xs font-bold text-slate-950">최종 제출</button>
         </div>
@@ -694,6 +834,9 @@ function renderExam() {
   `;
 }
 
+// ========================
+// 4. AI IMPORTER VIEW
+// ========================
 const GEMINI_PROMPT_TEMPLATE = `다음 치과대학 강의자료 PDF를 분석해서 아래 JSON 형식으로 핵심 개념, 해당 PDF 페이지 번호, 강의자료 기반 요약, 연결 기출문제, AI 변형 연습문제를 추출해줘:
 {
   "id": "prosthodontics",
@@ -763,6 +906,9 @@ function renderImporter() {
   `;
 }
 
+// ========================
+// RENDER & EVENT BINDING
+// ========================
 function render() {
   applyTheme();
   updateNavUI();
@@ -777,6 +923,7 @@ function render() {
 }
 
 function bindEvents() {
+  // Dashboard events
   document.getElementById('goWorkspaceBtn')?.addEventListener('click', () => {
     state.view = 'workspace';
     saveState();
@@ -807,6 +954,7 @@ function bindEvents() {
     });
   });
 
+  // Workspace events
   document.getElementById('subjectSelect')?.addEventListener('change', (e) => {
     const subj = state.subjects.find((s) => s.id === e.target.value);
     if (subj) {
@@ -828,6 +976,17 @@ function bindEvents() {
     }
   });
 
+  document.querySelectorAll('[data-mobile-pane]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.mobilePane = btn.dataset.mobilePane;
+      saveState();
+      render();
+      if (window.innerWidth < 1024) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  });
+
   document.querySelectorAll('[data-select-concept]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const subj = getCurrentSubject();
@@ -835,8 +994,14 @@ function bindEvents() {
       if (c) {
         state.selectedConceptId = c.id;
         state.activePdfPage = c.pdfPages[0];
+        if (window.innerWidth < 1024) {
+          state.mobilePane = 'center';
+        }
         saveState();
         render();
+        if (window.innerWidth < 1024) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       }
     });
   });
@@ -851,8 +1016,14 @@ function bindEvents() {
   document.querySelectorAll('[data-jump-page]').forEach((btn) => {
     btn.addEventListener('click', () => {
       state.activePdfPage = Number(btn.dataset.jumpPage);
+      if (window.innerWidth < 1024) {
+        state.mobilePane = 'center';
+      }
       saveState();
       render();
+      if (window.innerWidth < 1024) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     });
   });
 
@@ -874,6 +1045,7 @@ function bindEvents() {
     });
   });
 
+  // Question interactions
   document.querySelectorAll('[data-answer-q]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const qId = btn.dataset.answerQ;
@@ -885,6 +1057,61 @@ function bindEvents() {
       if (!q) return;
       const isCorrect = choiceIdx === q.answerIndex;
       state.solvedQuestions[qId] = { selectedIdx: choiceIdx, isCorrect };
+      state.streak += 1;
+      saveState();
+      render();
+    });
+  });
+
+  document.querySelectorAll('[data-multi-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const qId = btn.dataset.multiToggle;
+      if (state.solvedQuestions[qId]) return;
+      const idx = Number(btn.dataset.choiceIdx);
+      const cur = new Set(state.multiSelections[qId] || []);
+      if (cur.has(idx)) cur.delete(idx);
+      else cur.add(idx);
+      state.multiSelections[qId] = [...cur].sort((a, b) => a - b);
+      saveState();
+      render();
+    });
+  });
+
+  document.querySelectorAll('[data-multi-submit]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const qId = btn.dataset.multiSubmit;
+      if (state.solvedQuestions[qId]) return;
+      const concept = getCurrentConcept();
+      const allQ = [...concept.pastQuestions, ...concept.aiQuestions];
+      const q = allQ.find((item) => item.id === qId);
+      if (!q) return;
+      const selected = [...(state.multiSelections[qId] || [])].sort((a, b) => a - b);
+      const expected = [...(q.answerIndices || [])].sort((a, b) => a - b);
+      const isCorrect =
+        selected.length === expected.length &&
+        selected.every((val, i) => val === expected[i]);
+      state.solvedQuestions[qId] = { selectedIndices: selected, isCorrect };
+      state.streak += 1;
+      saveState();
+      render();
+    });
+  });
+
+  document.querySelectorAll('[data-short-reveal]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const qId = btn.dataset.shortReveal;
+      state.shortRevealed[qId] = true;
+      saveState();
+      render();
+    });
+  });
+
+  document.querySelectorAll('[data-short-grade]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const qId = btn.dataset.shortGrade;
+      if (state.solvedQuestions[qId]) return;
+      const isCorrect = btn.dataset.gradeCorrect === 'true';
+      state.solvedQuestions[qId] = { isCorrect };
       state.streak += 1;
       saveState();
       render();
@@ -910,6 +1137,7 @@ function bindEvents() {
     });
   });
 
+  // Glossary popups
   document.querySelectorAll('.glossary-term').forEach((el) => {
     el.addEventListener('click', () => {
       const term = el.dataset.term;
@@ -922,8 +1150,14 @@ function bindEvents() {
     });
   });
 
+  // Exam CBT events
   document.getElementById('startExamBtn')?.addEventListener('click', () => {
-    const qs = buildExamQuestions();
+    const pool = buildExamQuestions();
+    for (let i = pool.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+    const qs = pool.slice(0, Math.min(20, pool.length));
     state.exam = {
       active: true,
       questions: qs,
@@ -993,6 +1227,7 @@ function bindEvents() {
     });
   });
 
+  // Importer events
   document.getElementById('copyPromptBtn')?.addEventListener('click', () => {
     navigator.clipboard?.writeText(GEMINI_PROMPT_TEMPLATE);
     const msg = document.getElementById('importMsg');
@@ -1036,6 +1271,7 @@ function bindEvents() {
   });
 }
 
+// Global header events
 document.querySelectorAll('.nav-btn, .nav-btn-m').forEach((btn) => {
   btn.addEventListener('click', () => {
     state.view = btn.dataset.view;
@@ -1065,4 +1301,5 @@ document.getElementById('glossaryModal').addEventListener('click', (e) => {
   }
 });
 
+// Initial render
 render();
