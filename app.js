@@ -3,7 +3,7 @@ import { INITIAL_SUBJECTS } from './data/sampleData.js';
 const STORAGE_KEY = 'dentasync_state_v2';
 
 const defaultState = {
-  view: 'dashboard', // 'dashboard' | 'workspace' | 'exam' | 'importer'
+  view: 'dashboard', // 'dashboard' | 'workspace'
   subjects: INITIAL_SUBJECTS,
   selectedSubjectId: INITIAL_SUBJECTS[0].id,
   selectedConceptId: INITIAL_SUBJECTS[0].concepts[0].id,
@@ -18,31 +18,21 @@ const defaultState = {
   strikethroughs: {}, // { [qId]: number[] }
   streak: 0,
   theme: 'light',
-  // Exam CBT state
-  exam: {
-    active: false,
-    questions: [],
-    currentIndex: 0,
-    answers: {},
-    submitted: false,
-    secondsLeft: 600,
-    timerId: null,
-  },
 };
-
-// Runtime-only local PDF blob URLs (per subjectId)
-const localPdfUrls = {};
 
 function loadState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return structuredClone(defaultState);
     const parsed = JSON.parse(raw);
-    return {
+    const merged = {
       ...structuredClone(defaultState),
       ...parsed,
-      exam: structuredClone(defaultState.exam),
     };
+    if (merged.view !== 'dashboard' && merged.view !== 'workspace') {
+      merged.view = 'dashboard';
+    }
+    return merged;
   } catch {
     return structuredClone(defaultState);
   }
@@ -209,9 +199,6 @@ function renderDashboard() {
             <button id="goWorkspaceBtn" class="px-5 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-semibold text-sm shadow-lg shadow-blue-500/25 transition">
               통합 학습 시작하기
             </button>
-            <button id="goExamBtn" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-sm transition">
-              실전 CBT 모의고사
-            </button>
           </div>
         </div>
       </div>
@@ -244,9 +231,6 @@ function renderDashboard() {
       <!-- Subject Grid -->
       <div class="flex items-center justify-between mb-4">
         <h2 class="text-lg font-bold">과목별 강의자료 · 개념 · 기출 트랙</h2>
-        <button id="goImporterFromDash" class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline">
-          + 새 과목 JSON 추가하기
-        </button>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         ${subjectCards}
@@ -517,14 +501,11 @@ function renderWorkspace() {
     })
     .join('');
 
-  const pdfUrl = localPdfUrls[subj.id];
   const currentExcerpt =
     (concept.pdfExcerpts && concept.pdfExcerpts[state.activePdfPage]) ||
-    `[강의자료 ${subj.pdfName} — ${state.activePdfPage}페이지] 해당 페이지의 원문 PDF를 상단 '로컬 PDF 연결' 버튼으로 불러오면 실제 슬라이드/교안을 바로 볼 수 있습니다.`;
+    `[강의자료 ${subj.pdfName} — ${state.activePdfPage}페이지] 해당 페이지의 강의자료 발췌 내용이 등록되어 있지 않습니다.`;
 
-  const pdfViewerHtml = pdfUrl
-    ? `<iframe src="${pdfUrl}#page=${state.activePdfPage}" class="w-full h-72 rounded-xl border border-slate-200 dark:border-slate-700 bg-white"></iframe>`
-    : `
+  const pdfViewerHtml = `
       <div class="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/60 p-4">
         <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
           <span class="font-semibold">📑 ${escapeHtml(subj.pdfName)}</span>
@@ -532,9 +513,6 @@ function renderWorkspace() {
         </div>
         <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed bg-white dark:bg-slate-900 p-3.5 rounded-lg border border-slate-200 dark:border-slate-800">
           ${escapeHtml(currentExcerpt)}
-        </p>
-        <p class="text-[11px] text-slate-400 mt-2">
-          💡 실제 강의 PDF 파일을 연결하면 해당 페이지(#page=${state.activePdfPage})가 뷰어로 즉시 열립니다.
         </p>
       </div>
     `;
@@ -650,10 +628,6 @@ function renderWorkspace() {
               <span class="text-sm font-bold">📖 강의자료 PDF 매칭</span>
               <div class="flex flex-wrap items-center gap-1">${pageButtonsHtml}</div>
             </div>
-            <label class="cursor-pointer px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-semibold transition">
-              로컬 PDF 연결
-              <input id="attachPdfInput" type="file" accept="application/pdf" class="hidden" />
-            </label>
           </div>
           ${pdfViewerHtml}
         </div>
@@ -693,232 +667,6 @@ function renderWorkspace() {
 }
 
 // ========================
-// 3. EXAM CBT VIEW (UWorld Style)
-// ========================
-function buildExamQuestions() {
-  const list = [];
-  state.subjects.forEach((subj) => {
-    subj.concepts.forEach((c) => {
-      [...c.pastQuestions, ...c.aiQuestions].forEach((q) => {
-        if (q.choices && q.choices.length > 0 && q.qType !== 'multi') {
-          list.push({
-            ...q,
-            subjectId: subj.id,
-            subjectName: subj.name,
-            conceptId: c.id,
-            conceptTitle: c.title,
-          });
-        }
-      });
-    });
-  });
-  return list;
-}
-
-function formatTime(sec) {
-  const m = String(Math.floor(sec / 60)).padStart(2, '0');
-  const s = String(sec % 60).padStart(2, '0');
-  return `${m}:${s}`;
-}
-
-function renderExam() {
-  if (!state.exam.active) {
-    const allQ = buildExamQuestions();
-    return `
-      <div class="max-w-2xl mx-auto px-4 py-12">
-        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 text-center shadow-sm">
-          <div class="w-14 h-14 rounded-2xl bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center text-2xl mx-auto mb-4">⏱️</div>
-          <h2 class="text-2xl font-extrabold mb-2">실전 CBT 모의고사 모드</h2>
-          <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">
-            UWorld 스타일의 집중 시험 환경에서 전체 기출 및 AI 변형문제(총 ${allQ.length}문항)를 풀어보세요.<br />
-            제출 후 오답 문항은 해당 <strong>개념 요약 및 강의자료 PDF 페이지</strong>로 즉시 연결됩니다.
-          </p>
-          <button id="startExamBtn" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-lg shadow-blue-500/25 transition">
-            모의고사 시작하기 (${allQ.length}문항 · 10분)
-          </button>
-        </div>
-      </div>
-    `;
-  }
-
-  const { questions, currentIndex, answers, submitted, secondsLeft } = state.exam;
-  const q = questions[currentIndex];
-
-  if (submitted) {
-    const correct = questions.filter((item) => answers[item.id] === item.answerIndex).length;
-    const score = Math.round((correct / questions.length) * 100);
-
-    return `
-      <div class="max-w-4xl mx-auto px-4 py-8 space-y-6">
-        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h2 class="text-xl font-extrabold">모의고사 결과 리포트</h2>
-            <p class="text-sm text-slate-500 dark:text-slate-400">총 ${questions.length}문항 중 ${correct}문항 정답 (${score}점)</p>
-          </div>
-          <button id="restartExamBtn" class="px-4 py-2 rounded-xl bg-slate-900 dark:bg-blue-600 text-white text-sm font-semibold">
-            다시 응시하기
-          </button>
-        </div>
-
-        <div class="space-y-4">
-          ${questions
-            .map((item, idx) => {
-              const userAns = answers[item.id];
-              const ok = userAns === item.answerIndex;
-              return `
-                <div class="bg-white dark:bg-slate-900 border ${ok ? 'border-emerald-300 dark:border-emerald-800' : 'border-rose-300 dark:border-rose-800'} rounded-2xl p-5">
-                  <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                    <span class="text-xs font-bold ${ok ? 'text-emerald-600' : 'text-rose-600'}">
-                      Q${idx + 1}. ${ok ? '정답' : `오답 (내 답: ${userAns !== undefined ? userAns + 1 : '미응답'} / 정답: ${item.answerIndex + 1})`}
-                    </span>
-                    <button
-                      data-goto-concept="${item.subjectId}|${item.conceptId}|${item.pdfRefPage}"
-                      class="px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-xs font-semibold hover:bg-blue-100"
-                    >
-                      📖 ${escapeHtml(item.conceptTitle)} (p.${item.pdfRefPage}) 복습하기 ↗
-                    </button>
-                  </div>
-                  <p class="text-sm font-medium mb-2">${escapeHtml(item.stem)}</p>
-                  <p class="text-xs text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-800 p-3 rounded-xl">${escapeHtml(item.rationale)}</p>
-                </div>
-              `;
-            })
-            .join('')}
-        </div>
-      </div>
-    `;
-  }
-
-  return `
-    <div class="max-w-4xl mx-auto px-4 py-6">
-      <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-900 text-white px-4 sm:px-5 py-3 rounded-2xl mb-5">
-        <div class="text-sm font-bold">문항 ${currentIndex + 1} / ${questions.length} · <span class="text-blue-300">${escapeHtml(q.subjectName)}</span></div>
-        <div class="flex items-center gap-3 sm:gap-4">
-          <span id="examTimer" class="font-mono text-sm font-bold text-amber-300">⏱ ${formatTime(secondsLeft)}</span>
-          <button id="submitExamBtn" class="px-3.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-xs font-bold text-slate-950">최종 제출</button>
-        </div>
-      </div>
-
-      <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 mb-5">
-        <p class="text-base font-semibold leading-relaxed mb-5">${escapeHtml(q.stem)}</p>
-        <div class="space-y-2.5">
-          ${q.choices
-            .map((ch, idx) => {
-              const selected = answers[q.id] === idx;
-              return `
-                <button
-                  data-exam-choice="${idx}"
-                  class="w-full text-left px-4 py-3 rounded-xl border text-sm transition flex items-center gap-3 ${
-                    selected
-                      ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/50 font-semibold'
-                      : 'border-slate-200 dark:border-slate-700 hover:border-blue-400'
-                  }"
-                >
-                  <span class="w-6 h-6 rounded-full border flex items-center justify-center text-xs font-bold">${idx + 1}</span>
-                  <span>${escapeHtml(ch)}</span>
-                </button>
-              `;
-            })
-            .join('')}
-        </div>
-      </div>
-
-      <div class="flex items-center justify-between">
-        <button id="prevExamBtn" ${currentIndex === 0 ? 'disabled' : ''} class="px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-sm font-semibold disabled:opacity-40">← 이전</button>
-        <div class="flex flex-wrap gap-1.5">
-          ${questions
-            .map(
-              (item, idx) => `
-            <button data-exam-nav="${idx}" class="w-8 h-8 rounded-lg text-xs font-bold border ${
-                idx === currentIndex
-                  ? 'bg-blue-600 text-white border-blue-600'
-                  : answers[item.id] !== undefined
-                  ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border-emerald-300'
-                  : 'border-slate-200 dark:border-slate-700'
-              }">${idx + 1}</button>
-          `
-            )
-            .join('')}
-        </div>
-        <button id="nextExamBtn" ${currentIndex === questions.length - 1 ? 'disabled' : ''} class="px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-sm font-semibold disabled:opacity-40">다음 →</button>
-      </div>
-    </div>
-  `;
-}
-
-// ========================
-// 4. AI IMPORTER VIEW
-// ========================
-const GEMINI_PROMPT_TEMPLATE = `다음 치과대학 강의자료 PDF를 분석해서 아래 JSON 형식으로 핵심 개념, 해당 PDF 페이지 번호, 강의자료 기반 요약, 연결 기출문제, AI 변형 연습문제를 추출해줘:
-{
-  "id": "prosthodontics",
-  "name": "치과보철학",
-  "engName": "Prosthodontics",
-  "color": "#ea580c",
-  "pdfName": "2026_치과보철학_고정성.pdf",
-  "totalPages": 50,
-  "concepts": [
-    {
-      "id": "pros-1",
-      "chapter": "1장. 지대치 형성",
-      "title": "보존적 치아 삭제와 유지형태",
-      "pdfPages": [7, 8],
-      "importance": "high",
-      "tags": ["축벽경사", "유지형태"],
-      "summary": "핵심 요약...",
-      "keyPoints": ["포인트 1", "포인트 2"],
-      "glossary": { "유지형태": "용어 설명..." },
-      "pdfExcerpts": { "7": "7페이지 핵심 발췌..." },
-      "pastQuestions": [],
-      "aiQuestions": []
-    }
-  ]
-}`;
-
-function renderImporter() {
-  return `
-    <div class="max-w-4xl mx-auto px-4 py-8 space-y-6">
-      <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6">
-        <h2 class="text-xl font-extrabold mb-2">Gemini / Antigravity 강의자료 JSON 임포터</h2>
-        <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">
-          Gemini 또는 Antigravity로 강의자료 PDF를 분석한 뒤 생성된 과목 JSON을 붙여넣으면 즉시 3-Pane 워크스페이스에 반영됩니다.
-        </p>
-
-        <div class="mb-4">
-          <div class="flex items-center justify-between mb-1.5">
-            <span class="text-xs font-bold text-slate-600 dark:text-slate-300">1단계: Gemini 분석용 프롬프트 템플릿</span>
-            <button id="copyPromptBtn" class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline">프롬프트 복사</button>
-          </div>
-          <pre class="p-3.5 rounded-xl bg-slate-900 text-slate-100 text-xs overflow-x-auto leading-relaxed">${escapeHtml(GEMINI_PROMPT_TEMPLATE)}</pre>
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1.5">2단계: 생성된 과목 JSON 붙여넣기</label>
-          <textarea
-            id="jsonImportInput"
-            rows="7"
-            placeholder='{ "id": "...", "name": "과목명", "concepts": [...] }'
-            class="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
-          ></textarea>
-        </div>
-
-        <div class="flex flex-wrap items-center justify-between gap-3">
-          <div id="importMsg" class="text-xs font-semibold"></div>
-          <div class="flex gap-2">
-            <button id="resetDemoBtn" class="px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800">
-              초기 데모 데이터 복원
-            </button>
-            <button id="importJsonBtn" class="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold">
-              과목 데이터 추가하기
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-// ========================
 // RENDER & EVENT BINDING
 // ========================
 function render(options = {}) {
@@ -930,10 +678,8 @@ function render(options = {}) {
   updateNavUI();
 
   const root = document.getElementById('appRoot');
-  if (state.view === 'dashboard') root.innerHTML = renderDashboard();
-  else if (state.view === 'workspace') root.innerHTML = renderWorkspace();
-  else if (state.view === 'exam') root.innerHTML = renderExam();
-  else if (state.view === 'importer') root.innerHTML = renderImporter();
+  if (state.view === 'workspace') root.innerHTML = renderWorkspace();
+  else root.innerHTML = renderDashboard();
 
   bindEvents();
 
@@ -951,16 +697,6 @@ function bindEvents() {
   // Dashboard events
   document.getElementById('goWorkspaceBtn')?.addEventListener('click', () => {
     state.view = 'workspace';
-    saveState();
-    render();
-  });
-  document.getElementById('goExamBtn')?.addEventListener('click', () => {
-    state.view = 'exam';
-    saveState();
-    render();
-  });
-  document.getElementById('goImporterFromDash')?.addEventListener('click', () => {
-    state.view = 'importer';
     saveState();
     render();
   });
@@ -1050,16 +786,6 @@ function bindEvents() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
-  });
-
-  document.getElementById('attachPdfInput')?.addEventListener('change', (e) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const subj = getCurrentSubject();
-      if (localPdfUrls[subj.id]) URL.revokeObjectURL(localPdfUrls[subj.id]);
-      localPdfUrls[subj.id] = URL.createObjectURL(file);
-      render();
-    }
   });
 
   document.querySelectorAll('[data-right-tab]').forEach((btn) => {
@@ -1173,126 +899,6 @@ function bindEvents() {
       document.getElementById('glossaryBody').textContent = def;
       document.getElementById('glossaryModal').classList.remove('hidden');
     });
-  });
-
-  // Exam CBT events
-  document.getElementById('startExamBtn')?.addEventListener('click', () => {
-    const pool = buildExamQuestions();
-    for (let i = pool.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [pool[i], pool[j]] = [pool[j], pool[i]];
-    }
-    const qs = pool.slice(0, Math.min(20, pool.length));
-    state.exam = {
-      active: true,
-      questions: qs,
-      currentIndex: 0,
-      answers: {},
-      submitted: false,
-      secondsLeft: 600,
-      timerId: setInterval(() => {
-        state.exam.secondsLeft -= 1;
-        const timerEl = document.getElementById('examTimer');
-        if (timerEl) timerEl.textContent = `⏱ ${formatTime(state.exam.secondsLeft)}`;
-        if (state.exam.secondsLeft <= 0) {
-          clearInterval(state.exam.timerId);
-          state.exam.submitted = true;
-          render();
-        }
-      }, 1000),
-    };
-    render();
-  });
-
-  document.querySelectorAll('[data-exam-choice]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const q = state.exam.questions[state.exam.currentIndex];
-      state.exam.answers[q.id] = Number(btn.dataset.examChoice);
-      render();
-    });
-  });
-
-  document.getElementById('prevExamBtn')?.addEventListener('click', () => {
-    if (state.exam.currentIndex > 0) {
-      state.exam.currentIndex -= 1;
-      render();
-    }
-  });
-  document.getElementById('nextExamBtn')?.addEventListener('click', () => {
-    if (state.exam.currentIndex < state.exam.questions.length - 1) {
-      state.exam.currentIndex += 1;
-      render();
-    }
-  });
-  document.querySelectorAll('[data-exam-nav]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      state.exam.currentIndex = Number(btn.dataset.examNav);
-      render();
-    });
-  });
-  document.getElementById('submitExamBtn')?.addEventListener('click', () => {
-    clearInterval(state.exam.timerId);
-    state.exam.submitted = true;
-    render();
-  });
-  document.getElementById('restartExamBtn')?.addEventListener('click', () => {
-    clearInterval(state.exam.timerId);
-    state.exam.active = false;
-    render();
-  });
-  document.querySelectorAll('[data-goto-concept]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const [subjId, cId, page] = btn.dataset.gotoConcept.split('|');
-      state.selectedSubjectId = subjId;
-      state.selectedConceptId = cId;
-      state.activePdfPage = Number(page);
-      state.view = 'workspace';
-      saveState();
-      render();
-    });
-  });
-
-  // Importer events
-  document.getElementById('copyPromptBtn')?.addEventListener('click', () => {
-    navigator.clipboard?.writeText(GEMINI_PROMPT_TEMPLATE);
-    const msg = document.getElementById('importMsg');
-    if (msg) {
-      msg.className = 'text-xs font-semibold text-blue-600';
-      msg.textContent = '프롬프트가 클립보드에 복사되었습니다.';
-    }
-  });
-
-  document.getElementById('importJsonBtn')?.addEventListener('click', () => {
-    const raw = document.getElementById('jsonImportInput')?.value || '';
-    const msg = document.getElementById('importMsg');
-    try {
-      const parsed = JSON.parse(raw);
-      if (!parsed.id || !parsed.name || !Array.isArray(parsed.concepts) || !parsed.concepts.length) {
-        throw new Error('id, name, concepts 배열이 필요합니다.');
-      }
-      const existingIdx = state.subjects.findIndex((s) => s.id === parsed.id);
-      if (existingIdx >= 0) state.subjects[existingIdx] = parsed;
-      else state.subjects.push(parsed);
-
-      state.selectedSubjectId = parsed.id;
-      state.selectedConceptId = parsed.concepts[0].id;
-      state.activePdfPage = parsed.concepts[0].pdfPages?.[0] || 1;
-      saveState();
-      msg.className = 'text-xs font-semibold text-emerald-600';
-      msg.textContent = `✅ '${parsed.name}' 과목이 성공적으로 추가되었습니다!`;
-    } catch (err) {
-      msg.className = 'text-xs font-semibold text-rose-600';
-      msg.textContent = `❌ JSON 형식 오류: ${err.message}`;
-    }
-  });
-
-  document.getElementById('resetDemoBtn')?.addEventListener('click', () => {
-    state.subjects = structuredClone(INITIAL_SUBJECTS);
-    state.selectedSubjectId = INITIAL_SUBJECTS[0].id;
-    state.selectedConceptId = INITIAL_SUBJECTS[0].concepts[0].id;
-    state.activePdfPage = INITIAL_SUBJECTS[0].concepts[0].pdfPages[0];
-    saveState();
-    render();
   });
 }
 
