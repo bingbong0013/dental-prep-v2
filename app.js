@@ -560,7 +560,7 @@ function renderWorkspace() {
             >
               ◀ 이전
             </button>
-            <span class="px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold tabular-nums">
+            <span id="pdfPageIndicator" class="px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold tabular-nums">
               p.${activePage} / ${docInfo.totalPages}
             </span>
             <button
@@ -573,8 +573,9 @@ function renderWorkspace() {
             </button>
           </div>
         </div>
-        <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-950">
+        <div id="pdfSlideFrame" class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-950">
           <img
+            id="pdfSlideImg"
             src="./slides/${docInfo.docId}/p${activePage}.webp"
             alt="${escapeHtml(docInfo.label)} ${activePage}페이지"
             class="w-full h-auto block select-none"
@@ -848,38 +849,16 @@ function bindEvents() {
 
   document.querySelectorAll('[data-jump-page]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      state.activePdfPage = Number(btn.dataset.jumpPage);
-      if (window.innerWidth < 1024) {
-        state.mobilePane = 'center';
-      }
-      saveState();
-      render();
-      if (window.innerWidth < 1024) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+      setActivePdfPage(Number(btn.dataset.jumpPage));
     });
   });
 
   document.querySelector('[data-pdf-prev]')?.addEventListener('click', () => {
-    const docInfo = getPdfDocInfo(getCurrentSubject(), getCurrentConcept());
-    if (!docInfo) return;
-    const cur = Math.max(1, Math.min(Number(state.activePdfPage) || 1, docInfo.totalPages));
-    if (cur > 1) {
-      state.activePdfPage = cur - 1;
-      saveState();
-      render();
-    }
+    stepPdfPage(-1);
   });
 
   document.querySelector('[data-pdf-next]')?.addEventListener('click', () => {
-    const docInfo = getPdfDocInfo(getCurrentSubject(), getCurrentConcept());
-    if (!docInfo) return;
-    const cur = Math.max(1, Math.min(Number(state.activePdfPage) || 1, docInfo.totalPages));
-    if (cur < docInfo.totalPages) {
-      state.activePdfPage = cur + 1;
-      saveState();
-      render();
-    }
+    stepPdfPage(1);
   });
 
   document.querySelectorAll('[data-right-tab]').forEach((btn) => {
@@ -1023,6 +1002,84 @@ document.getElementById('closeGlossary').addEventListener('click', () => {
 document.getElementById('glossaryModal').addEventListener('click', (e) => {
   if (e.target.id === 'glossaryModal') {
     document.getElementById('glossaryModal').classList.add('hidden');
+  }
+});
+
+function setActivePdfPage(targetPage) {
+  const docInfo = getPdfDocInfo(getCurrentSubject(), getCurrentConcept());
+  if (!docInfo) return;
+  const nextPage = Math.max(1, Math.min(Number(targetPage) || 1, docInfo.totalPages));
+  state.activePdfPage = nextPage;
+  saveState();
+
+  const img = document.getElementById('pdfSlideImg');
+  const frame = document.getElementById('pdfSlideFrame');
+  if (img && frame) {
+    const prevHeight = frame.offsetHeight;
+    if (prevHeight > 0) frame.style.minHeight = `${prevHeight}px`;
+    img.onload = () => {
+      frame.style.minHeight = '';
+    };
+    img.src = `./slides/${docInfo.docId}/p${nextPage}.webp`;
+    img.alt = `${docInfo.label} ${nextPage}페이지`;
+    if (nextPage < docInfo.totalPages) {
+      const preNext = new Image();
+      preNext.src = `./slides/${docInfo.docId}/p${nextPage + 1}.webp`;
+    }
+    if (nextPage > 1) {
+      const prePrev = new Image();
+      prePrev.src = `./slides/${docInfo.docId}/p${nextPage - 1}.webp`;
+    }
+  } else {
+    render();
+    return;
+  }
+
+  const indicator = document.getElementById('pdfPageIndicator');
+  if (indicator) indicator.textContent = `p.${nextPage} / ${docInfo.totalPages}`;
+
+  const prevBtn = document.querySelector('[data-pdf-prev]');
+  if (prevBtn) prevBtn.disabled = nextPage <= 1;
+
+  const nextBtn = document.querySelector('[data-pdf-next]');
+  if (nextBtn) nextBtn.disabled = nextPage >= docInfo.totalPages;
+
+  const activeCls = 'px-2.5 py-1 rounded-lg text-xs font-bold transition bg-blue-600 text-white shadow-sm';
+  const inactiveCls = 'px-2.5 py-1 rounded-lg text-xs font-bold transition bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700';
+  document.querySelectorAll('[data-jump-page]').forEach((btn) => {
+    btn.className = Number(btn.dataset.jumpPage) === nextPage ? activeCls : inactiveCls;
+  });
+}
+
+function stepPdfPage(delta) {
+  const docInfo = getPdfDocInfo(getCurrentSubject(), getCurrentConcept());
+  if (!docInfo) return;
+  const cur = Math.max(1, Math.min(Number(state.activePdfPage) || 1, docInfo.totalPages));
+  const next = cur + delta;
+  if (next >= 1 && next <= docInfo.totalPages) {
+    setActivePdfPage(next);
+  }
+}
+
+document.addEventListener('keydown', (e) => {
+  if (state.view !== 'workspace') return;
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  const activeEl = document.activeElement;
+  if (
+    activeEl &&
+    (['INPUT', 'TEXTAREA', 'SELECT'].includes(activeEl.tagName) || activeEl.isContentEditable)
+  ) {
+    return;
+  }
+  const modal = document.getElementById('glossaryModal');
+  if (modal && !modal.classList.contains('hidden')) return;
+
+  if (e.key === 'ArrowLeft') {
+    e.preventDefault();
+    stepPdfPage(-1);
+  } else if (e.key === 'ArrowRight') {
+    e.preventDefault();
+    stepPdfPage(1);
   }
 });
 
