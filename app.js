@@ -43,6 +43,10 @@ function getQuestionState() {
 }
 
 function recordAnswer(qId, result) {
+  // Keep reviewed wrong answers visible until this review session ends.
+  if (state.view === 'review' && state.solvedQuestions[qId]?.isCorrect === false) {
+    reviewSessionIds.add(qId);
+  }
   getQuestionState().solvedQuestions[qId] = result;
   state.solvedQuestions[qId] = result;
 }
@@ -1527,7 +1531,6 @@ function bindEvents() {
       if (!ctx) return;
       const isCorrect = choiceIdx === ctx.q.answerIndex;
       recordAnswer(qId, { selectedIdx: choiceIdx, isCorrect });
-      if (isCorrect) reviewSessionIds.delete(qId);
       state.streak += 1;
       saveState();
       render();
@@ -1561,7 +1564,6 @@ function bindEvents() {
         selected.length === expected.length &&
         selected.every((val, i) => val === expected[i]);
       recordAnswer(qId, { selectedIndices: selected, isCorrect });
-      if (isCorrect) reviewSessionIds.delete(qId);
       state.streak += 1;
       saveState();
       render();
@@ -1583,7 +1585,6 @@ function bindEvents() {
       if (getQuestionState().solvedQuestions[qId]) return;
       const isCorrect = btn.dataset.gradeCorrect === 'true';
       recordAnswer(qId, { isCorrect });
-      if (isCorrect) reviewSessionIds.delete(qId);
       state.streak += 1;
       saveState();
       render();
