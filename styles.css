@@ -1,0 +1,9 @@
+/* Custom scrollbar & UI polish */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.35); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(148, 163, 184, 0.6); }
+.glossary-term { border-bottom: 1.5px dashed #3b82f6; color: #2563eb; cursor: pointer; font-weight: 600; transition: background-color 0.15s ease; }
+.dark .glossary-term { color: #60a5fa; border-bottom-color: #60a5fa; }
+.glossary-term:hover { background-color: rgba(59, 130, 246, 0.1); border-radius: 3px; }
+.choice-strikethrough { text-decoration: line-through; opacity: 0.45; }
