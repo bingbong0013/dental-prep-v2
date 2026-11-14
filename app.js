@@ -61,6 +61,45 @@ function applyTheme() {
   document.documentElement.classList.toggle('dark', state.theme === 'dark');
 }
 
+const PDF_DOCS_META = {
+  'chem-08': { label: '08장.pdf', totalPages: 71 },
+  'chem-09': { label: '09장.pdf', totalPages: 39 },
+  'chem-10': { label: '10장.pdf', totalPages: 62 },
+  'chem-11': { label: '11장.pdf', totalPages: 54 },
+  'chem-12': { label: '12장.pdf', totalPages: 58 },
+  'chem-13': { label: '13장.pdf', totalPages: 53 },
+  'chem-14': { label: '14장.pdf', totalPages: 49 },
+  'sig-09': { label: '09주차 - growth factors.pdf', totalPages: 33 },
+  'sig-10': { label: '10주차 - receptor tyrosine kinase.pdf', totalPages: 29 },
+  'sig-11': { label: '11주차.pdf', totalPages: 22 },
+  'sig-12': { label: '12주차.pdf', totalPages: 31 },
+  'sig-13': { label: '13주차.pdf', totalPages: 45 },
+  'sig-14': { label: '14주차.pdf', totalPages: 13 },
+  'bio-21': { label: '21장 영양 및 소화.pdf', totalPages: 37 },
+  'bio-26': { label: '26장 호르몬과 내분비계.pdf', totalPages: 24 },
+  'bio-27': { label: '27장 생식과 배 발생.pdf', totalPages: 25 },
+  'bio-28': { label: '28장 신경계.pdf', totalPages: 31 },
+  'bio-29': { label: '29장 감각.pdf', totalPages: 27 },
+  'bio-30': { label: '30장 동물의 운동.pdf', totalPages: 24 },
+};
+
+function getPdfDocInfo(subj, concept) {
+  const ch = concept.chapter || '';
+  let docId = null;
+  if (subj.id === 'subj-chemistry') {
+    const m = ch.match(/^(0[89]|1[0-4])장/);
+    if (m) docId = `chem-${m[1]}`;
+  } else if (subj.id === 'subj-signal') {
+    const m = ch.match(/^(09|1[0-4])주차/);
+    if (m) docId = `sig-${m[1]}`;
+  } else if (subj.id === 'subj-biology') {
+    const m = ch.match(/^(21|26|27|28|29|30)장/);
+    if (m) docId = `bio-${m[1]}`;
+  }
+  if (!docId || !PDF_DOCS_META[docId]) return null;
+  return { docId, ...PDF_DOCS_META[docId] };
+}
+
 function getCurrentSubject() {
   return state.subjects.find((s) => s.id === state.selectedSubjectId) || state.subjects[0];
 }
@@ -483,9 +522,13 @@ function renderWorkspace() {
     })
     .join('');
 
+  const docInfo = getPdfDocInfo(subj, concept);
+  const totalDocPages = docInfo ? docInfo.totalPages : subj.totalPages;
+  const activePage = Math.max(1, Math.min(Number(state.activePdfPage) || 1, totalDocPages));
+
   const pageButtonsHtml = concept.pdfPages
     .map((p) => {
-      const active = state.activePdfPage === p;
+      const active = activePage === p;
       return `
         <button
           data-jump-page="${p}"
@@ -501,19 +544,49 @@ function renderWorkspace() {
     })
     .join('');
 
-  const currentExcerpt =
-    (concept.pdfExcerpts && concept.pdfExcerpts[state.activePdfPage]) ||
-    `[강의자료 ${subj.pdfName} — ${state.activePdfPage}페이지] 해당 페이지의 강의자료 발췌 내용이 등록되어 있지 않습니다.`;
-
-  const pdfViewerHtml = `
-      <div class="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/60 p-4">
-        <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
-          <span class="font-semibold">📑 ${escapeHtml(subj.pdfName)}</span>
-          <span class="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 font-bold">Page ${state.activePdfPage} / ${subj.totalPages}</span>
+  const pdfViewerHtml = docInfo
+    ? `
+      <div class="space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-50 dark:bg-slate-950/60 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800">
+          <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 truncate max-w-[200px] sm:max-w-xs" title="${escapeHtml(docInfo.label)}">
+            📑 ${escapeHtml(docInfo.label)}
+          </span>
+          <div class="flex items-center gap-1.5">
+            <button
+              type="button"
+              data-pdf-prev
+              ${activePage <= 1 ? 'disabled' : ''}
+              class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 transition"
+            >
+              ◀ 이전
+            </button>
+            <span class="px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold tabular-nums">
+              p.${activePage} / ${docInfo.totalPages}
+            </span>
+            <button
+              type="button"
+              data-pdf-next
+              ${activePage >= docInfo.totalPages ? 'disabled' : ''}
+              class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 transition"
+            >
+              다음 ▶
+            </button>
+          </div>
         </div>
-        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed bg-white dark:bg-slate-900 p-3.5 rounded-lg border border-slate-200 dark:border-slate-800">
-          ${escapeHtml(currentExcerpt)}
-        </p>
+        <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-950">
+          <img
+            src="./slides/${docInfo.docId}/p${activePage}.webp"
+            alt="${escapeHtml(docInfo.label)} ${activePage}페이지"
+            class="w-full h-auto block select-none"
+            loading="eager"
+          />
+          ${activePage < docInfo.totalPages ? `<link rel="prefetch" href="./slides/${docInfo.docId}/p${activePage + 1}.webp" />` : ''}
+        </div>
+      </div>
+    `
+    : `
+      <div class="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950/60 p-5 text-center text-xs text-slate-500 dark:text-slate-400">
+        해당 단원(${escapeHtml(concept.chapter)})은 중간고사 범위로 원문 PDF 강의자료가 첨부되지 않았습니다.
       </div>
     `;
 
@@ -621,14 +694,13 @@ function renderWorkspace() {
           </div>
         </div>
 
-        <!-- PDF Page Sync Card -->
-        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
+        <!-- PDF Original Slide Viewer Card -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-sm">
           <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="text-sm font-bold">📖 강의자료 PDF 매칭</span>
-              <div class="flex flex-wrap items-center gap-1">${pageButtonsHtml}</div>
-            </div>
+            <span class="text-sm font-bold">📄 강의자료 PDF 원문</span>
+            <span class="text-[11px] font-medium text-slate-500 dark:text-slate-400">개념 해당 페이지 바로가기</span>
           </div>
+          <div class="flex flex-wrap items-center gap-1 mb-3">${pageButtonsHtml}</div>
           ${pdfViewerHtml}
         </div>
       </section>
@@ -786,6 +858,28 @@ function bindEvents() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
+  });
+
+  document.querySelector('[data-pdf-prev]')?.addEventListener('click', () => {
+    const docInfo = getPdfDocInfo(getCurrentSubject(), getCurrentConcept());
+    if (!docInfo) return;
+    const cur = Math.max(1, Math.min(Number(state.activePdfPage) || 1, docInfo.totalPages));
+    if (cur > 1) {
+      state.activePdfPage = cur - 1;
+      saveState();
+      render();
+    }
+  });
+
+  document.querySelector('[data-pdf-next]')?.addEventListener('click', () => {
+    const docInfo = getPdfDocInfo(getCurrentSubject(), getCurrentConcept());
+    if (!docInfo) return;
+    const cur = Math.max(1, Math.min(Number(state.activePdfPage) || 1, docInfo.totalPages));
+    if (cur < docInfo.totalPages) {
+      state.activePdfPage = cur + 1;
+      saveState();
+      render();
+    }
   });
 
   document.querySelectorAll('[data-right-tab]').forEach((btn) => {
