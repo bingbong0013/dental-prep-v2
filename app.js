@@ -484,7 +484,6 @@ function renderCatalog() {
               id="conceptSearch"
               type="text"
               value="${escapeHtml(state.searchQuery)}"
-              placeholder="개념명, 단원/주차, 키워드 태그 검색..."
               class="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -1135,7 +1134,6 @@ function renderReview() {
               id="reviewSearch"
               type="text"
               value="${escapeHtml(state.reviewSearchQuery)}"
-              placeholder="문제 내용, 선지, 해설, 개념명 검색..."
               class="w-full pl-9 pr-4 py-2 text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 transition"
             />
           </div>
