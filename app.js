@@ -433,12 +433,16 @@ function renderCatalog() {
         })
         .join('');
 
+      const chMatch = g.chapter.match(/^(\d+(?:장|주차))(?:\s*·\s*|\s+)(.+)$/);
+      const chapterHeadingHtml = chMatch
+        ? `<span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-xs font-extrabold border tabular-nums shrink-0" style="background-color: ${subj.color}14; border-color: ${subj.color}38; color: ${subj.color}">${escapeHtml(chMatch[1])}</span><span class="truncate">${escapeHtml(chMatch[2])}</span>`
+        : `<span class="w-1.5 h-4 rounded-full shrink-0" style="background-color: ${subj.color}"></span><span>${escapeHtml(g.chapter)}</span>`;
+
       return `
         <section class="space-y-3">
           <div class="flex items-center justify-between gap-2 px-1">
-            <h2 class="text-sm font-extrabold tracking-tight text-slate-800 dark:text-slate-200 flex items-center gap-2">
-              <span class="w-1.5 h-4 rounded-full" style="background-color: ${subj.color}"></span>
-              ${escapeHtml(g.chapter)}
+            <h2 class="text-sm font-extrabold tracking-tight text-slate-800 dark:text-slate-200 flex items-center gap-2 min-w-0">
+              ${chapterHeadingHtml}
             </h2>
             <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">
               ${gMastered} / ${g.items.length} 완료
