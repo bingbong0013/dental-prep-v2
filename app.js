@@ -762,7 +762,7 @@ function renderWorkspace() {
     .split('·')
     .map((title) => title.trim())
     .filter(Boolean)
-    .map((title) => `<span class="inline-flex items-center px-3.5 py-2.5 rounded-xl border border-violet-200 dark:border-violet-700 bg-violet-50 dark:bg-violet-950/60 text-violet-900 dark:text-violet-100 text-base sm:text-lg font-extrabold leading-snug shadow-sm">${escapeHtml(title)}</span>`)
+    .map((title) => `<span class="inline-flex items-center px-3 py-1.5 rounded-lg border border-violet-100 dark:border-violet-900/60 bg-violet-50/50 dark:bg-violet-950/25 text-violet-700 dark:text-violet-300 text-sm font-semibold leading-snug">${escapeHtml(title)}</span>`)
     .join('');
 
   const docInfo = getPdfDocInfo(subj, concept);
