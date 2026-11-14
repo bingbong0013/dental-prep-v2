@@ -1,4 +1,4 @@
-import { INITIAL_SUBJECTS } from './data/sampleData.js?v=20261114-images';
+import { INITIAL_SUBJECTS } from './data/sampleData.js?v=20261114-grading';
 import { correctChoiceIndices, gradeQuestion } from './question-grading.js?v=20261114-images';
 
 const STORAGE_KEY = 'dentasync_state_v2';

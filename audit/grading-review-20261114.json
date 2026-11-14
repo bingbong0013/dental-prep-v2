@@ -1,0 +1,428 @@
+{
+  "date": "2026-11-14",
+  "baselineSite": "https://dental.subpan.com/",
+  "baselineCommit": "cdfda66ff72e56f50b8852dec7cbd729eae0f289",
+  "baselineAppSha256": "ddf54c1a844fe2a05fd3c876ec38c85819992746a9e9f24c26a0868414b7e8aa",
+  "baselineDataSha256": "36ce47da5056bde83952d07ecd214de3d442a4d9cdea698d0f6a7789edb50c66",
+  "questionCount": 265,
+  "reviewedCount": 12,
+  "beforeUncertainCount": 8,
+  "afterUncertainCount": 6,
+  "beforeAlternativeCount": 4,
+  "afterAlternativeCount": 5,
+  "changes": [
+    {
+      "id": "signal-final-24-10",
+      "before": {
+        "answerIndex": 3,
+        "uncertain": true,
+        "answerLabel": null,
+        "reviewAnswer": "원본 답 ④ · 강의 기준 확정 보류",
+        "gradingNote": null,
+        "rationale": "[강의 기준] 강의는 리간드에 의해 수용체가 이량체화되고, 서로 마주 보는 키나아제 도메인이 상대 사슬의 Tyr를 인산화하는 과정을 보여 준다. 원본 답 ④는 ‘자기 사슬’의 인산화라는 의도로 보인다. 그러나 ①의 ‘결합하면 리간드가 이량체를 형성한다’도 모든 RTK 리간드에 공통인 설명이 아니므로 원문 그대로는 유일 정답이 명확하지 않다. 보기 자체를 임의로 바꾸지 않고 검토 보류한다."
+      },
+      "after": {
+        "answerIndex": 0,
+        "uncertain": false,
+        "answerLabel": "①",
+        "reviewAnswer": "① · 강의·과학 기준 정답 확정",
+        "gradingNote": "2026-11-14 운영본 재검토: 원본 기록 ④와 구별하여 ①로 확정.",
+        "rationale": "[강의 우선 재검토] 정답은 ①이다. 10주차 12–13쪽에서 리간드 결합으로 유도되는 것은 수용체의 이량체화이며, 이어 수용체 사슬들이 서로의 Tyr 잔기를 인산화한다. 11쪽의 이량체 리간드 예시는 수용체 이량체화를 도울 수 있다는 설명이지, 수용체에 결합하면 리간드가 새로 이량체를 형성한다는 일반적 활성화 단계가 아니다.\n\n④의 “수용체는 자신의 domain에 있는 tyrosine 잔기를 인산화”는 수용체 단백질의 자가인산화를 가리킨다. 자기 사슬만 인산화한다고 명시하지 않았으므로, 두 수용체 사슬 사이의 trans-autophosphorylation도 포함하는 옳은 설명이다. 따라서 기존의 ④ 정답 기록을 유지하거나 ①·④를 모두 오답으로 볼 근거가 없다. ②·③·⑤는 강의의 수용체 이량체화, 세포질 도메인 활성화, 자가분비·측분비 설명과 일치한다."
+      },
+      "sources": [
+        "https://dental.subpan.com/slides/sig-10/p11.webp",
+        "https://dental.subpan.com/slides/sig-10/p12.webp",
+        "https://dental.subpan.com/slides/sig-10/p13.webp",
+        "https://pubmed.ncbi.nlm.nih.gov/12297050/"
+      ]
+    },
+    {
+      "id": "signal-final-22-4",
+      "before": {
+        "uncertain": true,
+        "acceptedAnswerIndices": null,
+        "answerLabel": null,
+        "reviewAnswer": "원본 답 ① · 강의 기준 확정 보류",
+        "gradingNote": null,
+        "rationale": "[강의 기준] 강의는 TGF-β의 작용이 세포와 상황에 따라 달라질 수 있음을 설명하며, 24쪽에는 세포 증식 억제가 제시되어 있다. 7쪽의 상처 치유·기질 관련 작용만으로 제시된 다섯 설명 중 하나를 단정하기 어렵다. 원본 답 ①을 유지한 채 자동 채점하지 않고 검토 보류한다."
+      },
+      "after": {
+        "uncertain": false,
+        "acceptedAnswerIndices": [
+          0,
+          4
+        ],
+        "answerLabel": "① 또는 ⑤ (복수정답 인정)",
+        "reviewAnswer": "①·⑤ 인정 · 강의·과학 문헌 재검토",
+        "gradingNote": "2026-11-14 운영본 재검토: ①·⑤를 대체 정답으로 인정하고 채점 보류 해제.",
+        "rationale": "[강의 우선 재검토] ①과 ⑤를 각각 정답으로 인정한다. 9주차 7쪽은 TGF-β를 상처 치유 및 조직 성장과 연결하고, 24쪽은 세포 증식 억제도 가능함을 보여 준다. 이는 세포 종류와 조건에 따른 차이이므로, 일부 세포를 억제한다는 사실만으로 결합조직 세포에 대한 증식 촉진을 부정할 수 없다.\n\n[과학 근거 보충] 결합조직의 섬유아세포 증식 촉진과 섬유아세포의 강한 주화성 이동 유도는 각각 실험으로 확인된 TGF-β의 작용이다. 따라서 ① “결합 조직 세포의 증식을 자극한다”와 ⑤ “부상 부위로 세포를 유인하는 주화성이 우수하다”가 성립한다. ②의 형질전환 우선성, ③의 배아 발생에서 가장 중요하다는 순위는 일반적 특성으로 확정할 수 없고, ④의 대부분 세포 증식 촉진은 TGF-β의 광범위한 증식 억제 작용과 맞지 않는다. 보기 하나만 정답으로 강제하지 않고 ① 또는 ⑤를 선택하면 정답으로 처리한다."
+      },
+      "sources": [
+        "https://dental.subpan.com/slides/sig-09/p7.webp",
+        "https://dental.subpan.com/slides/sig-09/p24.webp",
+        "https://pubmed.ncbi.nlm.nih.gov/7952515/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2188256/"
+      ]
+    },
+    {
+      "id": "signal-final-25-16",
+      "before": {
+        "reviewAnswer": "원본 답 ⑤ · 강의 기준 확정 보류",
+        "rationale": "[강의 기준] 호르몬·신경전달물질·성장인자·eicosanoid는 강의에 제시된 1차 전령물질이다. 그러나 보기 ATP에는 세포 안의 대사 기질인지 세포 밖의 신호물질인지 조건이 없다. ATP가 cAMP 합성 기질로 쓰인다는 사실만으로 모든 ATP를 1차 전령물질에서 제외할 수 없다. 이 여섯 강의자료에서 원본 답 ⑤를 유일 정답으로 확정하기 어려우므로 검토 보류한다."
+      },
+      "after": {
+        "reviewAnswer": "정답 보기 없음 · ATP도 세포외 1차 전령물질로 작용 가능",
+        "rationale": "[강의 기준] 12주차 7–11쪽은 호르몬·신경전달물질·성장인자·eicosanoid를 1차 전령물질의 예로 설명한다.\n\n[과학 근거 재검토] 세포 밖의 ATP는 P2X·P2Y 수용체에 결합해 신호를 전달하는 1차 전령물질이다. 세포 안에서 ATP가 에너지 기질 또는 cAMP의 합성 재료가 된다는 사실과 구별해야 한다. 따라서 현재 보기 중 “1차 전령물질에 해당하지 않는 것”을 보편적으로 고를 수 없다. 원본의 ⑤를 과학적으로 유일한 정답으로 확정하지 않으며, 정답 보기 부재로 자동 채점 제외를 유지한다. 지문에 없는 “세포내 ATP” 조건을 임의로 추가하지 않는다."
+      },
+      "sources": [
+        "https://dental.subpan.com/slides/sig-12/p7.webp",
+        "https://dental.subpan.com/slides/sig-12/p11.webp",
+        "https://pubmed.ncbi.nlm.nih.gov/30439478/"
+      ]
+    },
+    {
+      "id": "signal-final-24-28",
+      "before": {
+        "reviewAnswer": "원본 답 ② · 강의 기준 확정 보류",
+        "rationale": "[강의 기준] 40쪽은 lamin 분해에 의한 핵 구조 붕괴, ICAD 분해에 의한 DNA 분해효소 활성화, DNA-PK 분해에 의한 DNA 복구 억제를 명시한다. 그러나 제시 보기의 integrin과 actin 중 하나만 비표적이라고 확정하는 설명은 없다. 강의에 예시가 없다는 사실만으로 비표적이라고 결론 내릴 수도 없다. 원본의 actin 정답을 확정하지 않고 검토 보류한다. 원문의 ‘표적세포’는 ‘표적 단백질’로 교정했다."
+      },
+      "after": {
+        "reviewAnswer": "유일 정답 없음 · actin·일부 integrin도 caspase 표적 보고",
+        "rationale": "[강의 기준] 13주차 40쪽은 lamin, ICAD, DNA-PKcs를 caspase 표적의 예로 제시한다. 예시 목록에 없다는 사실은 다른 단백질이 표적이 아니라는 근거가 아니다.\n\n[과학 근거 재검토] Actin의 caspase 계열 효소에 의한 절단이 보고되어 있으며, integrin β4 역시 caspase-3·7의 기질로 확인되었다. 세포 종류·조건에 따라 actin 절단이 뚜렷하지 않은 경우도 있으므로 모든 상황에서 동일한 절단을 가정할 수는 없지만, ② actin을 일반적으로 “caspase의 표적이 아닌 것”으로 확정할 수는 없다. 나머지 세 보기도 강의에 명시된 표적이므로 현재 문구로 유일한 비표적을 지정하지 않고 자동 채점 제외를 유지한다."
+      },
+      "sources": [
+        "https://dental.subpan.com/slides/sig-13/p40.webp",
+        "https://pubmed.ncbi.nlm.nih.gov/9070648/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2819670/"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "id": "signal-final-24-10",
+      "decision": "single-answer",
+      "reason": "①로 확정; receptor autophosphorylation은 trans도 포함",
+      "sources": [
+        "https://dental.subpan.com/slides/sig-10/p11.webp",
+        "https://dental.subpan.com/slides/sig-10/p12.webp",
+        "https://dental.subpan.com/slides/sig-10/p13.webp",
+        "https://pubmed.ncbi.nlm.nih.gov/12297050/"
+      ]
+    },
+    {
+      "id": "signal-final-22-4",
+      "decision": "accepted-alternatives",
+      "reason": "①·⑤의 과학적 근거가 확인되어 채점 보류 해제",
+      "sources": [
+        "https://dental.subpan.com/slides/sig-09/p7.webp",
+        "https://dental.subpan.com/slides/sig-09/p24.webp",
+        "https://pubmed.ncbi.nlm.nih.gov/7952515/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2188256/"
+      ]
+    },
+    {
+      "id": "signal-final-22-1",
+      "decision": "remain-unscored",
+      "reason": "성장인자 종류·측정 조건 없이 분비 최다 기관을 정할 수 없고 성장호르몬과 혼동하면 안 됨",
+      "sources": [
+        "https://dental.subpan.com/slides/sig-09/p3.webp",
+        "https://dental.subpan.com/slides/sig-09/p7.webp"
+      ]
+    },
+    {
+      "id": "signal-final-25-7",
+      "decision": "remain-unscored",
+      "reason": "①의 α-helix와 ⑤의 조절 등 복수 설명이 성립; ③의 위치·활성화 일반화도 모호",
+      "sources": [
+        "https://dental.subpan.com/slides/sig-11/p4.webp",
+        "https://dental.subpan.com/slides/sig-11/p5.webp",
+        "https://dental.subpan.com/slides/sig-11/p6.webp",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3101793/"
+      ]
+    },
+    {
+      "id": "signal-final-25-16",
+      "decision": "remain-unscored",
+      "reason": "ATP를 배제할 수 없어 현재 보기에는 유일 정답이 없음",
+      "sources": [
+        "https://dental.subpan.com/slides/sig-12/p7.webp",
+        "https://dental.subpan.com/slides/sig-12/p11.webp",
+        "https://pubmed.ncbi.nlm.nih.gov/30439478/"
+      ]
+    },
+    {
+      "id": "signal-final-24-18",
+      "decision": "remain-unscored",
+      "reason": "분비 세포·표적 세포·신호 경로가 없어 감염 후 사멸만으로 autocrine 판정 불가",
+      "sources": [
+        "https://dental.subpan.com/slides/sig-12/p8.webp",
+        "https://dental.subpan.com/slides/sig-09/p20.webp"
+      ]
+    },
+    {
+      "id": "signal-final-24-28",
+      "decision": "remain-unscored",
+      "reason": "Actin 및 integrin β4의 caspase 절단 보고가 있어 원본 ②를 유일한 비표적으로 확정 불가",
+      "sources": [
+        "https://dental.subpan.com/slides/sig-13/p40.webp",
+        "https://pubmed.ncbi.nlm.nih.gov/9070648/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2819670/"
+      ]
+    },
+    {
+      "id": "bio-final-24-12",
+      "decision": "remain-unscored",
+      "reason": "배란 전기의 범위·에스트로겐 감소 시점·LH 분비 중지의 표현을 원문대로 두면 유일 오답을 강제할 수 없음",
+      "sources": [
+        "https://dental.subpan.com/slides/bio-27/p10.webp",
+        "https://www.ncbi.nlm.nih.gov/books/NBK279054/"
+      ]
+    },
+    {
+      "id": "bio-final-25-25",
+      "decision": "keep-alternatives",
+      "reason": "포도당은 소화 불필요; glucagon은 혈당을 올림. ①·⑤ 모두 틀린 보기",
+      "sources": [
+        "https://dental.subpan.com/slides/bio-21/p18.webp",
+        "https://dental.subpan.com/slides/bio-26/p20.webp",
+        "https://dental.subpan.com/slides/bio-26/p21.webp"
+      ]
+    },
+    {
+      "id": "bio-final-24-1",
+      "decision": "keep-alternatives",
+      "reason": "강의 문맥의 성숙 난포 발달은 사춘기 이후이므로 ②·④ 성립; 사춘기 전 초기 난포 성장과 배란 전 완전 성숙을 구별",
+      "sources": [
+        "https://dental.subpan.com/slides/bio-27/p9.webp",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3860895/"
+      ]
+    },
+    {
+      "id": "bio-final-24-10",
+      "decision": "keep-alternatives",
+      "reason": "강의 필기에 분열은 말미잘, 분절은 지렁이로 명시되어 ②·⑤ 모두 틀린 연결",
+      "sources": [
+        "https://dental.subpan.com/slides/bio-27/p4.webp",
+        "https://dental.subpan.com/slides/bio-27/p5.webp"
+      ]
+    },
+    {
+      "id": "bio-final-23-28",
+      "decision": "keep-alternatives",
+      "reason": "강의 29장 p.19가 모양체근 수축 및 발산광 굴절을 모두 명시; ①·⑤ 유지",
+      "sources": [
+        "https://dental.subpan.com/slides/bio-29/p19.webp"
+      ]
+    }
+  ],
+  "lectureFiles": [
+    {
+      "path": "slides/bio-21/p12.webp",
+      "sha256": "512afad95cb9cb0b520a3e0e2d6cb089aee6e5ee43ab6c6f76d7d33b1b848751"
+    },
+    {
+      "path": "slides/bio-21/p13.webp",
+      "sha256": "fe55e8fdaba224335f77c238fc0ee8e4a9877c22f5f349f2118d5f402bc9ad0f"
+    },
+    {
+      "path": "slides/bio-21/p18.webp",
+      "sha256": "97c4402290568fe4af26af9675a32d53295da36b0cd6381bfebbbb4ae97fddfc"
+    },
+    {
+      "path": "slides/bio-21/p21.webp",
+      "sha256": "ad71d5d8c2a2db736f1a48e9dd1a0fc656cb8f543493924c5ce6a1c2b9bfa6c7"
+    },
+    {
+      "path": "slides/bio-26/p20.webp",
+      "sha256": "7ad2a3d8af6a42b376f6974efcc4fa59fa86b9722c440ca32aba2907d657a392"
+    },
+    {
+      "path": "slides/bio-26/p21.webp",
+      "sha256": "65612727192099dc6cfbf558f85140ed28b2c8881672f016618cd286e096b220"
+    },
+    {
+      "path": "slides/bio-27/p10.webp",
+      "sha256": "9acbb83f57bb373f6edde481272329b1c565758fc52163e0f9b78aca1a3ebb70"
+    },
+    {
+      "path": "slides/bio-27/p24.webp",
+      "sha256": "c06aeeacf711bf94b7a3845465dea006e2db7c8387769f68154813baaae4988b"
+    },
+    {
+      "path": "slides/bio-27/p4.webp",
+      "sha256": "28bc5b709978ce2c487aba766ce53ffb32054c6a7adbc89432a799861f66888d"
+    },
+    {
+      "path": "slides/bio-27/p5.webp",
+      "sha256": "62016e2d6a7d5cab7a4c953484c0e67ff6ebef7d76091f513d4d9ee8ef921f43"
+    },
+    {
+      "path": "slides/bio-27/p9.webp",
+      "sha256": "1cd313cc5edaf28f92867b087efd4be18fba0174799145cfcfa5bfe16c73c75f"
+    },
+    {
+      "path": "slides/bio-29/p19.webp",
+      "sha256": "18216208a53817af23220c0d7630de5d3a79532c96beec9ce2303dac9dc0ca07"
+    },
+    {
+      "path": "slides/chem-10/p5.webp",
+      "sha256": "b2ae74c8237cfdddefcc517d347fe1ded56112649f785a68cef4f62a95500d62"
+    },
+    {
+      "path": "slides/chem-10/p6.webp",
+      "sha256": "75bdfe8771ead246a3df048380c5510da59601ba13bdf0803415f04f287aaadb"
+    },
+    {
+      "path": "slides/chem-13/p41.webp",
+      "sha256": "5e0bf07d6d57ab97fff7d5f3b5023372d8030d8448f1483eb096f8e7fb410dee"
+    },
+    {
+      "path": "slides/chem-13/p42.webp",
+      "sha256": "d786265097905d342fc602e42733926021a05825b0a3e1dc8c197729f88f71b2"
+    },
+    {
+      "path": "slides/chem-13/p43.webp",
+      "sha256": "834e71afa49bd180c34b084e7a11b51716e6929e39972804980d0c4adbad581e"
+    },
+    {
+      "path": "slides/chem-13/p44.webp",
+      "sha256": "d5e5364d4d35bd7a20877050f60a8b8916d27637d80c74d36bf430f26dcb38ad"
+    },
+    {
+      "path": "slides/chem-13/p45.webp",
+      "sha256": "9d720a77ddfa254c3646d279bc9078af5641d808f8e6227eddad925a21835e6e"
+    },
+    {
+      "path": "slides/chem-13/p46.webp",
+      "sha256": "d1cc847a5eccadbe22e46fe7eabf61d6fbba3f0e5e5abf14e6037dabb2b97aa6"
+    },
+    {
+      "path": "slides/chem-13/p47.webp",
+      "sha256": "4ff9e6ab12269fd0f5d148e6c12fd7b5da2df450a879f916cd04bc6b51c78076"
+    },
+    {
+      "path": "slides/chem-13/p48.webp",
+      "sha256": "8d8876a0d3be09916e915181fcb25d5aece03e37a13b62f1ed44d7e272a654d3"
+    },
+    {
+      "path": "slides/chem-13/p49.webp",
+      "sha256": "d2ea325ee0362d81ce42fee2ca4af8eadb3cfcde6da9258da58ff40cc2ae7d05"
+    },
+    {
+      "path": "slides/chem-13/p50.webp",
+      "sha256": "4a9c169a83bc129753a2df6e4e7bd6c5ca47d2b39f32f0199222f65dc5e05233"
+    },
+    {
+      "path": "slides/chem-13/p51.webp",
+      "sha256": "3281eacd31af6ec1905c858d33c0983302c0c682258ed1453357614a7eb3c439"
+    },
+    {
+      "path": "slides/chem-13/p52.webp",
+      "sha256": "6371bec5871ab848812567f666a433fa35125c3f0df6847fff1d5644a57fa002"
+    },
+    {
+      "path": "slides/chem-14/p3.webp",
+      "sha256": "11ff00ec94ce8e0b55480552702fc40a30d17cd430c39c4f9d0439bef62bea2b"
+    },
+    {
+      "path": "slides/sig-09/p20.webp",
+      "sha256": "cbbc8bacbde9ec48995de9e0443fd410c849bb042d7db3c57092604edcfe917b"
+    },
+    {
+      "path": "slides/sig-09/p24.webp",
+      "sha256": "7261e095751c419e494fe3573490aad95e0eee3f8bb9c5e64a5c9670144479cb"
+    },
+    {
+      "path": "slides/sig-09/p3.webp",
+      "sha256": "e9ac1198f6d85fd68aac35ad1ecdc41532d4a5ef1c088972c408fc3e24de3c87"
+    },
+    {
+      "path": "slides/sig-09/p33.webp",
+      "sha256": "d9335adcdf16c30b224e4dbe0fea538d653fbd7f70567a63efe812978fbff1c1"
+    },
+    {
+      "path": "slides/sig-09/p4.webp",
+      "sha256": "46c5bca5acb870560b62e4c50f6792de7d329118d77daf5cbd42b886fe8a0bca"
+    },
+    {
+      "path": "slides/sig-09/p5.webp",
+      "sha256": "5c8569da85b90ff830cb933aad77e443a9f8081876b16b014cb796a1ea83a9c4"
+    },
+    {
+      "path": "slides/sig-09/p6.webp",
+      "sha256": "a620aea777939c3c777f9ae3fa5467ca86856f06d527a9ea645394cdceaa8bc1"
+    },
+    {
+      "path": "slides/sig-09/p7.webp",
+      "sha256": "34781a982abe2de86dd30c758d62fc82f748435815018800548b04a3f42d67fb"
+    },
+    {
+      "path": "slides/sig-10/p11.webp",
+      "sha256": "b87bbc8bfbac7e13626dfb84df77237bebecf4ca75d23361c3d3d9c4f1c09065"
+    },
+    {
+      "path": "slides/sig-10/p12.webp",
+      "sha256": "81a9d04199cd5911ef8583286389ceb3db6c1e6a9ed8ffb48d4fb004c1d4ba87"
+    },
+    {
+      "path": "slides/sig-10/p13.webp",
+      "sha256": "dbfdb2d65a9668d5bfe68303c533f16fef8954bd3a48063825cfef1d683051c3"
+    },
+    {
+      "path": "slides/sig-11/p2.webp",
+      "sha256": "af18301d2280a512ee6ebcec993d2cf4f72c77fcc20b22b3065e7f7a195ae468"
+    },
+    {
+      "path": "slides/sig-11/p21.webp",
+      "sha256": "0782357f8e04699af39c2fab54604f6e168311f7a8f98b4252134718e870b601"
+    },
+    {
+      "path": "slides/sig-11/p3.webp",
+      "sha256": "c2ecdac07896c4f8f4c104374c8842657c96be7b445501810b980c431bebf88c"
+    },
+    {
+      "path": "slides/sig-11/p4.webp",
+      "sha256": "fb9340d35cfbb96a3f45670d0c4b03ee105b1b22e56ee02f291c00872ad4d86b"
+    },
+    {
+      "path": "slides/sig-11/p5.webp",
+      "sha256": "36fc81188ea9b3c6a3aad7f722877a403f81517856dc036c8ddac3fec9331c8c"
+    },
+    {
+      "path": "slides/sig-11/p6.webp",
+      "sha256": "4aea986c576e359e14c67ed3ceea0c91346beac7a8cb6e57f5f280a34a25b576"
+    },
+    {
+      "path": "slides/sig-12/p10.webp",
+      "sha256": "6d4cffdfd070be16368c102328b6d6e71363d7cc5a19d1b1407cddddba642412"
+    },
+    {
+      "path": "slides/sig-12/p11.webp",
+      "sha256": "7d481ee76158714afc7fd2a9be7553c5cda50e2cf4ae552c2292eee5578a1799"
+    },
+    {
+      "path": "slides/sig-12/p6.webp",
+      "sha256": "27e555314e86230b702addb4bd7686a906a7b5738302e53e80b1c6650f88e09b"
+    },
+    {
+      "path": "slides/sig-12/p7.webp",
+      "sha256": "87a9eeb8f8bebd0c2ca4e90f4cbdf5500d1236d73f39e7b80f8c9e24486e597b"
+    },
+    {
+      "path": "slides/sig-12/p8.webp",
+      "sha256": "1f64df3c2f0ba58ffce6916fa032982e6d3c38f5e0f0d864be1c3e576dc4100d"
+    },
+    {
+      "path": "slides/sig-12/p9.webp",
+      "sha256": "b2c39c4d05c72f37f08421d02aed766c9d0861a4c9a53d4d95ccfb9cc80cc523"
+    },
+    {
+      "path": "slides/sig-13/p39.webp",
+      "sha256": "95d46b3ef0046292e977ed5966dddb4a4fc8ab051122ec717e5073af2c860c38"
+    },
+    {
+      "path": "slides/sig-13/p40.webp",
+      "sha256": "38a55b4129507de00f6fabdcf5325ebb2c09bce42c5b932fdcafbe2003788930"
+    }
+  ]
+}
