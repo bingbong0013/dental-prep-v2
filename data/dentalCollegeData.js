@@ -1,5 +1,5 @@
 // Finals-only dataset: duplicate and out-of-scope questions remain excluded.
-// Question images and source metadata audited against the previous site on 2026-11-14.
+// Grading reviewed against deployed dental.subpan.com lectures and scientific evidence on 2026-11-14.
 export const DENTAL_COLLEGE_SUBJECTS = [
   {
     "id": "subj-chemistry",
@@ -6394,7 +6394,17 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "sourceReviewAnswer": "원본 답 ① · 강의 기준 확정 보류",
             "sourceUncertain": true,
             "uncertain": true,
-            "reviewAnswer": "원본 답 ① · 강의 기준 확정 보류"
+            "reviewAnswer": "원본 답 ① · 강의 기준 확정 보류",
+            "gradingReview": {
+              "date": "2026-11-14",
+              "basis": "운영 사이트 강의 우선, 과학적 근거 보충",
+              "decision": "remain-unscored",
+              "reason": "성장인자 종류·측정 조건 없이 분비 최다 기관을 정할 수 없고 성장호르몬과 혼동하면 안 됨",
+              "sources": [
+                "https://dental.subpan.com/slides/sig-09/p3.webp",
+                "https://dental.subpan.com/slides/sig-09/p7.webp"
+              ]
+            }
           }
         ],
         "aiQuestions": []
@@ -6745,7 +6755,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의는 TGF-β의 작용이 세포와 상황에 따라 달라질 수 있음을 설명하며, 24쪽에는 세포 증식 억제가 제시되어 있다. 7쪽의 상처 치유·기질 관련 작용만으로 제시된 다섯 설명 중 하나를 단정하기 어렵다. 원본 답 ①을 유지한 채 자동 채점하지 않고 검토 보류한다.",
+            "rationale": "[강의 우선 재검토] ①과 ⑤를 각각 정답으로 인정한다. 9주차 7쪽은 TGF-β를 상처 치유 및 조직 성장과 연결하고, 24쪽은 세포 증식 억제도 가능함을 보여 준다. 이는 세포 종류와 조건에 따른 차이이므로, 일부 세포를 억제한다는 사실만으로 결합조직 세포에 대한 증식 촉진을 부정할 수 없다.\n\n[과학 근거 보충] 결합조직의 섬유아세포 증식 촉진과 섬유아세포의 강한 주화성 이동 유도는 각각 실험으로 확인된 TGF-β의 작용이다. 따라서 ① “결합 조직 세포의 증식을 자극한다”와 ⑤ “부상 부위로 세포를 유인하는 주화성이 우수하다”가 성립한다. ②의 형질전환 우선성, ③의 배아 발생에서 가장 중요하다는 순위는 일반적 특성으로 확정할 수 없고, ④의 대부분 세포 증식 촉진은 TGF-β의 광범위한 증식 억제 작용과 맞지 않는다. 보기 하나만 정답으로 강제하지 않고 ① 또는 ⑤를 선택하면 정답으로 처리한다.",
             "year": "22",
             "sourcePage": "2",
             "sourceName": "22학번 세포신호전달학개론 기말고사",
@@ -6782,8 +6792,26 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "auditRevision": "2026-11-06-signal-finals-lecture-review",
             "sourceReviewAnswer": "원본 답 ① · 강의 기준 확정 보류",
             "sourceUncertain": true,
-            "uncertain": true,
-            "reviewAnswer": "원본 답 ① · 강의 기준 확정 보류"
+            "uncertain": false,
+            "reviewAnswer": "①·⑤ 인정 · 강의·과학 문헌 재검토",
+            "acceptedAnswerIndices": [
+              0,
+              4
+            ],
+            "answerLabel": "① 또는 ⑤ (복수정답 인정)",
+            "gradingNote": "2026-11-14 운영본 재검토: ①·⑤를 대체 정답으로 인정하고 채점 보류 해제.",
+            "gradingReview": {
+              "date": "2026-11-14",
+              "basis": "운영 사이트 강의 우선, 과학적 근거 보충",
+              "decision": "accepted-alternatives",
+              "reason": "①·⑤의 과학적 근거가 확인되어 채점 보류 해제",
+              "sources": [
+                "https://dental.subpan.com/slides/sig-09/p7.webp",
+                "https://dental.subpan.com/slides/sig-09/p24.webp",
+                "https://pubmed.ncbi.nlm.nih.gov/7952515/",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC2188256/"
+              ]
+            }
           }
         ],
         "aiQuestions": []
@@ -7143,9 +7171,9 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               "수용체는 자신의 domain에 있는 tyrosine 잔기를 인산화시킨다",
               "ligand는 autocrine이나 paracrine을 통해서 수용체에 주로 작용한다"
             ],
-            "answerIndex": 3,
+            "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의는 리간드에 의해 수용체가 이량체화되고, 서로 마주 보는 키나아제 도메인이 상대 사슬의 Tyr를 인산화하는 과정을 보여 준다. 원본 답 ④는 ‘자기 사슬’의 인산화라는 의도로 보인다. 그러나 ①의 ‘결합하면 리간드가 이량체를 형성한다’도 모든 RTK 리간드에 공통인 설명이 아니므로 원문 그대로는 유일 정답이 명확하지 않다. 보기 자체를 임의로 바꾸지 않고 검토 보류한다.",
+            "rationale": "[강의 우선 재검토] 정답은 ①이다. 10주차 12–13쪽에서 리간드 결합으로 유도되는 것은 수용체의 이량체화이며, 이어 수용체 사슬들이 서로의 Tyr 잔기를 인산화한다. 11쪽의 이량체 리간드 예시는 수용체 이량체화를 도울 수 있다는 설명이지, 수용체에 결합하면 리간드가 새로 이량체를 형성한다는 일반적 활성화 단계가 아니다.\n\n④의 “수용체는 자신의 domain에 있는 tyrosine 잔기를 인산화”는 수용체 단백질의 자가인산화를 가리킨다. 자기 사슬만 인산화한다고 명시하지 않았으므로, 두 수용체 사슬 사이의 trans-autophosphorylation도 포함하는 옳은 설명이다. 따라서 기존의 ④ 정답 기록을 유지하거나 ①·④를 모두 오답으로 볼 근거가 없다. ②·③·⑤는 강의의 수용체 이량체화, 세포질 도메인 활성화, 자가분비·측분비 설명과 일치한다.",
             "year": "24",
             "sourcePage": "4",
             "sourceName": "24학번 세포신호전달학개론 기말고사",
@@ -7182,8 +7210,22 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "auditRevision": "2026-11-06-signal-finals-lecture-review",
             "sourceReviewAnswer": "원본 답 ④ · 강의 기준 확정 보류",
             "sourceUncertain": true,
-            "uncertain": true,
-            "reviewAnswer": "원본 답 ④ · 강의 기준 확정 보류"
+            "uncertain": false,
+            "reviewAnswer": "① · 강의·과학 기준 정답 확정",
+            "answerLabel": "①",
+            "gradingNote": "2026-11-14 운영본 재검토: 원본 기록 ④와 구별하여 ①로 확정.",
+            "gradingReview": {
+              "date": "2026-11-14",
+              "basis": "운영 사이트 강의 우선, 과학적 근거 보충",
+              "decision": "single-answer",
+              "reason": "①로 확정; receptor autophosphorylation은 trans도 포함",
+              "sources": [
+                "https://dental.subpan.com/slides/sig-10/p11.webp",
+                "https://dental.subpan.com/slides/sig-10/p12.webp",
+                "https://dental.subpan.com/slides/sig-10/p13.webp",
+                "https://pubmed.ncbi.nlm.nih.gov/12297050/"
+              ]
+            }
           },
           {
             "id": "signal-final-24-12",
@@ -8012,7 +8054,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "sourceReviewAnswer": "원본 답 ⑤ · 강의 기준 확정 보류",
             "sourceUncertain": true,
             "uncertain": true,
-            "reviewAnswer": "원본 답 ⑤ · 강의 기준 확정 보류"
+            "reviewAnswer": "원본 답 ⑤ · 강의 기준 확정 보류",
+            "gradingReview": {
+              "date": "2026-11-14",
+              "basis": "운영 사이트 강의 우선, 과학적 근거 보충",
+              "decision": "remain-unscored",
+              "reason": "①의 α-helix와 ⑤의 조절 등 복수 설명이 성립; ③의 위치·활성화 일반화도 모호",
+              "sources": [
+                "https://dental.subpan.com/slides/sig-11/p4.webp",
+                "https://dental.subpan.com/slides/sig-11/p5.webp",
+                "https://dental.subpan.com/slides/sig-11/p6.webp",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC3101793/"
+              ]
+            }
           },
           {
             "id": "signal-final-25-15",
@@ -8691,7 +8745,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] 호르몬·신경전달물질·성장인자·eicosanoid는 강의에 제시된 1차 전령물질이다. 그러나 보기 ATP에는 세포 안의 대사 기질인지 세포 밖의 신호물질인지 조건이 없다. ATP가 cAMP 합성 기질로 쓰인다는 사실만으로 모든 ATP를 1차 전령물질에서 제외할 수 없다. 이 여섯 강의자료에서 원본 답 ⑤를 유일 정답으로 확정하기 어려우므로 검토 보류한다.",
+            "rationale": "[강의 기준] 12주차 7–11쪽은 호르몬·신경전달물질·성장인자·eicosanoid를 1차 전령물질의 예로 설명한다.\n\n[과학 근거 재검토] 세포 밖의 ATP는 P2X·P2Y 수용체에 결합해 신호를 전달하는 1차 전령물질이다. 세포 안에서 ATP가 에너지 기질 또는 cAMP의 합성 재료가 된다는 사실과 구별해야 한다. 따라서 현재 보기 중 “1차 전령물질에 해당하지 않는 것”을 보편적으로 고를 수 없다. 원본의 ⑤를 과학적으로 유일한 정답으로 확정하지 않으며, 정답 보기 부재로 자동 채점 제외를 유지한다. 지문에 없는 “세포내 ATP” 조건을 임의로 추가하지 않는다.",
             "year": "25",
             "sourcePage": "",
             "sourceName": "25학번 세포신호전달학개론 기말고사",
@@ -8729,7 +8783,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "sourceReviewAnswer": "원본 답 ⑤ · 강의 기준 확정 보류",
             "sourceUncertain": true,
             "uncertain": true,
-            "reviewAnswer": "원본 답 ⑤ · 강의 기준 확정 보류"
+            "reviewAnswer": "정답 보기 없음 · ATP도 세포외 1차 전령물질로 작용 가능",
+            "gradingReview": {
+              "date": "2026-11-14",
+              "basis": "운영 사이트 강의 우선, 과학적 근거 보충",
+              "decision": "remain-unscored",
+              "reason": "ATP를 배제할 수 없어 현재 보기에는 유일 정답이 없음",
+              "sources": [
+                "https://dental.subpan.com/slides/sig-12/p7.webp",
+                "https://dental.subpan.com/slides/sig-12/p11.webp",
+                "https://pubmed.ncbi.nlm.nih.gov/30439478/"
+              ]
+            }
           },
           {
             "id": "signal-final-25-21",
@@ -9078,7 +9143,17 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "sourceReviewAnswer": "원본 답 ④ · 강의 기준 확정 보류",
             "sourceUncertain": true,
             "uncertain": true,
-            "reviewAnswer": "원본 답 ④ · 강의 기준 확정 보류"
+            "reviewAnswer": "원본 답 ④ · 강의 기준 확정 보류",
+            "gradingReview": {
+              "date": "2026-11-14",
+              "basis": "운영 사이트 강의 우선, 과학적 근거 보충",
+              "decision": "remain-unscored",
+              "reason": "분비 세포·표적 세포·신호 경로가 없어 감염 후 사멸만으로 autocrine 판정 불가",
+              "sources": [
+                "https://dental.subpan.com/slides/sig-12/p8.webp",
+                "https://dental.subpan.com/slides/sig-09/p20.webp"
+              ]
+            }
           },
           {
             "id": "signal-final-24-19",
@@ -10520,7 +10595,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 40쪽은 lamin 분해에 의한 핵 구조 붕괴, ICAD 분해에 의한 DNA 분해효소 활성화, DNA-PK 분해에 의한 DNA 복구 억제를 명시한다. 그러나 제시 보기의 integrin과 actin 중 하나만 비표적이라고 확정하는 설명은 없다. 강의에 예시가 없다는 사실만으로 비표적이라고 결론 내릴 수도 없다. 원본의 actin 정답을 확정하지 않고 검토 보류한다. 원문의 ‘표적세포’는 ‘표적 단백질’로 교정했다.",
+            "rationale": "[강의 기준] 13주차 40쪽은 lamin, ICAD, DNA-PKcs를 caspase 표적의 예로 제시한다. 예시 목록에 없다는 사실은 다른 단백질이 표적이 아니라는 근거가 아니다.\n\n[과학 근거 재검토] Actin의 caspase 계열 효소에 의한 절단이 보고되어 있으며, integrin β4 역시 caspase-3·7의 기질로 확인되었다. 세포 종류·조건에 따라 actin 절단이 뚜렷하지 않은 경우도 있으므로 모든 상황에서 동일한 절단을 가정할 수는 없지만, ② actin을 일반적으로 “caspase의 표적이 아닌 것”으로 확정할 수는 없다. 나머지 세 보기도 강의에 명시된 표적이므로 현재 문구로 유일한 비표적을 지정하지 않고 자동 채점 제외를 유지한다.",
             "year": "24",
             "sourcePage": "10",
             "sourceName": "24학번 세포신호전달학개론 기말고사",
@@ -10558,7 +10633,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "sourceReviewAnswer": "원본 답 ② · 강의 기준 확정 보류",
             "sourceUncertain": true,
             "uncertain": true,
-            "reviewAnswer": "원본 답 ② · 강의 기준 확정 보류"
+            "reviewAnswer": "유일 정답 없음 · actin·일부 integrin도 caspase 표적 보고",
+            "gradingReview": {
+              "date": "2026-11-14",
+              "basis": "운영 사이트 강의 우선, 과학적 근거 보충",
+              "decision": "remain-unscored",
+              "reason": "Actin 및 integrin β4의 caspase 절단 보고가 있어 원본 ②를 유일한 비표적으로 확정 불가",
+              "sources": [
+                "https://dental.subpan.com/slides/sig-13/p40.webp",
+                "https://pubmed.ncbi.nlm.nih.gov/9070648/",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC2819670/"
+              ]
+            }
           },
           {
             "id": "signal-final-24-29",
@@ -11363,7 +11449,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               0,
               4
             ],
-            "answerLabel": "① 또는 ⑤ (복수정답 가능)"
+            "answerLabel": "① 또는 ⑤ (복수정답 가능)",
+            "gradingReview": {
+              "date": "2026-11-14",
+              "basis": "운영 사이트 강의 우선, 과학적 근거 보충",
+              "decision": "keep-alternatives",
+              "reason": "포도당은 소화 불필요; glucagon은 혈당을 올림. ①·⑤ 모두 틀린 보기",
+              "sources": [
+                "https://dental.subpan.com/slides/bio-21/p18.webp",
+                "https://dental.subpan.com/slides/bio-26/p20.webp",
+                "https://dental.subpan.com/slides/bio-26/p21.webp"
+              ]
+            }
           },
           {
             "id": "bio-final-23-3",
@@ -12002,7 +12099,17 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               1,
               3
             ],
-            "answerLabel": "②·④ (복수정답 인정)"
+            "answerLabel": "②·④ (복수정답 인정)",
+            "gradingReview": {
+              "date": "2026-11-14",
+              "basis": "운영 사이트 강의 우선, 과학적 근거 보충",
+              "decision": "keep-alternatives",
+              "reason": "강의 문맥의 성숙 난포 발달은 사춘기 이후이므로 ②·④ 성립; 사춘기 전 초기 난포 성장과 배란 전 완전 성숙을 구별",
+              "sources": [
+                "https://dental.subpan.com/slides/bio-27/p9.webp",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC3860895/"
+              ]
+            }
           },
           {
             "id": "bio-final-24-10",
@@ -12040,7 +12147,17 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               1,
               4
             ],
-            "answerLabel": "②·⑤ (복수정답 인정)"
+            "answerLabel": "②·⑤ (복수정답 인정)",
+            "gradingReview": {
+              "date": "2026-11-14",
+              "basis": "운영 사이트 강의 우선, 과학적 근거 보충",
+              "decision": "keep-alternatives",
+              "reason": "강의 필기에 분열은 말미잘, 분절은 지렁이로 명시되어 ②·⑤ 모두 틀린 연결",
+              "sources": [
+                "https://dental.subpan.com/slides/bio-27/p4.webp",
+                "https://dental.subpan.com/slides/bio-27/p5.webp"
+              ]
+            }
           },
           {
             "id": "bio-final-24-11",
@@ -12110,7 +12227,17 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "sourceReviewAnswer": "단일 정답 확정 보류 (원본 기록 ③)",
             "sourceUncertain": true,
             "uncertain": true,
-            "reviewAnswer": "단일 정답 확정 보류 (원본 기록 ③)"
+            "reviewAnswer": "단일 정답 확정 보류 (원본 기록 ③)",
+            "gradingReview": {
+              "date": "2026-11-14",
+              "basis": "운영 사이트 강의 우선, 과학적 근거 보충",
+              "decision": "remain-unscored",
+              "reason": "배란 전기의 범위·에스트로겐 감소 시점·LH 분비 중지의 표현을 원문대로 두면 유일 오답을 강제할 수 없음",
+              "sources": [
+                "https://dental.subpan.com/slides/bio-27/p10.webp",
+                "https://www.ncbi.nlm.nih.gov/books/NBK279054/"
+              ]
+            }
           },
           {
             "id": "bio-final-23-11",
@@ -13299,7 +13426,16 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               0,
               4
             ],
-            "answerLabel": "① 또는 ⑤ (표현상 복수정답)"
+            "answerLabel": "① 또는 ⑤ (표현상 복수정답)",
+            "gradingReview": {
+              "date": "2026-11-14",
+              "basis": "운영 사이트 강의 우선, 과학적 근거 보충",
+              "decision": "keep-alternatives",
+              "reason": "강의 29장 p.19가 모양체근 수축 및 발산광 굴절을 모두 명시; ①·⑤ 유지",
+              "sources": [
+                "https://dental.subpan.com/slides/bio-29/p19.webp"
+              ]
+            }
           }
         ],
         "aiQuestions": []

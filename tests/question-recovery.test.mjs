@@ -9,6 +9,8 @@ const root = new URL('../', import.meta.url);
 const read = (path) => fs.readFileSync(new URL(path, root), 'utf8');
 const report = JSON.parse(read('audit/question-recovery-20261114.json'));
 const images = JSON.parse(read('audit/question-image-assets.json'));
+const gradingReview = JSON.parse(read('audit/grading-review-20261114.json'));
+const reviewedChanges = new Map(gradingReview.changes.map(row => [row.id, row.after]));
 const questions = subjects.flatMap(s => s.concepts.flatMap(c => c.pastQuestions));
 const byId = new Map(questions.map(q => [q.id, q]));
 const hash = (value) => crypto.createHash('sha256').update(value).digest('hex');
@@ -27,7 +29,9 @@ test('all 265 existing IDs, text, choices, links and curated corrections are pre
   for (const row of report.questions) {
     const q = byId.get(row.id);
     for (const [key, expected] of Object.entries(row.preservedContentHashes)) {
-      assert.equal(hash(JSON.stringify(q[key])), expected, `${q.id}: ${key}`);
+      const correction = reviewedChanges.get(q.id);
+      const expectedHash = correction && Object.hasOwn(correction, key) ? hash(JSON.stringify(correction[key])) : expected;
+      assert.equal(hash(JSON.stringify(q[key])), expectedHash, `${q.id}: ${key}`);
     }
   }
   assert.equal(byId.get('bio-final-24-15').acceptedAnswerIndices, undefined);
@@ -52,7 +56,7 @@ test('all 14 image questions resolve to intact, local image assets', () => {
 
 test('alternative single-choice answers and exact multi-select sets grade correctly', () => {
   const alternatives = questions.filter(q => q.acceptedAnswerIndices);
-  assert.equal(alternatives.length, 4);
+  assert.equal(alternatives.length, 5);
   for (const q of alternatives) {
     for (let i = 0; i < q.choices.length; i++) {
       assert.equal(gradeQuestion(q, {selectedIdx: i}), q.acceptedAnswerIndices.includes(i), `${q.id}:${i}`);
@@ -89,12 +93,12 @@ test('all question cards render in workspace and review, including images and no
 test('saved false negatives and uncertain answers are regraded without losing favorites', () => {
   const {run} = app({solvedQuestions: {
     'bio-final-25-25': {selectedIdx: 0, isCorrect: false},
-    'signal-final-22-4': {selectedIdx: 2, isCorrect: false},
+    'signal-final-22-1': {selectedIdx: 2, isCorrect: false},
   }, favorites: {'bio-final-25-25': true}});
   assert.equal(run("state.solvedQuestions['bio-final-25-25'].isCorrect"), true);
-  assert.equal(run("state.solvedQuestions['signal-final-22-4'].isCorrect"), null);
+  assert.equal(run("state.solvedQuestions['signal-final-22-1'].isCorrect"), null);
   assert.equal(run("state.favorites['bio-final-25-25']"), true);
-  assert.equal(run("matchesReviewFilter({id:'signal-final-22-4'}, 'wrong')"), false);
+  assert.equal(run("matchesReviewFilter({id:'signal-final-22-1'}, 'wrong')"), false);
 });
 
 test('review remains unanswered initially and corrected answers stay until refresh', () => {
@@ -110,8 +114,8 @@ test('review remains unanswered initially and corrected answers stay until refre
 
 test('uncertain feedback never labels the selected choice as wrong', () => {
   const {run} = app();
-  run("recordAnswer('signal-final-22-4', {selectedIdx: 2, isCorrect: false})");
-  const html = run("renderQuestionCard(findQuestionContext('signal-final-22-4').q, '', '')");
+  run("recordAnswer('signal-final-22-1', {selectedIdx: 2, isCorrect: false})");
+  const html = run("renderQuestionCard(findQuestionContext('signal-final-22-1').q, '', '')");
   assert(html.includes('검토 보류 · 자동 채점 제외'));
   assert(html.includes('원본 검토 기록'));
   assert(!html.includes('✕ 오답 / 복습 필요'));
