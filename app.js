@@ -26,10 +26,24 @@ function loadState() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return structuredClone(defaultState);
     const parsed = JSON.parse(raw);
+    const freshSubjects = structuredClone(INITIAL_SUBJECTS);
     const merged = {
       ...structuredClone(defaultState),
       ...parsed,
+      subjects: freshSubjects,
     };
+    const validSubj = freshSubjects.find((s) => s.id === merged.selectedSubjectId) || freshSubjects[0];
+    merged.selectedSubjectId = validSubj.id;
+    const validConcept =
+      validSubj.concepts.find((c) => c.id === merged.selectedConceptId) || validSubj.concepts[0];
+    merged.selectedConceptId = validConcept.id;
+    if (!validConcept.pdfPages?.includes(merged.activePdfPage)) {
+      merged.activePdfPage = validConcept.pdfPages?.[0] ?? 1;
+    }
+    const validConceptIds = new Set(freshSubjects.flatMap((s) => s.concepts.map((c) => c.id)));
+    merged.masteredConcepts = Object.fromEntries(
+      Object.entries(merged.masteredConcepts || {}).filter(([k, v]) => v && validConceptIds.has(k))
+    );
     if (!['dashboard', 'catalog', 'workspace'].includes(merged.view)) {
       merged.view = 'dashboard';
     }
@@ -47,7 +61,6 @@ let state = loadState();
 function saveState() {
   const toSave = {
     view: state.view,
-    subjects: state.subjects,
     selectedSubjectId: state.selectedSubjectId,
     selectedConceptId: state.selectedConceptId,
     activePdfPage: state.activePdfPage,
@@ -335,7 +348,7 @@ function renderCatalog() {
             active
               ? 'bg-white/15 dark:bg-slate-900/15 text-white dark:text-slate-900'
               : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
-          }">${s.concepts.length} · ${pct}%</span>
+          }">${mCount}/${s.concepts.length} ${pct}%</span>
         </button>
       `;
     })
