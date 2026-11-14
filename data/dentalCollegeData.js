@@ -273,7 +273,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               24,
               25
             ],
-            "stem": "Se²⁻, Br⁻, Rb⁺, Sr²⁺ 이온 중 가장 작은 이온은 Rb⁺ 이다",
+            "stem": "Se²⁻, Br⁻, Rb⁺, Sr²⁺ 이온 중 가장 작은 이온은 Rb⁺이다.",
             "choices": [
               "O (옳다)",
               "X (틀리다)"
@@ -1566,7 +1566,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "10장 PDF58쪽은 물의 임계점을374 °C·218 atm으로 제시하고 이 부근에서는 액체와 기체의 구분이 사라지는 유체를 설명한다. 원문은374 °C 이상으로 임계점 자체까지 포함하므로 전체를 단순한 기체 상태라고 단정한 설명은 X이다. 정확히 임계압력이라는 이유만으로 모든 조건을 엄밀한 초임계 상태라고 부르지는 않는다.\n\n[강의 기준 재검토]\n관련 슬라이드의 정의·조건을 우선하여 검토 보류를 해제했다. 원본 답은 아래에 별도로 보존한다."
+            "rationale": "10장 PDF 58쪽은 물의 임계점을 374 °C·218 atm으로 제시하고 이 부근에서는 액체와 기체의 구분이 사라지는 유체를 설명한다. 원문은 374 °C 이상으로 임계점 자체까지 포함하므로 전체를 단순한 기체 상태라고 단정한 설명은 X이다. 정확히 임계압력이라는 이유만으로 모든 조건을 엄밀한 초임계 상태라고 부르지는 않는다.\n\n[강의 기준 재검토]\n관련 슬라이드의 정의·조건을 우선하여 검토 보류를 해제했다. 원본 답은 아래에 별도로 보존한다."
           },
           {
             "id": "chem-final-23-65",
@@ -1991,7 +1991,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "같은 용매와 같은 몰랄농도에서 ΔTᵦ=iKᵦm이다. 여러 이온으로 해리하는 전해질은 해리하지 않는 비전해질보다 입자 수가 커 끓는점 상승이 더 크다. 농도를 달리하면 순서가 바뀔 수 있어 같은 농도 조건을 보완했다.\n\n[복원 메모]\n같은 용매·몰랄농도 및 해리 입자 수 조건 보완."
+            "rationale": "같은 용매와 같은 몰랄농도에서 ΔT_b = i·K_b·m이다. 여러 이온으로 해리하는 전해질은 해리하지 않는 비전해질보다 입자 수가 커 끓는점 상승이 더 크다. 농도를 달리하면 순서가 바뀔 수 있어 같은 농도 조건을 보완했다.\n\n[복원 메모]\n같은 용매·몰랄농도 및 해리 입자 수 조건 보완."
           },
           {
             "id": "chem-final-25-31",
@@ -2057,7 +2057,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "강의의 동일 예제는 Na₂SO₄ 35.0 g(142.05 g/mol)을 물 175 g에 녹이고, 25 °C의 순수한 물 증기압 23.76 torr를 사용한다. 완전 해리를 가정하면 x물=(175/18.02)/[(175/18.02)+3(35/142.05)]≈0.929이며 P≈22.1 torr이다. 누락 물의 질량과 오기 몰질량을 학습용으로 보완했다.\n\n[복원 메모]\n원본에서 누락된 물175g·증기압 조건을 강의11장28쪽의 동일 예제로 보완하고 몰질량141.05를142.05로 정정."
+            "rationale": "강의의 동일 예제는 Na₂SO₄ 35.0 g(142.05 g/mol)을 물 175 g에 녹이고, 25 °C의 순수한 물 증기압 23.76 torr를 사용한다. 완전 해리를 가정하면 x물=(175/18.02)/[(175/18.02)+3(35/142.05)]≈0.929이며 P≈22.1 torr이다. 누락 물의 질량과 오기 몰질량을 학습용으로 보완했다.\n\n[복원 메모]\n원본에서 누락된 물 175 g·증기압 조건을 강의 11장 28쪽의 동일 예제로 보완하고 몰질량 141.05를 142.05로 정정."
           },
           {
             "id": "chem-final-24-72",
@@ -2122,7 +2122,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "pdfRefPages": [
               51
             ],
-            "stem": "버터와 치즈는 고체 분산 매질과 액체 분산 물질로 구성되어있으며, 입자성 콜로이드 형태를 띤다.",
+            "stem": "버터와 치즈는 고체 분산 매질과 액체 분산 물질로 구성되어 있으며, 입자성 콜로이드 형태를 띤다.",
             "choices": [
               "O (옳다)",
               "X (틀리다)"
@@ -2765,14 +2765,14 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               15,
               16
             ],
-            "stem": "Kₚ와 K꜀는 동일한 값을 갖는다.",
+            "stem": "Kp와 Kc는 동일한 값을 갖는다.",
             "choices": [
               "O (옳다)",
               "X (틀리다)"
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "이상기체에서 Kₚ=K꜀(RT)의 Δn승이다. 기체 몰수 변화 Δn이 0인 경우 등에는 같을 수 있지만 항상 같은 것은 아니다."
+            "rationale": "이상기체에서 Kp=Kc(RT)의 Δn승이다. 기체 몰수 변화 Δn이 0인 경우 등에는 같을 수 있지만 항상 같은 것은 아니다."
           },
           {
             "id": "chem-final-24-86",
@@ -2890,7 +2890,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               44,
               45
             ],
-            "stem": "As₄O₆ + 6C ⇌ As₄ + 6CO에서 일산화 탄소를 첨가하면 평형 위치가 변한다.",
+            "stem": "As₄O₆ + 6C ⇌ As₄ + 6CO에서 일산화탄소를 첨가하면 평형 위치가 변한다.",
             "choices": [
               "O (옳다)",
               "X (틀리다)"
@@ -2940,7 +2940,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               44,
               45
             ],
-            "stem": "PCl₃(g) + Cl₂(g) ⇌ PCl₅ 의 반응에 따라 오염화 인을 합성하게 되면 Cl₂(g)의 첨가 및 삭제 여부에 따라 평형위치가 변경된다.",
+            "stem": "PCl₃(g) + Cl₂(g) ⇌ PCl₅ 의 반응에 따라 오염화인을 합성하게 되면 Cl₂(g)의 첨가 및 삭제 여부에 따라 평형위치가 변경된다.",
             "choices": [
               "O (옳다)",
               "X (틀리다)"
@@ -3278,14 +3278,14 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "pdfRefPages": [
               44
             ],
-            "stem": "염의 수용액이 중성인지 알려면 반드시 그 용액의 Kₐ 또는 Kᵦ를 알아야 한다.",
+            "stem": "염의 수용액이 중성인지 알려면 반드시 그 용액의 Ka 또는 Kb를 알아야 한다.",
             "choices": [
               "O (옳다)",
               "X (틀리다)"
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "강산과 강염기에서 온 NaCl 같은 염은 이온의 유래만으로도 중성임을 판단할 수 있다. 약산·약염기에서 온 염은 Kₐ와 Kᵦ 비교가 필요할 수 있지만 모든 염에서 그 수치를 반드시 알아야 하는 것은 아니다."
+            "rationale": "강산과 강염기에서 온 NaCl 같은 염은 이온의 유래만으로도 중성임을 판단할 수 있다. 약산·약염기에서 온 염은 Ka와 Kb 비교가 필요할 수 있지만 모든 염에서 그 수치를 반드시 알아야 하는 것은 아니다."
           },
           {
             "id": "chem-final-25-58",
@@ -3769,7 +3769,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               "형질 전환을 유도하는 기능이 우선이다",
               "배아 발생기 동안 가장 중요한 성장인자이다",
               "대부분 세포의 증식을 촉진시키는 효과가 있다",
-              "부상 부위로 세포를 유인하는 주화성 (chemotasix)이 우수하다"
+              "부상 부위로 세포를 유인하는 주화성 (chemotaxis)이 우수하다"
             ],
             "answerIndex": 0,
             "answerIndices": null,
@@ -3863,9 +3863,9 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "stem": "RTK 리간드의 일반적인 특성으로 옳은 것은?",
             "choices": [
               "대부분 큰 막관통 단백질이다",
-              "주로 내분비(hormonal)방식으로 장거리에서 작용한다",
-              "자가분비(autocrine)및 측분비(paracrine)방식으로 작용한다",
-              "항상 2가이온이 결합해야 활성화된다",
+              "주로 내분비(hormonal) 방식으로 장거리에서 작용한다",
+              "자가분비(autocrine) 및 측분비(paracrine) 방식으로 작용한다",
+              "항상 2가 이온이 결합해야 활성화된다",
               "세포질 내에서 합성 즉시 핵으로 이동한다"
             ],
             "answerIndex": 2,
@@ -3891,7 +3891,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               "리간드 결합 없이도 dimerization을 유도",
               "SH2 도킹 부위 생성",
               "PLCγ의 활성을 억제",
-              "리간드수용체 없이도 구조적 안정성 제공"
+              "리간드 수용체 없이도 구조적 안정성 제공"
             ],
             "answerIndex": 2,
             "answerIndices": null,
@@ -4046,7 +4046,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "stem": "RTK를 구성하는 도메인의 특징에 대한 설명으로 틀린 것은?",
             "choices": [
-              "extracellular ligand-binding domina : 다른 RTK에서 가장 다양한 특징을 가진다",
+              "extracellular ligand-binding domain : 다른 RTK에서 가장 다양한 특징을 가진다",
               "kinase insert domain : regulatory 기능을 가지고 있다",
               "single transmembrane domain : alpha helix 구조를 가진다",
               "cytoplasmic tyrosine kinase domain : autophosphorylation을 통해 자신의 tyrosine 잔기를 가장 먼저 인산화시킨다",
@@ -4224,11 +4224,11 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "stem": "RTK 하위의 Ras–MAPK 신호전달 순서로 올바른 것은?",
             "choices": [
-              "Raf-Mek-Erk-Ras",
-              "Raf-Erk-Mek-Ras",
-              "Ras-Mek-Raf-Erk",
-              "Ras-Raf-Mek-Erk",
-              "Mek-Ras-Raf-Erk"
+              "Raf-MEK-ERK-Ras",
+              "Raf-ERK-MEK-Ras",
+              "Ras-MEK-Raf-ERK",
+              "Ras-Raf-MEK-ERK",
+              "MEK-Ras-Raf-ERK"
             ],
             "answerIndex": 3,
             "answerIndices": null,
@@ -4429,14 +4429,14 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "stem": "강의의 thrombopoietin(TPO) 신호전달 도식에 제시되지 않은 경로는?",
             "choices": [
               "JAK/STAT",
-              "PI3K/AKT",
+              "PI3K/Akt",
               "Ras/ERK",
               "PLC/IP₃",
               "모두 맞음"
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 10쪽에는 JAK/STAT, PI3K/AKT, Ras–Raf–MEK–ERK 계열이 제시된다. 이 도식에 PLC/IP₃ 경로는 제시되지 않는다. ‘PAS/ERK’는 문맥과 도식에 따라 ‘Ras/ERK’로 교정했다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] 10쪽에는 JAK/STAT, PI3K/Akt, Ras–Raf–MEK–ERK 계열이 제시된다. 이 도식에 PLC/IP₃ 경로는 제시되지 않는다. ‘PAS/ERK’는 문맥과 도식에 따라 ‘Ras/ERK’로 교정했다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
           }
         ],
         "aiQuestions": []
@@ -5081,7 +5081,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "stem": "아세틸콜린분해효소를 지속적으로 강하게 억제할 때 나타날 수 있는 결과는?",
             "choices": [
-              "신경전달감소 → 무력감",
+              "신경전달 감소 → 무력감",
               "아세틸콜린 축적 → 근섬유 마비",
               "콜린성 수용체의 발현 증가",
               "nicotinic 수용체의 특이적 억제",
@@ -5372,7 +5372,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
           "Ca2+",
           "catenin"
         ],
-        "summary": "<p><strong>Cadherin(Ca²⁺ 의존적 동종 부착, catenin-actin 연결, 종양억제자)</strong>과 <strong>Selectin(s-Le^x 당결합)</strong>, <strong>CD44</strong>, 부착 의존적 <strong>FAK(Y397/Y925) → PKB(Akt) 생존 및 Ras-ERK 증식</strong>(Signal 1 GF + Signal 2 ECM + RhoA → Cyclin D/E, p21 억제), 그리고 <strong>Adherens junction 소실 시 β-catenin/Tcf 핵 이동에 의한 탈분화·암 유발</strong>을 다룹니다.</p>",
+        "summary": "<p><strong>Cadherin(Ca²⁺ 의존적 동종 부착, catenin-actin 연결, 종양억제자)</strong>과 <strong>Selectin(s-Leˣ 당결합)</strong>, <strong>CD44</strong>, 부착 의존적 <strong>FAK(Y397/Y925) → PKB(Akt) 생존 및 Ras-ERK 증식</strong>(Signal 1 GF + Signal 2 ECM + RhoA → Cyclin D/E, p21 억제), 그리고 <strong>Adherens junction 소실 시 β-catenin/Tcf 핵 이동에 의한 탈분화·암 유발</strong>을 다룹니다.</p>",
         "keyPoints": [
           "E-cadherin 부착 소실 → 세포 극성 소실(탈분화) 및 유리된 β-catenin이 핵에서 Tcf와 결합해 cyclin D1·c-myc 발현 → 종양 형성",
           "정상 상태에서는 APC/GSK-3β 복합체가 유리 β-catenin을 인산화·유비퀴틴화하여 분해 (APC/β-catenin 변이 시 대장암)",
@@ -5652,7 +5652,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "stem": "NF-κB의 기능으로 가장 적절한 것은?",
             "choices": [
               "지방세포 성장",
-              "신경세포 분화촉진",
+              "신경세포 분화 촉진",
               "세포자살 활성",
               "면역·염증 반응 조절",
               "뼈 형성 촉진"
@@ -5710,7 +5710,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
         ],
         "summary": "<p>백혈구가 혈관에서 염증 조직으로 빠져나가는 <strong>4단계 유출(Rolling → Tight binding → Diapedesis → Migration)</strong>과 <strong>Chemokine(CC, CXC, C, CX3C)</strong>이 7TM GPCR을 통해 <strong>PLCβ(IP₃/DAG)·PI3Kγ·RhoA</strong>를 활성화하여 <strong>Integrin 친화도를 높이는(Inside-out signaling)</strong> 기작을 다룹니다.</p>",
         "keyPoints": [
-          "1단계 Rolling: Selectin(E/P/L) ↔ s-Le^x(탄수화물) 약한 결합; 2단계 Tight binding: Integrin(LFA-1/VLA-4) ↔ ICAM-1/VCAM-1 강한 결합",
+          "1단계 Rolling: Selectin(E/P/L) ↔ s-Leˣ(탄수화물) 약한 결합; 2단계 Tight binding: Integrin(LFA-1/VLA-4) ↔ ICAM-1/VCAM-1 강한 결합",
           "3단계 Diapedesis(혈관외 유주): 내피세포 간 CD31(PECAM-1) 관여; 4단계 Migration: 주화성 농도 구배 따라 이동",
           "Chemokine 분류: CC(MCP-1, RANTES — 주로 단핵구/림프구), CXC(IL-8, Gro — 주로 호중구)"
         ],
@@ -7216,7 +7216,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "pdfRefPages": [
               12
             ],
-            "stem": "4살 상진이가 코감기에 걸려 병원에 방문했다. 의사의 진단을 받아 본 결과 중이염이라고 판명났다. 이처럼 감기에 걸렸을 때 코로 들어온 세균이나 바이러스가 귀까지 침입하거나 염증이 확산되어 중이염의 합병증이 생길 수 있는데, 이에 중요하게 관여하는 것으로 평소에는 닫혀 있다가 침을 삼킬 때 열리는 것은?",
+            "stem": "4살 상진이가 코감기에 걸려 병원에 방문했다. 의사의 진단을 받아 본 결과 중이염이라고 판명 났다. 이처럼 감기에 걸렸을 때 코로 들어온 세균이나 바이러스가 귀까지 침입하거나 염증이 확산되어 중이염의 합병증이 생길 수 있는데, 이에 중요하게 관여하는 것으로 평소에는 닫혀 있다가 침을 삼킬 때 열리는 것은?",
             "choices": [
               "반고리관",
               "달팽이관",
