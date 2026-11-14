@@ -12,6 +12,7 @@ const defaultState = {
   mobilePane: 'center', // 'center' | 'right' (for < lg viewports in 2-pane workspace)
   searchQuery: '',
   catalogFilter: 'all', // 'all' | 'pending' | 'mastered'
+  reviewTermId: null, // null | 'y1s2-final'
   reviewFilter: 'wrong', // 'wrong' | 'favorites' | 'both'
   reviewSearchQuery: '',
   masteredConcepts: {}, // { [conceptId]: true }
@@ -89,6 +90,7 @@ function saveState() {
     rightTab: state.rightTab,
     mobilePane: state.mobilePane,
     catalogFilter: state.catalogFilter,
+    reviewTermId: state.reviewTermId,
     reviewFilter: state.reviewFilter,
     masteredConcepts: state.masteredConcepts,
     solvedQuestions: state.solvedQuestions,
@@ -935,6 +937,67 @@ function matchesReviewFilter(q, filter) {
 }
 
 function renderReview() {
+  if (!state.reviewTermId) {
+    let wrongCount = 0;
+    let favCount = 0;
+    let bothCount = 0;
+    let totalQuestions = 0;
+    state.subjects.forEach((s) => {
+      s.concepts.forEach((c) => {
+        const allQ = [...c.pastQuestions, ...c.aiQuestions];
+        totalQuestions += allQ.length;
+        allQ.forEach((q) => {
+          if (matchesReviewFilter(q, 'wrong')) wrongCount += 1;
+          if (matchesReviewFilter(q, 'favorites')) favCount += 1;
+          if (matchesReviewFilter(q, 'both')) bothCount += 1;
+        });
+      });
+    });
+    const subjectNames = state.subjects.map((s) => s.name).join(' · ');
+    return `
+      <div class="bg-grid-subtle min-h-[calc(100dvh-3.5rem)]">
+        <div class="max-w-6xl mx-auto px-4 lg:px-6 py-8 space-y-6">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-base font-extrabold tracking-tight">시험 범위별 복습 메뉴</h2>
+              <span class="text-xs text-slate-500 dark:text-slate-400">총 ${totalQuestions}문항 중 ${bothCount}문항 복습 대상</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              <button
+                type="button"
+                data-review-term="y1s2-final"
+                class="group text-left bg-white dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 hover:shadow-xl hover:shadow-slate-900/5 hover:border-blue-400/70 dark:hover:border-blue-500/60 transition-all duration-200 flex flex-col justify-between"
+              >
+                <div>
+                  <div class="flex items-start justify-between gap-3 mb-4">
+                    <div>
+                      <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/60 mb-2.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                        ${state.subjects.length}과목 · 오답 &amp; 즐겨찾기
+                      </span>
+                      <h3 class="text-lg font-extrabold tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">1학년 2학기 기말고사</h3>
+                      <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${escapeHtml(subjectNames)}</p>
+                    </div>
+                    <div class="px-2.5 py-1.5 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-800/60 text-blue-700 dark:text-blue-300 font-extrabold text-xs tabular-nums shrink-0">
+                      ${bothCount}문항
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 dark:border-slate-800/80">
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="text-slate-500 dark:text-slate-400 tabular-nums">오답 ${wrongCount} · 즐겨찾기 ${favCount}</span>
+                    <span class="font-bold text-blue-600 dark:text-blue-400 group-hover:translate-x-0.5 transition">복습 열기 →</span>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   const subj = getCurrentSubject();
   const qText = state.reviewSearchQuery.trim().toLowerCase();
 
@@ -1025,6 +1088,17 @@ function renderReview() {
   return `
     <div class="bg-grid-subtle min-h-[calc(100dvh-3.5rem)]">
       <div class="max-w-4xl mx-auto px-4 lg:px-6 py-6 space-y-6">
+        <div class="flex items-center justify-between gap-3">
+          <button
+            type="button"
+            id="reviewBackBtn"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-semibold text-slate-600 dark:text-slate-300 transition"
+          >
+            ← 시험 범위 선택
+          </button>
+          <span class="text-xs font-bold text-slate-500 dark:text-slate-400">1학년 2학기 기말고사</span>
+        </div>
+
         <!-- Subject Tabs -->
         <div class="flex items-center gap-2.5 overflow-x-auto pb-1">
           ${subjectTabsHtml}
@@ -1355,6 +1429,24 @@ function bindEvents() {
   });
 
   // Review view events
+  document.querySelectorAll('[data-review-term]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      reviewSessionIds.clear();
+      state.reviewTermId = btn.dataset.reviewTerm;
+      saveState();
+      render();
+      window.scrollTo({ top: 0 });
+    });
+  });
+
+  document.getElementById('reviewBackBtn')?.addEventListener('click', () => {
+    reviewSessionIds.clear();
+    state.reviewTermId = null;
+    saveState();
+    render();
+    window.scrollTo({ top: 0 });
+  });
+
   document.querySelectorAll('[data-review-subject]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const subj = state.subjects.find((s) => s.id === btn.dataset.reviewSubject);
@@ -1522,6 +1614,9 @@ function bindEvents() {
 document.querySelectorAll('.nav-btn, .nav-btn-m').forEach((btn) => {
   btn.addEventListener('click', () => {
     reviewSessionIds.clear();
+    if (btn.dataset.view === 'review') {
+      state.reviewTermId = null;
+    }
     state.view = btn.dataset.view;
     saveState();
     render();
