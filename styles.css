@@ -1,4 +1,8 @@
 /* Refined scrollbar & design tokens inspired by Linear, Notion, AMBOSS, UWorld, Vercel */
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
