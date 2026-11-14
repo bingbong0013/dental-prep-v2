@@ -1,4 +1,5 @@
-import { INITIAL_SUBJECTS } from './data/sampleData.js?v=20261114d';
+import { INITIAL_SUBJECTS } from './data/sampleData.js?v=20261114-images';
+import { correctChoiceIndices, gradeQuestion } from './question-grading.js?v=20261114-images';
 
 const STORAGE_KEY = 'dentasync_state_v2';
 
@@ -43,6 +44,9 @@ function getQuestionState() {
 }
 
 function recordAnswer(qId, result) {
+  const ctx = findQuestionContext(qId);
+  if (!ctx) return;
+  result = { ...result, isCorrect: gradeQuestion(ctx.q, result) };
   // Keep reviewed wrong answers visible until this review session ends.
   if (state.view === 'review' && state.solvedQuestions[qId]?.isCorrect === false) {
     reviewSessionIds.add(qId);
@@ -93,6 +97,14 @@ function loadState() {
       merged.reviewFilter = 'wrong';
     }
     merged.favorites = merged.favorites && typeof merged.favorites === 'object' ? merged.favorites : {};
+    for (const subject of freshSubjects) {
+      for (const concept of subject.concepts) {
+        for (const q of [...concept.pastQuestions, ...concept.aiQuestions]) {
+          const saved = merged.solvedQuestions[q.id];
+          if (saved) saved.isCorrect = gradeQuestion(q, saved);
+        }
+      }
+    }
     if (!['center', 'right'].includes(merged.mobilePane)) {
       merged.mobilePane = 'center';
     }
@@ -246,7 +258,8 @@ function renderDashboard() {
   const masteredCount = Object.keys(state.masteredConcepts).filter((k) => state.masteredConcepts[k]).length;
   const solvedIds = Object.keys(state.solvedQuestions);
   const correctCount = solvedIds.filter((id) => state.solvedQuestions[id]?.isCorrect).length;
-  const accuracy = solvedIds.length ? Math.round((correctCount / solvedIds.length) * 100) : 0;
+  const scoredCount = solvedIds.filter((id) => typeof state.solvedQuestions[id]?.isCorrect === 'boolean').length;
+  const accuracy = scoredCount ? Math.round((correctCount / scoredCount) * 100) : 0;
   const totalQuestions = state.subjects.reduce(
     (sum, s) => sum + s.concepts.reduce((cs, c) => cs + c.pastQuestions.length + c.aiQuestions.length, 0),
     0
@@ -520,6 +533,20 @@ function renderQuestionCard(q, typeLabel, badgeColor, extraMeta = null) {
   const isMulti = q.qType === 'multi' && Array.isArray(q.answerIndices);
   const isShort = q.qType === 'short' || !q.choices || q.choices.length === 0;
 
+  const imagePath = q.image || q.figure;
+  const questionImageHtml = imagePath
+    ? `<figure class="mb-3 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 bg-white">
+        <a href="${escapeHtml(imagePath)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(q.source || '문제')} 그림 원본 크기로 보기">
+          <img src="${escapeHtml(imagePath)}" alt="${escapeHtml(q.stem)} — 문제 그림" class="block w-full h-auto object-contain" loading="lazy" />
+          <figcaption class="px-3 py-2 text-center text-[11px] text-slate-500 bg-slate-50">문제 그림 · 눌러서 원본 크기로 보기</figcaption>
+        </a>
+      </figure>`
+    : '';
+  const notice = q.uncertain ? '검토 보류 · 자동 채점 제외' : q.acceptedAnswerIndices?.length > 1 ? '복수정답 인정 · 보기 하나를 선택하세요' : q.converted ? '학습용 복원 문항' : '';
+  const sourceNotes = [q.sourceReviewAnswer, q.gradingNote, q.sourceExplanation].filter(Boolean);
+  const sourceDetailsHtml = solved && sourceNotes.length
+    ? `<details class="mt-3 text-xs text-slate-500 dark:text-slate-400"><summary class="cursor-pointer font-semibold">원본 검토 기록</summary><p class="mt-2 whitespace-pre-line">${escapeHtml(sourceNotes.join('\n\n'))}</p></details>`
+    : '';
   let bodyHtml = '';
 
   if (isShort) {
@@ -549,7 +576,7 @@ function renderQuestionCard(q, typeLabel, badgeColor, extraMeta = null) {
     `;
   } else if (isMulti) {
     const selectedArr = solved ? solved.selectedIndices || [] : getQuestionState().multiSelections[q.id] || [];
-    const expectedArr = q.answerIndices || [];
+    const expectedArr = correctChoiceIndices(q);
     const choicesHtml = q.choices
       .map((ch, idx) => {
         const isSel = selectedArr.includes(idx);
@@ -558,7 +585,7 @@ function renderQuestionCard(q, typeLabel, badgeColor, extraMeta = null) {
 
         let btnClass =
           'border-slate-200 dark:border-slate-700 hover:border-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-950/30';
-        if (solved) {
+        if (solved && solved.isCorrect !== null) {
           if (isAnswer) {
             btnClass =
               'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-900 dark:text-emerald-200 font-semibold';
@@ -608,12 +635,12 @@ function renderQuestionCard(q, typeLabel, badgeColor, extraMeta = null) {
     const choicesHtml = q.choices
       .map((ch, idx) => {
         const isSelected = solved?.selectedIdx === idx;
-        const isAnswer = q.answerIndex === idx;
+        const isAnswer = correctChoiceIndices(q).includes(idx);
         const isStruck = strikes.includes(idx);
 
         let btnClass =
           'border-slate-200 dark:border-slate-700 hover:border-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-950/30';
-        if (solved) {
+        if (solved && solved.isCorrect !== null) {
           if (isAnswer) {
             btnClass =
               'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-900 dark:text-emerald-200 font-semibold';
@@ -699,17 +726,21 @@ function renderQuestionCard(q, typeLabel, badgeColor, extraMeta = null) {
         </div>
       </div>
       <p class="text-sm font-semibold leading-relaxed mb-3 whitespace-pre-line">${escapeHtml(q.stem)}</p>
+      ${questionImageHtml}
+      ${notice ? `<p class="mb-3 text-xs font-semibold text-amber-700 dark:text-amber-300">${escapeHtml(notice)}</p>` : ''}
       ${bodyHtml}
       ${
         solved
           ? `
         <div class="mt-3 p-3 rounded-xl text-xs leading-relaxed ${
-          solved.isCorrect
+          solved.isCorrect === null
+            ? 'bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800'
+            : solved.isCorrect
             ? 'bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800'
             : 'bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800'
         }">
-          <div class="flex items-center justify-between font-bold mb-1 ${solved.isCorrect ? 'text-emerald-700 dark:text-emerald-300' : 'text-rose-700 dark:text-rose-300'}">
-            <span>${solved.isCorrect ? '✓ 정답입니다!' : '✕ 오답 / 복습 필요'}</span>
+          <div class="flex items-center justify-between font-bold mb-1 ${solved.isCorrect === null ? 'text-amber-700 dark:text-amber-300' : solved.isCorrect ? 'text-emerald-700 dark:text-emerald-300' : 'text-rose-700 dark:text-rose-300'}">
+            <span>${solved.isCorrect === null ? '검토 보류 · 자동 채점 제외' : solved.isCorrect ? '✓ 정답입니다!' : '✕ 오답 / 복습 필요'}</span>
             <button data-reset-q="${q.id}" class="text-[11px] underline font-medium">다시 풀기</button>
           </div>
           <p class="text-slate-700 dark:text-slate-300 whitespace-pre-line">${escapeHtml(q.rationale)}</p>
@@ -717,6 +748,7 @@ function renderQuestionCard(q, typeLabel, badgeColor, extraMeta = null) {
       `
           : ''
       }
+      ${sourceDetailsHtml}
     </div>
   `;
 }
@@ -1535,7 +1567,7 @@ function bindEvents() {
       const choiceIdx = Number(btn.dataset.choiceIdx);
       const ctx = findQuestionContext(qId);
       if (!ctx) return;
-      const isCorrect = choiceIdx === ctx.q.answerIndex;
+      const isCorrect = gradeQuestion(ctx.q, { selectedIdx: choiceIdx });
       recordAnswer(qId, { selectedIdx: choiceIdx, isCorrect });
       state.streak += 1;
       saveState();
@@ -1565,10 +1597,7 @@ function bindEvents() {
       if (!ctx) return;
       const q = ctx.q;
       const selected = [...(getQuestionState().multiSelections[qId] || [])].sort((a, b) => a - b);
-      const expected = [...(q.answerIndices || [])].sort((a, b) => a - b);
-      const isCorrect =
-        selected.length === expected.length &&
-        selected.every((val, i) => val === expected[i]);
+      const isCorrect = gradeQuestion(q, { selectedIndices: selected });
       recordAnswer(qId, { selectedIndices: selected, isCorrect });
       state.streak += 1;
       saveState();

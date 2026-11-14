@@ -1,0 +1,119 @@
+[
+  {
+    "source": "signal-final/24-1-1.webp",
+    "path": "question-images/signal-final/24-1-1.webp",
+    "bytes": 142006,
+    "sha256": "6743fe8b9abe4958e10323fcbd86c2144a9468bf9ef9c94558133ccb8b9f92b5",
+    "width": 1238,
+    "height": 1254,
+    "format": "WEBP"
+  },
+  {
+    "source": "signal-final/24-3-1.webp",
+    "path": "question-images/signal-final/24-3-1.webp",
+    "bytes": 14822,
+    "sha256": "d248b6e8b7eb692e2d72dde12597b99b9d8a30c362b9418f770b2aac0004651d",
+    "width": 195,
+    "height": 128,
+    "format": "WEBP"
+  },
+  {
+    "source": "signal-final/24-6-1.webp",
+    "path": "question-images/signal-final/24-6-1.webp",
+    "bytes": 8224,
+    "sha256": "d679af3b6da6639b1572496c3cd277b1fee19ac2ee20f537aca268f7c20ac3e3",
+    "width": 154,
+    "height": 234,
+    "format": "WEBP"
+  },
+  {
+    "source": "signal-final/23-1-1.webp",
+    "path": "question-images/signal-final/23-1-1.webp",
+    "bytes": 16972,
+    "sha256": "f488d7e2734f61873e96958b9857a95246c33d8bace97c2d6b4aa91108f10ed3",
+    "width": 172,
+    "height": 159,
+    "format": "WEBP"
+  },
+  {
+    "source": "signal-final/24-5-1.webp",
+    "path": "question-images/signal-final/24-5-1.webp",
+    "bytes": 3852,
+    "sha256": "a2027e5461c74819cd4e9e3a3e8a81e85d880f745f5421d86ed4f7064ddc09ec",
+    "width": 272,
+    "height": 115,
+    "format": "WEBP"
+  },
+  {
+    "source": "signal-final/24-12-1.webp",
+    "path": "question-images/signal-final/24-12-1.webp",
+    "bytes": 23014,
+    "sha256": "12e3d72388960b6682c59d8a45895515454ff00c950d8edece315bc5dbe8fa3d",
+    "width": 272,
+    "height": 301,
+    "format": "WEBP"
+  },
+  {
+    "source": "biology-final/24-p1-0.png",
+    "path": "question-images/biology-final/24-p1-0.png",
+    "bytes": 1151424,
+    "sha256": "a851ff3bb08f825297dbf970dcaa90632729be2f9d99360bcf1c2667c46b52d2",
+    "width": 1233,
+    "height": 988,
+    "format": "PNG"
+  },
+  {
+    "source": "biology-final/23-p8-1.png",
+    "path": "question-images/biology-final/23-p8-1.png",
+    "bytes": 1395511,
+    "sha256": "669d77a1aff70e411937fdbeeb47ef876d82f5ad5f3c41a5673bc121f3215329",
+    "width": 850,
+    "height": 708,
+    "format": "PNG"
+  },
+  {
+    "source": "biology-final/24-p2-0.png",
+    "path": "question-images/biology-final/24-p2-0.png",
+    "bytes": 544522,
+    "sha256": "e3493f1d9d59027120ac4f560feeab039dbaa7e843b3ab7d5c14b6a80fd76e8e",
+    "width": 1235,
+    "height": 590,
+    "format": "PNG"
+  },
+  {
+    "source": "biology-final/24-p3-0.png",
+    "path": "question-images/biology-final/24-p3-0.png",
+    "bytes": 1007700,
+    "sha256": "0a98b1ab176992da55d0bd260ddb01163cb465e2fc6fb7f4647851f07c236394",
+    "width": 1723,
+    "height": 1055,
+    "format": "PNG"
+  },
+  {
+    "source": "biology-final/24-p4-0.png",
+    "path": "question-images/biology-final/24-p4-0.png",
+    "bytes": 1065984,
+    "sha256": "4ac51b2572d97c86c2ece17d7e1bbad4d652c231734d8ef13b059da7d9a92a78",
+    "width": 1413,
+    "height": 1038,
+    "format": "PNG"
+  },
+  {
+    "source": "biology-final/24-p5-0.png",
+    "path": "question-images/biology-final/24-p5-0.png",
+    "bytes": 1376066,
+    "sha256": "e4f2c51fa54757b53af651e6e2bfafd0911cceca5de757c5fb8b1af9db2747ce",
+    "width": 804,
+    "height": 1046,
+    "format": "PNG"
+  },
+  {
+    "source": "biology-final/24-p8-0.png",
+    "path": "question-images/biology-final/24-p8-0.png",
+    "bytes": 100230,
+    "sha256": "8039fecfd18861930736371bee91164cc361680aa22b678bfa9950e8ab8fbf54",
+    "width": 640,
+    "height": 432,
+    "format": "PNG"
+  }
+]
