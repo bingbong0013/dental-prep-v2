@@ -1,4 +1,4 @@
-import { INITIAL_SUBJECTS } from './data/sampleData.js';
+import { INITIAL_SUBJECTS } from './data/sampleData.js?v=20261114c';
 
 const STORAGE_KEY = 'dentasync_state_v2';
 
