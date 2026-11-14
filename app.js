@@ -88,19 +88,31 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
-// Highlight AMBOSS-style glossary terms inside text
+// Highlight AMBOSS-style glossary terms inside text while preserving safe inline HTML tags
 function renderWithGlossary(text, glossary = {}) {
-  let html = escapeHtml(text);
-  const terms = Object.keys(glossary);
-  terms.forEach((term) => {
-    const safeTerm = escapeHtml(term);
-    const regex = new RegExp(safeTerm, 'g');
-    html = html.replace(
-      regex,
-      `<span class="glossary-term" data-term="${safeTerm}">${safeTerm}</span>`
-    );
-  });
-  return html;
+  let html = escapeHtml(text).replace(
+    /&lt;(\/?)(p|strong|em|br|sub|sup)\s*(\/?)&gt;/gi,
+    (_, close, tag, selfClose) => `<${close}${tag.toLowerCase()}${selfClose && tag.toLowerCase() === 'br' ? ' /' : ''}>`
+  );
+  const terms = Object.keys(glossary).filter(Boolean).sort((a, b) => b.length - a.length);
+  if (!terms.length) return html;
+  const parts = html.split(/(<[^>]+>)/g);
+  return parts
+    .map((part) => {
+      if (part.startsWith('<') && part.endsWith('>')) return part;
+      let out = part;
+      terms.forEach((term) => {
+        const safeTerm = escapeHtml(term);
+        const escapedForRegex = safeTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(escapedForRegex, 'g');
+        out = out.replace(
+          regex,
+          `<span class="glossary-term" data-term="${safeTerm}">${safeTerm}</span>`
+        );
+      });
+      return out;
+    })
+    .join('');
 }
 
 function updateNavUI() {
@@ -571,13 +583,13 @@ function renderWorkspace() {
             class="w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        <div class="flex-1 overflow-y-auto p-2.5">
+        <div id="workspaceLeftScroll" class="flex-1 overflow-y-auto p-2.5">
           ${conceptListHtml || '<p class="text-xs text-slate-400 p-4 text-center">검색 결과가 없습니다.</p>'}
         </div>
       </aside>
 
       <!-- CENTER PANE: AI Concept Summary + PDF Page Sync Viewer -->
-      <section class="${centerVis} lg:col-span-5 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 overflow-y-auto p-4 sm:p-5 space-y-5 bg-slate-50/50 dark:bg-slate-950">
+      <section id="workspaceCenterScroll" class="${centerVis} lg:col-span-5 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 overflow-y-auto p-4 sm:p-5 space-y-5 bg-slate-50/50 dark:bg-slate-950">
         <!-- Concept Header -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
           <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
@@ -608,9 +620,9 @@ function renderWorkspace() {
             <div class="flex items-center gap-1.5 text-xs font-bold text-blue-700 dark:text-blue-300 mb-1.5">
               <span>✨</span> 강의자료 기반 AI 핵심 요약 <span class="font-normal text-blue-500">(밑줄 용어 클릭 시 팝업)</span>
             </div>
-            <p class="text-sm leading-relaxed text-slate-700 dark:text-slate-200">
+            <div class="text-sm leading-relaxed text-slate-700 dark:text-slate-200 space-y-2">
               ${renderWithGlossary(concept.summary, concept.glossary)}
-            </p>
+            </div>
           </div>
 
           <!-- Key Points -->
@@ -648,7 +660,7 @@ function renderWorkspace() {
       </section>
 
       <!-- RIGHT PANE: Linked Past Questions & AI Practice Questions -->
-      <section class="${rightVis} lg:col-span-4 overflow-y-auto p-4 sm:p-5 bg-slate-100/60 dark:bg-slate-900/40">
+      <section id="workspaceRightScroll" class="${rightVis} lg:col-span-4 overflow-y-auto p-4 sm:p-5 bg-slate-100/60 dark:bg-slate-900/40">
         <div class="flex items-center gap-2 p-1 rounded-xl bg-slate-200/80 dark:bg-slate-800 mb-4">
           <button
             data-right-tab="past"
@@ -909,7 +921,11 @@ function renderImporter() {
 // ========================
 // RENDER & EVENT BINDING
 // ========================
-function render() {
+function render(options = {}) {
+  const prevLeftTop = document.getElementById('workspaceLeftScroll')?.scrollTop || 0;
+  const prevCenterTop = document.getElementById('workspaceCenterScroll')?.scrollTop || 0;
+  const prevRightTop = document.getElementById('workspaceRightScroll')?.scrollTop || 0;
+
   applyTheme();
   updateNavUI();
 
@@ -920,6 +936,15 @@ function render() {
   else if (state.view === 'importer') root.innerHTML = renderImporter();
 
   bindEvents();
+
+  if (state.view === 'workspace') {
+    const leftEl = document.getElementById('workspaceLeftScroll');
+    const centerEl = document.getElementById('workspaceCenterScroll');
+    const rightEl = document.getElementById('workspaceRightScroll');
+    if (leftEl) leftEl.scrollTop = options.resetLeftScroll ? 0 : prevLeftTop;
+    if (centerEl) centerEl.scrollTop = options.resetConceptScroll ? 0 : prevCenterTop;
+    if (rightEl) rightEl.scrollTop = options.resetConceptScroll ? 0 : prevRightTop;
+  }
 }
 
 function bindEvents() {
@@ -962,7 +987,7 @@ function bindEvents() {
       state.selectedConceptId = subj.concepts[0].id;
       state.activePdfPage = subj.concepts[0].pdfPages[0];
       saveState();
-      render();
+      render({ resetLeftScroll: true, resetConceptScroll: true });
     }
   });
 
@@ -998,7 +1023,7 @@ function bindEvents() {
           state.mobilePane = 'center';
         }
         saveState();
-        render();
+        render({ resetConceptScroll: true });
         if (window.innerWidth < 1024) {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
