@@ -397,7 +397,12 @@ function renderCatalog() {
             c.pdfPages.length > 1
               ? `p.${c.pdfPages[0]}-${c.pdfPages[c.pdfPages.length - 1]}`
               : `p.${c.pdfPages[0]}`;
-          const preview = stripHtml(c.summary);
+          const titleTags = c.title
+            .split('·')
+            .map((title) => title.trim())
+            .filter(Boolean)
+            .map((title) => `<span class="inline-flex items-center px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-bold leading-snug text-slate-700 dark:text-slate-200">${escapeHtml(title)}</span>`)
+            .join('');
 
           return `
             <button
@@ -420,12 +425,9 @@ function renderCatalog() {
                     ${pageLabel}
                   </span>
                 </div>
-                <h3 class="text-sm font-extrabold leading-snug mb-1.5 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
-                  ${escapeHtml(c.title)}
+                <h3 class="flex flex-wrap gap-1.5 mb-3">
+                  ${titleTags}
                 </h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed mb-3">
-                  ${escapeHtml(preview)}
-                </p>
               </div>
               <div class="flex items-center justify-between pt-2.5 border-t border-slate-100 dark:border-slate-800/80 text-[11px] text-slate-500 dark:text-slate-400">
                 <div class="flex items-center gap-2 tabular-nums">
