@@ -3,14 +3,15 @@ import { INITIAL_SUBJECTS } from './data/sampleData.js';
 const STORAGE_KEY = 'dentasync_state_v2';
 
 const defaultState = {
-  view: 'dashboard', // 'dashboard' | 'workspace'
+  view: 'dashboard', // 'dashboard' | 'catalog' | 'workspace'
   subjects: INITIAL_SUBJECTS,
   selectedSubjectId: INITIAL_SUBJECTS[0].id,
   selectedConceptId: INITIAL_SUBJECTS[0].concepts[0].id,
   activePdfPage: INITIAL_SUBJECTS[0].concepts[0].pdfPages[0],
   rightTab: 'past', // 'past' | 'ai'
-  mobilePane: 'center', // 'left' | 'center' | 'right' (for < lg viewports)
+  mobilePane: 'center', // 'center' | 'right' (for < lg viewports in 2-pane workspace)
   searchQuery: '',
+  catalogFilter: 'all', // 'all' | 'pending' | 'mastered'
   masteredConcepts: {}, // { [conceptId]: true }
   solvedQuestions: {}, // { [qId]: { selectedIdx, selectedIndices, isCorrect } }
   multiSelections: {}, // { [qId]: number[] }
@@ -29,8 +30,11 @@ function loadState() {
       ...structuredClone(defaultState),
       ...parsed,
     };
-    if (merged.view !== 'dashboard' && merged.view !== 'workspace') {
+    if (!['dashboard', 'catalog', 'workspace'].includes(merged.view)) {
       merged.view = 'dashboard';
+    }
+    if (!['center', 'right'].includes(merged.mobilePane)) {
+      merged.mobilePane = 'center';
     }
     return merged;
   } catch {
@@ -48,8 +52,12 @@ function saveState() {
     selectedConceptId: state.selectedConceptId,
     activePdfPage: state.activePdfPage,
     rightTab: state.rightTab,
+    mobilePane: state.mobilePane,
+    catalogFilter: state.catalogFilter,
     masteredConcepts: state.masteredConcepts,
     solvedQuestions: state.solvedQuestions,
+    multiSelections: state.multiSelections,
+    shortRevealed: state.shortRevealed,
     strikethroughs: state.strikethroughs,
     streak: state.streak,
     theme: state.theme,
@@ -117,13 +125,20 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+function stripHtml(str) {
+  return String(str || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
 // Highlight AMBOSS-style glossary terms inside text while preserving safe inline HTML tags
 function renderWithGlossary(text, glossary = {}) {
-  let html = escapeHtml(text).replace(
+  const html = escapeHtml(text).replace(
     /&lt;(\/?)(p|strong|em|br|sub|sup)\s*(\/?)&gt;/gi,
-    (_, close, tag, selfClose) => `<${close}${tag.toLowerCase()}${selfClose && tag.toLowerCase() === 'br' ? ' /' : ''}>`
+    (_, close, tag, selfClose) =>
+      `<${close}${tag.toLowerCase()}${selfClose && tag.toLowerCase() === 'br' ? ' /' : ''}>`
   );
-  const terms = Object.keys(glossary).filter(Boolean).sort((a, b) => b.length - a.length);
+  const terms = Object.keys(glossary)
+    .filter(Boolean)
+    .sort((a, b) => b.length - a.length);
   if (!terms.length) return html;
   const parts = html.split(/(<[^>]+>)/g);
   return parts
@@ -148,15 +163,15 @@ function updateNavUI() {
   document.querySelectorAll('.nav-btn, .nav-btn-m').forEach((btn) => {
     const isActive = btn.dataset.view === state.view;
     btn.className = btn.classList.contains('nav-btn-m')
-      ? `nav-btn-m px-3 py-1 rounded-md text-xs font-medium whitespace-nowrap ${
+      ? `nav-btn-m flex-1 py-1.5 px-2.5 rounded-lg text-xs font-semibold whitespace-nowrap text-center transition ${
           isActive
-            ? 'bg-blue-600 text-white'
+            ? 'bg-slate-900 dark:bg-blue-600 text-white shadow-sm'
             : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
         }`
-      : `nav-btn px-3 py-1.5 rounded-lg text-sm font-medium transition ${
+      : `nav-btn px-3 py-1 rounded-lg text-xs font-semibold transition ${
           isActive
-            ? 'bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300'
-            : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+            ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm'
+            : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
         }`;
   });
   document.getElementById('streakCount').textContent = state.streak;
@@ -171,6 +186,10 @@ function renderDashboard() {
   const solvedIds = Object.keys(state.solvedQuestions);
   const correctCount = solvedIds.filter((id) => state.solvedQuestions[id]?.isCorrect).length;
   const accuracy = solvedIds.length ? Math.round((correctCount / solvedIds.length) * 100) : 0;
+  const totalQuestions = state.subjects.reduce(
+    (sum, s) => sum + s.concepts.reduce((cs, c) => cs + c.pastQuestions.length + c.aiQuestions.length, 0),
+    0
+  );
 
   const subjectCards = state.subjects
     .map((subj) => {
@@ -183,35 +202,36 @@ function renderDashboard() {
       );
 
       return `
-        <div class="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 hover:shadow-lg hover:border-blue-400/60 transition flex flex-col justify-between">
+        <div class="group bg-white dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 hover:shadow-xl hover:shadow-slate-900/5 hover:border-blue-400/70 dark:hover:border-blue-500/60 transition-all duration-200 flex flex-col justify-between">
           <div>
-            <div class="flex items-start justify-between gap-3 mb-3">
+            <div class="flex items-start justify-between gap-3 mb-4">
               <div>
-                <span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 mb-2">
-                  PDF ${subj.totalPages}p 연동
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 mb-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full" style="background-color: ${subj.color}"></span>
+                  기말고사 · PDF ${subj.totalPages}p
                 </span>
-                <h3 class="text-lg font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">${escapeHtml(subj.name)}</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400">${escapeHtml(subj.engName)}</p>
+                <h3 class="text-lg font-extrabold tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">${escapeHtml(subj.name)}</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">${escapeHtml(subj.engName)}</p>
               </div>
-              <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm border-4" style="border-color: ${subj.color}20; color: ${subj.color}">
+              <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-extrabold text-sm border tabular-nums" style="background-color: ${subj.color}12; border-color: ${subj.color}30; color: ${subj.color}">
                 ${pct}%
               </div>
             </div>
             <p class="text-xs text-slate-500 dark:text-slate-400 truncate mb-4" title="${escapeHtml(subj.pdfName)}">
-              📄 ${escapeHtml(subj.pdfName)}
+              📑 ${escapeHtml(subj.pdfName)}
             </p>
           </div>
 
           <div>
-            <div class="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden mb-3">
+            <div class="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden mb-3">
               <div class="h-full rounded-full transition-all duration-500" style="width: ${pct}%; background-color: ${subj.color}"></div>
             </div>
-            <div class="flex items-center justify-between text-xs text-slate-600 dark:text-slate-400 mb-4">
-              <span>핵심 개념 <strong>${mCount}/${cCount}</strong></span>
-              <span>연결 문제 <strong>${qCount}문항</strong></span>
+            <div class="flex items-center justify-between text-xs text-slate-600 dark:text-slate-400 mb-4 tabular-nums">
+              <span>핵심 개념 <strong class="text-slate-900 dark:text-slate-100">${mCount}/${cCount}</strong></span>
+              <span>연결 기출 <strong class="text-slate-900 dark:text-slate-100">${qCount}문항</strong></span>
             </div>
-            <button data-open-subject="${subj.id}" class="w-full py-2.5 rounded-xl bg-slate-900 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-500 text-white text-sm font-semibold transition">
-              개념 + PDF 통합 학습하기 →
+            <button data-open-subject="${subj.id}" class="w-full py-2.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 hover:bg-blue-600 dark:hover:bg-blue-500 dark:hover:text-white text-xs font-bold transition shadow-sm">
+              개념 목차 보기 →
             </button>
           </div>
         </div>
@@ -220,119 +240,311 @@ function renderDashboard() {
     .join('');
 
   return `
-    <div class="max-w-6xl mx-auto px-4 lg:px-6 py-8">
-      <!-- Hero Banner -->
-      <div class="rounded-3xl bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 text-white p-6 lg:p-8 mb-8 shadow-xl relative overflow-hidden">
-        <div class="relative z-10 max-w-2xl">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-medium mb-4">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Gemini · Antigravity 강의자료 PDF 분석 연동
-          </div>
-          <h1 class="text-2xl lg:text-3xl font-extrabold tracking-tight mb-2">
-            단순 기출 풀이를 넘어,<br />강의자료 PDF 페이지와 개념을 한 화면에.
-          </h1>
-          <p class="text-sm lg:text-base text-blue-100/80 mb-6">
-            핵심 개념별 강의자료 페이지 매칭, AI 요약 해설, 연결 기출 및 AI 변형 연습문제를 3-Pane 워크스페이스에서 바로 학습하세요.
-          </p>
-          <div class="flex flex-wrap gap-3">
-            <button id="goWorkspaceBtn" class="px-5 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-semibold text-sm shadow-lg shadow-blue-500/25 transition">
-              통합 학습 시작하기
-            </button>
+    <div class="bg-grid-subtle min-h-[calc(100dvh-3.5rem)]">
+      <div class="max-w-6xl mx-auto px-4 lg:px-6 py-8 space-y-8">
+        <!-- Hero Banner (Stripe + Vercel aesthetic) -->
+        <div class="rounded-3xl bg-slate-950 text-white p-6 sm:p-8 lg:p-10 shadow-2xl shadow-slate-900/15 relative overflow-hidden border border-slate-800">
+          <div class="pointer-events-none absolute -top-24 -right-20 w-80 h-80 rounded-full bg-blue-600/25 blur-3xl"></div>
+          <div class="pointer-events-none absolute -bottom-24 left-1/3 w-72 h-72 rounded-full bg-indigo-500/20 blur-3xl"></div>
+          <div class="relative z-10 max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-medium text-blue-100 mb-4">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              기말고사 범위 3과목 · ${totalConcepts}개 핵심개념 · ${totalQuestions}문항 연동
+            </div>
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight mb-3">
+              개념 목차에서 선택하고,<br />강의자료 원문과 기출을 한 화면에.
+            </h1>
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+              단원·주차별로 구조화된 개념 목차에서 주제를 고르면, 2-Pane 학습 화면에서 핵심 요약·원문 PDF 슬라이드·기출문제를 나란히 풀 수 있습니다.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <button id="goCatalogBtn" class="px-5 py-2.5 rounded-xl bg-white text-slate-950 hover:bg-blue-50 font-bold text-sm shadow-lg transition">
+                개념 목차 탐색하기 →
+              </button>
+              <button id="goWorkspaceBtn" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white font-semibold text-sm transition">
+                최근 학습 이어하기
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Stats Row -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 flex items-center gap-4">
-          <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl">📚</div>
-          <div>
-            <div class="text-xs text-slate-500 dark:text-slate-400">마스터한 핵심 개념</div>
-            <div class="text-xl font-bold">${masteredCount} <span class="text-sm font-normal text-slate-400">/ ${totalConcepts}</span></div>
+        <!-- Stats Row (Linear/Notion KPI strip) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="bg-white dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 flex items-center gap-4">
+            <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/60 text-blue-600 dark:text-blue-400 flex items-center justify-center text-lg">📚</div>
+            <div>
+              <div class="text-xs font-medium text-slate-500 dark:text-slate-400">마스터한 핵심 개념</div>
+              <div class="text-xl font-extrabold tabular-nums">${masteredCount} <span class="text-sm font-medium text-slate-400">/ ${totalConcepts}</span></div>
+            </div>
+          </div>
+          <div class="bg-white dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 flex items-center gap-4">
+            <div class="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-100 dark:border-emerald-900/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg">🎯</div>
+            <div>
+              <div class="text-xs font-medium text-slate-500 dark:text-slate-400">누적 정답률</div>
+              <div class="text-xl font-extrabold tabular-nums">${accuracy}% <span class="text-sm font-medium text-slate-400">(${solvedIds.length}문항)</span></div>
+            </div>
+          </div>
+          <div class="bg-white dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 flex items-center gap-4">
+            <div class="w-11 h-11 rounded-xl bg-violet-50 dark:bg-violet-950/60 border border-violet-100 dark:border-violet-900/60 text-violet-600 dark:text-violet-400 flex items-center justify-center text-lg">📑</div>
+            <div>
+              <div class="text-xs font-medium text-slate-500 dark:text-slate-400">원문 PDF 슬라이드</div>
+              <div class="text-xl font-extrabold tabular-nums">727p <span class="text-sm font-medium text-slate-400">19개 자료</span></div>
+            </div>
           </div>
         </div>
-        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 flex items-center gap-4">
-          <div class="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl">🎯</div>
-          <div>
-            <div class="text-xs text-slate-500 dark:text-slate-400">누적 정답률</div>
-            <div class="text-xl font-bold">${accuracy}% <span class="text-sm font-normal text-slate-400">(${solvedIds.length}문항)</span></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 flex items-center gap-4">
-          <div class="w-11 h-11 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl">✨</div>
-          <div>
-            <div class="text-xs text-slate-500 dark:text-slate-400">AI PDF 분석 과목</div>
-            <div class="text-xl font-bold">${state.subjects.length}과목 <span class="text-sm font-normal text-slate-400">연동됨</span></div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Subject Grid -->
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-lg font-bold">과목별 강의자료 · 개념 · 기출 트랙</h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        ${subjectCards}
+        <!-- Subject Grid -->
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-base font-extrabold tracking-tight">기말고사 과목별 트랙</h2>
+            <span class="text-xs text-slate-500 dark:text-slate-400">총 ${totalQuestions}문항 수록</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            ${subjectCards}
+          </div>
+        </div>
       </div>
     </div>
   `;
 }
 
 // ========================
-// 2. 3-PANE WORKSPACE VIEW
+// 2. INDEPENDENT CONCEPT CATALOG VIEW (Extracted Left Pane)
+// ========================
+function renderCatalog() {
+  const subj = getCurrentSubject();
+  const q = state.searchQuery.trim().toLowerCase();
+
+  const subjectTabsHtml = state.subjects
+    .map((s) => {
+      const active = s.id === subj.id;
+      const mCount = s.concepts.filter((c) => state.masteredConcepts[c.id]).length;
+      const pct = s.concepts.length ? Math.round((mCount / s.concepts.length) * 100) : 0;
+      return `
+        <button
+          data-catalog-subject="${s.id}"
+          class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border text-left transition whitespace-nowrap ${
+            active
+              ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-950 border-slate-900 dark:border-white shadow-sm'
+              : 'bg-white dark:bg-slate-900 border-slate-200/80 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700'
+          }"
+        >
+          <span class="w-2 h-2 rounded-full shrink-0" style="background-color: ${s.color}"></span>
+          <span class="text-sm font-bold">${escapeHtml(s.name)}</span>
+          <span class="text-[11px] font-semibold px-1.5 py-0.5 rounded-md tabular-nums ${
+            active
+              ? 'bg-white/15 dark:bg-slate-900/15 text-white dark:text-slate-900'
+              : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+          }">${s.concepts.length} · ${pct}%</span>
+        </button>
+      `;
+    })
+    .join('');
+
+  const filtered = subj.concepts.filter((c) => {
+    const mastered = !!state.masteredConcepts[c.id];
+    if (state.catalogFilter === 'mastered' && !mastered) return false;
+    if (state.catalogFilter === 'pending' && mastered) return false;
+    if (!q) return true;
+    return (
+      c.title.toLowerCase().includes(q) ||
+      c.chapter.toLowerCase().includes(q) ||
+      c.tags.some((t) => t.toLowerCase().includes(q))
+    );
+  });
+
+  // Group filtered concepts by chapter/week while preserving order
+  const groups = [];
+  const groupMap = new Map();
+  filtered.forEach((c) => {
+    const key = c.chapter || '기타';
+    if (!groupMap.has(key)) {
+      const g = { chapter: key, items: [] };
+      groupMap.set(key, g);
+      groups.push(g);
+    }
+    groupMap.get(key).items.push(c);
+  });
+
+  const groupsHtml = groups
+    .map((g) => {
+      const gMastered = g.items.filter((c) => state.masteredConcepts[c.id]).length;
+      const cardsHtml = g.items
+        .map((c) => {
+          const isSelected = c.id === state.selectedConceptId;
+          const mastered = !!state.masteredConcepts[c.id];
+          const pageLabel =
+            c.pdfPages.length > 1
+              ? `p.${c.pdfPages[0]}-${c.pdfPages[c.pdfPages.length - 1]}`
+              : `p.${c.pdfPages[0]}`;
+          const preview = stripHtml(c.summary);
+
+          return `
+            <button
+              data-select-concept="${c.id}"
+              class="group text-left p-4 rounded-2xl border transition-all duration-150 flex flex-col justify-between bg-white dark:bg-slate-900/90 hover:shadow-md hover:-translate-y-0.5 ${
+                isSelected
+                  ? 'border-blue-500 ring-2 ring-blue-500/20'
+                  : 'border-slate-200/80 dark:border-slate-800 hover:border-blue-400/70'
+              }"
+            >
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="inline-flex items-center gap-1.5 text-[11px] font-bold ${
+                    mastered ? 'text-emerald-600 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'
+                  }">
+                    <span class="w-2 h-2 rounded-full ${mastered ? 'bg-emerald-500' : 'bg-amber-400'}"></span>
+                    ${mastered ? '마스터 완료' : '학습 중'}
+                  </span>
+                  <span class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-[11px] font-bold text-slate-600 dark:text-slate-300 tabular-nums">
+                    ${pageLabel}
+                  </span>
+                </div>
+                <h3 class="text-sm font-extrabold leading-snug mb-1.5 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
+                  ${escapeHtml(c.title)}
+                </h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed mb-3">
+                  ${escapeHtml(preview)}
+                </p>
+              </div>
+              <div class="flex items-center justify-between pt-2.5 border-t border-slate-100 dark:border-slate-800/80 text-[11px] text-slate-500 dark:text-slate-400">
+                <div class="flex items-center gap-2 tabular-nums">
+                  <span class="font-semibold text-indigo-600 dark:text-indigo-400">기출 ${c.pastQuestions.length}</span>
+                  <span>·</span>
+                  <span>AI연습 ${c.aiQuestions.length}</span>
+                </div>
+                <span class="font-bold text-blue-600 dark:text-blue-400 opacity-80 group-hover:opacity-100">학습하기 →</span>
+              </div>
+            </button>
+          `;
+        })
+        .join('');
+
+      return `
+        <section class="space-y-3">
+          <div class="flex items-center justify-between gap-2 px-1">
+            <h2 class="text-sm font-extrabold tracking-tight text-slate-800 dark:text-slate-200 flex items-center gap-2">
+              <span class="w-1.5 h-4 rounded-full" style="background-color: ${subj.color}"></span>
+              ${escapeHtml(g.chapter)}
+            </h2>
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">
+              ${gMastered} / ${g.items.length} 완료
+            </span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+            ${cardsHtml}
+          </div>
+        </section>
+      `;
+    })
+    .join('');
+
+  const filterBtnCls = (f) =>
+    state.catalogFilter === f
+      ? 'px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 dark:bg-white text-white dark:text-slate-950 transition'
+      : 'px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition';
+
+  return `
+    <div class="bg-grid-subtle min-h-[calc(100dvh-3.5rem)]">
+      <div class="max-w-6xl mx-auto px-4 lg:px-6 py-6 space-y-6">
+        <!-- Subject Tabs -->
+        <div class="flex items-center gap-2.5 overflow-x-auto pb-1">
+          ${subjectTabsHtml}
+        </div>
+
+        <!-- Search & Filter Bar (Raycast style) -->
+        <div class="bg-white dark:bg-slate-900/95 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-3 sm:p-4 shadow-sm flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div class="relative flex-1">
+            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔍</span>
+            <input
+              id="conceptSearch"
+              type="text"
+              value="${escapeHtml(state.searchQuery)}"
+              placeholder="개념명, 단원/주차, 키워드 태그 검색..."
+              class="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div class="flex items-center gap-1 p-1 rounded-xl bg-slate-100/80 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800 shrink-0">
+            <button type="button" data-catalog-filter="all" class="${filterBtnCls('all')}">전체 (${subj.concepts.length})</button>
+            <button type="button" data-catalog-filter="pending" class="${filterBtnCls('pending')}">미완료</button>
+            <button type="button" data-catalog-filter="mastered" class="${filterBtnCls('mastered')}">마스터</button>
+          </div>
+        </div>
+
+        <!-- Grouped Concept Grid -->
+        <div class="space-y-7 pb-8">
+          ${
+            groupsHtml ||
+            `<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-10 text-center text-sm text-slate-400">
+              조건에 맞는 개념이 없습니다. 검색어나 필터를 초기화해 보세요.
+            </div>`
+          }
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ========================
+// 3. 2-PANE LEARNING WORKSPACE VIEW (Center + Right Panes)
 // ========================
 function renderQuestionCard(q, typeLabel, badgeColor) {
   const solved = state.solvedQuestions[q.id];
   const strikes = state.strikethroughs[q.id] || [];
   const isMulti = q.qType === 'multi' && Array.isArray(q.answerIndices);
-  const isShort = q.qType === 'short' || (!q.choices || q.choices.length === 0);
+  const isShort = q.qType === 'short' || !q.choices || q.choices.length === 0;
 
   let bodyHtml = '';
 
   if (isShort) {
-    const revealed = !!state.shortRevealed?.[q.id] || !!solved;
+    const revealed = !!state.shortRevealed[q.id] || !!solved;
+    const ansText = q.shortAnswer || '해설 참조';
     bodyHtml = `
-      <div class="space-y-3 mb-3">
+      <div class="space-y-2.5">
         ${
           !revealed
-            ? `<button data-short-reveal="${q.id}" class="w-full py-2.5 px-4 rounded-xl bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-300 text-sm font-semibold border border-blue-200 dark:border-blue-800 transition">
-                모범 답안 확인하기
-               </button>`
-            : `<div class="p-3.5 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
-                 <div class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-1">모범 답안</div>
-                 <div class="text-sm font-bold text-slate-900 dark:text-white">${escapeHtml(q.shortAnswer || '해설 참고')}</div>
-               </div>
-               ${
-                 !solved
-                   ? `<div class="flex gap-2">
-                        <button data-short-grade="${q.id}" data-grade="ok" class="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition">✓ 맞았음</button>
-                        <button data-short-grade="${q.id}" data-grade="no" class="flex-1 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition">✕ 틀렸음</button>
-                      </div>`
-                   : ''
-               }`
+            ? `<button data-short-reveal="${q.id}" class="w-full py-2.5 px-4 rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50/70 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-xs font-bold hover:bg-blue-100 dark:hover:bg-blue-900/50 transition">
+                모범 답안 확인하기 (주관식/단답형)
+              </button>`
+            : `<div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
+                <div class="text-[11px] font-bold text-emerald-700 dark:text-emerald-300 mb-1">모범 답안</div>
+                <div class="text-xs font-semibold text-slate-800 dark:text-slate-100 leading-relaxed whitespace-pre-line">${escapeHtml(ansText)}</div>
+              </div>`
+        }
+        ${
+          revealed && !solved
+            ? `<div class="flex items-center gap-2">
+                <button data-short-grade="${q.id}" data-grade-correct="true" class="flex-1 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold transition">✓ 맞았음</button>
+                <button data-short-grade="${q.id}" data-grade-correct="false" class="flex-1 py-2 rounded-lg bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold transition">✕ 다시 보기</button>
+              </div>`
+            : ''
         }
       </div>
     `;
   } else if (isMulti) {
-    const picked = state.multiSelections?.[q.id] || [];
+    const selectedArr = solved ? solved.selectedIndices || [] : state.multiSelections[q.id] || [];
+    const expectedArr = q.answerIndices || [];
     const choicesHtml = q.choices
-      .map((choice, idx) => {
-        const isPicked = solved ? (solved.selectedIndices || []).includes(idx) : picked.includes(idx);
-        const isCorrectChoice = q.answerIndices.includes(idx);
+      .map((ch, idx) => {
+        const isSel = selectedArr.includes(idx);
+        const isAnswer = expectedArr.includes(idx);
         const isStruck = strikes.includes(idx);
 
         let btnClass =
-          'border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 bg-white dark:bg-slate-900';
+          'border-slate-200 dark:border-slate-700 hover:border-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-950/30';
         if (solved) {
-          if (isCorrectChoice) {
-            btnClass = 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200';
-          } else if (isPicked && !isCorrectChoice) {
-            btnClass = 'border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200';
+          if (isAnswer) {
+            btnClass =
+              'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-900 dark:text-emerald-200 font-semibold';
+          } else if (isSel && !isAnswer) {
+            btnClass =
+              'border-rose-500 bg-rose-50 dark:bg-rose-950/50 text-rose-900 dark:text-rose-200';
           } else {
-            btnClass = 'border-slate-200 dark:border-slate-800 opacity-65';
+            btnClass = 'border-slate-200 dark:border-slate-800 opacity-60';
           }
-        } else if (isPicked) {
-          btnClass = 'border-blue-500 bg-blue-50 dark:bg-blue-950/40 text-blue-900 dark:text-blue-200 font-semibold';
+        } else if (isSel) {
+          btnClass =
+            'border-blue-500 bg-blue-50/70 dark:bg-blue-950/40 text-blue-900 dark:text-blue-200 font-semibold';
         }
 
         return `
@@ -340,125 +552,100 @@ function renderQuestionCard(q, typeLabel, badgeColor) {
             <button
               data-multi-toggle="${q.id}"
               data-choice-idx="${idx}"
-              class="flex-1 text-left px-3.5 py-2.5 rounded-xl border text-sm transition flex items-start gap-2.5 ${btnClass}"
+              class="flex-1 text-left px-3 py-2 rounded-xl border text-xs leading-relaxed transition flex items-start gap-2.5 ${btnClass} ${isStruck && !solved ? 'choice-strikethrough' : ''}"
             >
-              <span class="w-5 h-5 rounded-md border border-current flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
-                ${isPicked ? '✓' : idx + 1}
-              </span>
-              <span class="${isStruck ? 'choice-strikethrough' : ''}">${escapeHtml(choice)}</span>
+              <span class="w-5 h-5 rounded-md border border-current/25 flex items-center justify-center text-[11px] font-bold shrink-0 mt-0.5">${isSel ? '✓' : idx + 1}</span>
+              <span>${escapeHtml(ch)}</span>
             </button>
-            <button
-              data-strike-q="${q.id}"
-              data-strike-idx="${idx}"
-              title="보기 취소선 (UWorld 스타일 소거법)"
-              class="p-2 rounded-lg text-xs text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
-            >
-              ✕
-            </button>
+            ${
+              !solved
+                ? `<button data-strike-q="${q.id}" data-strike-idx="${idx}" title="소거선 긋기" class="px-1.5 py-2 text-slate-400 hover:text-rose-500 text-xs">✕</button>`
+                : ''
+            }
           </div>
         `;
       })
       .join('');
 
     bodyHtml = `
-      <div class="space-y-2 mb-3">
-        ${choicesHtml}
-        ${
-          !solved
-            ? `<button data-multi-submit="${q.id}" class="w-full mt-2 py-2 rounded-xl bg-slate-900 dark:bg-blue-600 hover:bg-blue-600 text-white text-xs font-bold transition">
-                 복수 정답 제출 (${picked.length}개 선택)
-               </button>`
-            : ''
-        }
-      </div>
+      <div class="space-y-1.5">${choicesHtml}</div>
+      ${
+        !solved
+          ? `<button data-multi-submit="${q.id}" class="mt-2.5 w-full py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition disabled:opacity-40" ${
+              selectedArr.length === 0 ? 'disabled' : ''
+            }>복수 정답 제출하기 (${selectedArr.length}개 선택)</button>`
+          : ''
+      }
     `;
   } else {
+    const isOx = q.qType === 'ox';
     const choicesHtml = q.choices
-      .map((choice, idx) => {
-        const isSelected = solved && solved.selectedIdx === idx;
-        const isCorrectChoice = idx === q.answerIndex;
+      .map((ch, idx) => {
+        const isSelected = solved?.selectedIdx === idx;
+        const isAnswer = q.answerIndex === idx;
         const isStruck = strikes.includes(idx);
 
         let btnClass =
-          'border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 bg-white dark:bg-slate-900';
+          'border-slate-200 dark:border-slate-700 hover:border-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-950/30';
         if (solved) {
-          if (isCorrectChoice) {
-            btnClass = 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200';
-          } else if (isSelected && !isCorrectChoice) {
-            btnClass = 'border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200';
+          if (isAnswer) {
+            btnClass =
+              'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-900 dark:text-emerald-200 font-semibold';
+          } else if (isSelected && !isAnswer) {
+            btnClass =
+              'border-rose-500 bg-rose-50 dark:bg-rose-950/50 text-rose-900 dark:text-rose-200';
           } else {
-            btnClass = 'border-slate-200 dark:border-slate-800 opacity-65';
+            btnClass = 'border-slate-200 dark:border-slate-800 opacity-60';
           }
         }
+
+        const badgeLabel = isOx ? (idx === 0 ? 'O' : 'X') : String(idx + 1);
 
         return `
           <div class="flex items-center gap-1.5">
             <button
               data-answer-q="${q.id}"
               data-choice-idx="${idx}"
-              class="flex-1 text-left px-3.5 py-2.5 rounded-xl border text-sm transition flex items-start gap-2.5 ${btnClass}"
+              class="flex-1 text-left px-3 py-2 rounded-xl border text-xs leading-relaxed transition flex items-start gap-2.5 ${btnClass} ${isStruck && !solved ? 'choice-strikethrough' : ''}"
             >
-              <span class="w-5 h-5 rounded-full border border-current flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
-                ${idx + 1}
-              </span>
-              <span class="${isStruck ? 'choice-strikethrough' : ''}">${escapeHtml(choice)}</span>
+              <span class="w-5 h-5 rounded-full border border-current/25 flex items-center justify-center text-[11px] font-bold shrink-0 mt-0.5">${badgeLabel}</span>
+              <span>${escapeHtml(ch)}</span>
             </button>
-            <button
-              data-strike-q="${q.id}"
-              data-strike-idx="${idx}"
-              title="보기 취소선 (UWorld 스타일 소거법)"
-              class="p-2 rounded-lg text-xs text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
-            >
-              ✕
-            </button>
+            ${
+              !solved && !isOx
+                ? `<button data-strike-q="${q.id}" data-strike-idx="${idx}" title="소거선 긋기" class="px-1.5 py-2 text-slate-400 hover:text-rose-500 text-xs">✕</button>`
+                : ''
+            }
           </div>
         `;
       })
       .join('');
-
-    bodyHtml = `<div class="space-y-2 mb-3">${choicesHtml}</div>`;
+    bodyHtml = `<div class="${isOx ? 'grid grid-cols-2 gap-2' : 'space-y-1.5'}">${choicesHtml}</div>`;
   }
 
-  const answerText = isShort
-    ? escapeHtml(q.shortAnswer || '')
-    : isMulti
-    ? q.answerIndices.map((i) => `${i + 1}번`).join(', ')
-    : `${q.answerIndex + 1}번`;
-
   return `
-    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-sm">
-      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-        <div class="flex items-center gap-1.5">
-          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold ${badgeColor}">
-            ${escapeHtml(typeLabel)}
-          </span>
-          ${isMulti ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300">복수정답</span>' : ''}
-          ${isShort ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300">단답형</span>' : ''}
-        </div>
-        <button
-          data-jump-page="${q.pdfRefPage}"
-          class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-[11px] font-semibold hover:bg-blue-100 transition"
-          title="강의자료 해당 페이지로 이동"
-        >
-          📄 p.${q.pdfRefPage} 근거 보기 ↗
+    <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 shadow-xs">
+      <div class="flex items-center justify-between gap-2 mb-2.5">
+        <span class="px-2 py-0.5 rounded-md text-[11px] font-bold ${badgeColor}">${escapeHtml(typeLabel)}</span>
+        <button data-jump-page="${q.pdfRefPage}" class="text-[11px] font-semibold text-blue-600 dark:text-blue-400 hover:underline tabular-nums">
+          📄 PDF p.${q.pdfRefPage} 보기
         </button>
       </div>
-
-      <p class="text-sm font-medium leading-relaxed mb-4 whitespace-pre-line">${escapeHtml(q.stem)}</p>
-
+      <p class="text-sm font-semibold leading-relaxed mb-3 whitespace-pre-line">${escapeHtml(q.stem)}</p>
       ${bodyHtml}
-
       ${
         solved
           ? `
-        <div class="mt-4 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-xs leading-relaxed">
-          <div class="flex items-center justify-between mb-1.5">
-            <span class="font-bold ${solved.isCorrect ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}">
-              ${solved.isCorrect ? '✅ 정답입니다!' : `❌ 오답입니다 (정답: ${answerText})`}
-            </span>
-            <button data-reset-q="${q.id}" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 underline">다시 풀기</button>
+        <div class="mt-3 p-3 rounded-xl text-xs leading-relaxed ${
+          solved.isCorrect
+            ? 'bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800'
+            : 'bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800'
+        }">
+          <div class="flex items-center justify-between font-bold mb-1 ${solved.isCorrect ? 'text-emerald-700 dark:text-emerald-300' : 'text-rose-700 dark:text-rose-300'}">
+            <span>${solved.isCorrect ? '✓ 정답입니다!' : '✕ 오답 / 복습 필요'}</span>
+            <button data-reset-q="${q.id}" class="text-[11px] underline font-medium">다시 풀기</button>
           </div>
-          <p class="text-slate-700 dark:text-slate-300">${escapeHtml(q.rationale)}</p>
+          <p class="text-slate-700 dark:text-slate-300 whitespace-pre-line">${escapeHtml(q.rationale)}</p>
         </div>
       `
           : ''
@@ -470,57 +657,8 @@ function renderQuestionCard(q, typeLabel, badgeColor) {
 function renderWorkspace() {
   const subj = getCurrentSubject();
   const concept = getCurrentConcept();
+  const conceptIdx = subj.concepts.findIndex((c) => c.id === concept.id);
   const isMastered = !!state.masteredConcepts[concept.id];
-
-  const filteredConcepts = subj.concepts.filter((c) => {
-    if (!state.searchQuery.trim()) return true;
-    const q = state.searchQuery.toLowerCase();
-    return (
-      c.title.toLowerCase().includes(q) ||
-      c.chapter.toLowerCase().includes(q) ||
-      c.tags.some((t) => t.toLowerCase().includes(q))
-    );
-  });
-
-  const conceptListHtml = filteredConcepts
-    .map((c) => {
-      const active = c.id === concept.id;
-      const mastered = !!state.masteredConcepts[c.id];
-      const pageLabel =
-        c.pdfPages.length > 1
-          ? `p.${c.pdfPages[0]}-${c.pdfPages[c.pdfPages.length - 1]}`
-          : `p.${c.pdfPages[0]}`;
-
-      return `
-        <button
-          data-select-concept="${c.id}"
-          class="w-full text-left p-3 rounded-xl border transition mb-2 ${
-            active
-              ? 'border-blue-500 bg-blue-50/70 dark:bg-blue-950/40 shadow-sm'
-              : 'border-transparent hover:bg-slate-100 dark:hover:bg-slate-800/70'
-          }"
-        >
-          <div class="flex items-center justify-between gap-2 mb-1">
-            <span class="text-[11px] font-medium text-slate-500 dark:text-slate-400">${escapeHtml(c.chapter)}</span>
-            <span class="px-1.5 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-[10px] font-bold text-slate-700 dark:text-slate-300">
-              ${pageLabel}
-            </span>
-          </div>
-          <div class="flex items-start gap-2">
-            <span class="mt-1 w-2 h-2 rounded-full shrink-0 ${mastered ? 'bg-emerald-500' : 'bg-amber-400'}"></span>
-            <span class="text-sm font-semibold leading-snug ${active ? 'text-blue-700 dark:text-blue-300' : ''}">
-              ${escapeHtml(c.title)}
-            </span>
-          </div>
-          <div class="flex items-center gap-2 mt-2 pl-4 text-[11px] text-slate-500 dark:text-slate-400">
-            <span>기출 ${c.pastQuestions.length}</span>
-            <span>·</span>
-            <span>AI연습 ${c.aiQuestions.length}</span>
-          </div>
-        </button>
-      `;
-    })
-    .join('');
 
   const docInfo = getPdfDocInfo(subj, concept);
   const totalDocPages = docInfo ? docInfo.totalPages : subj.totalPages;
@@ -532,7 +670,7 @@ function renderWorkspace() {
       return `
         <button
           data-jump-page="${p}"
-          class="px-2.5 py-1 rounded-lg text-xs font-bold transition ${
+          class="px-2.5 py-1 rounded-lg text-xs font-bold transition tabular-nums ${
             active
               ? 'bg-blue-600 text-white shadow-sm'
               : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
@@ -547,10 +685,15 @@ function renderWorkspace() {
   const pdfViewerHtml = docInfo
     ? `
       <div class="space-y-3">
-        <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-50 dark:bg-slate-950/60 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800">
-          <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 truncate max-w-[200px] sm:max-w-xs" title="${escapeHtml(docInfo.label)}">
-            📑 ${escapeHtml(docInfo.label)}
-          </span>
+        <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-50 dark:bg-slate-950/70 px-3 py-2 rounded-xl border border-slate-200/80 dark:border-slate-800">
+          <div class="flex items-center gap-2 min-w-0">
+            <span class="text-xs font-semibold text-slate-700 dark:text-slate-300 truncate max-w-[180px] sm:max-w-xs" title="${escapeHtml(docInfo.label)}">
+              📑 ${escapeHtml(docInfo.label)}
+            </span>
+            <span class="hidden sm:inline-flex items-center gap-1 text-[10px] text-slate-400">
+              <span class="kbd-key">←</span><span class="kbd-key">→</span>
+            </span>
+          </div>
           <div class="flex items-center gap-1.5">
             <button
               type="button"
@@ -600,64 +743,74 @@ function renderWorkspace() {
           renderQuestionCard(q, q.difficulty || 'AI 연습문제', 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300')
         );
 
-  const mp = state.mobilePane || 'center';
-  const leftVis = mp === 'left' ? 'flex' : 'hidden lg:flex';
+  const mp = state.mobilePane === 'right' ? 'right' : 'center';
   const centerVis = mp === 'center' ? 'block' : 'hidden lg:block';
   const rightVis = mp === 'right' ? 'block' : 'hidden lg:block';
   const tabBtnCls = (pane) =>
     mp === pane
-      ? 'flex-1 py-2 px-2 text-xs font-bold rounded-lg bg-blue-600 text-white shadow-sm transition'
+      ? 'flex-1 py-2 px-2 text-xs font-bold rounded-lg bg-slate-900 dark:bg-blue-600 text-white shadow-sm transition'
       : 'flex-1 py-2 px-2 text-xs font-semibold rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition';
 
   return `
-    <div class="lg:hidden sticky top-14 z-20 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-200 dark:border-slate-800 px-3 py-2 flex items-center gap-1.5">
-      <button type="button" data-mobile-pane="left" class="${tabBtnCls('left')}">📚 목차/개념</button>
-      <button type="button" data-mobile-pane="center" class="${tabBtnCls('center')}">📖 개념 요약·PDF</button>
-      <button type="button" data-mobile-pane="right" class="${tabBtnCls('right')}">📝 기출 (${concept.pastQuestions.length})</button>
+    <!-- Workspace Sub-Header (Linear-style breadcrumb + quick concept stepper) -->
+    <div class="border-b border-slate-200/80 dark:border-slate-800/80 bg-white/90 dark:bg-slate-950/90 backdrop-blur px-4 lg:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2 min-w-0">
+        <button id="backToCatalogBtn" class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold transition shrink-0">
+          ← 개념 목차
+        </button>
+        <span class="text-slate-300 dark:text-slate-700">/</span>
+        <span class="px-2 py-0.5 rounded-md text-[11px] font-bold shrink-0" style="background-color: ${subj.color}15; color: ${subj.color}">
+          ${escapeHtml(subj.name)}
+        </span>
+        <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 truncate max-w-[180px] sm:max-w-md">
+          ${escapeHtml(concept.title)}
+        </span>
+      </div>
+      <div class="flex items-center gap-1.5 shrink-0">
+        <button
+          id="prevConceptBtn"
+          ${conceptIdx <= 0 ? 'disabled' : ''}
+          class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 transition"
+        >
+          ◀ 이전 개념
+        </button>
+        <span class="text-[11px] font-semibold text-slate-400 tabular-nums px-1">${conceptIdx + 1} / ${subj.concepts.length}</span>
+        <button
+          id="nextConceptBtn"
+          ${conceptIdx >= subj.concepts.length - 1 ? 'disabled' : ''}
+          class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 transition"
+        >
+          다음 개념 ▶
+        </button>
+      </div>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-12 lg:h-[calc(100dvh-3.5rem)]">
-      <!-- LEFT PANE: Subject & Concept Tree -->
-      <aside class="${leftVis} lg:col-span-3 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex-col lg:h-full overflow-hidden">
-        <div class="p-3.5 border-b border-slate-200 dark:border-slate-800 space-y-2.5">
-          <select id="subjectSelect" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-bold">
-            ${state.subjects
-              .map(
-                (s) =>
-                  `<option value="${s.id}" ${s.id === subj.id ? 'selected' : ''}>${escapeHtml(s.name)} (${s.concepts.length})</option>`
-              )
-              .join('')}
-          </select>
-          <input
-            id="conceptSearch"
-            type="text"
-            value="${escapeHtml(state.searchQuery)}"
-            placeholder="개념, 단원, 태그 검색..."
-            class="w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-        <div id="workspaceLeftScroll" class="flex-1 overflow-y-auto p-2.5">
-          ${conceptListHtml || '<p class="text-xs text-slate-400 p-4 text-center">검색 결과가 없습니다.</p>'}
-        </div>
-      </aside>
 
-      <!-- CENTER PANE: AI Concept Summary + PDF Page Sync Viewer -->
-      <section id="workspaceCenterScroll" class="${centerVis} lg:col-span-5 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 overflow-y-auto p-4 sm:p-5 space-y-5 bg-slate-50/50 dark:bg-slate-950">
-        <!-- Concept Header -->
-        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm">
-          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-            <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">${escapeHtml(concept.chapter)}</span>
+    <!-- Mobile 2-Pane Switcher (<lg) -->
+    <div class="lg:hidden sticky top-14 z-20 bg-white/95 dark:bg-slate-950/95 backdrop-blur border-b border-slate-200/80 dark:border-slate-800 px-3 py-2 flex items-center gap-1.5">
+      <button type="button" data-mobile-pane="center" class="${tabBtnCls('center')}">📖 개념 요약 · PDF</button>
+      <button type="button" data-mobile-pane="right" class="${tabBtnCls('right')}">📝 기출 풀이 (${concept.pastQuestions.length})</button>
+    </div>
+
+    <!-- 2-Pane Split Layout (Center: Concept+PDF / Right: Questions) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 lg:h-[calc(100dvh-6.35rem)]">
+      <!-- PANE 1 (Former Center): Concept Summary + Original PDF Slide Viewer -->
+      <section id="workspaceCenterScroll" class="${centerVis} lg:col-span-7 border-b lg:border-b-0 lg:border-r border-slate-200/80 dark:border-slate-800 overflow-y-auto p-4 sm:p-6 space-y-5 bg-slate-50/50 dark:bg-slate-950">
+        <!-- Concept Header Card -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 shadow-xs">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+            <span class="text-xs font-bold text-blue-600 dark:text-blue-400">${escapeHtml(concept.chapter)}</span>
             <button
               id="toggleMasterBtn"
               class="px-3 py-1 rounded-full text-xs font-bold border transition ${
                 isMastered
-                  ? 'bg-emerald-500 border-emerald-500 text-white'
+                  ? 'bg-emerald-500 border-emerald-500 text-white shadow-xs'
                   : 'border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-emerald-500'
               }"
             >
               ${isMastered ? '✓ 마스터 완료' : '마스터 체크'}
             </button>
           </div>
-          <h2 class="text-xl font-extrabold mb-3">${escapeHtml(concept.title)}</h2>
+          <h2 class="text-xl font-extrabold tracking-tight mb-3">${escapeHtml(concept.title)}</h2>
           <div class="flex flex-wrap gap-1.5 mb-4">
             ${concept.tags
               .map(
@@ -668,9 +821,9 @@ function renderWorkspace() {
           </div>
 
           <!-- AI Summary -->
-          <div class="p-4 rounded-xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/50 mb-4">
-            <div class="flex items-center gap-1.5 text-xs font-bold text-blue-700 dark:text-blue-300 mb-1.5">
-              <span>✨</span> 강의자료 기반 AI 핵심 요약 <span class="font-normal text-blue-500">(밑줄 용어 클릭 시 팝업)</span>
+          <div class="p-4 rounded-xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/50 mb-4">
+            <div class="flex items-center gap-1.5 text-xs font-bold text-blue-700 dark:text-blue-300 mb-2">
+              <span>✨</span> 강의자료 기반 핵심 요약 <span class="font-normal text-blue-500">(밑줄 용어 클릭 시 팝업)</span>
             </div>
             <div class="text-sm leading-relaxed text-slate-700 dark:text-slate-200 space-y-2">
               ${renderWithGlossary(concept.summary, concept.glossary)}
@@ -696,9 +849,9 @@ function renderWorkspace() {
         </div>
 
         <!-- PDF Original Slide Viewer Card -->
-        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-sm">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xs">
           <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-            <span class="text-sm font-bold">📄 강의자료 PDF 원문</span>
+            <span class="text-sm font-extrabold tracking-tight">📄 강의자료 PDF 원문</span>
             <span class="text-[11px] font-medium text-slate-500 dark:text-slate-400">개념 해당 페이지 바로가기</span>
           </div>
           <div class="flex flex-wrap items-center gap-1 mb-3">${pageButtonsHtml}</div>
@@ -706,14 +859,14 @@ function renderWorkspace() {
         </div>
       </section>
 
-      <!-- RIGHT PANE: Linked Past Questions & AI Practice Questions -->
-      <section id="workspaceRightScroll" class="${rightVis} lg:col-span-4 overflow-y-auto p-4 sm:p-5 bg-slate-100/60 dark:bg-slate-900/40">
-        <div class="flex items-center gap-2 p-1 rounded-xl bg-slate-200/80 dark:bg-slate-800 mb-4">
+      <!-- PANE 2 (Former Right): Linked Past Questions & AI Practice Questions -->
+      <section id="workspaceRightScroll" class="${rightVis} lg:col-span-5 overflow-y-auto p-4 sm:p-6 bg-slate-100/70 dark:bg-slate-900/40">
+        <div class="flex items-center gap-1.5 p-1 rounded-xl bg-slate-200/80 dark:bg-slate-800/90 mb-4">
           <button
             data-right-tab="past"
             class="flex-1 py-2 rounded-lg text-xs font-bold transition ${
               state.rightTab === 'past'
-                ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm'
+                ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs'
                 : 'text-slate-600 dark:text-slate-400'
             }"
           >
@@ -723,16 +876,16 @@ function renderWorkspace() {
             data-right-tab="ai"
             class="flex-1 py-2 rounded-lg text-xs font-bold transition ${
               state.rightTab === 'ai'
-                ? 'bg-white dark:bg-slate-900 text-emerald-700 dark:text-emerald-400 shadow-sm'
+                ? 'bg-white dark:bg-slate-900 text-emerald-700 dark:text-emerald-400 shadow-xs'
                 : 'text-slate-600 dark:text-slate-400'
             }"
           >
-            AI 생성 연습문제 (${concept.aiQuestions.length})
+            AI 변형 연습 (${concept.aiQuestions.length})
           </button>
         </div>
 
-        <div class="space-y-4">
-          ${questionsToShow.join('') || '<p class="text-sm text-slate-400 text-center py-8">등록된 문제가 없습니다.</p>'}
+        <div class="space-y-3.5">
+          ${questionsToShow.join('') || '<p class="text-xs text-slate-400 p-6 text-center">등록된 문항이 없습니다.</p>'}
         </div>
       </section>
     </div>
@@ -743,7 +896,6 @@ function renderWorkspace() {
 // RENDER & EVENT BINDING
 // ========================
 function render(options = {}) {
-  const prevLeftTop = document.getElementById('workspaceLeftScroll')?.scrollTop || 0;
   const prevCenterTop = document.getElementById('workspaceCenterScroll')?.scrollTop || 0;
   const prevRightTop = document.getElementById('workspaceRightScroll')?.scrollTop || 0;
 
@@ -751,27 +903,89 @@ function render(options = {}) {
   updateNavUI();
 
   const root = document.getElementById('appRoot');
-  if (state.view === 'workspace') root.innerHTML = renderWorkspace();
+  if (state.view === 'catalog') root.innerHTML = renderCatalog();
+  else if (state.view === 'workspace') root.innerHTML = renderWorkspace();
   else root.innerHTML = renderDashboard();
 
   bindEvents();
 
   if (state.view === 'workspace') {
-    const leftEl = document.getElementById('workspaceLeftScroll');
     const centerEl = document.getElementById('workspaceCenterScroll');
     const rightEl = document.getElementById('workspaceRightScroll');
-    if (leftEl) leftEl.scrollTop = options.resetLeftScroll ? 0 : prevLeftTop;
     if (centerEl) centerEl.scrollTop = options.resetConceptScroll ? 0 : prevCenterTop;
     if (rightEl) rightEl.scrollTop = options.resetConceptScroll ? 0 : prevRightTop;
   }
 }
 
+function setActivePdfPage(targetPage) {
+  const docInfo = getPdfDocInfo(getCurrentSubject(), getCurrentConcept());
+  if (!docInfo) return;
+  const nextPage = Math.max(1, Math.min(Number(targetPage) || 1, docInfo.totalPages));
+  state.activePdfPage = nextPage;
+  saveState();
+
+  const img = document.getElementById('pdfSlideImg');
+  const frame = document.getElementById('pdfSlideFrame');
+  if (img && frame) {
+    const prevHeight = frame.offsetHeight;
+    if (prevHeight > 0) frame.style.minHeight = `${prevHeight}px`;
+    img.onload = () => {
+      frame.style.minHeight = '';
+    };
+    img.src = `./slides/${docInfo.docId}/p${nextPage}.webp`;
+    img.alt = `${docInfo.label} ${nextPage}페이지`;
+    if (nextPage < docInfo.totalPages) {
+      const preNext = new Image();
+      preNext.src = `./slides/${docInfo.docId}/p${nextPage + 1}.webp`;
+    }
+    if (nextPage > 1) {
+      const prePrev = new Image();
+      prePrev.src = `./slides/${docInfo.docId}/p${nextPage - 1}.webp`;
+    }
+  } else {
+    render();
+    return;
+  }
+
+  const indicator = document.getElementById('pdfPageIndicator');
+  if (indicator) indicator.textContent = `p.${nextPage} / ${docInfo.totalPages}`;
+
+  const prevBtn = document.querySelector('[data-pdf-prev]');
+  if (prevBtn) prevBtn.disabled = nextPage <= 1;
+
+  const nextBtn = document.querySelector('[data-pdf-next]');
+  if (nextBtn) nextBtn.disabled = nextPage >= docInfo.totalPages;
+
+  const activeCls = 'px-2.5 py-1 rounded-lg text-xs font-bold transition tabular-nums bg-blue-600 text-white shadow-sm';
+  const inactiveCls = 'px-2.5 py-1 rounded-lg text-xs font-bold transition tabular-nums bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700';
+  document.querySelectorAll('[data-jump-page]').forEach((btn) => {
+    btn.className = Number(btn.dataset.jumpPage) === nextPage ? activeCls : inactiveCls;
+  });
+}
+
+function stepPdfPage(delta) {
+  const docInfo = getPdfDocInfo(getCurrentSubject(), getCurrentConcept());
+  if (!docInfo) return;
+  const cur = Math.max(1, Math.min(Number(state.activePdfPage) || 1, docInfo.totalPages));
+  const next = cur + delta;
+  if (next >= 1 && next <= docInfo.totalPages) {
+    setActivePdfPage(next);
+  }
+}
+
 function bindEvents() {
   // Dashboard events
+  document.getElementById('goCatalogBtn')?.addEventListener('click', () => {
+    state.view = 'catalog';
+    saveState();
+    render();
+    window.scrollTo({ top: 0 });
+  });
   document.getElementById('goWorkspaceBtn')?.addEventListener('click', () => {
     state.view = 'workspace';
     saveState();
-    render();
+    render({ resetConceptScroll: true });
+    window.scrollTo({ top: 0 });
   });
   document.querySelectorAll('[data-open-subject]').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -781,23 +995,34 @@ function bindEvents() {
         state.selectedSubjectId = subj.id;
         state.selectedConceptId = subj.concepts[0].id;
         state.activePdfPage = subj.concepts[0].pdfPages[0];
-        state.view = 'workspace';
+        state.view = 'catalog';
+        saveState();
+        render();
+        window.scrollTo({ top: 0 });
+      }
+    });
+  });
+
+  // Catalog events
+  document.querySelectorAll('[data-catalog-subject]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const subj = state.subjects.find((s) => s.id === btn.dataset.catalogSubject);
+      if (subj) {
+        state.selectedSubjectId = subj.id;
+        state.selectedConceptId = subj.concepts[0].id;
+        state.activePdfPage = subj.concepts[0].pdfPages[0];
         saveState();
         render();
       }
     });
   });
 
-  // Workspace events
-  document.getElementById('subjectSelect')?.addEventListener('change', (e) => {
-    const subj = state.subjects.find((s) => s.id === e.target.value);
-    if (subj) {
-      state.selectedSubjectId = subj.id;
-      state.selectedConceptId = subj.concepts[0].id;
-      state.activePdfPage = subj.concepts[0].pdfPages[0];
+  document.querySelectorAll('[data-catalog-filter]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.catalogFilter = btn.dataset.catalogFilter;
       saveState();
-      render({ resetLeftScroll: true, resetConceptScroll: true });
-    }
+      render();
+    });
   });
 
   document.getElementById('conceptSearch')?.addEventListener('input', (e) => {
@@ -810,17 +1035,6 @@ function bindEvents() {
     }
   });
 
-  document.querySelectorAll('[data-mobile-pane]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      state.mobilePane = btn.dataset.mobilePane;
-      saveState();
-      render();
-      if (window.innerWidth < 1024) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
-  });
-
   document.querySelectorAll('[data-select-concept]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const subj = getCurrentSubject();
@@ -828,14 +1042,54 @@ function bindEvents() {
       if (c) {
         state.selectedConceptId = c.id;
         state.activePdfPage = c.pdfPages[0];
-        if (window.innerWidth < 1024) {
-          state.mobilePane = 'center';
-        }
+        state.mobilePane = 'center';
+        state.view = 'workspace';
         saveState();
         render({ resetConceptScroll: true });
-        if (window.innerWidth < 1024) {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        window.scrollTo({ top: 0 });
+      }
+    });
+  });
+
+  // Workspace navigation & controls
+  document.getElementById('backToCatalogBtn')?.addEventListener('click', () => {
+    state.view = 'catalog';
+    saveState();
+    render();
+    window.scrollTo({ top: 0 });
+  });
+
+  document.getElementById('prevConceptBtn')?.addEventListener('click', () => {
+    const subj = getCurrentSubject();
+    const idx = subj.concepts.findIndex((c) => c.id === state.selectedConceptId);
+    if (idx > 0) {
+      const prev = subj.concepts[idx - 1];
+      state.selectedConceptId = prev.id;
+      state.activePdfPage = prev.pdfPages[0];
+      saveState();
+      render({ resetConceptScroll: true });
+    }
+  });
+
+  document.getElementById('nextConceptBtn')?.addEventListener('click', () => {
+    const subj = getCurrentSubject();
+    const idx = subj.concepts.findIndex((c) => c.id === state.selectedConceptId);
+    if (idx >= 0 && idx < subj.concepts.length - 1) {
+      const next = subj.concepts[idx + 1];
+      state.selectedConceptId = next.id;
+      state.activePdfPage = next.pdfPages[0];
+      saveState();
+      render({ resetConceptScroll: true });
+    }
+  });
+
+  document.querySelectorAll('[data-mobile-pane]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.mobilePane = btn.dataset.mobilePane;
+      saveState();
+      render();
+      if (window.innerWidth < 1024) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
   });
@@ -975,12 +1229,13 @@ function bindEvents() {
   });
 }
 
-// Global header events
+// Global header & keyboard events
 document.querySelectorAll('.nav-btn, .nav-btn-m').forEach((btn) => {
   btn.addEventListener('click', () => {
     state.view = btn.dataset.view;
     saveState();
     render();
+    window.scrollTo({ top: 0 });
   });
 });
 
@@ -988,6 +1243,7 @@ document.getElementById('brandBtn').addEventListener('click', () => {
   state.view = 'dashboard';
   saveState();
   render();
+  window.scrollTo({ top: 0 });
 });
 
 document.getElementById('themeToggle').addEventListener('click', () => {
@@ -1004,62 +1260,6 @@ document.getElementById('glossaryModal').addEventListener('click', (e) => {
     document.getElementById('glossaryModal').classList.add('hidden');
   }
 });
-
-function setActivePdfPage(targetPage) {
-  const docInfo = getPdfDocInfo(getCurrentSubject(), getCurrentConcept());
-  if (!docInfo) return;
-  const nextPage = Math.max(1, Math.min(Number(targetPage) || 1, docInfo.totalPages));
-  state.activePdfPage = nextPage;
-  saveState();
-
-  const img = document.getElementById('pdfSlideImg');
-  const frame = document.getElementById('pdfSlideFrame');
-  if (img && frame) {
-    const prevHeight = frame.offsetHeight;
-    if (prevHeight > 0) frame.style.minHeight = `${prevHeight}px`;
-    img.onload = () => {
-      frame.style.minHeight = '';
-    };
-    img.src = `./slides/${docInfo.docId}/p${nextPage}.webp`;
-    img.alt = `${docInfo.label} ${nextPage}페이지`;
-    if (nextPage < docInfo.totalPages) {
-      const preNext = new Image();
-      preNext.src = `./slides/${docInfo.docId}/p${nextPage + 1}.webp`;
-    }
-    if (nextPage > 1) {
-      const prePrev = new Image();
-      prePrev.src = `./slides/${docInfo.docId}/p${nextPage - 1}.webp`;
-    }
-  } else {
-    render();
-    return;
-  }
-
-  const indicator = document.getElementById('pdfPageIndicator');
-  if (indicator) indicator.textContent = `p.${nextPage} / ${docInfo.totalPages}`;
-
-  const prevBtn = document.querySelector('[data-pdf-prev]');
-  if (prevBtn) prevBtn.disabled = nextPage <= 1;
-
-  const nextBtn = document.querySelector('[data-pdf-next]');
-  if (nextBtn) nextBtn.disabled = nextPage >= docInfo.totalPages;
-
-  const activeCls = 'px-2.5 py-1 rounded-lg text-xs font-bold transition bg-blue-600 text-white shadow-sm';
-  const inactiveCls = 'px-2.5 py-1 rounded-lg text-xs font-bold transition bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700';
-  document.querySelectorAll('[data-jump-page]').forEach((btn) => {
-    btn.className = Number(btn.dataset.jumpPage) === nextPage ? activeCls : inactiveCls;
-  });
-}
-
-function stepPdfPage(delta) {
-  const docInfo = getPdfDocInfo(getCurrentSubject(), getCurrentConcept());
-  if (!docInfo) return;
-  const cur = Math.max(1, Math.min(Number(state.activePdfPage) || 1, docInfo.totalPages));
-  const next = cur + delta;
-  if (next >= 1 && next <= docInfo.totalPages) {
-    setActivePdfPage(next);
-  }
-}
 
 document.addEventListener('keydown', (e) => {
   if (state.view !== 'workspace') return;

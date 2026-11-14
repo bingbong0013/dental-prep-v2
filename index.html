@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>DentaSync AI — 치과대학 강의자료 · 핵심개념 · 기출 통합 플랫폼</title>
+  <title>DentaSync AI — 치과대학 기말고사 개념 · PDF 원문 · 기출 통합 플랫폼</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -22,48 +22,50 @@
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased selection:bg-blue-500/20 overflow-x-hidden">
   <!-- Top Navigation -->
-  <header class="sticky top-0 z-40 h-14 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur flex items-center justify-between px-4 lg:px-6">
+  <header class="sticky top-0 z-40 h-14 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/85 dark:bg-slate-950/85 backdrop-blur-md flex items-center justify-between px-4 lg:px-6">
     <div class="flex items-center gap-6">
-      <button id="brandBtn" class="flex items-center gap-2.5 font-bold text-base tracking-tight">
-        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center text-sm shadow-sm">DS</span>
+      <button id="brandBtn" class="flex items-center gap-2.5 font-bold text-base tracking-tight group">
+        <span class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 text-white flex items-center justify-center text-xs font-extrabold shadow-sm shadow-blue-500/20 group-hover:scale-105 transition">DS</span>
         <span>DentaSync <span class="text-blue-600 dark:text-blue-400 font-extrabold">AI</span></span>
       </button>
 
-      <nav class="hidden md:flex items-center gap-1" id="mainNav">
-        <button data-view="dashboard" class="nav-btn px-3 py-1.5 rounded-lg text-sm font-medium transition">대시보드</button>
-        <button data-view="workspace" class="nav-btn px-3 py-1.5 rounded-lg text-sm font-medium transition">통합 학습 (3-Pane)</button>
+      <nav class="hidden md:flex items-center gap-1 p-1 rounded-xl bg-slate-100/80 dark:bg-slate-900/90 border border-slate-200/60 dark:border-slate-800" id="mainNav">
+        <button data-view="dashboard" class="nav-btn px-3 py-1 rounded-lg text-xs font-semibold transition">대시보드</button>
+        <button data-view="catalog" class="nav-btn px-3 py-1 rounded-lg text-xs font-semibold transition">개념 목차</button>
+        <button data-view="workspace" class="nav-btn px-3 py-1 rounded-lg text-xs font-semibold transition">학습 화면 (2-Pane)</button>
       </nav>
     </div>
 
-    <div class="flex items-center gap-3">
-      <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300 text-xs font-semibold" title="연속 학습 문제 수">
+    <div class="flex items-center gap-2.5">
+      <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950/40 border border-amber-200/80 dark:border-amber-800/60 text-amber-700 dark:text-amber-300 text-xs font-semibold tabular-nums" title="누적 해결 문제 수">
         <span>🔥</span>
-        <span id="streakCount">0</span>문제 해결
+        <span id="streakCount">0</span><span>문제 해결</span>
       </div>
-      <button id="themeToggle" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm" title="다크모드 전환">
+      <button id="themeToggle" class="w-8 h-8 flex items-center justify-center rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm transition" title="다크모드 전환">
         🌓
       </button>
     </div>
   </header>
 
   <!-- Mobile Nav -->
-  <div class="md:hidden flex border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-2 py-1.5 gap-1 overflow-x-auto">
-    <button data-view="dashboard" class="nav-btn-m px-3 py-1 rounded-md text-xs font-medium whitespace-nowrap">대시보드</button>
-    <button data-view="workspace" class="nav-btn-m px-3 py-1 rounded-md text-xs font-medium whitespace-nowrap">통합 학습</button>
+  <div class="md:hidden flex border-b border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-950/95 backdrop-blur px-3 py-1.5 gap-1.5 overflow-x-auto">
+    <button data-view="dashboard" class="nav-btn-m flex-1 py-1.5 px-2.5 rounded-lg text-xs font-semibold whitespace-nowrap text-center">대시보드</button>
+    <button data-view="catalog" class="nav-btn-m flex-1 py-1.5 px-2.5 rounded-lg text-xs font-semibold whitespace-nowrap text-center">개념 목차</button>
+    <button data-view="workspace" class="nav-btn-m flex-1 py-1.5 px-2.5 rounded-lg text-xs font-semibold whitespace-nowrap text-center">학습 화면</button>
   </div>
 
   <!-- Main Content Container -->
-  <main id="appRoot" class="min-h-[calc(100vh-3.5rem)]"></main>
+  <main id="appRoot" class="min-h-[calc(100dvh-3.5rem)]"></main>
 
   <!-- AMBOSS-style Glossary Popover Modal -->
-  <div id="glossaryModal" class="hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-[1px] flex items-center justify-center p-4">
-    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl max-w-md w-full p-5 shadow-2xl">
-      <div class="flex items-start justify-between gap-3 mb-2">
+  <div id="glossaryModal" class="hidden fixed inset-0 z-50 bg-slate-950/50 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-5 shadow-2xl">
+      <div class="flex items-start justify-between gap-3 mb-2.5">
         <div class="flex items-center gap-2">
-          <span class="px-2 py-0.5 text-[11px] font-bold rounded bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300">AMBOSS 용어 팝업</span>
+          <span class="px-2 py-0.5 text-[11px] font-bold rounded-md bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/60">핵심 용어</span>
           <h3 id="glossaryTitle" class="font-bold text-base"></h3>
         </div>
-        <button id="closeGlossary" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg leading-none">&times;</button>
+        <button id="closeGlossary" class="w-7 h-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 text-lg leading-none transition">&times;</button>
       </div>
       <p id="glossaryBody" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed"></p>
     </div>

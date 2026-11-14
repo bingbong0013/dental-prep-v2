@@ -1,9 +1,70 @@
-/* Custom scrollbar & UI polish */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.35); border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(148, 163, 184, 0.6); }
-.glossary-term { border-bottom: 1.5px dashed #3b82f6; color: #2563eb; cursor: pointer; font-weight: 600; transition: background-color 0.15s ease; }
-.dark .glossary-term { color: #60a5fa; border-bottom-color: #60a5fa; }
-.glossary-term:hover { background-color: rgba(59, 130, 246, 0.1); border-radius: 3px; }
-.choice-strikethrough { text-decoration: line-through; opacity: 0.45; }
+/* Refined scrollbar & design tokens inspired by Linear, Notion, AMBOSS, UWorld, Vercel */
+body {
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.32);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.58);
+}
+
+.bg-grid-subtle {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.16) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.dark .bg-grid-subtle {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+}
+
+.glossary-term {
+  border-bottom: 1.5px dashed #3b82f6;
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.dark .glossary-term {
+  color: #60a5fa;
+  border-bottom-color: #60a5fa;
+}
+.glossary-term:hover {
+  background-color: rgba(59, 130, 246, 0.12);
+  border-radius: 3px;
+}
+
+.choice-strikethrough {
+  text-decoration: line-through;
+  opacity: 0.45;
+}
+
+.kbd-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.35rem;
+  height: 1.25rem;
+  padding: 0 0.35rem;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(248, 250, 252, 0.9);
+  color: #475569;
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.06);
+}
+.dark .kbd-key {
+  border-color: rgba(71, 85, 105, 0.7);
+  background: rgba(15, 23, 42, 0.9);
+  color: #cbd5e1;
+}
