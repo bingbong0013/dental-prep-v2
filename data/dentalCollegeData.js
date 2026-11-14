@@ -1,2284 +1,18 @@
-// Auto-generated Finals-Only Dataset from dental-college (*-final.json) & uploaded lecture PDFs
-// Total valid final-exam questions: 460 (Chemistry: 244, Cell Signaling: 135, Biology: 81)
+// Finals-Only Dataset (Midterm chapters excluded)
+// Total valid final-exam questions: 365 (subj-chemistry: 149, subj-signal: 135, subj-biology: 81)
 export const DENTAL_COLLEGE_SUBJECTS = [
   {
     "id": "subj-chemistry",
     "name": "화학",
-    "engName": "General Chemistry · 기말고사 (01~14장)",
+    "engName": "General Chemistry · 기말고사 (08~14장)",
     "icon": "⚗️",
     "color": "#6366f1",
-    "pdfName": "08장~14장 수업자료 PDF (총 366p) + 01~07장 누적",
+    "pdfName": "08장~14장 수업자료 PDF (총 366p)",
     "totalPages": 366,
     "concepts": [
       {
-        "id": "chem-01-measure",
-        "chapter": "01장 화학의 기초와 측정",
-        "title": "SI 단위·정확도와 정밀도·유효숫자",
-        "pdfPages": [
-          1,
-          9,
-          10,
-          13,
-          14,
-          15,
-          16,
-          18,
-          24
-        ],
-        "tags": [
-          "01장",
-          "p.1-24",
-          "단위",
-          "SI",
-          "정확도",
-          "정밀도"
-        ],
-        "summary": "<p>화학 측정의 기본인 <strong>SI 기본 단위</strong>, 측정값의 <strong>정확도(참값과의 일치도)</strong>와 <strong>정밀도(반복 측정값의 일치도)</strong>, 그리고 계산 시 <strong>유효숫자</strong> 처리 규칙을 다룹니다.</p>",
-        "keyPoints": [
-          "우발오차 vs 계통오차 구분",
-          "유효숫자: 0이 아닌 숫자 사이의 0은 유효, 앞자리 0은 무효",
-          "SI 기본 단위(kg, m, s, K, mol, A, cd)"
-        ],
-        "glossary": {
-          "정확도 vs 정밀도": "정확도는 참값에 가까운 정도, 정밀도는 반복 측정값끼리 모인 정도이다."
-        },
-        "pdfExcerpts": {},
-        "pastQuestions": [
-          {
-            "id": "chem-final-25-61",
-            "qType": "ox",
-            "source": "25학번 · 61",
-            "ref": "01장 · PDF 9–10쪽",
-            "pdfRefPage": 9,
-            "pdfRefPages": [
-              9,
-              10
-            ],
-            "stem": "칼로리(cal)는 SI 단위이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "에너지의 SI 단위는 줄(J)이다. 칼로리(cal)는 관용적인 에너지 단위로 1 cal=4.184 J이며 SI 기본·유도단위가 아니다."
-          },
-          {
-            "id": "chem-final-25-62",
-            "qType": "ox",
-            "source": "25학번 · 62",
-            "ref": "01장 · PDF 13–16쪽",
-            "pdfRefPage": 13,
-            "pdfRefPages": [
-              13,
-              14,
-              15,
-              16
-            ],
-            "stem": "정확도는 참값과의 일치도이고, 정밀도는 반복 측정값의 일치도이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "정확도는 측정값이 참값에 가까운 정도이고 정밀도는 반복 측정값이 서로 일치하는 정도이다. 정밀도가 높아도 계통오차 때문에 정확하지 않을 수 있다."
-          },
-          {
-            "id": "chem-final-25-63",
-            "qType": "ox",
-            "source": "25학번 · 63",
-            "ref": "01장 · PDF 18–24쪽",
-            "pdfRefPage": 18,
-            "pdfRefPages": [
-              18,
-              19,
-              20,
-              21,
-              22,
-              23,
-              24
-            ],
-            "stem": "0.0006728의 유효숫자는 4개이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "앞의 0들은 소수점 위치만 나타내는 선행 0이다. 0.0006728의 유효숫자는 6·7·2·8 네 개이다."
-          },
-          {
-            "id": "chem-final-24-1",
-            "qType": "ox",
-            "source": "24학번 · 1",
-            "ref": "01장 · PDF 14쪽",
-            "pdfRefPage": 14,
-            "pdfRefPages": [
-              14
-            ],
-            "stem": "우발오차: 알 수 없는 원인으로 발생하는 오차",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "우발오차(우연오차)는 불가측한 요인으로 측정값이 무작위로 흩어지는 오차이다. 반복 평균으로 영향을 줄일 수 있지만 원인이 일정한 계통오차와는 다르다."
-          },
-          {
-            "id": "chem-final-24-2",
-            "qType": "ox",
-            "source": "24학번 · 2",
-            "ref": "01장 · PDF 34쪽",
-            "pdfRefPage": 34,
-            "pdfRefPages": [
-              34
-            ],
-            "stem": "불균일 혼합물=얼음이 들어 있는 아이스티",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "얼음과 액체 차는 서로 다른 상으로 구분된다. 전체 조성이 균일하지 않으므로 불균일 혼합물이다."
-          },
-          {
-            "id": "chem-final-24-4",
-            "qType": "ox",
-            "source": "24학번 · 4",
-            "ref": "01장 · PDF 37–38쪽",
-            "pdfRefPage": 37,
-            "pdfRefPages": [
-              37,
-              38
-            ],
-            "stem": "크로마토그래피: 혼합물의 각 성분의 휘발성의 차이로 분류한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "크로마토그래피는 이동상과 정지상에 대한 성분의 친화도 차이에 따른 이동 속도 차이를 이용한다. 휘발성 차이를 직접 이용하는 대표 분리법은 증류이다."
-          },
-          {
-            "id": "chem-final-24-5",
-            "qType": "ox",
-            "source": "24학번 · 5",
-            "ref": "01장 · PDF 36쪽",
-            "pdfRefPage": 36,
-            "pdfRefPages": [
-              36
-            ],
-            "stem": "증류는 각 구성성분의 물질 확산 속도 차이를 이용한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "증류는 성분들의 끓는점·휘발성 차이를 이용한다. 물질 확산 속도의 차이라는 설명은 크로마토그래피의 이동 차이와 혼동한 것이다."
-          },
-          {
-            "id": "chem-final-23-1",
-            "qType": "ox",
-            "source": "23학번 · 1",
-            "ref": "01장 · PDF 14–15쪽",
-            "pdfRefPage": 14,
-            "pdfRefPages": [
-              14,
-              15
-            ],
-            "stem": "우연오차는 알 수 없는 요인에 의해 발생하며 반복측정에 의해 바로 잡아질 수 있다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "우연오차는 반복 측정값이 평균 주위에 흩어지게 하는 오차이다. 반복 측정과 평균으로 영향을 줄일 수 있지만 원인을 찾아 완전히 바로잡는다는 뜻은 아니다. 따라서 원문의 ‘바로 잡아질 수 있다’는 X이다."
-          },
-          {
-            "id": "chem-final-23-22",
-            "qType": "ox",
-            "source": "23학번 · 22",
-            "ref": "01장 · PDF 9–10쪽",
-            "pdfRefPage": 9,
-            "pdfRefPages": [
-              9,
-              10
-            ],
-            "stem": "측정단위 접두사 deci는 10⁻¹을 뜻한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "SI 접두사 deci(d)는 10⁻¹, 즉 기본단위의 1/10을 뜻한다."
-          },
-          {
-            "id": "chem-final-23-23",
-            "qType": "ox",
-            "source": "23학번 · 23",
-            "ref": "01장 · PDF 13–16쪽",
-            "pdfRefPage": 13,
-            "pdfRefPages": [
-              13,
-              14,
-              15,
-              16
-            ],
-            "stem": "정밀도는 측정값의 표준편차 분포도, 측정의 재현성을 나타낸다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "정밀도는 반복 측정값들이 얼마나 가깝게 모이는지를 나타낸다. 측정값의 분포·표준편차와 관계하며, 참값에 가까운 정도인 정확도와 구별한다."
-          }
-        ],
-        "aiQuestions": []
-      },
-      {
-        "id": "chem-02-atom",
-        "chapter": "02장 원자, 분자 및 이온",
-        "title": "기본 화학 법칙·원자 구조·동위원소·명명법",
-        "pdfPages": [
-          4,
-          7,
-          8,
-          20,
-          21,
-          22
-        ],
-        "tags": [
-          "02장",
-          "p.4-22",
-          "질량보존",
-          "일정성분비",
-          "배수비례",
-          "동위원소"
-        ],
-        "summary": "<p>질량보존·일정성분비·배수비례 법칙과 <strong>원자핵·전자</strong>의 구조, <strong>동위원소(양성자 수 같고 중성자 수 다름)</strong>, 이온화합물 및 분자화합물의 명명법을 정리합니다.</p>",
-        "keyPoints": [
-          "동위원소: 원자번호(양성자 수)는 같고 질량수(중성자 수)가 다름",
-          "원자핵 반지름(~10⁻¹³ cm) vs 원자 전체(~10⁻⁸ cm)"
-        ],
-        "glossary": {
-          "동위원소": "양성자 수는 같지만 중성자 수가 달라 질량수가 다른 같은 원소의 원자들."
-        },
-        "pdfExcerpts": {},
-        "pastQuestions": [
-          {
-            "id": "chem-final-25-64",
-            "qType": "ox",
-            "source": "25학번 · 64",
-            "ref": "02장 · PDF 4–7쪽",
-            "pdfRefPage": 4,
-            "pdfRefPages": [
-              4,
-              5,
-              6,
-              7
-            ],
-            "stem": "질량보존 법칙은 모든 보통의 화학반응에서 총질량이 보존된다는 원리이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "보통의 화학반응에서 원자가 새로 만들어지거나 사라지지 않아 닫힌계의 반응 전후 총질량이 보존된다. 기체가 계 밖으로 나가는 열린계에서는 겉보기 질량이 달라질 수 있다."
-          },
-          {
-            "id": "chem-final-25-65",
-            "qType": "ox",
-            "source": "25학번 · 65",
-            "ref": "02장 · PDF 21–22쪽",
-            "pdfRefPage": 21,
-            "pdfRefPages": [
-              21,
-              22
-            ],
-            "stem": "동위원소는 양성자 수와 중성자 수가 모두 같은 원자들이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "동위원소는 양성자 수는 같고 중성자 수가 다른 원자들이다. 두 수가 모두 같다는 것은 동위원소의 차이를 설명하지 못한다."
-          },
-          {
-            "id": "chem-final-24-6",
-            "qType": "ox",
-            "source": "24학번 · 6",
-            "ref": "02장 · PDF 20쪽",
-            "pdfRefPage": 20,
-            "pdfRefPages": [
-              20
-            ],
-            "stem": "원자구조에 대한 설명 : 전자는 평균적으로 10⁻¹³ 정도 떨어진 거리에서 핵 주위를 돌아다닌다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "원본은 핵과 전자의 거리를 ‘10⁻¹³ 정도’라고만 적고 길이 단위를 누락했다. 강의에서 원자 크기는 약 10⁻¹⁰ m 규모이고 핵은 훨씬 작다. 단위를 임의로 정하면 판정이 달라지므로 원본 X를 보존하고 자동 채점에서 제외한다."
-          },
-          {
-            "id": "chem-final-24-7",
-            "qType": "ox",
-            "source": "24학번 · 7",
-            "ref": "02장 · PDF 8쪽",
-            "pdfRefPage": 8,
-            "pdfRefPages": [
-              8
-            ],
-            "stem": "모든 원소의 원자 질량은 동일하다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "원소마다 양성자 수와 동위원소 조성이 달라 원자 질량도 다르다. 모든 원소의 원자 질량이 동일하다는 원본 정답 O는 X로 정정한다.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다."
-          },
-          {
-            "id": "chem-final-24-8",
-            "qType": "ox",
-            "source": "24학번 · 8",
-            "ref": "02장 · PDF 51쪽",
-            "pdfRefPage": 51,
-            "pdfRefPages": [
-              51
-            ],
-            "stem": "HCN의 이름은 사이안화수소산이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "HCN은 사이안화 수소이며, 수용액의 산 이름은 사이안화수소산이다. 원본에는 기체인지 수용액인지가 적혀 있지 않아 이름만으로 X를 확정할 수 없다. 원본 X는 별도로 보존한다."
-          },
-          {
-            "id": "chem-final-24-9",
-            "qType": "ox",
-            "source": "24학번 · 9",
-            "ref": "02장 · PDF 35–40쪽",
-            "pdfRefPage": 35,
-            "pdfRefPages": [
-              35,
-              36,
-              37,
-              38,
-              39,
-              40
-            ],
-            "stem": "CoBr₃의 이름은 브로민화 코발트이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "CoBr₃에서 Br은 −1이므로 Co의 산화수는 +3이다. 정확한 이름은 브로민화 코발트(III)이며 산화수 표기가 필요하다."
-          },
-          {
-            "id": "chem-final-24-10",
-            "qType": "ox",
-            "source": "24학번 · 10",
-            "ref": "02장 · PDF 42–44쪽",
-            "pdfRefPage": 42,
-            "pdfRefPages": [
-              42,
-              43,
-              44
-            ],
-            "stem": "Na₂SeO₄는 과셀레늄산 포타슘이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "SeO₄²⁻는 셀레늄산 이온이다. Na₂SeO₄는 셀레늄산 소듐이며 ‘과셀레늄산’이 아니다. ‘과-’는 원래 이름에 임의로 붙이지 않는다. 또한 Na는 소듐이고 포타슘의 원소기호는 K이므로 금속 이름도 일치하지 않는다."
-          },
-          {
-            "id": "chem-final-23-2",
-            "qType": "ox",
-            "source": "23학번 · 2",
-            "ref": "02장 · PDF 4–7쪽",
-            "pdfRefPage": 4,
-            "pdfRefPages": [
-              4,
-              5,
-              6,
-              7
-            ],
-            "stem": "배수 비례의 법칙은 주어진 화합물 내에서 원소들의 질량비가 항상 같다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "한 화합물에서 원소의 질량비가 일정하다는 것은 일정 성분비 법칙이다. 배수 비례 법칙은 두 원소가 여러 화합물을 만들 때 한 원소의 일정 질량과 결합하는 다른 원소의 질량이 작은 정수비를 이룬다는 뜻이다."
-          },
-          {
-            "id": "chem-final-23-4",
-            "qType": "ox",
-            "source": "23학번 · 4",
-            "ref": "02장 · PDF 35–40쪽",
-            "pdfRefPage": 35,
-            "pdfRefPages": [
-              35,
-              36,
-              37,
-              38,
-              39,
-              40
-            ],
-            "stem": "CrCl₃를 염화크로뮴이라고 명명한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "CrCl₃에서는 Cl의 산화수가 −1이므로 Cr은 +3이다. 여러 산화수를 갖는 금속을 구별하여 염화 크로뮴(III)이라고 쓴다."
-          },
-          {
-            "id": "chem-final-23-5",
-            "qType": "ox",
-            "source": "23학번 · 5",
-            "ref": "02장 · PDF 44쪽",
-            "pdfRefPage": 44,
-            "pdfRefPages": [
-              44
-            ],
-            "stem": "NaOCl은 차아염소산 나트륨이라 명명한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "OCl⁻는 차아염소산 이온이고 Na⁺와 결합한 NaOCl은 차아염소산 소듐(나트륨)이다. 명명 규칙에 맞는다."
-          },
-          {
-            "id": "chem-final-23-6",
-            "qType": "ox",
-            "source": "23학번 · 6",
-            "ref": "02장 · PDF 50쪽",
-            "pdfRefPage": 50,
-            "pdfRefPages": [
-              50
-            ],
-            "stem": "VF₅는 오플루오르화 바나듐이라고 명명한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "강의의 금속 이온 화합물 명명 규칙을 적용하면 V가 +5이므로 플루오린화 바나듐(V)이다. 비금속 사이 공유 화합물에 쓰는 수 접두사만으로 산화수 표기를 대신하지 않는다."
-          },
-          {
-            "id": "chem-final-23-7",
-            "qType": "ox",
-            "source": "23학번 · 7",
-            "ref": "02장 · PDF 42–44쪽",
-            "pdfRefPage": 42,
-            "pdfRefPages": [
-              42,
-              43,
-              44
-            ],
-            "stem": "Na₂SeO₄는 과셀레늄산 나트륨이라고 명명한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "SeO₄²⁻는 셀레늄산 이온이다. Na₂SeO₄는 셀레늄산 소듐이며 ‘과셀레늄산’이 아니다. ‘과-’는 원래 이름에 임의로 붙이지 않는다."
-          },
-          {
-            "id": "chem-final-23-8",
-            "qType": "ox",
-            "source": "23학번 · 8",
-            "ref": "02장 · PDF 45–47쪽",
-            "pdfRefPage": 45,
-            "pdfRefPages": [
-              45,
-              46,
-              47
-            ],
-            "stem": "이원소 공유 화합물 VF₆의 화합물 명명은 육플루오린화황(VI)이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "원문의 VF₆에서 V는 바나듐이며 황의 원소기호 S가 아니다. 육플루오린화 황의 화학식은 SF₆이다. 화학식과 이름이 일치하지 않아 X이다."
-          },
-          {
-            "id": "chem-final-23-9",
-            "qType": "ox",
-            "source": "23학번 · 9",
-            "ref": "02장 · PDF 42–44쪽",
-            "pdfRefPage": 42,
-            "pdfRefPages": [
-              42,
-              43,
-              44
-            ],
-            "stem": "Na₂SeO₃는 과셀레늄산 소듐이라 명명한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "SeO₃²⁻는 아셀레늄산 이온이다. Na₂SeO₃는 아셀레늄산 소듐이며 ‘과셀레늄산’이 아니다."
-          }
-        ],
-        "aiQuestions": []
-      },
-      {
-        "id": "chem-03-stoich",
-        "chapter": "03장 화학량론",
-        "title": "몰(mol)·화학반응식·한계반응물·수득률",
-        "pdfPages": [
-          10,
-          15,
-          49,
-          54,
-          62
-        ],
-        "tags": [
-          "03장",
-          "p.10-62",
-          "mol",
-          "아보가드로",
-          "한계반응물",
-          "이론적 수득량"
-        ],
-        "summary": "<p><strong>아보가드로 수(6.022×10²³)</strong>와 몰 질량을 이용해 질량-몰수-입자 수를 환산하고, <strong>한계반응물</strong>과 <strong>이론적/백분율 수득률</strong>을 계산합니다.</p>",
-        "keyPoints": [
-          "1 mol = 6.022×10²³개 입자",
-          "한계반응물이 생성물의 최대량(이론적 수득량)을 결정"
-        ],
-        "glossary": {
-          "한계반응물": "화학 반응에서 가장 먼저 소모되어 생성물의 양을 제한하는 반응물."
-        },
-        "pdfExcerpts": {},
-        "pastQuestions": [
-          {
-            "id": "chem-final-25-67",
-            "qType": "ox",
-            "source": "25학번 · 67",
-            "ref": "03장 · PDF 10–15쪽",
-            "pdfRefPage": 10,
-            "pdfRefPages": [
-              10,
-              11,
-              12,
-              13,
-              14,
-              15
-            ],
-            "stem": "수소 기체 H₂ 1 mol은 약 6.02×10²³개의 H₂ 분자로 이루어진다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "수소 기체 H₂ 1 mol에는 H₂ 분자 약 6.02×10²³개가 있다. 그 안의 H 원자는 두 배이다. 수소 원자 1 mol과 구별하도록 기체 H₂를 명시했다.\n\n[복원 메모]\n수소 원자 mol과 구별하도록 기체 H₂ 명시."
-          },
-          {
-            "id": "chem-final-25-90",
-            "qType": "ox",
-            "source": "25학번 · 90",
-            "ref": "03장 · PDF 49–54쪽",
-            "pdfRefPage": 49,
-            "pdfRefPages": [
-              49,
-              50,
-              51,
-              52,
-              53,
-              54
-            ],
-            "stem": "C₂H₄ 189.6 g을 완전 연소하면 CO₂ 297.5 g이 생성된다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "완전 연소 반응은 C₂H₄+3O₂→2CO₂+2H₂O이다. C₂H₄ 189.6 g은 약 6.76 mol이므로 CO₂는 약 13.5 mol, 질량은 약 595 g이다. 297.5 g은 몰비 1:2를 놓친 값이므로 X이다.\n\n[복원 메모]\n강의의 연소 몰비에 따른 완전 연소 조건 명시."
-          },
-          {
-            "id": "chem-final-23-10",
-            "qType": "ox",
-            "source": "23학번 · 10",
-            "ref": "03장 · PDF 62쪽",
-            "pdfRefPage": 62,
-            "pdfRefPages": [
-              62
-            ],
-            "stem": "CO 68.5 kg과 H₂ 8.60 kg으로 메탄올(CH₃OH)을 만들 때 이론적 수득량은 3.43×10⁴ g이다. (몰질량: CH₃OH 32.04, CO 28.02, H₂ 2.016 g/mol)",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "CO + 2H₂ → CH₃OH로 계산한다. CO는 68,500/28.02≈2,445 mol이고, H₂는 8,600/2.016≈4,266 mol이다. H₂가 한계 반응물이라 생성 가능한 메탄올은 2,133 mol, 질량은 약 6.83×10⁴ g이다. 3.43×10⁴ g은 X이다. 질량을 묻는 값은 이론적 수득량으로 표기한다.\n\n[복원 메모]\n원본의 ‘수득률’을 질량 단위에 맞게 ‘수득량’으로 보완. 수치는 원본 그대로이며 정답 X 유지."
-          }
-        ],
-        "aiQuestions": []
-      },
-      {
-        "id": "chem-04-rxn",
-        "chapter": "04장 용액에서의 화학 반응",
-        "title": "전해질·침전 반응·산염기·산화환원",
-        "pdfPages": [
-          6,
-          14,
-          15,
-          22,
-          29,
-          35,
-          36,
-          40
-        ],
-        "tags": [
-          "04장",
-          "p.6-40",
-          "전해질",
-          "침전",
-          "알짜이온",
-          "몰농도"
-        ],
-        "summary": "<p>수용액에서 <strong>강전해질/약전해질/비전해질</strong>의 구분, 용해도 규칙에 따른 <strong>침전 반응</strong>과 알짜이온 반응식, 산화수 결정과 산화-환원 반응을 다룹니다.</p>",
-        "keyPoints": [
-          "알짜이온 반응식에서 구경꾼 이온 제외",
-          "산화수 증가 = 산화, 산화수 감소 = 환원"
-        ],
-        "glossary": {
-          "강전해질": "수용액에서 거의 100% 이온으로 해리되어 전류를 잘 흐르게 하는 물질."
-        },
-        "pdfExcerpts": {},
-        "pastQuestions": [
-          {
-            "id": "chem-final-25-68",
-            "qType": "ox",
-            "source": "25학번 · 68",
-            "ref": "04장 · PDF 6–14쪽",
-            "pdfRefPage": 6,
-            "pdfRefPages": [
-              6,
-              7,
-              8,
-              9,
-              10,
-              11,
-              12,
-              13,
-              14
-            ],
-            "stem": "모든 전해질은 물에 녹아 이온화된다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "04장 PDF 6–7쪽은 전해질을 물에 녹아 전기를 전도하는 용액을 만드는 물질로 정의하며, 강전해질은 완전히, 약전해질은 작게 이온화한다고 설명한다. 원문에는 완전히라는 말이 없으므로 강의 정의에서는 O이다. 강의가 사용하는 이온화 표현을 해리와 엄격히 구분하여 원본 X를 유지할 근거는 없다.\n\n[강의 기준 재검토]\n관련 슬라이드의 정의·조건을 우선하여 검토 보류를 해제했다. 원본 답은 아래에 별도로 보존한다."
-          },
-          {
-            "id": "chem-final-25-69",
-            "qType": "ox",
-            "source": "25학번 · 69",
-            "ref": "04장 · PDF 29–35쪽",
-            "pdfRefPage": 29,
-            "pdfRefPages": [
-              29,
-              30,
-              31,
-              32,
-              33,
-              34,
-              35
-            ],
-            "stem": "KCl(aq)와 AgNO₃(aq)를 혼합하면 침전이 형성된다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "Ag⁺와 Cl⁻가 만나 물에 잘 녹지 않는 AgCl(s)을 만든다. 알짜 이온 반응식은 Ag⁺(aq)+Cl⁻(aq)→AgCl(s)이다."
-          },
-          {
-            "id": "chem-final-25-89",
-            "qType": "ox",
-            "source": "25학번 · 89",
-            "ref": "04장 · PDF 8–9,15–22쪽",
-            "pdfRefPage": 8,
-            "pdfRefPages": [
-              8,
-              9,
-              15,
-              16,
-              17,
-              18,
-              19,
-              20,
-              21,
-              22
-            ],
-            "stem": "0.4 M NaCl 100 mL, 0.3 M CaCl₂ 100 mL, 0.2 M FeCl₃ 100 mL, 0.8 M 설탕 100 mL 중 이온 수가 가장 많은 것은 CaCl₂ 수용액이다. (완전 해리 가정)",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "완전 해리를 가정하면 이온의 몰수는 NaCl 0.4×0.1×2=0.080 mol, CaCl₂ 0.3×0.1×3=0.090 mol, FeCl₃ 0.2×0.1×4=0.080 mol이다. 설탕은 이온을 만들지 않는다. 가장 많은 것은 CaCl₂이므로 원본 X를 O로 정정한다.\n\n[복원 메모]\n강의식 이온 수 계산의 완전 해리 가정 명시.\n\n[정답 정정]\n원본 X → 검토 O. 판단 이유는 위 강의 근거와 계산을 따른다."
-          },
-          {
-            "id": "chem-final-24-11",
-            "qType": "ox",
-            "source": "24학번 · 11",
-            "ref": "04장 · PDF 36–40쪽",
-            "pdfRefPage": 36,
-            "pdfRefPages": [
-              36,
-              37,
-              38,
-              39,
-              40
-            ],
-            "stem": "화학식은 용액 속 반응물과 생성물의 실제 형태를 반영한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "분자 반응식은 수용액의 강전해질도 분자식 형태로 적을 수 있어 실제로 존재하는 이온 형태를 모두 보여 주지 않는다. 완전 이온 반응식은 강전해질을 이온으로 풀어 쓰고, 알짜 이온 반응식에서는 구경꾼 이온을 제거한다."
-          },
-          {
-            "id": "chem-final-24-12",
-            "qType": "ox",
-            "source": "24학번 · 12",
-            "ref": "04장 · PDF 36–40쪽",
-            "pdfRefPage": 36,
-            "pdfRefPages": [
-              36,
-              37,
-              38,
-              39,
-              40
-            ],
-            "stem": "알짜 이온 반응식에서는 반응물과 생성물의 질량을 맞춰야 한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "알짜 이온 반응식도 원자 수와 총전하를 모두 보존해야 한다. 따라서 질량을 맞춰야 한다는 문장 자체는 O이다. ‘질량만 맞추면 된다’고 쓰지 않았으므로 전하 보존도 필요하다는 이유로 원본 X를 유지할 수 없다.\n\n[정답 정정]\n원본 X → 검토 O. 판단 이유는 위 강의 근거와 계산을 따른다."
-          },
-          {
-            "id": "chem-final-24-13",
-            "qType": "ox",
-            "source": "24학번 · 13",
-            "ref": "04장 · PDF 6–14쪽",
-            "pdfRefPage": 6,
-            "pdfRefPages": [
-              6,
-              7,
-              8,
-              9,
-              10,
-              11,
-              12,
-              13,
-              14
-            ],
-            "stem": "0.1 M FeCl₃ 300 mL, 0.1 M 설탕 800 mL, 0.1 M NH₄OH 500 mL 중 이온 수가 가장 많은 것은 NH₄OH 수용액이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "FeCl₃는 0.1×0.300×4=0.120 mol의 이온을 만든다. 설탕은 비전해질이다. NH₄OH를 형식적으로 완전 해리한다고 가정해도 0.1×0.500×2=0.100 mol이고 실제로는 약염기라 훨씬 적다. 이온 수가 가장 많은 것은 FeCl₃ 수용액이므로 원본 O를 X로 정정한다.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다."
-          },
-          {
-            "id": "chem-final-24-21",
-            "qType": "ox",
-            "source": "24학번 · 21",
-            "ref": "04장 · PDF 57–59쪽",
-            "pdfRefPage": 57,
-            "pdfRefPages": [
-              57,
-              58,
-              59
-            ],
-            "stem": "K₂Cr₂O₇에서 K의 산화상태는 +1이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "K는 1족 금속으로 화합물에서 산화수가 +1이다. K₂Cr₂O₇에서도 K는 +1이며 Cr의 +6과 혼동하지 않는다."
-          },
-          {
-            "id": "chem-final-23-11",
-            "qType": "ox",
-            "source": "23학번 · 11",
-            "ref": "04장 · PDF 6–14쪽",
-            "pdfRefPage": 6,
-            "pdfRefPages": [
-              6,
-              7,
-              8,
-              9,
-              10,
-              11,
-              12,
-              13,
-              14
-            ],
-            "stem": "소금은 약전해질이라 물에 반은 이온화되어 있고 반은 분산되어 있다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "NaCl은 강전해질로서 물에 녹은 부분은 Na⁺와 Cl⁻로 거의 완전히 해리된다. 절반만 이온화되는 약전해질이라는 설명은 맞지 않는다."
-          },
-          {
-            "id": "chem-final-23-13",
-            "qType": "ox",
-            "source": "23학번 · 13",
-            "ref": "04장 · PDF 29–35쪽",
-            "pdfRefPage": 29,
-            "pdfRefPages": [
-              29,
-              30,
-              31,
-              32,
-              33,
-              34,
-              35
-            ],
-            "stem": "대부분의 아이오딘화물들은 물에 잘 녹지 않는다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "용해도 규칙에서 대부분의 아이오딘화물은 물에 잘 녹는다. Ag⁺·Pb²⁺·Hg₂²⁺ 등과 만드는 염은 예외이다."
-          },
-          {
-            "id": "chem-final-23-14",
-            "qType": "ox",
-            "source": "23학번 · 14",
-            "ref": "04장 · PDF 29–35쪽",
-            "pdfRefPage": 29,
-            "pdfRefPages": [
-              29,
-              30,
-              31,
-              32,
-              33,
-              34,
-              35
-            ],
-            "stem": "대부분의 질산염(NO₃⁻)은 물에 잘 녹지 않는다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "대부분의 질산염은 물에 잘 녹는다. ‘잘 녹지 않는다’가 반대이다."
-          }
-        ],
-        "aiQuestions": []
-      },
-      {
-        "id": "chem-05-gas",
-        "chapter": "05장 기체",
-        "title": "이상기체 법칙·분압 법칙·기체 분자운동론",
-        "pdfPages": [
-          12,
-          20,
-          25,
-          29,
-          30,
-          34
-        ],
-        "tags": [
-          "05장",
-          "p.12-34",
-          "Avogadro",
-          "STP",
-          "Dalton",
-          "분압"
-        ],
-        "summary": "<p>보일·샤를·아보가드로 법칙을 통합한 <strong>이상기체 상태방정식(PV=nRT)</strong>, <strong>Dalton의 분압 법칙</strong>, <strong>기체 분자운동론</strong>과 실제 기체의 보정을 다룹니다.</p>",
-        "keyPoints": [
-          "STP(0°C, 1 atm)에서 이상기체 1 mol ≈ 22.4 L",
-          "기체의 평균 운동에너지는 절대온도(T)에만 비례"
-        ],
-        "glossary": {
-          "Dalton 분압 법칙": "혼합 기체의 전체 압력은 각 성분 기체의 부분 압력의 합과 같다."
-        },
-        "pdfExcerpts": {},
-        "pastQuestions": [
-          {
-            "id": "chem-final-25-66",
-            "qType": "ox",
-            "source": "25학번 · 66",
-            "ref": "05장 · PDF 12–20쪽",
-            "pdfRefPage": 12,
-            "pdfRefPages": [
-              12,
-              13,
-              14,
-              15,
-              16,
-              17,
-              18,
-              19,
-              20
-            ],
-            "stem": "Avogadro 법칙에서 같은 온도·압력일 때 기체 분자 수와 부피는 관계가 없다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "Avogadro 법칙에서 같은 온도·압력일 때 기체 부피는 몰수(입자 수)에 비례한다. 관계가 없다는 문장은 반대이다."
-          },
-          {
-            "id": "chem-final-25-71",
-            "qType": "ox",
-            "source": "25학번 · 71",
-            "ref": "05장 · PDF 12–20쪽",
-            "pdfRefPage": 12,
-            "pdfRefPages": [
-              12,
-              13,
-              14,
-              15,
-              16,
-              17,
-              18,
-              19,
-              20
-            ],
-            "stem": "강의의 STP(0 °C, 1 atm)에서 이상기체 1 mol의 부피는 약 22.4 L이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "강의에서 STP를 0 °C, 1 atm으로 사용할 때 이상기체 1 mol은 약 22.4 L이다. STP의 압력을 1 bar로 정한다른 관례와 구별한다.\n\n[복원 메모]\n강의에서 사용하는 STP(0°C1atm) 조건 명시."
-          },
-          {
-            "id": "chem-final-24-14",
-            "qType": "ox",
-            "source": "24학번 · 14",
-            "ref": "05장 · PDF 30–34쪽",
-            "pdfRefPage": 30,
-            "pdfRefPages": [
-              30,
-              31,
-              32,
-              33,
-              34
-            ],
-            "stem": "기체 분자운동론에서 입자 사이의 인력이 기체의 압력을 만든다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "이상기체의 압력은 기체 입자가 용기 벽과 충돌하여 생긴다. 이상기체 분자운동론은 입자 사이 인력을 무시하므로 인력이 압력을 만든다는 설명은 X이다."
-          },
-          {
-            "id": "chem-final-24-27",
-            "qType": "ox",
-            "source": "24학번 · 27",
-            "ref": "05장 · PDF 25–29쪽",
-            "pdfRefPage": 25,
-            "pdfRefPages": [
-              25,
-              26,
-              27,
-              28,
-              29
-            ],
-            "stem": "Dalton의 분압법칙에서 제일 중요한 것은 입자의 조성이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "Dalton 분압 법칙에서 같은 온도·부피의 이상기체 압력을 결정하는 것은 기체 입자의 화학적 조성보다 개수(몰수)이다. ‘조성이 가장 중요’하다는 설명은 X이다."
-          },
-          {
-            "id": "chem-final-23-15",
-            "qType": "ox",
-            "source": "23학번 · 15",
-            "ref": "05장 · PDF 23쪽",
-            "pdfRefPage": 23,
-            "pdfRefPages": [
-              23
-            ],
-            "stem": "일정 온도와 부피에서 기체의 밀도를 알면 기체의 몰질량을 알 수 있다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "이상기체식으로부터 몰질량 M=dRT/P이다. 밀도와 온도만으로는 부족하고 압력도 알아야 한다. 부피가 일정하다는 조건이 압력의 수치를 대신하지 못한다."
-          },
-          {
-            "id": "chem-final-23-16",
-            "qType": "ox",
-            "source": "23학번 · 16",
-            "ref": "05장 · PDF 20쪽",
-            "pdfRefPage": 20,
-            "pdfRefPages": [
-              20
-            ],
-            "stem": "CaCO₃ 152 g을 CaCO₃(s) → CaO(s) + CO₂(g)에 따라 완전히 열분해하면 STP(0 °C, 1 atm)에서 CO₂ 약 34.1 L가 생성된다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "강의 05장 PDF20쪽의 동일 예제에서 CaCO₃ 152 g을 사용한다. n(CaCO₃)=152/100.09≈1.52 mol이고 CO₂와 몰비가 1:1이다. V≈1.52×22.42=34.1 L이다. 원본에는 질량이 빠져 있어 강의의 동일 예제 조건을 학습용으로 보완했다.\n\n[복원 메모]\n원본에서 누락된 출발 질량 152 g과 반응식을 05장 PDF20쪽의 동일 예제로 보완. 원래 시험 문장을 확정한 것은 아니다."
-          },
-          {
-            "id": "chem-final-23-17",
-            "qType": "ox",
-            "source": "23학번 · 17",
-            "ref": "05장 · PDF 25–29쪽",
-            "pdfRefPage": 25,
-            "pdfRefPages": [
-              25,
-              26,
-              27,
-              28,
-              29
-            ],
-            "stem": "Dalton의 분압 법칙에서 이상기체의 압력은 각 기체의 부피에 따라 변한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "같은 용기에서 혼합 기체의 전체 압력은 각 성분의 분압을 더한 값이다. Pᵢ=nᵢRT/V이므로 같은 온도·용기에서는 각 성분의 입자 수가 분압을 결정한다. 서로 다른 기체가 각기 다른 부피를 차지하는 것으로 설명하지 않는다."
-          },
-          {
-            "id": "chem-final-23-18",
-            "qType": "ox",
-            "source": "23학번 · 18",
-            "ref": "05장 · PDF 25–29쪽",
-            "pdfRefPage": 25,
-            "pdfRefPages": [
-              25,
-              26,
-              27,
-              28,
-              29
-            ],
-            "stem": "달톤의 분압법칙에서 가장 중요한 것은 입자의 조성이 아니라 입자의 개수이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "이상기체 혼합물에서 전체 압력은 같은 온도·부피에서 전체 입자 수에 의해 결정된다. 분압도 입자의 화학적 종류보다 각 성분의 몰수와 관계한다."
-          },
-          {
-            "id": "chem-final-23-24",
-            "qType": "ox",
-            "source": "23학번 · 24",
-            "ref": "05장 · PDF 12–20쪽",
-            "pdfRefPage": 12,
-            "pdfRefPages": [
-              12,
-              13,
-              14,
-              15,
-              16,
-              17,
-              18,
-              19,
-              20
-            ],
-            "stem": "표준 온도와 압력에서 이상기체의 몰부피는 1 L이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "강의에서 사용하는 STP(0 °C, 1 atm)에서 이상기체 1 mol의 부피는 약 22.4 L이다. 1 L가 아니다."
-          }
-        ],
-        "aiQuestions": []
-      },
-      {
-        "id": "chem-06-thermo",
-        "chapter": "06장 열화학",
-        "title": "내부에너지·엔탈피·열량측정·Hess 법칙",
-        "pdfPages": [
-          5,
-          9,
-          10,
-          13,
-          20,
-          22
-        ],
-        "tags": [
-          "06장",
-          "p.5-22",
-          "내부에너지",
-          "상태함수",
-          "엔탈피",
-          "비열"
-        ],
-        "summary": "<p>열역학 제1법칙(<strong>ΔE = q + w</strong>), <strong>상태함수</strong>의 성질, <strong>비열과 열용량</strong>, <strong>엔탈피(ΔH)</strong>와 <strong>Hess 법칙</strong>을 다룹니다.</p>",
-        "keyPoints": [
-          "화학 부호 관례: 계가 주위에 일을 하면 w < 0 (팽창 일 w = -PΔV)",
-          "상태함수는 경로와 무관하게 초기·최종 상태만으로 결정"
-        ],
-        "glossary": {
-          "상태함수": "변화량이 경로에 무관하고 현재 상태(초기·최종)에만 의존하는 물리량(E, H, P, V, T 등)."
-        },
-        "pdfExcerpts": {},
-        "pastQuestions": [
-          {
-            "id": "chem-final-25-72",
-            "qType": "ox",
-            "source": "25학번 · 72",
-            "ref": "06장 · PDF 5–9쪽",
-            "pdfRefPage": 5,
-            "pdfRefPages": [
-              5,
-              6,
-              7,
-              8,
-              9
-            ],
-            "stem": "내부에너지 변화 ΔE는 상태함수이기 때문에 경로에 따라 달라진다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "내부에너지 E는 상태함수여서 변화량 ΔE는 처음과 나중 상태만으로 정해진다. 상태함수이므로 오히려 경로에 의존하지 않는다."
-          },
-          {
-            "id": "chem-final-25-73",
-            "qType": "ox",
-            "source": "25학번 · 73",
-            "ref": "06장 · PDF 10–13쪽",
-            "pdfRefPage": 10,
-            "pdfRefPages": [
-              10,
-              11,
-              12,
-              13
-            ],
-            "stem": "계가 팽창하면서 주위에 일을 하면 화학의 부호 관례에서 일 w는 양수이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "화학의 계 기준 부호에서는 w=−P외부ΔV이다. 계가 팽창하여 주위에 일을 하면 ΔV>0이므로 w<0이다. 주위가 받은 일을 양수로 세는 다른 관례와 구별해 원본 O를 X로 정정한다.\n\n[복원 메모]\n계가 하는 일과 주위가 받는 일을 구별하도록 화학 부호 관례 명시.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다."
-          },
-          {
-            "id": "chem-final-25-74",
-            "qType": "ox",
-            "source": "25학번 · 74",
-            "ref": "06장 · PDF 9쪽",
-            "pdfRefPage": 9,
-            "pdfRefPages": [
-              9
-            ],
-            "stem": "내부에너지는 일과 열의 합으로 표현된다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "열역학 제1법칙은 내부에너지의 ‘변화량’ ΔE=q+w이다. 내부에너지 E 자체가 열과 일의 합이라는 문장은 정확하지 않다."
-          },
-          {
-            "id": "chem-final-25-75",
-            "qType": "ox",
-            "source": "25학번 · 75",
-            "ref": "06장 · PDF 20–22쪽",
-            "pdfRefPage": 20,
-            "pdfRefPages": [
-              20,
-              21,
-              22
-            ],
-            "stem": "같은 질량일 때 비열이 큰 물질은 같은 열을 받아도 온도가 적게 상승한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "같은 질량에 같은 열 q를 가하면 ΔT=q/(mc)이다. 비열 c가 클수록 온도 상승이 작다. 질량이다르면 결과가 달라지므로 같은 질량 조건을 보완했다.\n\n[복원 메모]\n비열에 따른 온도 비교에 필요한 같은 질량 조건 보완."
-          },
-          {
-            "id": "chem-final-25-76",
-            "qType": "ox",
-            "source": "25학번 · 76",
-            "ref": "06장 · PDF 15–19쪽",
-            "pdfRefPage": 15,
-            "pdfRefPages": [
-              15,
-              16,
-              17,
-              18,
-              19
-            ],
-            "stem": "상온에서 얼음이 물로 녹을 때 엔탈피가 증가한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "얼음이 녹는 융해는 열을 흡수하는 과정으로 ΔH융해>0이다. 수소 결합 연결 일부를 끊는 데 에너지가 필요하다."
-          },
-          {
-            "id": "chem-final-24-15",
-            "qType": "ox",
-            "source": "24학번 · 15",
-            "ref": "06장 · PDF 15–19쪽",
-            "pdfRefPage": 15,
-            "pdfRefPages": [
-              15,
-              16,
-              17,
-              18,
-              19
-            ],
-            "stem": "엔탈피는 대기압 수압과 같이 압력에 둘러싸인 계를 다룰 때 쓴다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "대기압처럼 일정한 외부 압력 아래에서 진행되는 과정의 열을 다룰 때 엔탈피 변화가 유용하다. 압력–부피 일만 있을 때 ΔH=qₚ이다."
-          },
-          {
-            "id": "chem-final-24-16",
-            "qType": "ox",
-            "source": "24학번 · 16",
-            "ref": "06장 · PDF 20–22쪽",
-            "pdfRefPage": 20,
-            "pdfRefPages": [
-              20,
-              21,
-              22
-            ],
-            "stem": "해당 물질 전체의 온도를 1 °C 올리는 데 필요한 에너지의 양을 몰열용량이라고 한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "물질 전체의 온도를 1 °C 올리는 데 필요한 열은 열용량이다. 1 mol당이면 몰열용량, 1 g당이면 비열용량이다."
-          },
-          {
-            "id": "chem-final-24-17",
-            "qType": "ox",
-            "source": "24학번 · 17",
-            "ref": "06장 · PDF 29–36쪽",
-            "pdfRefPage": 29,
-            "pdfRefPages": [
-              29,
-              30,
-              31,
-              32,
-              33,
-              34,
-              35,
-              36
-            ],
-            "stem": "강의의 표준 생성 엔탈피에서 원소의 표준 상태는 1 atm, 25 °C에서의 가장 안정한 형태이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "강의의 표준 생성 엔탈피 표는 25 °C, 1 atm에서 원소의 가장 안정한 형태를 기준으로 한다. ‘표준’이 모든 온도에서 언제나 25 °C로 고정된다는 뜻은 아니며 온도는 함께 명시한다.\n\n[복원 메모]\n원소의 형태를 강의의 가장 안정한 형태로 명시. 25°C·1atm은 이 강의 표의 기준임."
-          },
-          {
-            "id": "chem-final-24-18",
-            "qType": "ox",
-            "source": "24학번 · 18",
-            "ref": "06장 · PDF 5–9쪽",
-            "pdfRefPage": 5,
-            "pdfRefPages": [
-              5,
-              6,
-              7,
-              8,
-              9
-            ],
-            "stem": "열화학과 관련된 용어중 열과 열량은 상태함수이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "열 q와 일 w는 과정에 따라 달라지는 경로함수이다. 내부에너지 E는 상태함수지만 열 자체는 상태함수가 아니므로 원문은 X이다."
-          },
-          {
-            "id": "chem-final-24-19",
-            "qType": "ox",
-            "source": "24학번 · 19",
-            "ref": "06장 · PDF 10–13쪽",
-            "pdfRefPage": 10,
-            "pdfRefPages": [
-              10,
-              11,
-              12,
-              13
-            ],
-            "stem": "반응열은 일의 개념을 고려해야한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "ΔE=q+w이므로 반응에서 열을 해석할 때는 팽창·압축 일도 고려해야 한다. 일정 압력에서의 ΔH와 일정 부피에서의 ΔE를 구별한다."
-          },
-          {
-            "id": "chem-final-24-22",
-            "qType": "ox",
-            "source": "24학번 · 22",
-            "ref": "06장 · PDF 15–19쪽",
-            "pdfRefPage": 15,
-            "pdfRefPages": [
-              15,
-              16,
-              17,
-              18,
-              19
-            ],
-            "stem": "엔탈피는 상태함수가 아니므로 두 상태 사이의 경로를 고려해야 한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "엔탈피 H는 상태함수이고 ΔH는 처음과 나중 상태만으로 정해진다. 경로를 알아야 한다는 원본 O는 X로 정정한다.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다."
-          },
-          {
-            "id": "chem-final-24-23",
-            "qType": "ox",
-            "source": "24학번 · 23",
-            "ref": "06장 · PDF 29–36쪽",
-            "pdfRefPage": 29,
-            "pdfRefPages": [
-              29,
-              30,
-              31,
-              32,
-              33,
-              34,
-              35,
-              36
-            ],
-            "stem": "특정 이온의 표준생성 엔탈피는 모든 온도에서 1로 두고 관습적으로 산소를 선택한다",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "강의는 수용액 이온의 생성 엔탈피를 나타낼 때 H⁺(aq)의 표준 생성 엔탈피를 0으로 정하는 관례를 사용한다. 산소를 선택하여 1로 둔다는 설명은 X이다."
-          },
-          {
-            "id": "chem-final-24-24",
-            "qType": "ox",
-            "source": "24학번 · 24",
-            "ref": "06장 · PDF 15–19쪽",
-            "pdfRefPage": 15,
-            "pdfRefPages": [
-              15,
-              16,
-              17,
-              18,
-              19
-            ],
-            "stem": "엔탈피는 일정한 온도와 부피에서 어떤 반응이 일어날때의 반응열을 말한다",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "반응 엔탈피 변화 ΔH는 일정 압력에서, 압력–부피 일만 고려할 때의 반응열 qₚ와 같다. 일정 부피의 열 qᵥ는 내부에너지 변화 ΔE에 해당한다. 엔탈피 H 자체와 그 변화 ΔH도 구별한다."
-          },
-          {
-            "id": "chem-final-24-29",
-            "qType": "ox",
-            "source": "24학번 · 29",
-            "ref": "06장 · PDF 20–22쪽",
-            "pdfRefPage": 20,
-            "pdfRefPages": [
-              20,
-              21,
-              22
-            ],
-            "stem": "비열용량은 물질의 고유의 값을 가진다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "비열용량은 주어진 온도·상태에서 물질의 종류에 따른 특성값이다. 같은 질량에 같은 열을 주어도 비열에 따라 온도 변화가 다르다. 모든 온도와 상에서 완전히 일정하다는 뜻은 아니다."
-          },
-          {
-            "id": "chem-final-23-19",
-            "qType": "ox",
-            "source": "23학번 · 19",
-            "ref": "06장 · PDF 5–9쪽",
-            "pdfRefPage": 5,
-            "pdfRefPages": [
-              5,
-              6,
-              7,
-              8,
-              9
-            ],
-            "stem": "열화학과 관련된 용어 중, 열과 열량은 경로함수다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "열 q와 일 w는 과정에 따라 값이 달라지는 경로함수이다. 내부에너지 E는 상태함수지만 열과 일 각각은 상태함수가 아니다."
-          },
-          {
-            "id": "chem-final-23-20",
-            "qType": "ox",
-            "source": "23학번 · 20",
-            "ref": "06장 · PDF 15–19쪽",
-            "pdfRefPage": 15,
-            "pdfRefPages": [
-              15,
-              16,
-              17,
-              18,
-              19
-            ],
-            "stem": "엔탈피는 일정한 온도와 부피에서 어떤 반응이 일어날 때의 반응열을 말한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "반응 엔탈피 변화 ΔH는 일정 압력에서, 압력–부피 일만 고려할 때의 반응열 qₚ와 같다. 일정 부피의 열 qᵥ는 내부에너지 변화 ΔE에 해당한다. 엔탈피 H 자체와 그 변화 ΔH도 구별한다."
-          },
-          {
-            "id": "chem-final-23-21",
-            "qType": "ox",
-            "source": "23학번 · 21",
-            "ref": "06장 · PDF 10–13쪽",
-            "pdfRefPage": 10,
-            "pdfRefPages": [
-              10,
-              11,
-              12,
-              13
-            ],
-            "stem": "반응열은 일의 개념을 고려하지 않는다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "열역학 제1법칙은 ΔE=q+w이다. 반응 중 팽창·압축 일이 가능하므로 반응열을 해석할 때 일을 무시할 수 없다."
-          },
-          {
-            "id": "chem-final-23-25",
-            "qType": "ox",
-            "source": "23학번 · 25",
-            "ref": "06장 · PDF 29–36쪽",
-            "pdfRefPage": 29,
-            "pdfRefPages": [
-              29,
-              30,
-              31,
-              32,
-              33,
-              34,
-              35,
-              36
-            ],
-            "stem": "표준 생성 엔탈피에서 원소의 표준 상태는 1 atm, 0℃ 조건에서 그 원소가 존재하는 형태 이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "강의의 표준 생성 엔탈피 표는 보통 25 °C, 1 atm 조건을 사용한다. 원소는 해당 온도·압력에서의 가장 안정한 형태를 기준으로 한다. 표준 상태가 언제나 0 °C를 뜻하지 않는다."
-          }
-        ],
-        "aiQuestions": []
-      },
-      {
-        "id": "chem-07-quantum",
-        "chapter": "07장 원자 구조와 주기성",
-        "title": "전자기파·Bohr 모형·양자수·오비탈",
-        "pdfPages": [
-          3,
-          4,
-          7,
-          13,
-          19,
-          25
-        ],
-        "tags": [
-          "07장",
-          "p.3-25",
-          "파장",
-          "진동수",
-          "광자",
-          "Bohr"
-        ],
-        "summary": "<p>전자기 복사의 파동-입자 이중성(<strong>E = hν = hc/λ</strong>), <strong>de Broglie 물질파</strong>, <strong>4가지 양자수(n, l, m_l, m_s)</strong>와 오비탈 모양을 정리합니다.</p>",
-        "keyPoints": [
-          "빛의 파장이 짧을수록 진동수·광자 에너지 증가",
-          "Pauli 배타 원리: 한 원자 내 네 양자수가 모두 같은 전자는 불가"
-        ],
-        "glossary": {
-          "de Broglie 식": "λ = h/(mv), 움직이는 모든 입자가 파동성을 가짐을 나타낸다."
-        },
-        "pdfExcerpts": {},
-        "pastQuestions": [
-          {
-            "id": "chem-final-25-77",
-            "qType": "ox",
-            "source": "25학번 · 77",
-            "ref": "07장 · PDF 7–13쪽",
-            "pdfRefPage": 7,
-            "pdfRefPages": [
-              7,
-              8,
-              9,
-              10,
-              11,
-              12,
-              13
-            ],
-            "stem": "빛은 파장이 짧을수록 광자 에너지가 크다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "광자 에너지는 E=hν=hc/λ이다. 따라서 파장이 짧을수록 한 광자의 에너지가 크다."
-          },
-          {
-            "id": "chem-final-25-78",
-            "qType": "ox",
-            "source": "25학번 · 78",
-            "ref": "07장 · PDF 3–4쪽",
-            "pdfRefPage": 3,
-            "pdfRefPages": [
-              3,
-              4
-            ],
-            "stem": "같은 매질에서 파장과 진동수는 정비례한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "같은 매질에서 λν=v이므로 파장과 진동수는 반비례한다. 정비례가 아니다.\n\n[복원 메모]\n같은 파동속력 조건인 같은 매질 명시."
-          },
-          {
-            "id": "chem-final-25-79",
-            "qType": "ox",
-            "source": "25학번 · 79",
-            "ref": "07장 · PDF 19–25쪽",
-            "pdfRefPage": 19,
-            "pdfRefPages": [
-              19,
-              20,
-              21,
-              22,
-              23,
-              24,
-              25
-            ],
-            "stem": "Bohr의 수소 원자 모형은 수소 원자를 제외한 모든 원자에 적용된다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "Bohr 모형은 수소 및 수소형 단일 전자 종을 설명한다. 수소를 제외한 모든 다전자 원자에 적용된다는 원문은 반대이다."
-          },
-          {
-            "id": "chem-final-25-80",
-            "qType": "ox",
-            "source": "25학번 · 80",
-            "ref": "07장 · PDF 12–13쪽",
-            "pdfRefPage": 12,
-            "pdfRefPages": [
-              12,
-              13
-            ],
-            "stem": "de Broglie는 입자도 파동성을 지닌다고 주장했다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "de Broglie는 입자에 λ=h/p의 파장을 대응시켜 물질의 파동성을 제안했다. 이름의 오기를 바로잡았다."
-          },
-          {
-            "id": "chem-final-25-81",
-            "qType": "ox",
-            "source": "25학번 · 81",
-            "ref": "07장 · PDF 49쪽",
-            "pdfRefPage": 49,
-            "pdfRefPages": [
-              49
-            ],
-            "stem": "2p 오비탈은 2s 오비탈보다 핵 가까운 곳에 더 잘 침투한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "s 오비탈은 같은 주양자수의 p 오비탈보다 핵 가까운 곳에 침투하는 성질이 크다. 2p가 2s보다 핵 가까이 침투한다는 설명은 반대이다."
-          },
-          {
-            "id": "chem-final-25-82",
-            "qType": "ox",
-            "source": "25학번 · 82",
-            "ref": "07장 · PDF 34쪽",
-            "pdfRefPage": 34,
-            "pdfRefPages": [
-              34
-            ],
-            "stem": "n=3일 때 f 오비탈은 존재하지 않는다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "주양자수 n일 때 l은 0부터 n−1까지이다. n=3에서는 l=0,1,2인 s,p,d만 가능하고 f(l=3)는 없다."
-          },
-          {
-            "id": "chem-final-25-84",
-            "qType": "ox",
-            "source": "25학번 · 84",
-            "ref": "07장 · PDF 59–61쪽",
-            "pdfRefPage": 59,
-            "pdfRefPages": [
-              59,
-              60,
-              61
-            ],
-            "stem": "4f 오비탈보다 5s 오비탈이 먼저 채워진다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "강의의 바닥상태 쌓음 순서에서 5s는 4f보다 먼저 채워진다. n값의 크기만으로 에너지 순서를 정하지 않는다."
-          },
-          {
-            "id": "chem-final-25-85",
-            "qType": "ox",
-            "source": "25학번 · 85",
-            "ref": "07장 · PDF 53,56,59–61쪽",
-            "pdfRefPage": 53,
-            "pdfRefPages": [
-              53,
-              56,
-              59,
-              60,
-              61
-            ],
-            "stem": "같은 족의 원소는 동일한 수의 원자가전자를 가진다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "07장 PDF 56쪽에 같은 족 원소들은 동일한 원자가전자 배치를 가진다고 직접 제시되어 있다. 이 강의의 족별 주기성 설명에 따라 O로 판단한다. 다만 53쪽의 He는 1s²로 전자가 2개이고 나머지18족의 옥텟과 다르므로, 예외 없이 모든 원소의 개수가 같다는 보편 법칙으로 암기하지 않는다.\n\n[강의 기준 재검토]\n관련 슬라이드의 정의·조건을 우선하여 검토 보류를 해제했다. 원본 답은 아래에 별도로 보존한다."
-          },
-          {
-            "id": "chem-final-24-20",
-            "qType": "ox",
-            "source": "24학번 · 20",
-            "ref": "07장 · PDF 3–4쪽",
-            "pdfRefPage": 3,
-            "pdfRefPages": [
-              3,
-              4
-            ],
-            "stem": "파동의 세 가지 주된 성질은 파장, 진동수, 속도이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "파동의 주요 성질은 파장 λ, 진동수 ν, 속력 v이며 v=λν의 관계가 있다."
-          },
-          {
-            "id": "chem-final-24-30",
-            "qType": "ox",
-            "source": "24학번 · 30",
-            "ref": "07장 · PDF 3–4쪽",
-            "pdfRefPage": 3,
-            "pdfRefPages": [
-              3,
-              4
-            ],
-            "stem": "c=λν에서 c는 6.022×10²³이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "c=λν에서 c는 진공 중 빛의 속력 약 3.00×10⁸ m/s이다. 6.022×10²³ mol⁻¹은 Avogadro 상수이다."
-          },
-          {
-            "id": "chem-final-23-26",
-            "qType": "ox",
-            "source": "23학번 · 26",
-            "ref": "07장 · PDF 3–4쪽",
-            "pdfRefPage": 3,
-            "pdfRefPages": [
-              3,
-              4
-            ],
-            "stem": "파장은 파동에서 한 봉오리와 반대 방향의 인접한 봉우리 간의 거리이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "파장은 같은 위상의 인접한 마루 사이 또는 골 사이 거리이다. 마루에서 바로 옆 골까지는 파장의 절반이다."
-          },
-          {
-            "id": "chem-final-23-27",
-            "qType": "ox",
-            "source": "23학번 · 27",
-            "ref": "07장 · PDF 3–4쪽",
-            "pdfRefPage": 3,
-            "pdfRefPages": [
-              3,
-              4
-            ],
-            "stem": "전자기 복사는 파동 성질을 갖고 진공 중에서 빛의 속도로 진행한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "전자기파는 진공에서 빛의 속력 c≈3.00×10⁸ m/s로 진행한다."
-          },
-          {
-            "id": "chem-final-23-28",
-            "qType": "ox",
-            "source": "23학번 · 28",
-            "ref": "07장 · PDF 3–4쪽",
-            "pdfRefPage": 3,
-            "pdfRefPages": [
-              3,
-              4
-            ],
-            "stem": "같은 매질에서 파장과 진동수의 곱은 일정하다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "같은 매질에서 파장 λ와 진동수 ν의 곱은 파동의 속력이다. 진공의 전자기파는 λν=c로 일정하다. 서로 다른 매질까지 속력이 같다는 뜻으로 확대하지 않는다.\n\n[복원 메모]\n강의 파동속력 조건인 같은 매질을 명시. 원본의 ‘항상’을 모든 매질에서 같은 속력이라는 뜻으로 확대하지 않음."
-          },
-          {
-            "id": "chem-final-23-29",
-            "qType": "ox",
-            "source": "23학번 · 29",
-            "ref": "07장 · PDF 3–4쪽",
-            "pdfRefPage": 3,
-            "pdfRefPages": [
-              3,
-              4
-            ],
-            "stem": "짧은 파장의 전자기파는 낮은 진동수를 가진다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "λν=c이므로 같은 매질에서 파장이 짧아지면 진동수는 커진다. 작아진다는 설명은 반대이다."
-          },
-          {
-            "id": "chem-final-23-30",
-            "qType": "ox",
-            "source": "23학번 · 30",
-            "ref": "07장 · PDF 3–4쪽",
-            "pdfRefPage": 3,
-            "pdfRefPages": [
-              3,
-              4
-            ],
-            "stem": "빛의 진동수가 4.61×10¹⁴ Hz일 때 빛의 파장은 약 6.5×10⁻⁷ m이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "λ=c/ν=(3.00×10⁸)/(4.61×10¹⁴)=6.51×10⁻⁷ m이다. 제시한 6.5×10⁻⁷ m와 일치한다.\n\n[복원 메모]\n원본에서 빠진 진동수·파장의 단위를 강의 파동식 c=λν에 따라 보완."
-          },
-          {
-            "id": "chem-final-23-32",
-            "qType": "ox",
-            "source": "23학번 · 32",
-            "ref": "07장 · PDF 7–13쪽",
-            "pdfRefPage": 7,
-            "pdfRefPages": [
-              7,
-              8,
-              9,
-              10,
-              11,
-              12,
-              13
-            ],
-            "stem": "플랑크의 이론에 따르면 에너지는 양자화되어 있다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "Planck의 가설에서 에너지는 연속적으로 아무 값이나 교환되는 것이 아니라 hν의 정수배 단위로 교환된다. 이것이 에너지 양자화이다."
-          },
-          {
-            "id": "chem-final-23-33",
-            "qType": "ox",
-            "source": "23학번 · 33",
-            "ref": "07장 · PDF 7–13쪽",
-            "pdfRefPage": 7,
-            "pdfRefPages": [
-              7,
-              8,
-              9,
-              10,
-              11,
-              12,
-              13
-            ],
-            "stem": "아인슈타인의 광전효과 이론에 따르면 문턱 진동수보다 작은 진동수를 가지는 빛을 조사해야 전자가 방출된다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "광전효과는 문턱 진동수 이상의 빛이 필요하다. 진동수가 문턱보다 낮으면 세기를 높여도 전자가 방출되지 않는다."
-          },
-          {
-            "id": "chem-final-23-34",
-            "qType": "ox",
-            "source": "23학번 · 34",
-            "ref": "07장 · PDF 7–13쪽",
-            "pdfRefPage": 7,
-            "pdfRefPages": [
-              7,
-              8,
-              9,
-              10,
-              11,
-              12,
-              13
-            ],
-            "stem": "아인슈타인은 전자기복사를 광자라고 부르고 이를 파동의 흐름이라고 설명하였다",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "Einstein은 빛이 E=hν의 에너지를 갖는 광자라는 입자적 성질로 광전효과를 설명했다. 단순히 광자의 ‘파동 흐름’으로 설명한 것이 아니다."
-          },
-          {
-            "id": "chem-final-23-35",
-            "qType": "ox",
-            "source": "23학번 · 35",
-            "ref": "07장 · PDF 12–13쪽",
-            "pdfRefPage": 12,
-            "pdfRefPages": [
-              12,
-              13
-            ],
-            "stem": "드브로이가 최초로 전자가 파동성이 있다고 제안했다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "de Broglie는 운동량 p를 갖는 입자에 파장 λ=h/p를 대응시켰다. 전자를 포함한 물질의 파동성을 제안했다는 뜻에서 O이다."
-          },
-          {
-            "id": "chem-final-23-36",
-            "qType": "ox",
-            "source": "23학번 · 36",
-            "ref": "07장 · PDF 19–25쪽",
-            "pdfRefPage": 19,
-            "pdfRefPages": [
-              19,
-              20,
-              21,
-              22,
-              23,
-              24,
-              25
-            ],
-            "stem": "수소의 선 스펙트럼의 결과를 토대로 수소 원자의 에너지는 양자화되어 있다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "수소의 선 스펙트럼은 허용된 에너지 준위 사이의 전이에서 특정 에너지의 빛만 방출·흡수되기 때문에 나타난다. 에너지가 양자화되어 있음을 보여 준다."
-          },
-          {
-            "id": "chem-final-23-37",
-            "qType": "ox",
-            "source": "23학번 · 37",
-            "ref": "07장 · PDF 19–25쪽",
-            "pdfRefPage": 19,
-            "pdfRefPages": [
-              19,
-              20,
-              21,
-              22,
-              23,
-              24,
-              25
-            ],
-            "stem": "보어의 원자모형은 도출된 수소 원자의 에너지 준위와 방출된 수소 스펙트럼과 잘 일치한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "Bohr 모형은 수소 원자의 허용 에너지와 선 스펙트럼을 설명한다. 다전자 원자까지 정확히 설명하는 모형은 아니다."
-          },
-          {
-            "id": "chem-final-23-39",
-            "qType": "ox",
-            "source": "23학번 · 39",
-            "ref": "07장 · PDF 28쪽",
-            "pdfRefPage": 28,
-            "pdfRefPages": [
-              28
-            ],
-            "stem": "Schrödinger 방정식의 해인 파동함수는 오비탈(궤도함수)이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "Schrödinger 방정식의 해인 파동함수 ψ가 오비탈(궤도함수)이다. 전자의 고전적인 이동 경로인 ‘궤도’와는 구별한다. 원본의 용어를 강의에 따라 오비탈로 바로잡았다.\n\n[복원 메모]\n원본 ‘궤도’는 강의의 오비탈(궤도함수)로 보완. 고전적 전자 경로로 읽으면 맞지 않는 표현임."
-          },
-          {
-            "id": "chem-final-23-43",
-            "qType": "ox",
-            "source": "23학번 · 43",
-            "ref": "07장 · PDF 34쪽",
-            "pdfRefPage": 34,
-            "pdfRefPages": [
-              34
-            ],
-            "stem": "각운동량 양자수는 원자 오비탈 모양과 관련이 있다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "부양자수 l은 오비탈의 모양과 부껍질을 정한다. l=0,1,2,3은 각각 s,p,d,f에 대응한다."
-          },
-          {
-            "id": "chem-final-23-44",
-            "qType": "ox",
-            "source": "23학번 · 44",
-            "ref": "07장 · PDF 62쪽",
-            "pdfRefPage": 62,
-            "pdfRefPages": [
-              62
-            ],
-            "stem": "황(S)의 전자배치는 [Ne]3s²3p⁴이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "황 S는 원자번호 16이며 바닥상태 전자배치는 [Ne]3s²3p⁴이다. 전자 수의 합도 16이다."
-          },
-          {
-            "id": "chem-final-23-45",
-            "qType": "ox",
-            "source": "23학번 · 45",
-            "ref": "07장 · PDF 57–58쪽",
-            "pdfRefPage": 57,
-            "pdfRefPages": [
-              57,
-              58
-            ],
-            "stem": "크롬(Cr)의 전자배치는 [Ar]4s²3d²이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "Cr은 원자번호 24이며 바닥상태가 [Ar]3d⁵4s¹이다. 원문의 [Ar]4s²3d²는 전자 수부터 맞지 않는다."
-          },
-          {
-            "id": "chem-final-23-46",
-            "qType": "ox",
-            "source": "23학번 · 46",
-            "ref": "07장 · PDF 62쪽",
-            "pdfRefPage": 62,
-            "pdfRefPages": [
-              62
-            ],
-            "stem": "라듐(Ra)의 전자배치는 [Rn]7s²이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "Ra는 원자번호 88이며 Rn 다음 7s에 전자 두 개가 들어가 [Rn]7s²이다. 원소기호는 대소문자를 구분해 Rn으로 쓴다."
-          }
-        ],
-        "aiQuestions": []
-      },
-      {
-        "id": "chem-07-periodic",
-        "chapter": "07장 원자 구조와 주기성",
-        "title": "전자 배치와 주기적 성질",
-        "pdfPages": [
-          26,
-          30,
-          35,
-          40
-        ],
-        "tags": [
-          "07장",
-          "p.26-40",
-          "이온화 에너지",
-          "전자친화도",
-          "원자 반지름",
-          "유효핵전하"
-        ],
-        "summary": "<p>유효핵전하(Z_eff)에 따른 <strong>원자 반지름</strong>, <strong>이온화 에너지(IE)</strong>, <strong>전자친화도(EA)</strong>의 주기적 경향성과 예외를 다룹니다.</p>",
-        "keyPoints": [
-          "같은 주기 오른쪽: Z_eff 증가 → 반지름 감소, IE 대체로 증가",
-          "2족→13족(s→p), 15족→16족(반채움 반발)에서 IE 예외"
-        ],
-        "glossary": {
-          "이온화 에너지": "바닥 상태의 기체 원자 1 mol에서 전자 1 mol을 떼어내는 데 필요한 최소 에너지."
-        },
-        "pdfExcerpts": {},
-        "pastQuestions": [
-          {
-            "id": "chem-final-25-83",
-            "qType": "ox",
-            "source": "25학번 · 83",
-            "ref": "07장 · PDF 29–30쪽",
-            "pdfRefPage": 29,
-            "pdfRefPages": [
-              29,
-              30
-            ],
-            "stem": "Heisenberg 불확정성 원리는 전자의 정확한 위치와 운동량을 동시에 알 수 없다는 것이다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "Heisenberg 불확정성 원리는 위치와 운동량의 불확정도 곱에 하한이 있음을 나타낸다. 전자의 정확한 위치와 운동량을 동시에 임의의 정밀도로 정할 수 없다."
-          },
-          {
-            "id": "chem-final-25-86",
-            "qType": "ox",
-            "source": "25학번 · 86",
-            "ref": "07장 · PDF 70–73쪽",
-            "pdfRefPage": 70,
-            "pdfRefPages": [
-              70,
-              71,
-              72,
-              73
-            ],
-            "stem": "원자 반지름은 같은 주기에서 오른쪽으로 갈수록 커진다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "같은 주기에서 오른쪽으로 갈수록 유효 핵전하가 커져 원자 반지름은 대체로 작아진다."
-          },
-          {
-            "id": "chem-final-24-26",
-            "qType": "ox",
-            "source": "24학번 · 26",
-            "ref": "07장 · PDF 35쪽",
-            "pdfRefPage": 35,
-            "pdfRefPages": [
-              35
-            ],
-            "stem": "자기양자수는 원자 안에서 오비탈의 상대적인 공간 방향을 나타낸다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 0,
-            "answerIndices": null,
-            "rationale": "자기양자수 mₗ은 같은 부껍질 오비탈의 공간적 방향을 구별한다. 모양은 부양자수 l이 정하며 mₗ은 −l부터 +l까지의 정숫값을 갖는다."
-          },
-          {
-            "id": "chem-final-24-54",
-            "qType": "ox",
-            "source": "24학번 · 54",
-            "ref": "07장 · PDF 70–73쪽",
-            "pdfRefPage": 70,
-            "pdfRefPages": [
-              70,
-              71,
-              72,
-              73
-            ],
-            "stem": "원자반지름은 한 주기에서 오른쪽으로 갈수록 증가한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "한 주기에서 오른쪽으로 갈수록 유효 핵전하가 증가하여 원자 반지름은 대체로 작아진다. 커진다는 것은 반대이다."
-          },
-          {
-            "id": "chem-final-23-47",
-            "qType": "ox",
-            "source": "23학번 · 47",
-            "ref": "07장 · PDF 70–73쪽",
-            "pdfRefPage": 70,
-            "pdfRefPages": [
-              70,
-              71,
-              72,
-              73
-            ],
-            "stem": "원자반지름은 한 주기에서 오른쪽으로 갈수록 증가한다.",
-            "choices": [
-              "O (옳다)",
-              "X (틀리다)"
-            ],
-            "answerIndex": 1,
-            "answerIndices": null,
-            "rationale": "한 주기에서 오른쪽으로 갈수록 유효 핵전하가 증가하여 원자 반지름은 대체로 작아진다. 커진다는 것은 반대이다."
-          }
-        ],
-        "aiQuestions": []
-      },
-      {
         "id": "chem-08-bond-polarity",
-        "chapter": "08장 화학 결합: 일반 개념 (PDF 71p)",
+        "chapter": "08장 화학 결합: 일반 개념",
         "title": "화학 결합 종류·전기음성도·쌍극자 모멘트",
         "pdfPages": [
           3,
@@ -2465,7 +199,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-08-ions-lattice",
-        "chapter": "08장 화학 결합: 일반 개념 (PDF 71p)",
+        "chapter": "08장 화학 결합: 일반 개념",
         "title": "이온 전자배열·이온 크기·격자 에너지",
         "pdfPages": [
           18,
@@ -2591,7 +325,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-08-lewis-octet",
-        "chapter": "08장 화학 결합: 일반 개념 (PDF 71p)",
+        "chapter": "08장 화학 결합: 일반 개념",
         "title": "공유 결합 에너지·Lewis 구조·옥텟 예외·공명",
         "pdfPages": [
           34,
@@ -2752,7 +486,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-08-vsepr",
-        "chapter": "08장 화학 결합: 일반 개념 (PDF 71p)",
+        "chapter": "08장 화학 결합: 일반 개념",
         "title": "VSEPR 모형과 분자 구조·결합각",
         "pdfPages": [
           58,
@@ -2909,7 +643,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-09-hybrid",
-        "chapter": "09장 공유 결합: 오비탈 (PDF 39p)",
+        "chapter": "09장 공유 결합: 오비탈",
         "title": "혼성 오비탈(sp³, sp², sp, dsp³, d²sp³)과 σ/π 결합",
         "pdfPages": [
           3,
@@ -3149,7 +883,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-09-mo",
-        "chapter": "09장 공유 결합: 오비탈 (PDF 39p)",
+        "chapter": "09장 공유 결합: 오비탈",
         "title": "분자 오비탈(MO) 모형·결합 차수·상자성/반자성",
         "pdfPages": [
           29,
@@ -3226,7 +960,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-10-imf-liquid",
-        "chapter": "10장 액체와 고체 (PDF 62p)",
+        "chapter": "10장 액체와 고체",
         "title": "분자 간 힘(수소결합·분산력)·액체의 성질",
         "pdfPages": [
           4,
@@ -3528,7 +1262,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-10-solids",
-        "chapter": "10장 액체와 고체 (PDF 62p)",
+        "chapter": "10장 액체와 고체",
         "title": "고체의 분류·금속 최조밀 쌓임·그물형/분자성/이온성 고체",
         "pdfPages": [
           15,
@@ -3817,7 +1551,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-10-phase",
-        "chapter": "10장 액체와 고체 (PDF 62p)",
+        "chapter": "10장 액체와 고체",
         "title": "증기압·상태 변화·Clausius-Clapeyron·상평형 그림",
         "pdfPages": [
           44,
@@ -4144,7 +1878,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-11-conc-sol",
-        "chapter": "11장 용액의 특성 (PDF 54p)",
+        "chapter": "11장 용액의 특성",
         "title": "용액의 농도(M·m·χ)·용해 에너지·용해도와 Henry 법칙",
         "pdfPages": [
           3,
@@ -4412,7 +2146,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-11-colligative",
-        "chapter": "11장 용액의 특성 (PDF 54p)",
+        "chapter": "11장 용액의 특성",
         "title": "증기압 내림(Raoult)·끓는점 오름·어는점 내림·삼투압·콜로이드",
         "pdfPages": [
           23,
@@ -4688,7 +2422,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-12-ratelaw",
-        "chapter": "12장 화학 반응 속도론 (PDF 58p)",
+        "chapter": "12장 화학 반응 속도론",
         "title": "반응 속도·속도 법칙·적분 속도 법칙·반감기",
         "pdfPages": [
           5,
@@ -5068,7 +2802,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-12-mech-cat",
-        "chapter": "12장 화학 반응 속도론 (PDF 58p)",
+        "chapter": "12장 화학 반응 속도론",
         "title": "반응 메커니즘·활성화 에너지(Arrhenius)·촉매 작용",
         "pdfPages": [
           38,
@@ -5338,7 +3072,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-13-eq-const",
-        "chapter": "13장 화학 평형 (PDF 53p)",
+        "chapter": "13장 화학 평형",
         "title": "평형 조건·평형 상수(K, Kp)·불균일 평형·반응 지수(Q)",
         "pdfPages": [
           3,
@@ -5511,7 +3245,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-13-lechatelier",
-        "chapter": "13장 화학 평형 (PDF 53p)",
+        "chapter": "13장 화학 평형",
         "title": "Le Châtelier의 원리 (농도·압력/부피·온도 변화)",
         "pdfPages": [
           41,
@@ -5664,7 +3398,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-14-def-ph",
-        "chapter": "14장 산과 염기 (PDF 49p)",
+        "chapter": "14장 산과 염기",
         "title": "산-염기 정의·Ka/Kw·pH 척도·강산/약산 pH 계산",
         "pdfPages": [
           3,
@@ -5853,7 +3587,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "chem-14-base-salt-lewis",
-        "chapter": "14장 산과 염기 (PDF 49p)",
+        "chapter": "14장 산과 염기",
         "title": "염기·다양성자산·염의 산-염기 성질·Lewis 산-염기",
         "pdfPages": [
           28,
@@ -6112,7 +3846,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
     "concepts": [
       {
         "id": "sig-09-gf-igf",
-        "chapter": "09주차 · 성장인자 (10장 PDF 33p)",
+        "chapter": "09주차 · 성장인자",
         "title": "성장인자 정의·전달방식·역사적 발견(NGF/EGF/PDGF/IGF)",
         "pdfPages": [
           1,
@@ -6461,7 +4195,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "sig-09-prolif-diff",
-        "chapter": "09주차 · 성장인자 (10장 PDF 33p)",
+        "chapter": "09주차 · 성장인자",
         "title": "세포증식(IGF/TGF-β·세포주기 Rb-E2F)과 분화(NGF·BMP2)",
         "pdfPages": [
           21,
@@ -6662,7 +4396,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "sig-10-rtk-sh2",
-        "chapter": "10주차 · RTK·Ras-MAPK·PI3K-Akt (11장 PDF 29p)",
+        "chapter": "10주차 · RTK·Ras-MAPK·PI3K-Akt",
         "title": "RTK 구조·이량체화·교차자가인산화·SH2/SH3·Adaptor/Effector",
         "pdfPages": [
           1,
@@ -7122,7 +4856,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "sig-10-ras-mapk-akt",
-        "chapter": "10주차 · RTK·Ras-MAPK·PI3K-Akt (11장 PDF 29p)",
+        "chapter": "10주차 · RTK·Ras-MAPK·PI3K-Akt",
         "title": "Ras-Raf-MEK-ERK(MAPK)·전사/번역(MNK1)·Insulin-PI3K-Akt",
         "pdfPages": [
           21,
@@ -7294,7 +5028,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "sig-11-nrtk-jak-stat",
-        "chapter": "11주차 · nRTK와 면역신호 (12장 PDF 22p)",
+        "chapter": "11주차 · nRTK와 면역신호",
         "title": "nRTK 구조·Jak-STAT·조혈작용(EPO/TPO) & IFNα",
         "pdfPages": [
           1,
@@ -7477,7 +5211,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "sig-11-src-immune",
-        "chapter": "11주차 · nRTK와 면역신호 (12장 PDF 22p)",
+        "chapter": "11주차 · nRTK와 면역신호",
         "title": "Src family·T세포 활성화(Lck/ZAP70)·비만세포(FcεRI/Syk)",
         "pdfPages": [
           6,
@@ -7720,7 +5454,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "sig-12-messengers",
-        "chapter": "12주차 · 신호전달 기원·1차 전령·수용체 (11주차.pdf 31p)",
+        "chapter": "12주차 · 신호전달 기원·1차 전령·수용체",
         "title": "신호전달 기원과 1차 전령물질 (호르몬·성장인자·신경전달물질)",
         "pdfPages": [
           1,
@@ -8157,7 +5891,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "sig-12-adrenergic-gpcr",
-        "chapter": "12주차 · 신호전달 기원·1차 전령·수용체 (11주차.pdf 31p)",
+        "chapter": "12주차 · 신호전달 기원·1차 전령·수용체",
         "title": "수용체 특성과 아드레날린 α/β 수용체 (Gs/Gi/Gq)",
         "pdfPages": [
           15,
@@ -8295,7 +6029,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "sig-12-ach-oligomer",
-        "chapter": "12주차 · 신호전달 기원·1차 전령·수용체 (11주차.pdf 31p)",
+        "chapter": "12주차 · 신호전달 기원·1차 전령·수용체",
         "title": "아세틸콜린 수용체(니코틴성·무스카린성)·다량체화·BCR/TCR",
         "pdfPages": [
           22,
@@ -8589,7 +6323,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "sig-13-ptm-integrin",
-        "chapter": "13주차 · 세포부착·Integrin·Cadherin·세포사멸 (14장 PDF 45p)",
+        "chapter": "13주차 · 세포부착·Integrin·Cadherin·세포사멸",
         "title": "번역후 변형(PTM)·Adhesion 분자·Integrin(파골세포 αvβ₃)",
         "pdfPages": [
           1,
@@ -9045,7 +6779,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "sig-13-cadherin-survival",
-        "chapter": "13주차 · 세포부착·Integrin·Cadherin·세포사멸 (14장 PDF 45p)",
+        "chapter": "13주차 · 세포부착·Integrin·Cadherin·세포사멸",
         "title": "Cadherin·Selectin·FAK 생존신호·세포주기·β-catenin 탈분화",
         "pdfPages": [
           24,
@@ -9274,7 +7008,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "sig-13-apoptosis",
-        "chapter": "13주차 · 세포부착·Integrin·Cadherin·세포사멸 (14장 PDF 45p)",
+        "chapter": "13주차 · 세포부착·Integrin·Cadherin·세포사멸",
         "title": "세포사멸(Apoptosis)·Caspase(DNA-PKcs)·Bcl-2·Fas/Cyt c",
         "pdfPages": [
           38,
@@ -9464,7 +7198,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "sig-14-inflammation-nfkb",
-        "chapter": "14주차 · 세포부착분자·백혈구 유출 (15장 PDF 13p)",
+        "chapter": "14주차 · 세포부착분자·백혈구 유출",
         "title": "염증 매개자(LPS/TNF-α/Histamine)·내피세포 NF-κB 활성화",
         "pdfPages": [
           1,
@@ -9586,7 +7320,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "sig-14-extravasation-chemokine",
-        "chapter": "14주차 · 세포부착분자·백혈구 유출 (15장 PDF 13p)",
+        "chapter": "14주차 · 세포부착분자·백혈구 유출",
         "title": "백혈구 유출(4단계)·Chemokine(CC/CXC) 및 Integrin 활성화",
         "pdfPages": [
           5,
@@ -9873,7 +7607,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
     "concepts": [
       {
         "id": "bio-21-feeding-gi",
-        "chapter": "21장 영양 및 소화 (PDF 37p)",
+        "chapter": "21장 영양 및 소화",
         "title": "먹이 섭취 유형·소화의 4단계·소화관 vs 위수강·구강/식도",
         "pdfPages": [
           3,
@@ -9997,7 +7731,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "bio-21-stomach-intestine",
-        "chapter": "21장 영양 및 소화 (PDF 37p)",
+        "chapter": "21장 영양 및 소화",
         "title": "위(펩신/HCl/궤양)·작은창자·간/이자·큰창자와 진화적 적응",
         "pdfPages": [
           16,
@@ -10128,7 +7862,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "bio-21-nutrition",
-        "chapter": "21장 영양 및 소화 (PDF 37p)",
+        "chapter": "21장 영양 및 소화",
         "title": "대사율·필수 영양소(아미노산/지방산/비타민/무기질)·영양과 건강",
         "pdfPages": [
           25,
@@ -10276,7 +8010,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "bio-26-mechanism-edc",
-        "chapter": "26장 호르몬과 내분비계 (PDF 24p)",
+        "chapter": "26장 호르몬과 내분비계",
         "title": "내분비계 vs 신경계·수용성/지용성 호르몬·환경호르몬",
         "pdfPages": [
           3,
@@ -10424,7 +8158,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "bio-26-glands-axis",
-        "chapter": "26장 호르몬과 내분비계 (PDF 24p)",
+        "chapter": "26장 호르몬과 내분비계",
         "title": "시상하부-뇌하수체·갑상샘·부신·이자·생식소 호르몬",
         "pdfPages": [
           9,
@@ -10560,7 +8294,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "bio-27-repro",
-        "chapter": "27장 생식과 배 발생 (PDF 25p)",
+        "chapter": "27장 생식과 배 발생",
         "title": "무성/유성생식·남녀 생식계·배우자 형성·생식주기",
         "pdfPages": [
           1,
@@ -10724,7 +8458,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "bio-27-dev",
-        "chapter": "27장 생식과 배 발생 (PDF 25p)",
+        "chapter": "27장 생식과 배 발생",
         "title": "수정·분할·낭배형성(3배엽)·기관형성·호미오유전자·배외막·분만",
         "pdfPages": [
           11,
@@ -10966,7 +8700,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "bio-28-neuron-ap",
-        "chapter": "28장 신경계 (PDF 31p)",
+        "chapter": "28장 신경계",
         "title": "뉴런 구조(수초/다발성경화증)·휴지전위·활동전위",
         "pdfPages": [
           3,
@@ -11179,7 +8913,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "bio-28-synapse-nt",
-        "chapter": "28장 신경계 (PDF 31p)",
+        "chapter": "28장 신경계",
         "title": "시냅스(EPSP/IPSP)·신경전달물질(ACh·도파민·세로토닌·SSRI)",
         "pdfPages": [
           15,
@@ -11302,7 +9036,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "bio-28-cns-brain",
-        "chapter": "28장 신경계 (PDF 31p)",
+        "chapter": "28장 신경계",
         "title": "CNS/PNS(자율신경)·뇌의 구조(백색질/회색질)와 신경장애",
         "pdfPages": [
           21,
@@ -11402,7 +9136,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "bio-29-transduction-ear",
-        "chapter": "29장 감각 (PDF 27p)",
+        "chapter": "29장 감각",
         "title": "감각전환·5종 수용기·청각(달팽이관/중이염)과 평형감각(이석증)",
         "pdfPages": [
           1,
@@ -11620,7 +9354,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "bio-29-eye-chemo",
-        "chapter": "29장 감각 (PDF 27p)",
+        "chapter": "29장 감각",
         "title": "시각(눈 구조·원근조절·근시/원시·백내장/녹내장·망막)과 미각/후각",
         "pdfPages": [
           16,
@@ -11791,7 +9525,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "bio-30-skeleton-joint",
-        "chapter": "30장 동물의 운동 (PDF 24p)",
+        "chapter": "30장 동물의 운동",
         "title": "운동과 뼈대 유형·뼈 구조(치밀뼈/해면뼈·적색골수)·관절·힘줄/인대",
         "pdfPages": [
           1,
@@ -11964,7 +9698,7 @@ export const DENTAL_COLLEGE_SUBJECTS = [
       },
       {
         "id": "bio-30-muscle",
-        "chapter": "30장 동물의 운동 (PDF 24p)",
+        "chapter": "30장 동물의 운동",
         "title": "근육원섬유마디·활주모델·Ca²⁺-트로포닌-트로포미오신·ATP원·근섬유 유형",
         "pdfPages": [
           15,
