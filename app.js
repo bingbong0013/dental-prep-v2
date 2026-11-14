@@ -599,7 +599,20 @@ function renderQuestionCard(q, typeLabel, badgeColor) {
           }
         }
 
-        const badgeLabel = isOx ? (idx === 0 ? 'O' : 'X') : String(idx + 1);
+        if (isOx) {
+          const oxLabel = idx === 0 ? 'O' : 'X';
+          return `
+            <button
+              data-answer-q="${q.id}"
+              data-choice-idx="${idx}"
+              class="w-full py-2.5 px-4 rounded-xl border text-sm font-extrabold tracking-wide transition flex items-center justify-center ${btnClass}"
+            >
+              ${oxLabel}
+            </button>
+          `;
+        }
+
+        const badgeLabel = String(idx + 1);
 
         return `
           <div class="flex items-center gap-1.5">
