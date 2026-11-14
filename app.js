@@ -27,6 +27,25 @@ const defaultState = {
 
 let pdfFullscreen = false;
 const reviewSessionIds = new Set();
+let reviewAnswers = createReviewAnswers();
+
+function createReviewAnswers() {
+  return { solvedQuestions: {}, multiSelections: {}, shortRevealed: {}, strikethroughs: {} };
+}
+
+function resetReviewSession() {
+  reviewSessionIds.clear();
+  reviewAnswers = createReviewAnswers();
+}
+
+function getQuestionState() {
+  return state.view === 'review' ? reviewAnswers : state;
+}
+
+function recordAnswer(qId, result) {
+  getQuestionState().solvedQuestions[qId] = result;
+  state.solvedQuestions[qId] = result;
+}
 
 function findQuestionContext(qId) {
   for (const subj of state.subjects) {
@@ -490,16 +509,16 @@ function renderCatalog() {
 // 3. 2-PANE LEARNING WORKSPACE VIEW (Center + Right Panes)
 // ========================
 function renderQuestionCard(q, typeLabel, badgeColor, extraMeta = null) {
-  const solved = state.solvedQuestions[q.id];
+  const solved = getQuestionState().solvedQuestions[q.id];
   const isFav = !!state.favorites[q.id];
-  const strikes = state.strikethroughs[q.id] || [];
+  const strikes = getQuestionState().strikethroughs[q.id] || [];
   const isMulti = q.qType === 'multi' && Array.isArray(q.answerIndices);
   const isShort = q.qType === 'short' || !q.choices || q.choices.length === 0;
 
   let bodyHtml = '';
 
   if (isShort) {
-    const revealed = !!state.shortRevealed[q.id] || !!solved;
+    const revealed = !!getQuestionState().shortRevealed[q.id] || !!solved;
     const ansText = q.shortAnswer || '해설 참조';
     bodyHtml = `
       <div class="space-y-2.5">
@@ -524,7 +543,7 @@ function renderQuestionCard(q, typeLabel, badgeColor, extraMeta = null) {
       </div>
     `;
   } else if (isMulti) {
-    const selectedArr = solved ? solved.selectedIndices || [] : state.multiSelections[q.id] || [];
+    const selectedArr = solved ? solved.selectedIndices || [] : getQuestionState().multiSelections[q.id] || [];
     const expectedArr = q.answerIndices || [];
     const choicesHtml = q.choices
       .map((ch, idx) => {
@@ -1066,7 +1085,7 @@ function renderReview() {
 
   const cardsHtml = items
     .map(({ q, concept, isPast }) => {
-      const typeLabel = isPast ? q.year : 'AI 변형';
+      const typeLabel = concept.chapter || (isPast ? q.year || '기출' : 'AI 변형');
       const badgeColor = isPast
         ? 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
         : 'bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300';
@@ -1431,7 +1450,7 @@ function bindEvents() {
   // Review view events
   document.querySelectorAll('[data-review-term]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      reviewSessionIds.clear();
+      resetReviewSession();
       state.reviewTermId = btn.dataset.reviewTerm;
       saveState();
       render();
@@ -1440,7 +1459,7 @@ function bindEvents() {
   });
 
   document.getElementById('reviewBackBtn')?.addEventListener('click', () => {
-    reviewSessionIds.clear();
+    resetReviewSession();
     state.reviewTermId = null;
     saveState();
     render();
@@ -1451,7 +1470,7 @@ function bindEvents() {
     btn.addEventListener('click', () => {
       const subj = state.subjects.find((s) => s.id === btn.dataset.reviewSubject);
       if (subj) {
-        reviewSessionIds.clear();
+        resetReviewSession();
         state.selectedSubjectId = subj.id;
         state.selectedConceptId = subj.concepts[0].id;
         state.activePdfPage = subj.concepts[0].pdfPages[0];
@@ -1463,7 +1482,7 @@ function bindEvents() {
 
   document.querySelectorAll('[data-review-filter]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      reviewSessionIds.clear();
+      resetReviewSession();
       state.reviewFilter = btn.dataset.reviewFilter;
       saveState();
       render();
@@ -1502,12 +1521,12 @@ function bindEvents() {
   document.querySelectorAll('[data-answer-q]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const qId = btn.dataset.answerQ;
-      if (state.solvedQuestions[qId]) return;
+      if (getQuestionState().solvedQuestions[qId]) return;
       const choiceIdx = Number(btn.dataset.choiceIdx);
       const ctx = findQuestionContext(qId);
       if (!ctx) return;
       const isCorrect = choiceIdx === ctx.q.answerIndex;
-      state.solvedQuestions[qId] = { selectedIdx: choiceIdx, isCorrect };
+      recordAnswer(qId, { selectedIdx: choiceIdx, isCorrect });
       if (isCorrect) reviewSessionIds.delete(qId);
       state.streak += 1;
       saveState();
@@ -1518,12 +1537,12 @@ function bindEvents() {
   document.querySelectorAll('[data-multi-toggle]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const qId = btn.dataset.multiToggle;
-      if (state.solvedQuestions[qId]) return;
+      if (getQuestionState().solvedQuestions[qId]) return;
       const idx = Number(btn.dataset.choiceIdx);
-      const cur = new Set(state.multiSelections[qId] || []);
+      const cur = new Set(getQuestionState().multiSelections[qId] || []);
       if (cur.has(idx)) cur.delete(idx);
       else cur.add(idx);
-      state.multiSelections[qId] = [...cur].sort((a, b) => a - b);
+      getQuestionState().multiSelections[qId] = [...cur].sort((a, b) => a - b);
       saveState();
       render();
     });
@@ -1532,16 +1551,16 @@ function bindEvents() {
   document.querySelectorAll('[data-multi-submit]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const qId = btn.dataset.multiSubmit;
-      if (state.solvedQuestions[qId]) return;
+      if (getQuestionState().solvedQuestions[qId]) return;
       const ctx = findQuestionContext(qId);
       if (!ctx) return;
       const q = ctx.q;
-      const selected = [...(state.multiSelections[qId] || [])].sort((a, b) => a - b);
+      const selected = [...(getQuestionState().multiSelections[qId] || [])].sort((a, b) => a - b);
       const expected = [...(q.answerIndices || [])].sort((a, b) => a - b);
       const isCorrect =
         selected.length === expected.length &&
         selected.every((val, i) => val === expected[i]);
-      state.solvedQuestions[qId] = { selectedIndices: selected, isCorrect };
+      recordAnswer(qId, { selectedIndices: selected, isCorrect });
       if (isCorrect) reviewSessionIds.delete(qId);
       state.streak += 1;
       saveState();
@@ -1552,7 +1571,7 @@ function bindEvents() {
   document.querySelectorAll('[data-short-reveal]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const qId = btn.dataset.shortReveal;
-      state.shortRevealed[qId] = true;
+      getQuestionState().shortRevealed[qId] = true;
       saveState();
       render();
     });
@@ -1561,9 +1580,9 @@ function bindEvents() {
   document.querySelectorAll('[data-short-grade]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const qId = btn.dataset.shortGrade;
-      if (state.solvedQuestions[qId]) return;
+      if (getQuestionState().solvedQuestions[qId]) return;
       const isCorrect = btn.dataset.gradeCorrect === 'true';
-      state.solvedQuestions[qId] = { isCorrect };
+      recordAnswer(qId, { isCorrect });
       if (isCorrect) reviewSessionIds.delete(qId);
       state.streak += 1;
       saveState();
@@ -1575,8 +1594,8 @@ function bindEvents() {
     btn.addEventListener('click', () => {
       const qId = btn.dataset.strikeQ;
       const idx = Number(btn.dataset.strikeIdx);
-      const arr = state.strikethroughs[qId] || [];
-      state.strikethroughs[qId] = arr.includes(idx) ? arr.filter((i) => i !== idx) : [...arr, idx];
+      const arr = getQuestionState().strikethroughs[qId] || [];
+      getQuestionState().strikethroughs[qId] = arr.includes(idx) ? arr.filter((i) => i !== idx) : [...arr, idx];
       saveState();
       render();
     });
@@ -1585,12 +1604,13 @@ function bindEvents() {
   document.querySelectorAll('[data-reset-q]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const qId = btn.dataset.resetQ;
-      if (state.view === 'review' && state.solvedQuestions[qId]?.isCorrect === false) {
+      if (state.view === 'review' && getQuestionState().solvedQuestions[qId]?.isCorrect === false) {
         reviewSessionIds.add(qId);
       }
-      delete state.solvedQuestions[qId];
-      delete state.multiSelections[qId];
-      delete state.shortRevealed[qId];
+      delete getQuestionState().solvedQuestions[qId];
+      delete getQuestionState().multiSelections[qId];
+      delete getQuestionState().shortRevealed[qId];
+      delete getQuestionState().strikethroughs[qId];
       saveState();
       render();
     });
@@ -1613,7 +1633,7 @@ function bindEvents() {
 // Global header & keyboard events
 document.querySelectorAll('.nav-btn, .nav-btn-m').forEach((btn) => {
   btn.addEventListener('click', () => {
-    reviewSessionIds.clear();
+    resetReviewSession();
     if (btn.dataset.view === 'review') {
       state.reviewTermId = null;
     }
@@ -1625,7 +1645,7 @@ document.querySelectorAll('.nav-btn, .nav-btn-m').forEach((btn) => {
 });
 
 document.getElementById('brandBtn').addEventListener('click', () => {
-  reviewSessionIds.clear();
+  resetReviewSession();
   state.view = 'dashboard';
   saveState();
   render();
