@@ -726,6 +726,12 @@ function renderWorkspace() {
   const concept = getCurrentConcept();
   const conceptIdx = subj.concepts.findIndex((c) => c.id === concept.id);
   const isMastered = !!state.masteredConcepts[concept.id];
+  const conceptTitleBoxes = concept.title
+    .split('·')
+    .map((title) => title.trim())
+    .filter(Boolean)
+    .map((title) => `<span class="inline-flex items-center px-3.5 py-2.5 rounded-xl border border-violet-200 dark:border-violet-700 bg-violet-50 dark:bg-violet-950/60 text-violet-900 dark:text-violet-100 text-base sm:text-lg font-extrabold leading-snug shadow-sm">${escapeHtml(title)}</span>`)
+    .join('');
 
   const docInfo = getPdfDocInfo(subj, concept);
   const totalDocPages = docInfo ? docInfo.totalPages : subj.totalPages;
@@ -866,7 +872,7 @@ function renderWorkspace() {
               ${isMastered ? '✓ 마스터 완료' : '완료 체크'}
             </button>
           </div>
-          <h2 class="text-xl font-extrabold tracking-tight mb-3">${escapeHtml(concept.title)}</h2>
+          <h2 class="flex flex-wrap gap-2 tracking-tight mb-4">${conceptTitleBoxes}</h2>
           <div class="flex flex-wrap gap-1.5 mb-4">
             ${concept.tags
               .map(
