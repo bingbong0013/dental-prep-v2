@@ -1,5 +1,5 @@
-// Finals-Only Dataset (Midterm chapters excluded, audited & deduplicated)
-// Total valid final-exam questions: 265 (subj-chemistry: 124, subj-signal: 79, subj-biology: 62)
+// Finals-only dataset: duplicate and out-of-scope questions remain excluded.
+// Question images and source metadata audited against the previous site on 2026-11-14.
 export const DENTAL_COLLEGE_SUBJECTS = [
   {
     "id": "subj-chemistry",
@@ -71,7 +71,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "선형이라는 모양만으로 무극성이라고 정할 수 없다. HCl처럼 두 원자의 전기음성도가 다른 선형 분자는 극성이 있다. CO₂가 무극성인 것은 양쪽 결합 쌍극자가 대칭적으로 상쇄되기 때문이다."
+            "rationale": "선형이라는 모양만으로 무극성이라고 정할 수 없다. HCl처럼 두 원자의 전기음성도가 다른 선형 분자는 극성이 있다. CO₂가 무극성인 것은 양쪽 결합 쌍극자가 대칭적으로 상쇄되기 때문이다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 01번"
+            ],
+            "originalQuestion": "선형분자는 모두 다 무극성이다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "15"
+              }
+            ]
           },
           {
             "id": "chem-final-25-3",
@@ -93,7 +113,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "중심 원자에 고립 전자쌍이 없어도 CH₃Cl처럼 결합 쌍극자가 상쇄되지 않으면 분자 전체는 극성이다. CH₃Cl의 Cl에는 고립 전자쌍이 있으므로 원문을 분자 전체에 고립쌍이 전혀 없다는 뜻으로 읽으면 이 반례를 쓸 수 없다. 강의 VSEPR 문맥에 따라 중심 원자의 고립쌍 유무로 학습용 보완했다.\n\n[복원 메모]\n원본에서 범위가 빠진 비공유 전자쌍을 강의 VSEPR의 중심 원자 기준으로 보완. 분자 내 모든 원자의 고립쌍이 전혀 없다는 뜻과 구별."
+            "rationale": "중심 원자에 고립 전자쌍이 없어도 CH₃Cl처럼 결합 쌍극자가 상쇄되지 않으면 분자 전체는 극성이다. CH₃Cl의 Cl에는 고립 전자쌍이 있으므로 원문을 분자 전체에 고립쌍이 전혀 없다는 뜻으로 읽으면 이 반례를 쓸 수 없다. 강의 VSEPR 문맥에 따라 중심 원자의 고립쌍 유무로 학습용 보완했다.\n\n[복원 메모]\n원본에서 범위가 빠진 비공유 전자쌍을 강의 VSEPR의 중심 원자 기준으로 보완. 분자 내 모든 원자의 고립쌍이 전혀 없다는 뜻과 구별.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 03번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "비공유전자쌍이 없는 분자는 모두 비극성이다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "13–17"
+              }
+            ]
           },
           {
             "id": "chem-final-24-31",
@@ -111,7 +152,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "강의의 쿨롱 퍼텐셜에너지 식 E=(2.31×10⁻¹⁹ J·nm)Q₁Q₂/r에 Q₁=+1, Q₂=−1, r=0.276 nm를 넣으면 E=−8.37×10⁻¹⁹ J이다. 원본의 ‘인력’은 힘(N)이 아니라 인력 에너지의 크기(J)로 보완했다. 부호를 포함한 에너지는 음수이다.\n\n[복원 메모]\n원본 ‘인력’을 단위 J 및 강의의 E 식에 따라 인력 퍼텐셜에너지의 크기로 보완. 힘의 크기(N)를 뜻하면 원문은 성립하지 않음."
+            "rationale": "강의의 쿨롱 퍼텐셜에너지 식 E=(2.31×10⁻¹⁹ J·nm)Q₁Q₂/r에 Q₁=+1, Q₂=−1, r=0.276 nm를 넣으면 E=−8.37×10⁻¹⁹ J이다. 원본의 ‘인력’은 힘(N)이 아니라 인력 에너지의 크기(J)로 보완했다. 부호를 포함한 에너지는 음수이다.\n\n[복원 메모]\n원본 ‘인력’을 단위 J 및 강의의 E 식에 따라 인력 퍼텐셜에너지의 크기로 보완. 힘의 크기(N)를 뜻하면 원문은 성립하지 않음.",
+            "year": "24",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 31번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "고체염화소듐에서 Na+와 Cl-이온의 중심 간 거리가 0.276nm면 이온 간 인\n력은 8.37 x 10-19 J다.\n( 쿨론 상수 : 2.31x10-19 J•nm )\"",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "4"
+              }
+            ]
           },
           {
             "id": "chem-final-24-33",
@@ -129,7 +191,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "전기음성도는 같은 주기에서 대체로 오른쪽으로 갈수록 커지고 같은 족에서 아래로 갈수록 작아진다. 강의의 주기적 경향과 일치한다."
+            "rationale": "전기음성도는 같은 주기에서 대체로 오른쪽으로 갈수록 커지고 같은 족에서 아래로 갈수록 작아진다. 강의의 주기적 경향과 일치한다.",
+            "year": "24",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 33번"
+            ],
+            "originalQuestion": "전기음성도는 주기율표에서 오른쪽으로 갈수록 증가하고 족의 아래쪽으로\n갈 수록 감소한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "9"
+              }
+            ]
           },
           {
             "id": "chem-final-24-34",
@@ -148,7 +230,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "극성 공유 결합은 무극성 공유 결합보다 두 원자의 전기음성도 차이가 크다. 원본의 비교 대상 ‘공유결합’은 극성 공유 결합까지 포함하므로 강의의 ‘무극성 공유 결합’으로 보완해 판단했다.\n\n[복원 메모]\n원본 비교 대상 ‘공유결합’을 강의의 무극성 공유 결합으로 보완."
+            "rationale": "극성 공유 결합은 무극성 공유 결합보다 두 원자의 전기음성도 차이가 크다. 원본의 비교 대상 ‘공유결합’은 극성 공유 결합까지 포함하므로 강의의 ‘무극성 공유 결합’으로 보완해 판단했다.\n\n[복원 메모]\n원본 비교 대상 ‘공유결합’을 강의의 무극성 공유 결합으로 보완.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 34번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "극성 공유결합은 결합한 원자들간의 전기적음성도차이가 공유결합에 비해\n크다",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "10–11"
+              }
+            ]
           },
           {
             "id": "chem-final-24-36",
@@ -170,7 +273,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "쌍극자 모멘트는 분리된 양전하와 음전하로 인한 극성을 나타낸다. 단순한 두 전하의 경우 크기는 전하량과 분리 거리의 곱이다."
+            "rationale": "쌍극자 모멘트는 분리된 양전하와 음전하로 인한 극성을 나타낸다. 단순한 두 전하의 경우 크기는 전하량과 분리 거리의 곱이다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 36번"
+            ],
+            "originalQuestion": "반대되는 두 전하를 지니는 계의 극성을 나타내는 물리량을 쌍극자 모먼트\n라고 한다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "13–17"
+              }
+            ]
           },
           {
             "id": "chem-final-24-37",
@@ -192,7 +315,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "극성 결합 자체에는 결합 쌍극자 모멘트가 있다. 여러 극성 결합을 가진 분자 전체의 모멘트는 CO₂처럼 벡터합이 0이 될 수 있다. 원문은 ‘분자’가 아니라 ‘결합’이라고 했으므로 원본 O를 X로 정정한다.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다."
+            "rationale": "극성 결합 자체에는 결합 쌍극자 모멘트가 있다. 여러 극성 결합을 가진 분자 전체의 모멘트는 CO₂처럼 벡터합이 0이 될 수 있다. 원문은 ‘분자’가 아니라 ‘결합’이라고 했으므로 원본 O를 X로 정정한다.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 37번"
+            ],
+            "originalQuestion": "극성 결합에서도 쌍극자 모멘트가 나타나지 않을 수 있다.",
+            "converted": false,
+            "answerCorrection": true,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "13–17"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -260,7 +403,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "등전자 원자·이온들은 전자 수가 같으므로 핵전하가 큰 종이 전자를 더 강하게 끌어당긴다. 따라서 원자번호가 클수록 반지름이 대체로 작아진다.\n\n[복원 메모]\n등전자 비교의 원자·이온 표기를 명확히 함."
+            "rationale": "등전자 원자·이온들은 전자 수가 같으므로 핵전하가 큰 종이 전자를 더 강하게 끌어당긴다. 따라서 원자번호가 클수록 반지름이 대체로 작아진다.\n\n[복원 메모]\n등전자 비교의 원자·이온 표기를 명확히 함.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 04번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "같은 수의 전자를 갖는 원자들은 원자번호가 클수록 반지름이 작아진다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "23–25"
+              }
+            ]
           },
           {
             "id": "chem-final-24-39",
@@ -280,7 +444,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "Se²⁻·Br⁻·Rb⁺·Sr²⁺는 모두 전자 36개로 등전자이다. 핵전하가 클수록 전자를 더 강하게 끌어당겨 반지름이 작아지므로 가장 작은 이온은 Sr²⁺이다."
+            "rationale": "Se²⁻·Br⁻·Rb⁺·Sr²⁺는 모두 전자 36개로 등전자이다. 핵전하가 클수록 전자를 더 강하게 끌어당겨 반지름이 작아지므로 가장 작은 이온은 Sr²⁺이다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 39번"
+            ],
+            "originalQuestion": "Se2-, Br-, Rb+, Sr2+ 이온 중 가장 작은 이온은 Rb+ 이다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "23–25"
+              }
+            ]
           },
           {
             "id": "chem-final-24-40",
@@ -299,7 +483,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "강의는 기체 이온에서 이온성 고체가 만들어질 때의 에너지 변화를 격자에너지로 정의한다. 형성은 발열 과정이므로 음수이다. 결정 분리에 필요한 양의 에너지와 구별한다."
+            "rationale": "강의는 기체 이온에서 이온성 고체가 만들어질 때의 에너지 변화를 격자에너지로 정의한다. 형성은 발열 과정이므로 음수이다. 결정 분리에 필요한 양의 에너지와 구별한다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 40번"
+            ],
+            "originalQuestion": "격자 에너지는 발열과정이면 양의 값을 가진다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "26–27"
+              }
+            ]
           },
           {
             "id": "chem-final-24-41",
@@ -318,7 +522,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "이온성 백분율은 측정한 쌍극자 모멘트를 같은 거리에서 전하가 완전히 분리된 경우의 계산값으로 나누고 100을 곱한다."
+            "rationale": "이온성 백분율은 측정한 쌍극자 모멘트를 같은 거리에서 전하가 완전히 분리된 경우의 계산값으로 나누고 100을 곱한다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 41번"
+            ],
+            "originalQuestion": "결합의 이온석 백분율은 X-Y의 측정 쌍극자 모멘트를 X+Y-의 계산 쌍극자\n모멘트로 나눈 값에 100을 곱한 것이다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "32–33"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -393,7 +617,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "BF₃에서 B는 세 F와 단일 결합하여 중심 원자 주위에 전자가 6개 있다. 8개를 채우지 못하므로 옥텟 규칙의 예외이다."
+            "rationale": "BF₃에서 B는 세 F와 단일 결합하여 중심 원자 주위에 전자가 6개 있다. 8개를 채우지 못하므로 옥텟 규칙의 예외이다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 02번"
+            ],
+            "originalQuestion": "BF3는 옥텟 큐칙을 위반한 분자이다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "49"
+              }
+            ]
           },
           {
             "id": "chem-final-25-5",
@@ -413,7 +657,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "공명은 하나의 Lewis 구조로 전자 분포를 충분히 나타내지 못할 때 여러 구조를 함께 사용하는 모형이다. 모든 전이금속 이온이 공명구조를 가진다는 규칙은 없다."
+            "rationale": "공명은 하나의 Lewis 구조로 전자 분포를 충분히 나타내지 못할 때 여러 구조를 함께 사용하는 모형이다. 모든 전이금속 이온이 공명구조를 가진다는 규칙은 없다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 05번"
+            ],
+            "originalQuestion": "모든 전이금속 이온은 공명 구조를 가진다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "55–57"
+              }
+            ]
           },
           {
             "id": "chem-final-24-32",
@@ -431,7 +695,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "결합 전자쌍은 두 원자핵 사이에서 공유된다. 한 원자에 주로 위치하는 것은 고립 전자쌍이다."
+            "rationale": "결합 전자쌍은 두 원자핵 사이에서 공유된다. 한 원자에 주로 위치하는 것은 고립 전자쌍이다.",
+            "year": "24",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 32번"
+            ],
+            "originalQuestion": "결합 전자쌍은 한 원자핵에만 편재되어 한 원자핵에만 근접적으로 존재한다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "40"
+              }
+            ]
           },
           {
             "id": "chem-final-24-38",
@@ -457,7 +741,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "강의의 옥텟 모형에서는 비금속 원자들이 전자를 공유하여 안정한 비활성 기체형 전자배치를 이루려는 경향을 설명한다. H의 두 전자 규칙과 BF₃ 등의 옥텟 예외가 있으므로 일반적 경향으로 한정한다.\n\n[복원 메모]\n원본의 단정을 강의 옥텟 모형의 일반 경향으로 한정. 두 전자 규칙 및 옥텟 예외는 해설에 표시."
+            "rationale": "강의의 옥텟 모형에서는 비금속 원자들이 전자를 공유하여 안정한 비활성 기체형 전자배치를 이루려는 경향을 설명한다. H의 두 전자 규칙과 BF₃ 등의 옥텟 예외가 있으므로 일반적 경향으로 한정한다.\n\n[복원 메모]\n원본의 단정을 강의 옥텟 모형의 일반 경향으로 한정. 두 전자 규칙 및 옥텟 예외는 해설에 표시.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 38번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "두 개의 비금속 원자가 반응하여 공유 결합을 형성할 때, 비금속 원자는 불\n활성 기체의 전자 배치를 이룬다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "41–49"
+              }
+            ]
           },
           {
             "id": "chem-final-24-42",
@@ -479,7 +784,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "같은 원자 사이에서 결합차수가 커지면 결합 길이는 대체로 짧아지고 결합을 끊는 데 필요한 에너지는 커진다. 결합에너지가 작아진다는 부분이 X이다."
+            "rationale": "같은 원자 사이에서 결합차수가 커지면 결합 길이는 대체로 짧아지고 결합을 끊는 데 필요한 에너지는 커진다. 결합에너지가 작아진다는 부분이 X이다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 42번"
+            ],
+            "originalQuestion": "공유 결합에너지에서 공유된 전자쌍이 많을수록 결합길이가 짧아지고 결합\n에너지도 작아진다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "35–39"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -540,7 +865,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "같은 전자영역 배열을 비교하면 고립 전자쌍이 결합 전자쌍보다 강하게 반발하여 결합각을 줄인다. 예를 들어 CH₄→NH₃→H₂O에서 각이 작아진다. 서로 다른 배위수·전자배열까지 비교하는 절대 법칙으로는 쓰지 않는다.\n\n[복원 메모]\n강의의 같은 전자영역 배열 비교 조건을 보완."
+            "rationale": "같은 전자영역 배열을 비교하면 고립 전자쌍이 결합 전자쌍보다 강하게 반발하여 결합각을 줄인다. 예를 들어 CH₄→NH₃→H₂O에서 각이 작아진다. 서로 다른 배위수·전자배열까지 비교하는 절대 법칙으로는 쓰지 않는다.\n\n[복원 메모]\n강의의 같은 전자영역 배열 비교 조건을 보완.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 06번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "lone pair가 많을수록 분자의 결합각은 작아진다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "63"
+              }
+            ]
           },
           {
             "id": "chem-final-24-43",
@@ -558,7 +904,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "고립 전자쌍은 결합 전자쌍보다 중심 원자 주위에서 더 큰 공간을 차지하고 더 강하게 반발한다. 그래서 같은 전자영역 배열에서 결합각을 줄일 수 있다."
+            "rationale": "고립 전자쌍은 결합 전자쌍보다 중심 원자 주위에서 더 큰 공간을 차지하고 더 강하게 반발한다. 그래서 같은 전자영역 배열에서 결합각을 줄일 수 있다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 43번"
+            ],
+            "originalQuestion": "고립 전자쌍은 결합 전자쌍보다 더 적은 공간을 필요로 한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "63"
+              }
+            ]
           },
           {
             "id": "chem-final-24-44",
@@ -576,7 +942,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "VSEPR에서 이중·삼중 결합은 전자가 여러 쌍이어도 하나의 전자영역으로 센다. 여러 유효 전자쌍으로 따로 세지 않는다."
+            "rationale": "VSEPR에서 이중·삼중 결합은 전자가 여러 쌍이어도 하나의 전자영역으로 센다. 여러 유효 전자쌍으로 따로 세지 않는다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 44번"
+            ],
+            "originalQuestion": "전자쌍의 수를 셀 때 다중 결합은 여러 개의 유효 전자쌍으로 간주한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "68"
+              }
+            ]
           },
           {
             "id": "chem-final-23-51",
@@ -600,7 +986,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "VSEPR 모형에서 중심 원자 주위 전자영역들은 반발을 줄이도록 가능한 한 멀리 배치된다. 고립 전자쌍과 결합 전자쌍을 모두 고려한다."
+            "rationale": "VSEPR 모형에서 중심 원자 주위 전자영역들은 반발을 줄이도록 가능한 한 멀리 배치된다. 고립 전자쌍과 결합 전자쌍을 모두 고려한다.",
+            "year": "23",
+            "sourcePage": 4,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "23학번",
+              "원문 51번"
+            ],
+            "originalQuestion": "원자 주위의 결합 전자쌍과 고립 전자쌍들이 최대한 멀리 위치한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 8,
+                "pages": "58–64"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -680,7 +1086,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "sp³ 혼성 오비탈 네 개의 기본 배열은 정사면체이다. 선형 배열은 sp 혼성화의 기본 모형이다."
+            "rationale": "sp³ 혼성 오비탈 네 개의 기본 배열은 정사면체이다. 선형 배열은 sp 혼성화의 기본 모형이다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 07번"
+            ],
+            "originalQuestion": "sp3오비탈은 언제나 선형 구조이다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 9,
+                "pages": "6–9"
+              }
+            ]
           },
           {
             "id": "chem-final-25-8",
@@ -700,7 +1126,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "π 결합은 보통 나란한 두 비혼성 p 오비탈의 옆면 겹침으로 형성된다. 구형인 두 s 오비탈의 겹침으로 π 결합을 만들지 않는다."
+            "rationale": "π 결합은 보통 나란한 두 비혼성 p 오비탈의 옆면 겹침으로 형성된다. 구형인 두 s 오비탈의 겹침으로 π 결합을 만들지 않는다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 08번"
+            ],
+            "originalQuestion": "파이 결합은 두 s오비탈의 수직적 결합을 통해 형성된다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 9,
+                "pages": "11–13"
+              }
+            ]
           },
           {
             "id": "chem-final-25-9",
@@ -720,7 +1166,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "sp³ 혼성화에서는 s 하나와 p 세 개가 모두 혼성화되어 남는 비혼성 p 오비탈이 없다. 강의 모형에서 π 결합에는 비혼성 p 오비탈의 옆면 겹침이 필요하다."
+            "rationale": "sp³ 혼성화에서는 s 하나와 p 세 개가 모두 혼성화되어 남는 비혼성 p 오비탈이 없다. 강의 모형에서 π 결합에는 비혼성 p 오비탈의 옆면 겹침이 필요하다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 09번"
+            ],
+            "originalQuestion": "Sp³ 혼성 오비탈만으로 π 결합을 형성할 수 있다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 9,
+                "pages": "11–13"
+              }
+            ]
           },
           {
             "id": "chem-final-25-10",
@@ -742,7 +1208,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "σ 결합은 결합축을 따른 겹침으로 생기며 s–s, s–p, p–p 또는 여러 혼성 오비탈 사이에서도 가능하다. sp³ 사이에서만 가능한 것은 아니다."
+            "rationale": "σ 결합은 결합축을 따른 겹침으로 생기며 s–s, s–p, p–p 또는 여러 혼성 오비탈 사이에서도 가능하다. sp³ 사이에서만 가능한 것은 아니다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 10번"
+            ],
+            "originalQuestion": "모든 시그마 결합은 sp3오비탈로만 나타난다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 9,
+                "pages": "15–19"
+              }
+            ]
           },
           {
             "id": "chem-final-24-45",
@@ -760,7 +1246,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "CO₂에는 C=O 이중 결합이 두 개 있다. 각 이중 결합은 σ 하나와 π 하나로 구성되므로 전체는 2σ+2π이다."
+            "rationale": "CO₂에는 C=O 이중 결합이 두 개 있다. 각 이중 결합은 σ 하나와 π 하나로 구성되므로 전체는 2σ+2π이다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 45번"
+            ],
+            "originalQuestion": "이산화탄소 분자 1개에는 2쌍의 시그마 결합과 2쌍의 파이 결합이 존재한\n다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 9,
+                "pages": "18"
+              }
+            ]
           },
           {
             "id": "chem-final-24-52",
@@ -781,7 +1287,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "PCl₃의 중심 P는 결합 세 개와 고립 전자쌍 하나를 갖는 sp³ 모형이다. Cl을 dsp³라고 하는 원문은 틀리다. 강의의 PCl₅ 설명에서도 주변 Cl은 sp³이고 중심 P에 dsp³ 모형을 적용한다.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다."
+            "rationale": "PCl₃의 중심 P는 결합 세 개와 고립 전자쌍 하나를 갖는 sp³ 모형이다. Cl을 dsp³라고 하는 원문은 틀리다. 강의의 PCl₅ 설명에서도 주변 Cl은 sp³이고 중심 P에 dsp³ 모형을 적용한다.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 52번"
+            ],
+            "originalQuestion": "PCl3 분자의 cl원자는 dsp^3 혼성화 이룬다",
+            "converted": false,
+            "answerCorrection": true,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 9,
+                "pages": "6–9"
+              }
+            ]
           },
           {
             "id": "chem-final-24-53",
@@ -799,7 +1325,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "XeF₂는 중심 Xe의 전자영역이 다섯 개(결합 두 개, 고립 전자쌍 세 개)이다. 강의의 혼성화 모형으로는 sp³d(dsp³)이며, 여섯 전자영역의 d²sp³가 아니다. 분자 모양은 선형이다."
+            "rationale": "XeF₂는 중심 Xe의 전자영역이 다섯 개(결합 두 개, 고립 전자쌍 세 개)이다. 강의의 혼성화 모형으로는 sp³d(dsp³)이며, 여섯 전자영역의 d²sp³가 아니다. 분자 모양은 선형이다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 53번"
+            ],
+            "originalQuestion": "XeF2 분자에서 xe원자는 d2sp3 혼성화를 이루고 있다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 9,
+                "pages": "20–21"
+              }
+            ]
           },
           {
             "id": "chem-final-23-54",
@@ -821,7 +1367,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "sp 혼성화는 s 하나와 p 하나를 섞어 sp 오비탈 두 개를 만든다. 나머지 p 오비탈 두 개는 혼성화되지 않고 π 결합에 참여할 수 있다."
+            "rationale": "sp 혼성화는 s 하나와 p 하나를 섞어 sp 오비탈 두 개를 만든다. 나머지 p 오비탈 두 개는 혼성화되지 않고 π 결합에 참여할 수 있다.",
+            "year": "23",
+            "sourcePage": 4,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "23학번",
+              "원문 54번"
+            ],
+            "originalQuestion": "이산화탄소 분자에 존재하는 모든 2p 궤도 전자들은 sp 혼성 궤도함수 레벨로 에너지가 변화된다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 9,
+                "pages": "15–19"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -880,7 +1446,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "결합성 분자 오비탈은 원자 오비탈의 보강 간섭으로 핵 사이 전자밀도를 높이고 원래 원자 오비탈보다 낮은 에너지를 갖는다."
+            "rationale": "결합성 분자 오비탈은 원자 오비탈의 보강 간섭으로 핵 사이 전자밀도를 높이고 원래 원자 오비탈보다 낮은 에너지를 갖는다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 55번"
+            ],
+            "originalQuestion": "결합성 분자 오비탈은 원자 오비탈보다 에너지가 낮다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 9,
+                "pages": "32"
+              }
+            ]
           },
           {
             "id": "chem-final-24-56",
@@ -898,7 +1484,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "He₂의 전자 네 개를 넣으면 결합성 전자 2개와 반결합성 전자 2개가 되어 결합차수 (2−2)/2=0이다. 에너지상 안정한 결합을 만들지 못하는 이유는 결합차수가 2여서가 아니다.\n\n[복원 메모]\n강의의 He₂ 결합차수 예제에 따라 원본의 He에 누락된 아래첨자2 보완."
+            "rationale": "He₂의 전자 네 개를 넣으면 결합성 전자 2개와 반결합성 전자 2개가 되어 결합차수 (2−2)/2=0이다. 에너지상 안정한 결합을 만들지 못하는 이유는 결합차수가 2여서가 아니다.\n\n[복원 메모]\n강의의 He₂ 결합차수 예제에 따라 원본의 He에 누락된 아래첨자2 보완.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 56번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "He 분자의 결합차수는 2이므로 분자로 결합해도 에너지적으로 아무런 이득\n이 없다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 9,
+                "pages": "38"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -961,7 +1568,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "London 분산력은 전자 분포의 요동에 의한 힘이므로 극성·비극성 입자 모두에서 나타난다. 비극성 분자에서 주된 힘인 경우가 많다는 것과 오직 비극성에서만 작용한다는 것은 다르다."
+            "rationale": "London 분산력은 전자 분포의 요동에 의한 힘이므로 극성·비극성 입자 모두에서 나타난다. 비극성 분자에서 주된 힘인 경우가 많다는 것과 오직 비극성에서만 작용한다는 것은 다르다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 13번"
+            ],
+            "originalQuestion": "London분산력은 비극성 분자들 사이에서만 작용한다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "7–8"
+              }
+            ]
           },
           {
             "id": "chem-final-25-14",
@@ -980,7 +1607,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "강의의 일반화학 모형에서는 N·O·F에 직접 결합한 H와 이웃 입자의 비공유 전자쌍 사이에서 수소 결합을 설명한다. 이 수업 범위의 대표적 수소 결합 기준으로 O이다. 특수한 수소 결합까지 배제하는 보편적 정의로 확대하지 않는다.\n\n[복원 메모]\n강의의 일반화학 수소 결합 범위로 한정."
+            "rationale": "강의의 일반화학 모형에서는 N·O·F에 직접 결합한 H와 이웃 입자의 비공유 전자쌍 사이에서 수소 결합을 설명한다. 이 수업 범위의 대표적 수소 결합 기준으로 O이다. 특수한 수소 결합까지 배제하는 보편적 정의로 확대하지 않는다.\n\n[복원 메모]\n강의의 일반화학 수소 결합 범위로 한정.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 14번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "수소결합은 F,O,N에 결합한 수소만 가능하다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "5–6"
+              }
+            ]
           },
           {
             "id": "chem-final-25-15",
@@ -999,7 +1647,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "응집력이 접착력보다 크면 액체가 벽을 잘 적시지 않아 볼록한 액면이 된다. 접착력이 상대적으로 큰 물–유리에서는 오목한 액면이다. 원본의 ‘오목한 볼록면’은 상반된 표현이 섞인 오기여서 ‘오목한 액면’으로 보완했다.\n\n[복원 메모]\n상반된 오기 ‘오목한 볼록면’을 오목한 액면으로 보완."
+            "rationale": "응집력이 접착력보다 크면 액체가 벽을 잘 적시지 않아 볼록한 액면이 된다. 접착력이 상대적으로 큰 물–유리에서는 오목한 액면이다. 원본의 ‘오목한 볼록면’은 상반된 표현이 섞인 오기여서 ‘오목한 액면’으로 보완했다.\n\n[복원 메모]\n상반된 오기 ‘오목한 볼록면’을 오목한 액면으로 보완.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 15번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "응집력이 접착력보다 강할 때 오목한 볼록면이 형성된다",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "10–11"
+              }
+            ]
           },
           {
             "id": "chem-final-25-57",
@@ -1021,7 +1690,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "강의는 비슷한 크기의 입자를 비교할 때 분산력 < 쌍극자 힘 < 수소 결합 < 이온 결합의 일반적 경향을 제시한다. 큰 분자의 분산력이 작은 분자의 쌍극자 힘보다 강한 경우도 있어 모든 물질의 절대 순서로 쓰지 않는다.\n\n[복원 메모]\n원본의 힘 세기 나열을 강의의 일반적 경향으로 한정. 모든 물질의 보편적인 절대 순위는 아님."
+            "rationale": "강의는 비슷한 크기의 입자를 비교할 때 분산력 < 쌍극자 힘 < 수소 결합 < 이온 결합의 일반적 경향을 제시한다. 큰 분자의 분산력이 작은 분자의 쌍극자 힘보다 강한 경우도 있어 모든 물질의 절대 순서로 쓰지 않는다.\n\n[복원 메모]\n원본의 힘 세기 나열을 강의의 일반적 경향으로 한정. 모든 물질의 보편적인 절대 순위는 아님.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 57번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "분자 및 원자간 관계에서 런던 분산력<쌍극자 결합<수소결합<이온결합 이다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "4–8"
+              }
+            ]
           },
           {
             "id": "chem-final-24-35",
@@ -1040,7 +1730,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "수소 결합은 강의 모형에서 N·O·F에 결합한 H와 이웃 입자의 고립 전자쌍 사이에 생기는 인력이다. 두 H 원자가 만드는 H–H 공유 결합을 뜻하지 않으며, 일반적인 분자 간 수소 결합을 1차 원자 결합으로 분류하지 않는다."
+            "rationale": "수소 결합은 강의 모형에서 N·O·F에 결합한 H와 이웃 입자의 고립 전자쌍 사이에 생기는 인력이다. 두 H 원자가 만드는 H–H 공유 결합을 뜻하지 않으며, 일반적인 분자 간 수소 결합을 1차 원자 결합으로 분류하지 않는다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 35번"
+            ],
+            "originalQuestion": "수소 결합은 수소 원자 간 결합으로 1차 결합이다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "5–6"
+              }
+            ]
           },
           {
             "id": "chem-final-24-46",
@@ -1059,7 +1769,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "London 분산력은 순간 쌍극자와 이에 의해 유도된 쌍극자 사이의 인력이다. 수소 결합이 생겨서 나타나는 힘이 아니다."
+            "rationale": "London 분산력은 순간 쌍극자와 이에 의해 유도된 쌍극자 사이의 인력이다. 수소 결합이 생겨서 나타나는 힘이 아니다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 46번"
+            ],
+            "originalQuestion": "런던 분산력은 순간 쌍극자 사이의 수소 결합에 기인한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "7–8"
+              }
+            ]
           },
           {
             "id": "chem-final-24-48",
@@ -1078,7 +1808,31 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "강의는 H₂O가 넓은 수소 결합 연결망을 이루는 것을 설명하지만, 개별 수소 결합 세기가 큰 HF와 분자당 수소 결합 수가 많은 H₂O를 구분하지 않고 “수소 결합이 가장 크다”고 서술해 X로 판단한다."
+            "rationale": "강의는 H₂O가 넓은 수소 결합 연결망을 이루는 것을 설명하지만, 개별 수소 결합 세기가 큰 HF와 분자당 수소 결합 수가 많은 H₂O를 구분하지 않고 “수소 결합이 가장 크다”고 서술해 X로 판단한다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "검토 보류",
+            "sourceTags": [
+              "24학번",
+              "원문 48번"
+            ],
+            "originalQuestion": "H2O, NH3, CH4, HF 중에서 가장 수소 결합이 큰 것은 H2O이다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "5–6"
+              }
+            ],
+            "sourceReviewAnswer": "원본 O · 조건·표현 확인 필요",
+            "sourceUncertain": true,
+            "sourceExplanation": "강의는 H₂O가 넓은 수소 결합 연결망을 이루는 것을 설명한다. 하지만 원문의 ‘수소 결합이 가장 크다’는 한 결합의 세기와 분자당 연결 정도를 구분하지 않는다. 개별 결합의 세기까지 H₂O가 가장 크다고 단정할 수 없어 원본 O를 보존하고 검토 보류한다.",
+            "gradingNote": "현재 데이터의 개별 수소결합/연결망 구분에 따른 X 판정 유지"
           },
           {
             "id": "chem-final-23-3",
@@ -1100,7 +1854,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "반데르발스 힘은 쌍극자 사이의 힘과 London 분산력 등을 포함한다. 수소 원자만의 쌍극자에 의한 힘으로 정의하지 않는다. 수소 결합도 H–H 원자 사이의 결합이라는 뜻이 아니다."
+            "rationale": "반데르발스 힘은 쌍극자 사이의 힘과 London 분산력 등을 포함한다. 수소 원자만의 쌍극자에 의한 힘으로 정의하지 않는다. 수소 결합도 H–H 원자 사이의 결합이라는 뜻이 아니다.",
+            "year": "23",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "23학번",
+              "원문 03번"
+            ],
+            "originalQuestion": "반데르발스 결합은 수소원자의 쌍극자 모멘트에 의한 인력이다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "4–8"
+              }
+            ]
           },
           {
             "id": "chem-final-23-56",
@@ -1119,7 +1893,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "비극성 분자에도 전자 분포의 순간적 요동으로 순간 쌍극자가 생긴다. 이것이 이웃 분자에 쌍극자를 유도하여 인력을 만든다. 원본 X를 강의에 따라 O로 정정했다.\n\n[정답 정정]\n원본 X → 검토 O. 판단 이유는 위 강의 근거와 계산을 따른다."
+            "rationale": "비극성 분자에도 전자 분포의 순간적 요동으로 순간 쌍극자가 생긴다. 이것이 이웃 분자에 쌍극자를 유도하여 인력을 만든다. 원본 X를 강의에 따라 O로 정정했다.\n\n[정답 정정]\n원본 X → 검토 O. 판단 이유는 위 강의 근거와 계산을 따른다.",
+            "year": "23",
+            "sourcePage": 5,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "23학번",
+              "원문 56번"
+            ],
+            "originalQuestion": "무극성 분자들은 순간적인 유발 쌍극자를 형성할 수 있다.",
+            "converted": false,
+            "answerCorrection": true,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "7–8"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -1199,7 +1993,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "고체에는 입자가 규칙적으로 반복 배열된 결정성 고체와 장거리 규칙성이 없는 비정질 고체가 있다. 모든 고체가 일정한 결정격자를 갖지는 않는다."
+            "rationale": "고체에는 입자가 규칙적으로 반복 배열된 결정성 고체와 장거리 규칙성이 없는 비정질 고체가 있다. 모든 고체가 일정한 결정격자를 갖지는 않는다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 12번"
+            ],
+            "originalQuestion": "모든 고체는 일정한 결정격자를 형성한다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "15–16"
+              }
+            ]
           },
           {
             "id": "chem-final-25-17",
@@ -1217,7 +2031,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "분자성 고체는 분자 사이 힘으로 유지되어 일반적으로 이온성·그물형 고체보다 녹는점이 낮고 휘발성이 큰 편이다. 물질별 차이는 있으므로 높은 녹는점·낮은 휘발성으로 일반화하지 않는다."
+            "rationale": "분자성 고체는 분자 사이 힘으로 유지되어 일반적으로 이온성·그물형 고체보다 녹는점이 낮고 휘발성이 큰 편이다. 물질별 차이는 있으므로 높은 녹는점·낮은 휘발성으로 일반화하지 않는다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 17번"
+            ],
+            "originalQuestion": "분자성 고체는 융점이 높고 휘발성이 낮다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "37"
+              }
+            ]
           },
           {
             "id": "chem-final-25-18",
@@ -1235,7 +2069,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "금속 고체에서는 비편재화된 원자가전자가 결정 전체로 이동할 수 있어 전류를 운반한다. 자유전자에 의한 전도라는 설명은 금속 결합 모형과 일치한다."
+            "rationale": "금속 고체에서는 비편재화된 원자가전자가 결정 전체로 이동할 수 있어 전류를 운반한다. 자유전자에 의한 전도라는 설명은 금속 결합 모형과 일치한다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 18번"
+            ],
+            "originalQuestion": "금속 고체는 자유전자때문에 전기전도성이 있다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "26"
+              }
+            ]
           },
           {
             "id": "chem-final-25-21",
@@ -1254,7 +2108,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "보통의 실온·1 atm에서 물은 액체이다. 비정질 고체는 장거리 결정 질서가 없는 고체를 말하며 실온의 액체 물을 뜻하지 않는다.\n\n[복원 메모]\n상온의 통상적 압력 1atm 명시."
+            "rationale": "보통의 실온·1 atm에서 물은 액체이다. 비정질 고체는 장거리 결정 질서가 없는 고체를 말하며 실온의 액체 물을 뜻하지 않는다.\n\n[복원 메모]\n상온의 통상적 압력 1atm 명시.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 21번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "물은 상온에서 비정질 고체로 존재한다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "15–16"
+              }
+            ]
           },
           {
             "id": "chem-final-25-22",
@@ -1273,7 +2148,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "Cl₂는 비금속 원자가 공유 결합으로 이루는 분자이다. 고체 염소는 분자성 고체이며 자유롭게 이동하는 이온이나 전자가 없어 높은 전기전도성을 갖지 않는다."
+            "rationale": "Cl₂는 비금속 원자가 공유 결합으로 이루는 분자이다. 고체 염소는 분자성 고체이며 자유롭게 이동하는 이온이나 전자가 없어 높은 전기전도성을 갖지 않는다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 22번"
+            ],
+            "originalQuestion": "cl2는 이온결합을하므로 고체상태에서 높은 전기전도성을 가진다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "18–19"
+              }
+            ]
           },
           {
             "id": "chem-final-24-47",
@@ -1294,7 +2189,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "그물형 원자성 고체는 원자들이 방향성이 있는 공유 결합으로 연결된 구조이다. 비지향성 결합이라는 설명은 맞지 않는다."
+            "rationale": "그물형 원자성 고체는 원자들이 방향성이 있는 공유 결합으로 연결된 구조이다. 비지향성 결합이라는 설명은 맞지 않는다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 47번"
+            ],
+            "originalQuestion": "그물형 원자성 고체는 비지향성 공유 결합을 한다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "19,30–32"
+              }
+            ]
           },
           {
             "id": "chem-final-24-49",
@@ -1313,7 +2228,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "소금은 이온성, 규소는 그물형 원자성, 설탕은 분자성, 금속은 금속성 고체이다. 설탕이 이온성 고체라는 설명은 X이다."
+            "rationale": "소금은 이온성, 규소는 그물형 원자성, 설탕은 분자성, 금속은 금속성 고체이다. 설탕이 이온성 고체라는 설명은 X이다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 49번"
+            ],
+            "originalQuestion": "소금, 규소, 설탕, 및 금속 중에서 이온성 고체에 해당하는 물질은 설탕이다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "18–19"
+              }
+            ]
           },
           {
             "id": "chem-final-24-64",
@@ -1331,7 +2266,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "전자바다모형은 금속 양이온 사이에 비편재화된 전자가 이동하는 금속 결합 모형이다. 강의에도 ‘4주기 이후에만’이라는 문장은 없다. [보충] 금속 결합이 4주기 이후 원소에만 생기는 것은 아니며 Li·Na 등에도 적용한다.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다."
+            "rationale": "전자바다모형은 금속 양이온 사이에 비편재화된 전자가 이동하는 금속 결합 모형이다. 강의에도 ‘4주기 이후에만’이라는 문장은 없다. [보충] 금속 결합이 4주기 이후 원소에만 생기는 것은 아니며 Li·Na 등에도 적용한다.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 64번"
+            ],
+            "originalQuestion": "금속 결합 모형이 전자바다모형을 이루는데 이는 주기율표 4주기 이후에 나\n타난다",
+            "converted": false,
+            "answerCorrection": true,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "26"
+              }
+            ]
           },
           {
             "id": "chem-final-24-65",
@@ -1349,7 +2304,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "그물형 원자성 고체인 흑연은 층 안에서 이동 가능한 전자를 가져 전기를 전도한다. 따라서 모든 그물형 원자성 고체를 부도체라고 한 원본 O는 X로 정정한다.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다."
+            "rationale": "그물형 원자성 고체인 흑연은 층 안에서 이동 가능한 전자를 가져 전기를 전도한다. 따라서 모든 그물형 원자성 고체를 부도체라고 한 원본 O는 X로 정정한다.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 65번"
+            ],
+            "originalQuestion": "그물형 원자성 고체는 부도체이다",
+            "converted": false,
+            "answerCorrection": true,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "32"
+              }
+            ]
           },
           {
             "id": "chem-final-23-60",
@@ -1368,7 +2343,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "면심입방(fcc) 단위세포에는 원자 4개가 있고 모서리 길이 a=2√2r이다. r=144 pm, M=53.95 g/mol을 넣으면 ρ=4M/(Nₐa³)≈5.30 g/cm³이다. 원본에서 생략된 밀도의 단위를 보완했다.\n\n[복원 메모]\n원본에서 생략된 밀도 단위를 강의 fcc 밀도 계산식에 따라 보완."
+            "rationale": "면심입방(fcc) 단위세포에는 원자 4개가 있고 모서리 길이 a=2√2r이다. r=144 pm, M=53.95 g/mol을 넣으면 ρ=4M/(Nₐa³)≈5.30 g/cm³이다. 원본에서 생략된 밀도의 단위를 보완했다.\n\n[복원 메모]\n원본에서 생략된 밀도 단위를 강의 fcc 밀도 계산식에 따라 보완.",
+            "year": "23",
+            "sourcePage": 5,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "23학번",
+              "원문 60번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "A의 결정구조는 입방 최조밀 쌓임 구조이다. 물질 A의 반지름이 144pm이고, 몰질량이 53.95g/mol일 때 물질 A의 밀도는 5.3이다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "24–25"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -1436,7 +2432,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "압력이 커질 때 녹는점이 낮아지는 것은 물처럼 액체의 밀도가 고체보다 큰 경우이다. 많은 물질은 고체가 더 조밀하여 압력이 커질 때 녹는점이 올라간다."
+            "rationale": "압력이 커질 때 녹는점이 낮아지는 것은 물처럼 액체의 밀도가 고체보다 큰 경우이다. 많은 물질은 고체가 더 조밀하여 압력이 커질 때 녹는점이 올라간다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 16번"
+            ],
+            "originalQuestion": "모든고체는 압력이 증가하면 녹는점이 감소한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "59"
+              }
+            ]
           },
           {
             "id": "chem-final-25-20",
@@ -1455,7 +2471,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "얼음은 수소 결합에 의해 열린 구조를 이루어 같은 질량의 액체 물보다 부피가 크고 밀도가 작다. 그래서 물 위에 뜬다."
+            "rationale": "얼음은 수소 결합에 의해 열린 구조를 이루어 같은 질량의 액체 물보다 부피가 크고 밀도가 작다. 그래서 물 위에 뜬다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 20번"
+            ],
+            "originalQuestion": "얼음은 물보다 밀도가 크다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "54,59"
+              }
+            ]
           },
           {
             "id": "chem-final-24-51",
@@ -1474,7 +2510,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "외부압력이 1 atm일 때 액체의 증기압이 1 atm보다 낮으면 기포가 안정하게 자라지 못한다. 강의의 같은 조건을 보완하면 원문은 O여서 원본 X를 정정한다. 감압 조건에서는 결과가 달라질 수 있다.\n\n[복원 메모]\n원본의 ‘기압’을 증기압으로 보완하고 강의의 외부압력 1 atm 조건 명시. 보완 조건에서 원본 X를 O로 정정.\n\n[정답 정정]\n원본 X → 검토 O. 판단 이유는 위 강의 근거와 계산을 따른다."
+            "rationale": "외부압력이 1 atm일 때 액체의 증기압이 1 atm보다 낮으면 기포가 안정하게 자라지 못한다. 강의의 같은 조건을 보완하면 원문은 O여서 원본 X를 정정한다. 감압 조건에서는 결과가 달라질 수 있다.\n\n[복원 메모]\n원본의 ‘기압’을 증기압으로 보완하고 강의의 외부압력 1 atm 조건 명시. 보완 조건에서 원본 X를 O로 정정.\n\n[정답 정정]\n원본 X → 검토 O. 판단 이유는 위 강의 근거와 계산을 따른다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 51번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "액체의 기압이 1atm보다 닞으면 기포가 형성되지 않는다",
+            "converted": true,
+            "answerCorrection": true,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "53,60"
+              }
+            ]
           },
           {
             "id": "chem-final-24-59",
@@ -1493,7 +2550,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "외부압력 1 atm에서 액체의 증기압이 1 atm보다 낮으면 기포가 유지되지 못한다. 끓음은 증기압이 외부압력에 도달할 때 가능하므로 원본 O를 X로 정정한다.\n\n[복원 메모]\n강의의 외부압력 1 atm 조건을 명시. 보완 조건에서 원본 O를 X로 정정.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다."
+            "rationale": "외부압력 1 atm에서 액체의 증기압이 1 atm보다 낮으면 기포가 유지되지 못한다. 끓음은 증기압이 외부압력에 도달할 때 가능하므로 원본 O를 X로 정정한다.\n\n[복원 메모]\n강의의 외부압력 1 atm 조건을 명시. 보완 조건에서 원본 O를 X로 정정.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 59번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "액체의 증기압이 1 atm보다 낮은 온도에서 기포가 형성된다.",
+            "converted": true,
+            "answerCorrection": true,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "53,60"
+              }
+            ]
           },
           {
             "id": "chem-final-24-60",
@@ -1512,7 +2590,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "과냉각된 물에서 얼음이 생기기 시작하면 응고열이 방출되어 온도가 녹는점 쪽으로 올라간다. 온도를 더 낮추는 과정이라는 설명은 X이다."
+            "rationale": "과냉각된 물에서 얼음이 생기기 시작하면 응고열이 방출되어 온도가 녹는점 쪽으로 올라간다. 온도를 더 낮추는 과정이라는 설명은 X이다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 60번"
+            ],
+            "originalQuestion": "과냉각 조건에서는 온도를 녹는점으로 내리고 나머지 물도 얼게된다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "52–53"
+              }
+            ]
           },
           {
             "id": "chem-final-24-61",
@@ -1530,7 +2628,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "강의의 물 상태도에서 삼중점의 압력은 약 0.00602 atm이다. 이 점에서는 얼음·물·수증기 세 상이 평형을 이룬다."
+            "rationale": "강의의 물 상태도에서 삼중점의 압력은 약 0.00602 atm이다. 이 점에서는 얼음·물·수증기 세 상이 평형을 이룬다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 61번"
+            ],
+            "originalQuestion": "<물의 상태도 그림> 삼중점에서 물과 얼음은 0.00602atm으로 동일한 증기\n압을 가진다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "57"
+              }
+            ]
           },
           {
             "id": "chem-final-24-62",
@@ -1548,7 +2666,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "물의 고체–액체 경계선은 음의 기울기이다. 얼음보다 액체 물의 밀도가 크므로 압력을 높이면 녹는점이 낮아진다. 물에 대한 설명이며 모든 물질에 적용되는 법칙은 아니다."
+            "rationale": "물의 고체–액체 경계선은 음의 기울기이다. 얼음보다 액체 물의 밀도가 크므로 압력을 높이면 녹는점이 낮아진다. 물에 대한 설명이며 모든 물질에 적용되는 법칙은 아니다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 62번"
+            ],
+            "originalQuestion": "<물의 상태도 그림> 고체/액체선의 음의 기울기로 인하여 외부 압력이 증가\n하면 녹는 점이 감소한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "59"
+              }
+            ]
           },
           {
             "id": "chem-final-24-63",
@@ -1566,7 +2704,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "10장 PDF 58쪽은 물의 임계점을 374 °C·218 atm으로 제시하고 이 부근에서는 액체와 기체의 구분이 사라지는 유체를 설명한다. 원문은 374 °C 이상으로 임계점 자체까지 포함하므로 전체를 단순한 기체 상태라고 단정한 설명은 X이다. 정확히 임계압력이라는 이유만으로 모든 조건을 엄밀한 초임계 상태라고 부르지는 않는다.\n\n[강의 기준 재검토]\n관련 슬라이드의 정의·조건을 우선하여 검토 보류를 해제했다. 원본 답은 아래에 별도로 보존한다."
+            "rationale": "10장 PDF 58쪽은 물의 임계점을 374 °C·218 atm으로 제시하고 이 부근에서는 액체와 기체의 구분이 사라지는 유체를 설명한다. 원문은 374 °C 이상으로 임계점 자체까지 포함하므로 전체를 단순한 기체 상태라고 단정한 설명은 X이다. 정확히 임계압력이라는 이유만으로 모든 조건을 엄밀한 초임계 상태라고 부르지는 않는다.\n\n[강의 기준 재검토]\n관련 슬라이드의 정의·조건을 우선하여 검토 보류를 해제했다. 원본 답은 아래에 별도로 보존한다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 63번"
+            ],
+            "originalQuestion": "<물의 상태도 그림> 압력이 218 atm, 온도가 374 °C 이상에서 물은 기체\n상태이다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107-rejudge",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "58"
+              }
+            ]
           },
           {
             "id": "chem-final-23-65",
@@ -1585,7 +2743,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "과냉각과 과열이 가능하므로 실제 상변화가 언제나 정확히 정상 녹는점·끓는점에서 시작되는 것은 아니다. 압력에 따라서도 상변화 온도가 달라진다."
+            "rationale": "과냉각과 과열이 가능하므로 실제 상변화가 언제나 정확히 정상 녹는점·끓는점에서 시작되는 것은 아니다. 압력에 따라서도 상변화 온도가 달라진다.",
+            "year": "23",
+            "sourcePage": 5,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "23학번",
+              "원문 65번"
+            ],
+            "originalQuestion": "상태의 변화가 정확하게 끓는점과 녹는점에서 발생한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "52–53"
+              }
+            ]
           },
           {
             "id": "chem-final-23-66",
@@ -1603,7 +2781,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "1 atm, 100 °C에서는 액체 물과 수증기가 평형을 이룰 수 있다. 물과 얼음이 공존하는 조건이 아니다."
+            "rationale": "1 atm, 100 °C에서는 액체 물과 수증기가 평형을 이룰 수 있다. 물과 얼음이 공존하는 조건이 아니다.",
+            "year": "23",
+            "sourcePage": 5,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "23학번",
+              "원문 66번"
+            ],
+            "originalQuestion": "압력이 1atm, T = 100°C일 때 물과 얼음이 공존한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 10,
+                "pages": "55"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -1673,7 +2871,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "몰농도는 용질 몰수/용액 부피이다. 온도에 따라 부피가 변할 수 있으므로 몰수가 같아도 몰농도는 변할 수 있다. 몰랄농도처럼 질량을 기준으로 하는 농도와 구별한다."
+            "rationale": "몰농도는 용질 몰수/용액 부피이다. 온도에 따라 부피가 변할 수 있으므로 몰수가 같아도 몰농도는 변할 수 있다. 몰랄농도처럼 질량을 기준으로 하는 농도와 구별한다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 23번"
+            ],
+            "originalQuestion": "몰농도(molarity)는 용질의 몰수에만 의존하기 때문에 온도와 무관하다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "4"
+              }
+            ]
           },
           {
             "id": "chem-final-25-24",
@@ -1693,7 +2911,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "대부분의 기체는 물의 온도가 올라가면 용해도가 감소한다. 온도가 높을수록 기체 용해도가 높아진다는 설명은 강의의 일반적 경향과 반대이다."
+            "rationale": "대부분의 기체는 물의 온도가 올라가면 용해도가 감소한다. 온도가 높을수록 기체 용해도가 높아진다는 설명은 강의의 일반적 경향과 반대이다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 24번"
+            ],
+            "originalQuestion": "온도가 높아질수록 기체의 용해도가 높아진다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "20–22"
+              }
+            ]
           },
           {
             "id": "chem-final-25-25",
@@ -1711,7 +2949,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "Henry 법칙은 일정 온도에서 용해도가 기체의 부분압력에 비례한다는 관계이다. 물과 크게 반응하지 않는 O₂ 같은 기체에 적용할 수 있다."
+            "rationale": "Henry 법칙은 일정 온도에서 용해도가 기체의 부분압력에 비례한다는 관계이다. 물과 크게 반응하지 않는 O₂ 같은 기체에 적용할 수 있다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 25번"
+            ],
+            "originalQuestion": "헨리의 법칙은 산소와 같은 기체들에 대하여 성립한다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "18"
+              }
+            ]
           },
           {
             "id": "chem-final-24-66",
@@ -1730,7 +2988,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "에탄올 몰수는 1.00/46.07=0.02171 mol, 물 몰수는 약 100/18.02=5.55 mol이다. 에탄올 몰분율은 약 0.00389이고 몰랄농도는 0.02171/0.100=0.217 mol/kg이다. 두 값이 강의 예제와 같으므로 원본 X를 O로 정정한다.\n\n[정답 정정]\n원본 X → 검토 O. 판단 이유는 위 강의 근거와 계산을 따른다."
+            "rationale": "에탄올 몰수는 1.00/46.07=0.02171 mol, 물 몰수는 약 100/18.02=5.55 mol이다. 에탄올 몰분율은 약 0.00389이고 몰랄농도는 0.02171/0.100=0.217 mol/kg이다. 두 값이 강의 예제와 같으므로 원본 X를 O로 정정한다.\n\n[정답 정정]\n원본 X → 검토 O. 판단 이유는 위 강의 근거와 계산을 따른다.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 66번"
+            ],
+            "originalQuestion": "에탄올 1g과 물 100g을 섞어 에탄올 수용액 101ml를 만들었다. 에탄올의\n몰분율은 0.00389 몰랄농도 0.217이다 (에탄올의 몰질량 46.07g/mol)\"",
+            "converted": false,
+            "answerCorrection": true,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "6–7"
+              }
+            ]
           },
           {
             "id": "chem-final-24-67",
@@ -1749,7 +3027,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "MnO₄⁻가 Mn²⁺로 환원될 때 1 mol당 전자 5 mol을 받는다. 이 반응의 KMnO₄ 당량 질량은 158/5=31.6 g/eq이므로 19.75 g은 X이다.\n\n[복원 메모]\n원본 다음 페이지의 반쪽 반응식을 한 문항에 결합하고 당량 질량 단위 명시."
+            "rationale": "MnO₄⁻가 Mn²⁺로 환원될 때 1 mol당 전자 5 mol을 받는다. 이 반응의 KMnO₄ 당량 질량은 158/5=31.6 g/eq이므로 19.75 g은 X이다.\n\n[복원 메모]\n원본 다음 페이지의 반쪽 반응식을 한 문항에 결합하고 당량 질량 단위 명시.",
+            "year": "24",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 67번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "주어진 식에서 kMnO4 당량은 19.75g이다.\n(kMnO4 몰질량 158g)",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "8–9"
+              }
+            ]
           },
           {
             "id": "chem-final-24-68",
@@ -1767,7 +3066,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "NaCl 용해는 ΔH가 작게 양수여도 무질서도 증가의 기여로 진행될 수 있다. ‘무질서도의 감소’가 아니라 증가이다."
+            "rationale": "NaCl 용해는 ΔH가 작게 양수여도 무질서도 증가의 기여로 진행될 수 있다. ‘무질서도의 감소’가 아니라 증가이다.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 68번"
+            ],
+            "originalQuestion": "Nacl은 ΔH 용해값이 양이지만, 무질서도의 감소로 인해 물에 녹는다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "14"
+              }
+            ]
           },
           {
             "id": "chem-final-24-69",
@@ -1787,7 +3106,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "일정 온도에서 기체가 용매와 크게 반응하지 않고 Henry 법칙을 따르는 범위에서는 기체의 용해도가 그 기체의 부분압력에 비례한다. 전체 압력과 용질 기체의 부분압력을 구별한다."
+            "rationale": "일정 온도에서 기체가 용매와 크게 반응하지 않고 Henry 법칙을 따르는 범위에서는 기체의 용해도가 그 기체의 부분압력에 비례한다. 전체 압력과 용질 기체의 부분압력을 구별한다.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 69번"
+            ],
+            "originalQuestion": "기체의 용해도는 압력에 따라 증가한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "17–19"
+              }
+            ]
           },
           {
             "id": "chem-final-24-70",
@@ -1807,7 +3146,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "강의는 온도와 고체의 용해도 관계가 물질마다 다르다고 설명한다. 용해도는 평형에서 녹을 수 있는 양이고 용해 속도는 녹는 빠르기이다. 둘을 섞어 모든 고체에 대해 증가한다고 일반화할 수 없다."
+            "rationale": "강의는 온도와 고체의 용해도 관계가 물질마다 다르다고 설명한다. 용해도는 평형에서 녹을 수 있는 양이고 용해 속도는 녹는 빠르기이다. 둘을 섞어 모든 고체에 대해 증가한다고 일반화할 수 없다.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 70번"
+            ],
+            "originalQuestion": "모든 고체 용해도에서 온도가 증가할수록 용해 속도가 증가한다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "20–22"
+              }
+            ]
           },
           {
             "id": "chem-final-23-71",
@@ -1830,7 +3189,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "극성 용질과 극성 용매 사이의 인력 형성은 에너지를 방출하는 단계이다. 전체 용해 엔탈피는 용질·용매를 분리하는 데 드는 에너지와 새 인력 형성 에너지의 합이라 무조건 큰 양수라고 할 수 없다."
+            "rationale": "극성 용질과 극성 용매 사이의 인력 형성은 에너지를 방출하는 단계이다. 전체 용해 엔탈피는 용질·용매를 분리하는 데 드는 에너지와 새 인력 형성 에너지의 합이라 무조건 큰 양수라고 할 수 없다.",
+            "year": "23",
+            "sourcePage": 6,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "23학번",
+              "원문 71번"
+            ],
+            "originalQuestion": "극성용질과 극성용매의 혼합 시, 용매의 엔탈피는 큰 양의 값이다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "10–15"
+              }
+            ]
           },
           {
             "id": "chem-final-23-72",
@@ -1853,7 +3232,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "용질 입자끼리와 용매 입자끼리 떨어뜨리는 단계는 인력을 극복해 에너지를 필요로 한다. 용질–용매 인력을 형성하는 혼합 단계는 에너지를 방출한다. 모든 단계가 반발력을 극복한다는 설명은 X이다."
+            "rationale": "용질 입자끼리와 용매 입자끼리 떨어뜨리는 단계는 인력을 극복해 에너지를 필요로 한다. 용질–용매 인력을 형성하는 혼합 단계는 에너지를 방출한다. 모든 단계가 반발력을 극복한다는 설명은 X이다.",
+            "year": "23",
+            "sourcePage": 6,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "23학번",
+              "원문 72번"
+            ],
+            "originalQuestion": "용액 형성의 각 단계는 용질, 용매 및 용질-용매 간의 척력을 극복하기 위한 엔탈피가 필 요하다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "10–15"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -1934,7 +3333,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "같은 온도에서 이상적으로 π=iMRT이다. NaCl은 Na⁺·Cl⁻로 해리되어 입자 수가 늘고 포도당은 해리하지 않는다. 따라서 같은 1 M이면 NaCl 수용액의 삼투압이 더 높다. 실제 고농도에서는 이온 간 상호작용 때문에 i가 정확히 2는 아니다.\n\n[복원 메모]\n삼투압 비교에 필요한 같은 온도 조건 명시."
+            "rationale": "같은 온도에서 이상적으로 π=iMRT이다. NaCl은 Na⁺·Cl⁻로 해리되어 입자 수가 늘고 포도당은 해리하지 않는다. 따라서 같은 1 M이면 NaCl 수용액의 삼투압이 더 높다. 실제 고농도에서는 이온 간 상호작용 때문에 i가 정확히 2는 아니다.\n\n[복원 메모]\n삼투압 비교에 필요한 같은 온도 조건 명시.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 26번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "1몰농도 NaCl 수용액의 삼투압은 1몰농도 글루코스 수용액의 삼투압보다 높다",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "42"
+              }
+            ]
           },
           {
             "id": "chem-final-25-27",
@@ -1953,7 +3373,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "비휘발성 용질을 넣으면 용매의 몰분율이 작아져 증기압이 내려간다. 이상용액에서 P용매=x용매P°용매이다."
+            "rationale": "비휘발성 용질을 넣으면 용매의 몰분율이 작아져 증기압이 내려간다. 이상용액에서 P용매=x용매P°용매이다.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 27번"
+            ],
+            "originalQuestion": "비휘발성 용질을 첨가하면 용액의 증기압은 증가한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "24,26"
+              }
+            ]
           },
           {
             "id": "chem-final-25-28",
@@ -1971,7 +3411,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "이상용액은 Raoult 법칙을 따르며 혼합 전후 인력의 변화가 상쇄되어 혼합 엔탈피 ΔH혼합=0이다. 용액 자체의 엔탈피 H가 0이라는 뜻은 아니다.\n\n[복원 메모]\n엔탈피 변화가 혼합 엔탈피임을 명시."
+            "rationale": "이상용액은 Raoult 법칙을 따르며 혼합 전후 인력의 변화가 상쇄되어 혼합 엔탈피 ΔH혼합=0이다. 용액 자체의 엔탈피 H가 0이라는 뜻은 아니다.\n\n[복원 메모]\n엔탈피 변화가 혼합 엔탈피임을 명시.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 28번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "이상용액은 라울의 법칙을 따르고 엔탈피 변화량은 0이다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "30"
+              }
+            ]
           },
           {
             "id": "chem-final-25-29",
@@ -1991,7 +3452,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "같은 용매와 같은 몰랄농도에서 ΔT_b = i·K_b·m이다. 여러 이온으로 해리하는 전해질은 해리하지 않는 비전해질보다 입자 수가 커 끓는점 상승이 더 크다. 농도를 달리하면 순서가 바뀔 수 있어 같은 농도 조건을 보완했다.\n\n[복원 메모]\n같은 용매·몰랄농도 및 해리 입자 수 조건 보완."
+            "rationale": "같은 용매와 같은 몰랄농도에서 ΔT_b = i·K_b·m이다. 여러 이온으로 해리하는 전해질은 해리하지 않는 비전해질보다 입자 수가 커 끓는점 상승이 더 크다. 농도를 달리하면 순서가 바뀔 수 있어 같은 농도 조건을 보완했다.\n\n[복원 메모]\n같은 용매·몰랄농도 및 해리 입자 수 조건 보완.",
+            "year": "25",
+            "sourcePage": 1,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 29번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "전해질 용질은 비전해질보다 끓는점 상승이 더 크다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "34–36"
+              }
+            ]
           },
           {
             "id": "chem-final-25-31",
@@ -2011,7 +3493,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "비휘발성 염이 녹으면 물의 증기압이 낮아져 같은 외부압력에 도달하려면 더 높은 온도가 필요하다. 따라서 소금물의 끓는점은 순수한 물보다 높아진다."
+            "rationale": "비휘발성 염이 녹으면 물의 증기압이 낮아져 같은 외부압력에 도달하려면 더 높은 온도가 필요하다. 따라서 소금물의 끓는점은 순수한 물보다 높아진다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 31번"
+            ],
+            "originalQuestion": "소금물이 순수한 물보다 끓는점이 낮다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "34–36"
+              }
+            ]
           },
           {
             "id": "chem-final-25-32",
@@ -2039,7 +3541,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "희석 이상용액에서 비휘발성 용질에 의한 증기압 내림은 용질의 화학적 이름보다 용액 속 입자 수에 의해 결정되는 총괄성이다. 전해질은 해리 후 입자 수를 세며, 실제 비이상 용액이나 휘발성 용질에 무조건 적용하지 않는다.\n\n[복원 메모]\n희석 이상용액·비휘발성 용질 범위로 한정."
+            "rationale": "희석 이상용액에서 비휘발성 용질에 의한 증기압 내림은 용질의 화학적 이름보다 용액 속 입자 수에 의해 결정되는 총괄성이다. 전해질은 해리 후 입자 수를 세며, 실제 비이상 용액이나 휘발성 용질에 무조건 적용하지 않는다.\n\n[복원 메모]\n희석 이상용액·비휘발성 용질 범위로 한정.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 32번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "증기압 내림은 용질의 종류가 아닌 입자의 개수에만 의존한다",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "23–33"
+              }
+            ]
           },
           {
             "id": "chem-final-24-71",
@@ -2057,7 +3580,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "강의의 동일 예제는 Na₂SO₄ 35.0 g(142.05 g/mol)을 물 175 g에 녹이고, 25 °C의 순수한 물 증기압 23.76 torr를 사용한다. 완전 해리를 가정하면 x물=(175/18.02)/[(175/18.02)+3(35/142.05)]≈0.929이며 P≈22.1 torr이다. 누락 물의 질량과 오기 몰질량을 학습용으로 보완했다.\n\n[복원 메모]\n원본에서 누락된 물 175 g·증기압 조건을 강의 11장 28쪽의 동일 예제로 보완하고 몰질량 141.05를 142.05로 정정."
+            "rationale": "강의의 동일 예제는 Na₂SO₄ 35.0 g(142.05 g/mol)을 물 175 g에 녹이고, 25 °C의 순수한 물 증기압 23.76 torr를 사용한다. 완전 해리를 가정하면 x물=(175/18.02)/[(175/18.02)+3(35/142.05)]≈0.929이며 P≈22.1 torr이다. 누락 물의 질량과 오기 몰질량을 학습용으로 보완했다.\n\n[복원 메모]\n원본에서 누락된 물 175 g·증기압 조건을 강의 11장 28쪽의 동일 예제로 보완하고 몰질량 141.05를 142.05로 정정.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 71번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "35g의 Na2SO4(몰질량 141.05)를 25도 물에 용해시켰을때 용액의 증기압은\n22.1torr다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "28"
+              }
+            ]
           },
           {
             "id": "chem-final-24-72",
@@ -2075,7 +3619,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "에탄올과 헥세인을 섞으면 기존 에탄올 사이 수소 결합을 끊는 효과가 커 ΔH용해>0인 혼합이 된다. 용질–용매 인력이 상대적으로 약해 증기압이 Raoult 법칙의 예상보다 높아지는 양의 편차를 보인다.\n\n[복원 메모]\n원본의 ‘증기압이 흡열 엔탈피를 가진다’는 부정확한 주어를 강의에 따라 혼합 과정으로 보완."
+            "rationale": "에탄올과 헥세인을 섞으면 기존 에탄올 사이 수소 결합을 끊는 효과가 커 ΔH용해>0인 혼합이 된다. 용질–용매 인력이 상대적으로 약해 증기압이 Raoult 법칙의 예상보다 높아지는 양의 편차를 보인다.\n\n[복원 메모]\n원본의 ‘증기압이 흡열 엔탈피를 가진다’는 부정확한 주어를 강의에 따라 혼합 과정으로 보완.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 72번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "에탄올-헥세인의 혼합 조건에서 해당 물질들의 증기압은 흡열 엔탈피를 가\n지고, Raoult 법칙에서 양으로 벗어난다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "31"
+              }
+            ]
           },
           {
             "id": "chem-final-24-73",
@@ -2093,7 +3658,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "πV=nRT이므로 몰질량 M=mRT/(πV)이다. π=1.12/760 atm, V=0.00100 L, T=298.15 K를 넣으면 M≈1.66×10⁴ g/mol이다. 원본의 g를 몰질량 단위 g/mol로 보완했다.\n\n[복원 메모]\n원본 몰질량 단위 g를 g/mol로 보완."
+            "rationale": "πV=nRT이므로 몰질량 M=mRT/(πV)이다. π=1.12/760 atm, V=0.00100 L, T=298.15 K를 넣으면 M≈1.66×10⁴ g/mol이다. 원본의 g를 몰질량 단위 g/mol로 보완했다.\n\n[복원 메모]\n원본 몰질량 단위 g를 g/mol로 보완.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 73번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "어떤 단백질의 몰질량을 결정하기 위해서 1.00x10^-3g의 단백질을 물에 녹\n여 1.00mL의 용액을 만들었다. 이 용액의 삼투압을 측정하였더니 25℃에서\n1.12torr였다. 따라서 이 단백질의 몰질량은 1.66x10^4g이다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "44"
+              }
+            ]
           },
           {
             "id": "chem-final-24-74",
@@ -2111,7 +3697,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "세포액보다 삼투압이 큰 고장액에서는 세포의 물이 밖으로 이동하여 적혈구가 수축한다. 팽창·용혈은 저장액에서 일어난다."
+            "rationale": "세포액보다 삼투압이 큰 고장액에서는 세포의 물이 밖으로 이동하여 적혈구가 수축한다. 팽창·용혈은 저장액에서 일어난다.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 74번"
+            ],
+            "originalQuestion": "적혈구를 세포액보다 삼투압이 큰 용액에 담구면 팽창하여 파괴된다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "46"
+              }
+            ]
           },
           {
             "id": "chem-final-24-75",
@@ -2129,7 +3735,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "강의 표에서 버터·치즈는 고체 분산매질에 액체가 분산된 ‘고체 에멀전’이다. 앞부분의 상 구분은 맞지만 이를 입자성 콜로이드로 분류한 뒷부분은 맞지 않는다. 이 문항을 ‘고체 매질·액체 분산’만으로 O라고 정정하지 않는다."
+            "rationale": "강의 표에서 버터·치즈는 고체 분산매질에 액체가 분산된 ‘고체 에멀전’이다. 앞부분의 상 구분은 맞지만 이를 입자성 콜로이드로 분류한 뒷부분은 맞지 않는다. 이 문항을 ‘고체 매질·액체 분산’만으로 O라고 정정하지 않는다.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 75번"
+            ],
+            "originalQuestion": "버터와 치즈는 고체 분산 매질과 액체 분산 물질로 구성되어있으며, 입자성\n콜로이드 형태를 띤다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 11,
+                "pages": "51"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -2213,7 +3839,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "반응차수는 실험으로 결정한다. 전체 반응식의 계수와 속도법칙의 지수가 반드시 같지는 않다. 단일 기본반응에서는 일치할 수 있으나 ‘항상’은 틀려 원본 O를 X로 정정한다.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다."
+            "rationale": "반응차수는 실험으로 결정한다. 전체 반응식의 계수와 속도법칙의 지수가 반드시 같지는 않다. 단일 기본반응에서는 일치할 수 있으나 ‘항상’은 틀려 원본 O를 X로 정정한다.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 34번"
+            ],
+            "originalQuestion": "속도 법칙의 차수는 항상 반응식 계수와 일치한다",
+            "converted": false,
+            "answerCorrection": true,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "15"
+              }
+            ]
           },
           {
             "id": "chem-final-25-38",
@@ -2231,7 +3877,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "반응차수가 다른 반응들은 속도상수 k의 값도 서로 다를 수 있고 단위도 달라진다. 같은 반응의 차수는 임의로 바꾸는 설정값이 아니므로 차수를 바꾸기만 하면 k가 변한다는 인과관계로 해석하지 않는다.\n\n[복원 메모]\n다른 반응차수를 갖는 반응 사이의 비교임을 명시."
+            "rationale": "반응차수가 다른 반응들은 속도상수 k의 값도 서로 다를 수 있고 단위도 달라진다. 같은 반응의 차수는 임의로 바꾸는 설정값이 아니므로 차수를 바꾸기만 하면 k가 변한다는 인과관계로 해석하지 않는다.\n\n[복원 메모]\n다른 반응차수를 갖는 반응 사이의 비교임을 명시.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 38번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "속도상수 k의 값은 반응차수에 따라 달라질 수 있다",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "37"
+              }
+            ]
           },
           {
             "id": "chem-final-25-40",
@@ -2250,7 +3917,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "영차 반응에서 속도=k[A]⁰=k이다. 해당 반응물의 농도를 바꾸어도 영차 속도식이 성립하는 범위에서 속도는 일정하다.\n\n[복원 메모]\n속도식 적용 범위의 해당 반응물임을 명시."
+            "rationale": "영차 반응에서 속도=k[A]⁰=k이다. 해당 반응물의 농도를 바꾸어도 영차 속도식이 성립하는 범위에서 속도는 일정하다.\n\n[복원 메모]\n속도식 적용 범위의 해당 반응물임을 명시.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 40번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "0차 반응에서 농도는 반응속도에 영향을 주지 않는다",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "33–34"
+              }
+            ]
           },
           {
             "id": "chem-final-25-41",
@@ -2269,7 +3957,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "속도식 v=k[A]ᵐ[B]ⁿ의 전체 반응차수는 m+n이다. 반응식 계수의 합이 아니라 실험적으로 얻은 농도 지수의 합이다. 원본 ‘치수’를 ‘차수’로 바로잡았다."
+            "rationale": "속도식 v=k[A]ᵐ[B]ⁿ의 전체 반응차수는 m+n이다. 반응식 계수의 합이 아니라 실험적으로 얻은 농도 지수의 합이다. 원본 ‘치수’를 ‘차수’로 바로잡았다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 41번"
+            ],
+            "originalQuestion": "화학반응에서 전체반응치수는 각 반응의 농도지수를 더한 것이다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "18–19"
+              }
+            ]
           },
           {
             "id": "chem-final-25-43",
@@ -2293,7 +4001,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "속도는 실험적으로 정해진 속도식에 따른다. 해당 기체에 대해 영차이면 농도를 높여도 속도가 달라지지 않을 수 있으므로 ‘항상 높다’는 X이다."
+            "rationale": "속도는 실험적으로 정해진 속도식에 따른다. 해당 기체에 대해 영차이면 농도를 높여도 속도가 달라지지 않을 수 있으므로 ‘항상 높다’는 X이다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 43번"
+            ],
+            "originalQuestion": "기체의 농도가 높으면 반응속도는 항상 높다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "11,14–19"
+              }
+            ]
           },
           {
             "id": "chem-final-24-76",
@@ -2314,7 +4042,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "일차 반응에서는 ln[A]=−kt+ln[A]₀이므로 ln[A] 대 t가 직선이다. 1/[A] 대 t가 직선인 것은 이차 반응이다."
+            "rationale": "일차 반응에서는 ln[A]=−kt+ln[A]₀이므로 ln[A] 대 t가 직선이다. 1/[A] 대 t가 직선인 것은 이차 반응이다.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 76번"
+            ],
+            "originalQuestion": "일차 속도식은 시간과 농도 역수의 직선 방정식을 이룬다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "20–23"
+              }
+            ]
           },
           {
             "id": "chem-final-24-77",
@@ -2335,7 +4083,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "일차 반응 반감기는 t₁/₂=ln2/k로 초기 농도와 무관하다. 초기 농도의 자연로그에 비례하지 않는다."
+            "rationale": "일차 반응 반감기는 t₁/₂=ln2/k로 초기 농도와 무관하다. 초기 농도의 자연로그에 비례하지 않는다.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 77번"
+            ],
+            "originalQuestion": "일차 반응의 반감기는 초기 농도의 자연로그 값에 비례한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "24–27"
+              }
+            ]
           },
           {
             "id": "chem-final-24-78",
@@ -2353,7 +4121,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "이차 반응에서 t₁/₂=1/(k[A]₀)이다. 반감기는 초기 농도의 역수에 비례한다. 원문의 뒤바뀐 어순을 바로잡았다.\n\n[복원 메모]\n원본의 뒤바뀐 어순만 바로잡음. 개념·정답 변경 없음."
+            "rationale": "이차 반응에서 t₁/₂=1/(k[A]₀)이다. 반감기는 초기 농도의 역수에 비례한다. 원문의 뒤바뀐 어순을 바로잡았다.\n\n[복원 메모]\n원본의 뒤바뀐 어순만 바로잡음. 개념·정답 변경 없음.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 78번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "이차반응반감기의 초기농도는 역수에 비례한다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "29"
+              }
+            ]
           },
           {
             "id": "chem-final-24-80",
@@ -2371,7 +4160,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "그림에 [A]₀=5.0 M, 연속한 두 반감기 25분·50분이 제시되어 있다. 이차 반응이므로 k=0.0080 M⁻¹ min⁻¹이고 125분 뒤 [A]=1/(0.2+0.0080×125)=0.833 M이다. 그림 속 조건을 문자로 옮겼다.\n\n[복원 메모]\n원본 그림 속 초기 농도와 두 반감기 조건을 문자로 전사. 농도 단위 M 보완."
+            "rationale": "그림에 [A]₀=5.0 M, 연속한 두 반감기 25분·50분이 제시되어 있다. 이차 반응이므로 k=0.0080 M⁻¹ min⁻¹이고 125분 뒤 [A]=1/(0.2+0.0080×125)=0.833 M이다. 그림 속 조건을 문자로 옮겼다.\n\n[복원 메모]\n원본 그림 속 초기 농도와 두 반감기 조건을 문자로 전사. 농도 단위 M 보완.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 80번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "다음 반응식에서 125분 뒤의 [A]=0.83이다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "29"
+              }
+            ]
           },
           {
             "id": "chem-final-23-75",
@@ -2392,7 +4202,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "이차 반응은 1/[A]=kt+1/[A]₀의 적분 속도식을 따른다. 시간에 대해 직선으로 변하는 것은 농도의 역수이며 자연로그가 아니다."
+            "rationale": "이차 반응은 1/[A]=kt+1/[A]₀의 적분 속도식을 따른다. 시간에 대해 직선으로 변하는 것은 농도의 역수이며 자연로그가 아니다.",
+            "year": "23",
+            "sourcePage": 6,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "23학번",
+              "원문 75번"
+            ],
+            "originalQuestion": "이차 속도식에서 반응 속도는 시간과 초기 농도 자연로그의 직선의 방정식이다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "28,30–32"
+              }
+            ]
           },
           {
             "id": "chem-final-23-77",
@@ -2413,7 +4243,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "일차 반응에서 k=ln2/t₁/₂=0.693/60.0=1.16×10⁻² min⁻¹이다. 제시값 1.15×10⁻² min⁻¹은 근삿값으로 일치한다."
+            "rationale": "일차 반응에서 k=ln2/t₁/₂=0.693/60.0=1.16×10⁻² min⁻¹이다. 제시값 1.15×10⁻² min⁻¹은 근삿값으로 일치한다.",
+            "year": "23",
+            "sourcePage": 6,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "23학번",
+              "원문 77번"
+            ],
+            "originalQuestion": "어떤 물질의 일차 반응 반감기는 60.0분이다. 이때 반응의 속도 상수는 1.15x10-2min-1이 다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "24–27"
+              }
+            ]
           },
           {
             "id": "chem-final-23-79",
@@ -2432,7 +4282,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "영차 반응의 속도는 k[A]⁰=k로 농도에 무관하다. 농도에 비례하는 것은 해당 반응물에 대해 일차인 경우이다."
+            "rationale": "영차 반응의 속도는 k[A]⁰=k로 농도에 무관하다. 농도에 비례하는 것은 해당 반응물에 대해 일차인 경우이다.",
+            "year": "23",
+            "sourcePage": 6,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "23학번",
+              "원문 79번"
+            ],
+            "originalQuestion": "영차 반응에서 반응 속도는 농도에 비례한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "33–34"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -2504,7 +4374,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "촉매가 관여하는 반응의 실험적 속도식에는 촉매 농도가 포함될 수 있다. 촉매가 전체 반응에서 재생된다고 해서 속도법칙에 절대 나타나지 않는 것은 아니다."
+            "rationale": "촉매가 관여하는 반응의 실험적 속도식에는 촉매 농도가 포함될 수 있다. 촉매가 전체 반응에서 재생된다고 해서 속도법칙에 절대 나타나지 않는 것은 아니다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 36번"
+            ],
+            "originalQuestion": "촉매는 반응속도를 증가시키며 속도법칙에는 나타나지 않는다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "55–57"
+              }
+            ]
           },
           {
             "id": "chem-final-25-39",
@@ -2523,7 +4413,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "k=A·exp(−Eₐ/RT)이므로 반응속도는 활성화에너지뿐 아니라 빈도인자 A, 온도와 농도 등에도 영향을 받는다. Eₐ만 낮다고 모든 반응의 속도가 항상 더 빠른 것은 아니다."
+            "rationale": "k=A·exp(−Eₐ/RT)이므로 반응속도는 활성화에너지뿐 아니라 빈도인자 A, 온도와 농도 등에도 영향을 받는다. Eₐ만 낮다고 모든 반응의 속도가 항상 더 빠른 것은 아니다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 39번"
+            ],
+            "originalQuestion": "활성화에너지가 낮을수록 항상 반응속도는 빠르다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "48–49"
+              }
+            ]
           },
           {
             "id": "chem-final-25-42",
@@ -2542,7 +4452,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "12장 PDF 41–42쪽은 느린 단계를 반응속도결정단계로 표시하고 전체 반응속도가 그 단계의 속도라고 설명한다. 이 강의에서 다루는 순차 반응 메커니즘의 기준으로 O로 판단한다. 원문의 항상을 모든 복잡한 반응망에 대한 보편 명제로 확대하지 않는다.\n\n[강의 기준 재검토]\n관련 슬라이드의 정의·조건을 우선하여 검토 보류를 해제했다. 원본 답은 아래에 별도로 보존한다."
+            "rationale": "12장 PDF 41–42쪽은 느린 단계를 반응속도결정단계로 표시하고 전체 반응속도가 그 단계의 속도라고 설명한다. 이 강의에서 다루는 순차 반응 메커니즘의 기준으로 O로 판단한다. 원문의 항상을 모든 복잡한 반응망에 대한 보편 명제로 확대하지 않는다.\n\n[강의 기준 재검토]\n관련 슬라이드의 정의·조건을 우선하여 검토 보류를 해제했다. 원본 답은 아래에 별도로 보존한다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 42번"
+            ],
+            "originalQuestion": "복잡 반응의 속도 결정 단계는 항상 가장 느린 단계이다.",
+            "converted": false,
+            "answerCorrection": true,
+            "auditRevision": "chemistry-finals-20261107-rejudge",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "41–42"
+              }
+            ]
           },
           {
             "id": "chem-final-24-82",
@@ -2561,7 +4491,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "강의의 양의 활성화에너지를 갖는 일반적인 반응에서 온도가 올라가면 충분한 에너지를 갖는 충돌 비율이 커지고 속도상수도 커진다. 속도가 감소한다는 설명은 반대이다."
+            "rationale": "강의의 양의 활성화에너지를 갖는 일반적인 반응에서 온도가 올라가면 충분한 에너지를 갖는 충돌 비율이 커지고 속도상수도 커진다. 속도가 감소한다는 설명은 반대이다.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 82번"
+            ],
+            "originalQuestion": "아레니우스 활성화 에너지의 속도상수와 관련하여 반응온도가 높아질수록\n반응속도가 줄어든다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "43–44"
+              }
+            ]
           },
           {
             "id": "chem-final-24-83",
@@ -2583,7 +4533,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "12장 PDF44·48쪽은 반응이 일어나려면 충돌에너지≥활성화에너지와 적절한 분자 배향이 모두 필요하다고 명시한다. 충돌에너지가 문턱을 넘는 것만으로 속도가 더 빨라진다고 단정하는 원문은 이 강의의 두 조건을 빠뜨리므로 X로 판단한다. 다른 조건을 고정하고 온도를 올려 유효충돌 비율이 증가한다는 별도 설명과 구별한다.\n\n[강의 기준 재검토]\n관련 슬라이드의 정의·조건을 우선하여 검토 보류를 해제했다. 원본 답은 아래에 별도로 보존한다."
+            "rationale": "12장 PDF44·48쪽은 반응이 일어나려면 충돌에너지≥활성화에너지와 적절한 분자 배향이 모두 필요하다고 명시한다. 충돌에너지가 문턱을 넘는 것만으로 속도가 더 빨라진다고 단정하는 원문은 이 강의의 두 조건을 빠뜨리므로 X로 판단한다. 다른 조건을 고정하고 온도를 올려 유효충돌 비율이 증가한다는 별도 설명과 구별한다.\n\n[강의 기준 재검토]\n관련 슬라이드의 정의·조건을 우선하여 검토 보류를 해제했다. 원본 답은 아래에 별도로 보존한다.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "24학번",
+              "원문 83번"
+            ],
+            "originalQuestion": "충돌에너지가 활성화에너지보다 클수록 반응속도가 상승한다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107-rejudge",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "44–48"
+              }
+            ]
           },
           {
             "id": "chem-final-24-84",
@@ -2603,7 +4573,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "반응물과 같은 상에 있는 촉매는 균일 촉매이다. 서로 다른 상에 있으면 불균일 촉매이다."
+            "rationale": "반응물과 같은 상에 있는 촉매는 균일 촉매이다. 서로 다른 상에 있으면 불균일 촉매이다.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 84번"
+            ],
+            "originalQuestion": "반응물과 같은 상으로 존재하는 촉매를 균일 촉매라고 한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "55–57"
+              }
+            ]
           },
           {
             "id": "chem-final-23-81",
@@ -2622,7 +4612,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "Arrhenius 식 k=A·exp(−Eₐ/RT)의 빈도인자 A에는 충돌 빈도와 반응에 알맞은 분자 배향의 효과가 포함된다."
+            "rationale": "Arrhenius 식 k=A·exp(−Eₐ/RT)의 빈도인자 A에는 충돌 빈도와 반응에 알맞은 분자 배향의 효과가 포함된다.",
+            "year": "23",
+            "sourcePage": 7,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "23학번",
+              "원문 81번"
+            ],
+            "originalQuestion": "아레니우스 식에 분자배향이 화학 반응 속도에 미치는 영향이 포함되어 있다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "48–49"
+              }
+            ]
           },
           {
             "id": "chem-final-23-83",
@@ -2641,7 +4651,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "촉매는 활성화에너지가 더 낮은 다른 경로를 제공하고 전체 반응에서는 재생된다. 반응 도중 관여할 수 있지만 최종적으로 소모되는 반응물은 아니다."
+            "rationale": "촉매는 활성화에너지가 더 낮은 다른 경로를 제공하고 전체 반응에서는 재생된다. 반응 도중 관여할 수 있지만 최종적으로 소모되는 반응물은 아니다.",
+            "year": "23",
+            "sourcePage": 7,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "23학번",
+              "원문 83번"
+            ],
+            "originalQuestion": "반응에 소모되면서 반응 속도를 증가시키는 물질을 촉매라고 한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 12,
+                "pages": "53–54"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -2733,7 +4763,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "평형에서는 정반응 속도와 역반응 속도가 같고 각 농도가 시간에 따라 일정하다. 반응물과 생성물의 농도끼리 반드시 같은 것은 아니다."
+            "rationale": "평형에서는 정반응 속도와 역반응 속도가 같고 각 농도가 시간에 따라 일정하다. 반응물과 생성물의 농도끼리 반드시 같은 것은 아니다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 44번"
+            ],
+            "originalQuestion": "평형상태에서는 반응물과 생성물의 농도가 같다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 13,
+                "pages": "3–6"
+              }
+            ]
           },
           {
             "id": "chem-final-25-45",
@@ -2751,7 +4801,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "K가 매우 작으면 평형에서 반응물 쪽이 우세하다. 생성물 쪽이 우세한 것은 K가 매우 큰 경우이다."
+            "rationale": "K가 매우 작으면 평형에서 반응물 쪽이 우세하다. 생성물 쪽이 우세한 것은 K가 매우 큰 경우이다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 45번"
+            ],
+            "originalQuestion": "K가 0에 가까울수록 생성물에서 평형 상태를 이룬다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 13,
+                "pages": "23"
+              }
+            ]
           },
           {
             "id": "chem-final-25-47",
@@ -2772,7 +4842,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "이상기체에서 Kp=Kc(RT)의 Δn승이다. 기체 몰수 변화 Δn이 0인 경우 등에는 같을 수 있지만 항상 같은 것은 아니다."
+            "rationale": "이상기체에서 Kp=Kc(RT)의 Δn승이다. 기체 몰수 변화 Δn이 0인 경우 등에는 같을 수 있지만 항상 같은 것은 아니다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 47번"
+            ],
+            "originalQuestion": "Kp와 Kc는 동일한 값을 갖는다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 13,
+                "pages": "13–16"
+              }
+            ]
           },
           {
             "id": "chem-final-24-86",
@@ -2795,7 +4885,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "Kₚ=P(NOCl)²/[P(NO)²P(Cl₂)]=1.2²/[(5.0×10⁻²)²(3.0×10⁻¹)]=1.92×10³이다. 유효숫자 두 자리로 1.9×10³이므로 O이다."
+            "rationale": "Kₚ=P(NOCl)²/[P(NO)²P(Cl₂)]=1.2²/[(5.0×10⁻²)²(3.0×10⁻¹)]=1.92×10³이다. 유효숫자 두 자리로 1.9×10³이므로 O이다.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 86번"
+            ],
+            "originalQuestion": "다음의 반응 조건이 있다. 염화 나이트로실의 생성 반응은 다음과 같다.\n2NO+Cl_2->2NOCl\n각 화합물의 평형 압력은 다음과 같다.\n25도에서 이 반응의 K_p값은 1.9*10^3이다.\nPNOCL=1.2atm\nPNO=5.0*10^-2atm\nPCl_2=3.0*10^-1atm\"",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 13,
+                "pages": "7–12"
+              }
+            ]
           },
           {
             "id": "chem-final-24-87",
@@ -2815,7 +4925,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "Q>K이면 생성물이 평형보다 상대적으로 많다. Q를 줄이도록 역반응, 즉 왼쪽으로 이동한다. 원본 O를 X로 정정한다.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다."
+            "rationale": "Q>K이면 생성물이 평형보다 상대적으로 많다. Q를 줄이도록 역반응, 즉 왼쪽으로 이동한다. 원본 O를 X로 정정한다.\n\n[정답 정정]\n원본 O → 검토 X. 판단 이유는 위 강의 근거와 계산을 따른다.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 87번"
+            ],
+            "originalQuestion": "어떤 반응식에서 반응지수(Q)가 평형상수(K)보다 클 때, 평형은 오른쪽으로\n이동한다.",
+            "converted": false,
+            "answerCorrection": true,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 13,
+                "pages": "24–26"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -2876,7 +5006,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "평형상수는 온도에 의존한다. 온도 변화는 평형 위치뿐 아니라 K 자체도 바꿀 수 있다. 일정 온도에서 농도·압력을 바꾸는 경우와 구별한다."
+            "rationale": "평형상수는 온도에 의존한다. 온도 변화는 평형 위치뿐 아니라 K 자체도 바꿀 수 있다. 일정 온도에서 농도·압력을 바꾸는 경우와 구별한다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 48번"
+            ],
+            "originalQuestion": "온도변화는 평형상수 K를 변화시킬 수 있다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 13,
+                "pages": "50–51"
+              }
+            ]
           },
           {
             "id": "chem-final-24-88",
@@ -2897,7 +5047,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "생성물 CO를 첨가하면 이를 소비하는 역반응 방향으로 평형이 이동한다. 따라서 평형 위치가 변한다. 순수한 고체 C의 양을 더하는 경우와 구별한다."
+            "rationale": "생성물 CO를 첨가하면 이를 소비하는 역반응 방향으로 평형이 이동한다. 따라서 평형 위치가 변한다. 순수한 고체 C의 양을 더하는 경우와 구별한다.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 88번"
+            ],
+            "originalQuestion": "As4O6 + 6C ⇌ As4 + 6CO에서 일산화 탄소를 첨가하면 평형 위치가 변\n한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 13,
+                "pages": "42–45"
+              }
+            ]
           },
           {
             "id": "chem-final-23-86",
@@ -2926,7 +5096,31 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "반응식만으로 액체 PCl₃를 합성하는 행위가 평형 이동을 일으킨다고 단정할 수 없다. 생성물 제거·응축이나 온도·압력 변화 등 어떤 조작을 했는지 주어지지 않았으므로 X로 판단한다."
+            "rationale": "반응식만으로 액체 PCl₃를 합성하는 행위가 평형 이동을 일으킨다고 단정할 수 없다. 생성물 제거·응축이나 온도·압력 변화 등 어떤 조작을 했는지 주어지지 않았으므로 X로 판단한다.",
+            "year": "23",
+            "sourcePage": 7,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "검토 보류",
+            "sourceTags": [
+              "23학번",
+              "원문 86번"
+            ],
+            "originalQuestion": "P4 + 6Cl2 <-> 4PCl3 에 따라 액체 삼염화인을 합성하면 평형위치는 오른쪽으로 이동한 다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 13,
+                "pages": "41–52"
+              }
+            ],
+            "sourceReviewAnswer": "원본 O · 조건·표현 확인 필요",
+            "sourceUncertain": true,
+            "sourceExplanation": "반응식만으로 액체 PCl₃를 합성하는 행위가 평형 이동을 일으킨다고 판단할 수 없다. 생성물 제거·응축이나 온도·압력 변화 등 어떤 조작을 했는지 빠져 있다. 생성물을 제거한다면 오른쪽으로 이동하지만 이를 원래 조건으로 단정할 수 없어 검토 보류한다.",
+            "gradingNote": "현재 데이터의 평형 이동 조건 누락에 따른 X 판정 유지"
           },
           {
             "id": "chem-final-23-87",
@@ -2947,7 +5141,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "반응물 Cl₂를 더하면 Cl₂를 소비하는 오른쪽으로, 제거하면 Cl₂를 만드는 왼쪽으로 이동한다. 생성물 PCl₅의 합성과 평형 이동은 농도 변화에 따라 달라진다."
+            "rationale": "반응물 Cl₂를 더하면 Cl₂를 소비하는 오른쪽으로, 제거하면 Cl₂를 만드는 왼쪽으로 이동한다. 생성물 PCl₅의 합성과 평형 이동은 농도 변화에 따라 달라진다.",
+            "year": "23",
+            "sourcePage": 7,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "23학번",
+              "원문 87번"
+            ],
+            "originalQuestion": "PCl3(g) + Cl2(g) <-> PCl5 의 반응에 따라 오염화 인을 합성하게 되면 Cl2(g)의 첨가 및 삭제 여부에 따라 평형위치가 변경된다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 13,
+                "pages": "42–45"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -3024,7 +5238,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "HF는 강산이 아니라 약산이며 물에서 일부만 이온화한다. H–F 결합이 강한 것과 산으로서 완전 이온화하는 것은 다르다."
+            "rationale": "HF는 강산이 아니라 약산이며 물에서 일부만 이온화한다. H–F 결합이 강한 것과 산으로서 완전 이온화하는 것은 다르다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 50번"
+            ],
+            "originalQuestion": "HF는 강산이며 수용액에서 완전히 이온화된다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 14,
+                "pages": "22–25"
+              }
+            ]
           },
           {
             "id": "chem-final-25-51",
@@ -3045,7 +5279,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "pH=−log[H⁺]이므로 [H⁺]=10의 −pH승이다. pH가 1 높아질 때 수소 이온 농도는 1/10로 감소한다."
+            "rationale": "pH=−log[H⁺]이므로 [H⁺]=10의 −pH승이다. pH가 1 높아질 때 수소 이온 농도는 1/10로 감소한다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 51번"
+            ],
+            "originalQuestion": "Ph가 증가하면 H+ 농도는 지수적으로 감소한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 14,
+                "pages": "17–20"
+              }
+            ]
           },
           {
             "id": "chem-final-25-59",
@@ -3063,7 +5317,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "Brønsted 산은 H⁺를 내놓는 종이다. 직접 전달할 양성자를 가진다는 의미에서 수소 원자를 포함해야 한다. Lewis 산까지 같은 요건을 요구하지 않는다."
+            "rationale": "Brønsted 산은 H⁺를 내놓는 종이다. 직접 전달할 양성자를 가진다는 의미에서 수소 원자를 포함해야 한다. Lewis 산까지 같은 요건을 요구하지 않는다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 59번"
+            ],
+            "originalQuestion": "브뢴스테드 산은 반드시 수소 원자를 포함한다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 14,
+                "pages": "3"
+              }
+            ]
           },
           {
             "id": "chem-final-25-60",
@@ -3081,7 +5355,31 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "Arrhenius 산은 물에 녹아 수소 이온(H⁺) 농도를 증가시키는 물질이며, 분자 자체가 유리 H⁺ 이온을 포함해야 하는 것은 아니므로 X로 판단한다."
+            "rationale": "Arrhenius 산은 물에 녹아 수소 이온(H⁺) 농도를 증가시키는 물질이며, 분자 자체가 유리 H⁺ 이온을 포함해야 하는 것은 아니므로 X로 판단한다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "검토 보류",
+            "sourceTags": [
+              "25학번",
+              "원문 60번"
+            ],
+            "originalQuestion": "아레니우스 산은 수소 이온을 포함해야 한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 14,
+                "pages": "3"
+              }
+            ],
+            "sourceReviewAnswer": "원본 O · 조건·표현 확인 필요",
+            "sourceUncertain": true,
+            "sourceExplanation": "Arrhenius 산은 물에 녹아 수소 이온 농도를 증가시키는 물질이다. 원문의 ‘수소 이온을 포함’이 자유 H⁺를 원래부터 갖는다는 뜻이면 부정확하고, 이온화 가능한 H를 뜻하면 수업의 산 예와 맞는다. 원본 O와 구별하여 표현을 검토 보류한다.",
+            "gradingNote": "현재 데이터의 Arrhenius 산 정의에 따른 X 판정 유지"
           },
           {
             "id": "chem-final-24-89",
@@ -3099,7 +5397,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "Brønsted–Lowry 정의에서 산은 양성자(H⁺) 주개, 염기는 양성자 받개이다."
+            "rationale": "Brønsted–Lowry 정의에서 산은 양성자(H⁺) 주개, 염기는 양성자 받개이다.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 89번"
+            ],
+            "originalQuestion": "브뢴스테드 로우리 산염기에서 산은 양성자 주개이다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 14,
+                "pages": "3"
+              }
+            ]
           },
           {
             "id": "chem-final-23-88",
@@ -3118,7 +5436,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "Cl⁻는 강산 HCl의 짝염기여서 수용액에서 염기성이 매우 약하다. F⁻·NO₂⁻·CN⁻는 약산의 짝염기이다. 제시된 종 중 Cl⁻의 염기도가 가장 낮다."
+            "rationale": "Cl⁻는 강산 HCl의 짝염기여서 수용액에서 염기성이 매우 약하다. F⁻·NO₂⁻·CN⁻는 약산의 짝염기이다. 제시된 종 중 Cl⁻의 염기도가 가장 낮다.",
+            "year": "23",
+            "sourcePage": 7,
+            "sourceFile": "[화학2] 23학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "23학번",
+              "원문 88번"
+            ],
+            "originalQuestion": "H20, F-, NO2-, Cl-, CN- 중 염기도가 가장 낮은 것은 Cl-이다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 14,
+                "pages": "9,12"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -3190,7 +5528,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "약염기의 짝산인 양이온은 물에 H⁺를 내놓을 수 있고, 강산의 짝염기처럼 산·염기성이 무시되는 음이온은 이를 상쇄하지 않는다. NH₄Cl 수용액이 대표적인 산성 염 용액이다.\n\n[복원 메모]\n원본의 중성 음이온을 산·염기성 무시라는 뜻으로 풀어 씀."
+            "rationale": "약염기의 짝산인 양이온은 물에 H⁺를 내놓을 수 있고, 강산의 짝염기처럼 산·염기성이 무시되는 음이온은 이를 상쇄하지 않는다. NH₄Cl 수용액이 대표적인 산성 염 용액이다.\n\n[복원 메모]\n원본의 중성 음이온을 산·염기성 무시라는 뜻으로 풀어 씀.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 49번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "양이온이 약염기의 짝산이고, 음이온이 중성일 경우 염의 수용액은 산성이다.",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 14,
+                "pages": "41–43"
+              }
+            ]
           },
           {
             "id": "chem-final-25-52",
@@ -3211,7 +5570,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "인산의 연속 이온화에서는 Kₐ₁>Kₐ₂>Kₐ₃이다. 양성자를 잃어 음전하가 커질수록 다음 양성자를 내놓기 어려워진다. 전하가 누락된 원문 H₂PO₄를 그대로 산의 분자식으로 쓰지 않고, 강의의 인산 H₃PO₄ 연속 이온화 비교로 학습용 보완했다.\n\n[복원 메모]\n전하가 빠진 원본 H₂PO₄를 강의 인산 H₃PO₄ 연속 이온화 비교로 학습용 보완."
+            "rationale": "인산의 연속 이온화에서는 Kₐ₁>Kₐ₂>Kₐ₃이다. 양성자를 잃어 음전하가 커질수록 다음 양성자를 내놓기 어려워진다. 전하가 누락된 원문 H₂PO₄를 그대로 산의 분자식으로 쓰지 않고, 강의의 인산 H₃PO₄ 연속 이온화 비교로 학습용 보완했다.\n\n[복원 메모]\n전하가 빠진 원본 H₂PO₄를 강의 인산 H₃PO₄ 연속 이온화 비교로 학습용 보완.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 52번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "H2PO4의 두번째 이온화는 첫번째 이온화보다 항상 크다",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 14,
+                "pages": "34–37"
+              }
+            ]
           },
           {
             "id": "chem-final-25-53",
@@ -3229,7 +5609,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "NaOH는 강염기·강전해질로서 물에 녹은 부분은 Na⁺와 OH⁻로 거의 완전히 해리한다."
+            "rationale": "NaOH는 강염기·강전해질로서 물에 녹은 부분은 Na⁺와 OH⁻로 거의 완전히 해리한다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 53번"
+            ],
+            "originalQuestion": "NaOH 수용액은 전해질이고, 완전 해리된다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 14,
+                "pages": "28"
+              }
+            ]
           },
           {
             "id": "chem-final-25-54",
@@ -3247,7 +5647,28 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "25 °C에서 순수한 물로 만든 NaCl 수용액은 Na⁺와 Cl⁻의 가수분해가 무시되어 중성이고 pH≈7이다. 온도가 달라지면 중성 pH도 바뀔 수 있으므로 원문에 강의의 25 °C 조건을 보완해 판단했다.\n\n[복원 메모]\n중성 pH=7 비교의 25°C·순수한 물 조건 보완."
+            "rationale": "25 °C에서 순수한 물로 만든 NaCl 수용액은 Na⁺와 Cl⁻의 가수분해가 무시되어 중성이고 pH≈7이다. 온도가 달라지면 중성 pH도 바뀔 수 있으므로 원문에 강의의 25 °C 조건을 보완해 판단했다.\n\n[복원 메모]\n중성 pH=7 비교의 25°C·순수한 물 조건 보완.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 54번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "NaCl 수용액은 pH 7을 벗어날 수 있다",
+            "converted": true,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 14,
+                "pages": "38"
+              }
+            ]
           },
           {
             "id": "chem-final-25-55",
@@ -3267,7 +5688,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "NH₄Cl이 녹으면 NH₄⁺가 NH₄⁺+H₂O⇌NH₃+H₃O⁺ 반응을 하여 산성 용액을 만든다. Cl⁻의 염기성은 무시할 만큼 작다."
+            "rationale": "NH₄Cl이 녹으면 NH₄⁺가 NH₄⁺+H₂O⇌NH₃+H₃O⁺ 반응을 하여 산성 용액을 만든다. Cl⁻의 염기성은 무시할 만큼 작다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 55번"
+            ],
+            "originalQuestion": "NH4Cl은 물에 녹아 산으로 작용하는가?",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 14,
+                "pages": "41–43"
+              }
+            ]
           },
           {
             "id": "chem-final-25-56",
@@ -3285,7 +5726,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "강산과 강염기에서 온 NaCl 같은 염은 이온의 유래만으로도 중성임을 판단할 수 있다. 약산·약염기에서 온 염은 Ka와 Kb 비교가 필요할 수 있지만 모든 염에서 그 수치를 반드시 알아야 하는 것은 아니다."
+            "rationale": "강산과 강염기에서 온 NaCl 같은 염은 이온의 유래만으로도 중성임을 판단할 수 있다. 약산·약염기에서 온 염은 Ka와 Kb 비교가 필요할 수 있지만 모든 염에서 그 수치를 반드시 알아야 하는 것은 아니다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 56번"
+            ],
+            "originalQuestion": "염의 ph가 중성인지 알기 위해서는 그 용액의 Ka 또는 Kb를 알아야만 한다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 14,
+                "pages": "44"
+              }
+            ]
           },
           {
             "id": "chem-final-25-58",
@@ -3306,7 +5767,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "Lewis 산의 조건은 전자쌍을 받는 것이다. BF₃처럼 H를 포함하지 않는 산도 있으므로 수소 이온을 반드시 포함해야 하는 것은 아니다."
+            "rationale": "Lewis 산의 조건은 전자쌍을 받는 것이다. BF₃처럼 H를 포함하지 않는 산도 있으므로 수소 이온을 반드시 포함해야 하는 것은 아니다.",
+            "year": "25",
+            "sourcePage": 2,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "X",
+            "sourceAnswerLabel": "X",
+            "sourceTags": [
+              "25학번",
+              "원문 58번"
+            ],
+            "originalQuestion": "Lewis 산은 항상 수소 이온을 포함하고 있다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 14,
+                "pages": "45–48"
+              }
+            ]
           },
           {
             "id": "chem-final-25-70",
@@ -3324,7 +5805,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "Ba(OH)₂는 강염기이다. 물에 녹은 부분이 Ba²⁺와 2OH⁻로 해리한다. 용해도와 해리 정도는 구별한다."
+            "rationale": "Ba(OH)₂는 강염기이다. 물에 녹은 부분이 Ba²⁺와 2OH⁻로 해리한다. 용해도와 해리 정도는 구별한다.",
+            "year": "25",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 25학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "25학번",
+              "원문 70번"
+            ],
+            "originalQuestion": "수산화바륨은 강염기이다",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 14,
+                "pages": "28"
+              }
+            ]
           },
           {
             "id": "chem-final-24-90",
@@ -3345,7 +5846,27 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "Lewis 산은 전자쌍 받개이고 Lewis 염기는 전자쌍 주개이다. H⁺ 전달이 없는 반응에도 적용할 수 있다."
+            "rationale": "Lewis 산은 전자쌍 받개이고 Lewis 염기는 전자쌍 주개이다. H⁺ 전달이 없는 반응에도 적용할 수 있다.",
+            "year": "24",
+            "sourcePage": 3,
+            "sourceFile": "[화학2] 24학번 기말.pdf",
+            "sourceAnswer": "O",
+            "sourceAnswerLabel": "O",
+            "sourceTags": [
+              "24학번",
+              "원문 90번"
+            ],
+            "originalQuestion": "Lewis 산은 전자쌍 받개이다.",
+            "converted": false,
+            "answerCorrection": false,
+            "auditRevision": "chemistry-finals-20261107",
+            "explanationBasis": "강의자료 우선 검토",
+            "lectureSources": [
+              {
+                "chapter": 14,
+                "pages": "45–48"
+              }
+            ]
           }
         ],
         "aiQuestions": []
@@ -3431,7 +5952,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 9쪽은 성장인자를 세포 밖에서 도달하여 막수용체에 의존하는 신호전달로 세포 내 변화를 유발하는 단백질로 정의한다. 핵 수용체에 직접 결합하는 스테로이드 호르몬 방식이나 이온통로만 여는 방식과 구분한다."
+            "rationale": "[강의 기준] 9쪽은 성장인자를 세포 밖에서 도달하여 막수용체에 의존하는 신호전달로 세포 내 변화를 유발하는 단백질로 정의한다. 핵 수용체에 직접 결합하는 스테로이드 호르몬 방식이나 이온통로만 여는 방식과 구분한다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "25학번",
+              "11번"
+            ],
+            "originalQuestion": "Growth factor의 일반적 정의는 무엇인가?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "세포 내에서 생성 핵 내 수용체 직접결합"
+              },
+              {
+                "id": "2",
+                "text": "세포 외부에서 도달해 막 수용체 결합"
+              },
+              {
+                "id": "3",
+                "text": "Endocrine"
+              },
+              {
+                "id": "4",
+                "text": "Try/src 수용체 결합 스테로이드"
+              },
+              {
+                "id": "5",
+                "text": "이온 통로를 열어 나트륨 이온의 출입 유도"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-28",
@@ -3454,7 +6009,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] Endocrine은 혈류를 통해 먼 표적 세포에 작용하는 신호 방식이다. Autocrine은 자기 자신, paracrine은 인접 세포에 작용한다. Gap junction을 통한 직접 전달과도 구분한다."
+            "rationale": "[강의 기준] Endocrine은 혈류를 통해 먼 표적 세포에 작용하는 신호 방식이다. Autocrine은 자기 자신, paracrine은 인접 세포에 작용한다. Gap junction을 통한 직접 전달과도 구분한다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "28번"
+            ],
+            "originalQuestion": "호르몬이 다른 조직으로 신호를 전달하기 위해 혈액을 통해 사용하는 신호는?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "paracrine"
+              },
+              {
+                "id": "2",
+                "text": "autocrine"
+              },
+              {
+                "id": "3",
+                "text": "endocrine"
+              },
+              {
+                "id": "4",
+                "text": "Synaptic"
+              },
+              {
+                "id": "5",
+                "text": "Gap junction"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-1",
@@ -3475,7 +6064,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 10장 10쪽은 혈액세포의 비정상적 증식과 성장인자 발견의 예를 제시한다. 이 기출의 복원 선지에서는 백혈구 증식과 성장인자 발견을 연결한 설명이 대응한다. 적혈구·골수 착색·림프구 분화 억제 등으로 바꾸지 않는다."
+            "rationale": "[강의 기준] 10장 10쪽은 혈액세포의 비정상적 증식과 성장인자 발견의 예를 제시한다. 이 기출의 복원 선지에서는 백혈구 증식과 성장인자 발견을 연결한 설명이 대응한다. 적혈구·골수 착색·림프구 분화 억제 등으로 바꾸지 않는다.",
+            "figure": "question-images/signal-final/24-1-1.webp",
+            "year": "24",
+            "sourcePage": "1",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "24학번",
+              "01번"
+            ],
+            "originalQuestion": "아래의 조류로부터 혈액표본을 보고 옳은 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "적혈구가 증식하여 적혈구성장인자가 발견 된다"
+              },
+              {
+                "id": "2",
+                "text": "백혈구가 증식하여 성장인자가 발견된다"
+              },
+              {
+                "id": "3",
+                "text": "골수 색 착색인자가 발견된다"
+              },
+              {
+                "id": "4",
+                "text": "림프구 분화 억제인자"
+              },
+              {
+                "id": "5",
+                "text": "골수 성장 억제인자"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-4",
@@ -3500,7 +6124,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 11쪽은 쥐 종양 단편과 닭 배아를 이용해 신경 성장을 관찰한 NGF 발견 실험을 제시한다. EGF의 턱밑샘 추출물 실험, PDGF의 혈장 주변 배양 실험과 구분한다."
+            "rationale": "[강의 기준] 11쪽은 쥐 종양 단편과 닭 배아를 이용해 신경 성장을 관찰한 NGF 발견 실험을 제시한다. EGF의 턱밑샘 추출물 실험, PDGF의 혈장 주변 배양 실험과 구분한다.",
+            "year": "24",
+            "sourcePage": "2",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "24학번",
+              "04번"
+            ],
+            "originalQuestion": "쥐의 종양 단편을 닭의 배아에 이식하여 가장 먼저 확인한 성장인자는?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "EGF"
+              },
+              {
+                "id": "2",
+                "text": "FGF"
+              },
+              {
+                "id": "3",
+                "text": "NGF"
+              },
+              {
+                "id": "4",
+                "text": "IGF"
+              },
+              {
+                "id": "5",
+                "text": "PDGF"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-6",
@@ -3525,7 +6183,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 10장 12쪽은 턱밑샘 추출물을 사용한 EGF 발견 실험과 표피 성장의 변화를 제시한다. EGF는 epidermal growth factor(표피성장인자)다. 쥐 종양 단편을 닭 배아에 이식한 NGF 실험, 혈장 주변 결합조직 배양에서 관찰한 PDGF와 구분한다."
+            "rationale": "[강의 기준] 10장 12쪽은 턱밑샘 추출물을 사용한 EGF 발견 실험과 표피 성장의 변화를 제시한다. EGF는 epidermal growth factor(표피성장인자)다. 쥐 종양 단편을 닭 배아에 이식한 NGF 실험, 혈장 주변 결합조직 배양에서 관찰한 PDGF와 구분한다.",
+            "figure": "question-images/signal-final/24-3-1.webp",
+            "year": "24",
+            "sourcePage": "3",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "24학번",
+              "06번"
+            ],
+            "originalQuestion": "다음 자료는 쥐의 턱밑샘에서 분리한 용액 을 닭의 배아에 이식한 후 관찰한 것이다. 이 것을 통해 어떤 성장인자의 효과를 확인할 수 있는가?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "EGF"
+              },
+              {
+                "id": "2",
+                "text": "FGF"
+              },
+              {
+                "id": "3",
+                "text": "NGF"
+              },
+              {
+                "id": "4",
+                "text": "IGF"
+              },
+              {
+                "id": "5",
+                "text": "PDGF"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-15",
@@ -3547,7 +6240,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] 14–15쪽은 혈장 주변에서 배양한 결합조직의 성장과 PDGF를 연결한다. PDGF는 platelet-derived growth factor(혈소판유래성장인자)이며 혈소판에서 유래하여 결합조직 세포의 증식과 상처 치유에 관여한다. EGF는 표피, NGF는 신경 분화 관련 실험과 구분한다."
+            "rationale": "[강의 기준] 14–15쪽은 혈장 주변에서 배양한 결합조직의 성장과 PDGF를 연결한다. PDGF는 platelet-derived growth factor(혈소판유래성장인자)이며 혈소판에서 유래하여 결합조직 세포의 증식과 상처 치유에 관여한다. EGF는 표피, NGF는 신경 분화 관련 실험과 구분한다.",
+            "figure": "question-images/signal-final/24-6-1.webp",
+            "year": "24",
+            "sourcePage": "6",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "24학번",
+              "15번"
+            ],
+            "originalQuestion": "다음은 50일간 배양된 결합 조직의 사진 으로 오래된 혈장 주변에 결합 조직이 둘러 싸여 있는 모습이다. 조직이 사멸하지 않고 지속적으로 성장할 수 있는 이유는 혈장 내 어떤 성장인자 때문인지 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "EGF"
+              },
+              {
+                "id": "2",
+                "text": "FGF"
+              },
+              {
+                "id": "3",
+                "text": "NGF"
+              },
+              {
+                "id": "4",
+                "text": "IGF"
+              },
+              {
+                "id": "5",
+                "text": "PDGF"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-23-4",
@@ -3569,7 +6297,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] 성장인자는 세포 증식, 이동, 분화, 생존과 상처 치유에 관여한다. 9쪽은 증식·상처 치유·분화를, 33쪽은 분화·생존·이동·증식에 대한 양성·음성 조절을 정리한다. 따라서 제시된 네 현상은 모두 해당한다. 모든 성장인자가 항상 모든 세포에서 증식을 촉진한다는 뜻은 아니다."
+            "rationale": "[강의 기준] 성장인자는 세포 증식, 이동, 분화, 생존과 상처 치유에 관여한다. 9쪽은 증식·상처 치유·분화를, 33쪽은 분화·생존·이동·증식에 대한 양성·음성 조절을 정리한다. 따라서 제시된 네 현상은 모두 해당한다. 모든 성장인자가 항상 모든 세포에서 증식을 촉진한다는 뜻은 아니다.",
+            "year": "23",
+            "sourcePage": "2",
+            "sourceName": "23학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "23학번",
+              "04번"
+            ],
+            "originalQuestion": "성장인자에 의해 발생할 수 있는 현상에 해당하는 것을 고르시오. 가. Cell proliferation 나. Cell migration 다. Cell differentiation 라. Wound healing",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "가"
+              },
+              {
+                "id": "2",
+                "text": "가, 나"
+              },
+              {
+                "id": "3",
+                "text": "가, 나, 다"
+              },
+              {
+                "id": "4",
+                "text": "가, 나, 라"
+              },
+              {
+                "id": "5",
+                "text": "가, 나, 다, 라"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-22-1",
@@ -3594,7 +6356,45 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 10장 3–7쪽에는 시상하부–뇌하수체 전엽–성장호르몬–간의 IGF 생성 경로와 혈소판 유래 성장인자가 제시된다. 그러나 모든 성장인자를 통틀어 분비가 가장 활발한 장소가 골수라고 확정하는 설명은 없다. 성장호르몬의 분비 장소와 성장인자의 생성 장소도 같지 않다. 원본 답 ① 골수는 근거 미확인이므로 정답으로 확정하지 않는다."
+            "rationale": "[강의 기준] 10장 3–7쪽에는 시상하부–뇌하수체 전엽–성장호르몬–간의 IGF 생성 경로와 혈소판 유래 성장인자가 제시된다. 그러나 모든 성장인자를 통틀어 분비가 가장 활발한 장소가 골수라고 확정하는 설명은 없다. 성장호르몬의 분비 장소와 성장인자의 생성 장소도 같지 않다. 원본 답 ① 골수는 근거 미확인이므로 정답으로 확정하지 않는다.",
+            "year": "22",
+            "sourcePage": "1",
+            "sourceName": "22학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "22학번",
+              "01번"
+            ],
+            "originalQuestion": "다음 중 성장인자의 분비가 가장 활발하게 일어나는 곳은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "골수"
+              },
+              {
+                "id": "2",
+                "text": "부신"
+              },
+              {
+                "id": "3",
+                "text": "시상하부"
+              },
+              {
+                "id": "4",
+                "text": "뇌하수체 전엽"
+              },
+              {
+                "id": "5",
+                "text": "뇌하수체 후엽"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review",
+            "sourceReviewAnswer": "원본 답 ① · 강의 기준 확정 보류",
+            "sourceUncertain": true,
+            "uncertain": true,
+            "reviewAnswer": "원본 답 ① · 강의 기준 확정 보류"
           }
         ],
         "aiQuestions": []
@@ -3661,7 +6461,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 23쪽은 IGF-I·IGF-II 결핍 시 muscle, bone, organs의 general growth deficiency를 제시한다. 뼈만 선택적으로 결핍되거나 신경 분화만 증가하는 현상과 구분한다."
+            "rationale": "[강의 기준] 23쪽은 IGF-I·IGF-II 결핍 시 muscle, bone, organs의 general growth deficiency를 제시한다. 뼈만 선택적으로 결핍되거나 신경 분화만 증가하는 현상과 구분한다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "12번"
+            ],
+            "originalQuestion": "다음 중 IGF-I 또는 IGF-II 결핍시 나타나는 가장 특징적인 현상은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "지방세포의 과성장"
+              },
+              {
+                "id": "2",
+                "text": "몸무게는 그대로 유지되나 뼈조직만 결핍"
+              },
+              {
+                "id": "3",
+                "text": "뼈, 근육, 장기 전반에 걸쳐 성장 결핍"
+              },
+              {
+                "id": "4",
+                "text": "세포분열 증가로 인한 비정상적 성장"
+              },
+              {
+                "id": "5",
+                "text": "신경세포 분화 촉진 및 증가"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-13",
@@ -3684,7 +6518,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 30쪽은 BMP2가 TGF-β superfamily에 속하며 조골세포 분화를 촉진한다고 명시한다. 32쪽은 BMP가 지방세포 분화를 억제하는 예를 보여 준다. EGF·IL-2·NGF·Wnt로 바꾸지 않는다."
+            "rationale": "[강의 기준] 30쪽은 BMP2가 TGF-β superfamily에 속하며 조골세포 분화를 촉진한다고 명시한다. 32쪽은 BMP가 지방세포 분화를 억제하는 예를 보여 준다. EGF·IL-2·NGF·Wnt로 바꾸지 않는다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "25학번",
+              "13번"
+            ],
+            "originalQuestion": "TGF베타의 superfamily에 속하며 이와 같이 서로 다른 작용을 하는 성장인자는?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "BMP2"
+              },
+              {
+                "id": "2",
+                "text": "EGF"
+              },
+              {
+                "id": "3",
+                "text": "IL2"
+              },
+              {
+                "id": "4",
+                "text": "NGF"
+              },
+              {
+                "id": "5",
+                "text": "WNT"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-14",
@@ -3705,7 +6573,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 29쪽은 NGF 처리 후 신경세포 분화와 neurite 형성의 증가를 보여 준다. 지방세포 성숙이나 조골세포 분화 억제를 이 도식의 직접 결과로 제시하지 않는다."
+            "rationale": "[강의 기준] 29쪽은 NGF 처리 후 신경세포 분화와 neurite 형성의 증가를 보여 준다. 지방세포 성숙이나 조골세포 분화 억제를 이 도식의 직접 결과로 제시하지 않는다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "14번"
+            ],
+            "originalQuestion": "NGF가 가장 직접적으로 유도하는 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "지방세포 성숙"
+              },
+              {
+                "id": "2",
+                "text": "조골세포분화 억제"
+              },
+              {
+                "id": "3",
+                "text": "신경세포분화 및 신경돌기 생성"
+              },
+              {
+                "id": "4",
+                "text": "세포주기 G2-M 촉진"
+              },
+              {
+                "id": "5",
+                "text": "TGF-베타 억제"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-8",
@@ -3727,7 +6629,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 성장인자 신호는 cyclin/CDK 복합체의 형성과 활성을 통해 Rb를 인산화한다. 인산화된 Rb는 E2F에 대한 억제를 해제하여 세포주기 진행을 돕는다. 따라서 Rb 인산화와 cyclin/CDK 복합체 형성이 해당하며, E2F/Rb 억제 복합체 형성은 반대 방향이다."
+            "rationale": "[강의 기준] 성장인자 신호는 cyclin/CDK 복합체의 형성과 활성을 통해 Rb를 인산화한다. 인산화된 Rb는 E2F에 대한 억제를 해제하여 세포주기 진행을 돕는다. 따라서 Rb 인산화와 cyclin/CDK 복합체 형성이 해당하며, E2F/Rb 억제 복합체 형성은 반대 방향이다.",
+            "year": "24",
+            "sourcePage": "3",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "24학번",
+              "08번"
+            ],
+            "originalQuestion": "다음 중 성장인자에 의해 촉진되는 것을 고르시오. 가. Rb의 인산화 나. E2F의 인산화 다. E2F/Rb 복합체 형성 라. Cyclin/CDK 복합체 형성",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "가, 나"
+              },
+              {
+                "id": "2",
+                "text": "가, 다"
+              },
+              {
+                "id": "3",
+                "text": "가, 라"
+              },
+              {
+                "id": "4",
+                "text": "나, 다"
+              },
+              {
+                "id": "5",
+                "text": "나, 라"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-23-1",
@@ -3750,7 +6686,43 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 32쪽은 BMP 처리에 의한 adipocyte differentiation 억제와 Oil red O 염색 결과를 제시한다. Oil red O는 지방 축적을 관찰하는 염색이므로 분화·지방 축적이 억제되면 염색이 옅어진다. BMP2의 조골세포 분화 촉진과는 세포 유형이 다르다.\n\n[복원 메모] 원본의 ②–⑤는 미복원이다. 강의에 있는 다른 성장인자를 학습용 오답 보기로 구성했으며, 원래 시험 보기와 동일하다고 주장하지 않는다."
+            "rationale": "[강의 기준] 32쪽은 BMP 처리에 의한 adipocyte differentiation 억제와 Oil red O 염색 결과를 제시한다. Oil red O는 지방 축적을 관찰하는 염색이므로 분화·지방 축적이 억제되면 염색이 옅어진다. BMP2의 조골세포 분화 촉진과는 세포 유형이 다르다.\n\n[복원 메모] 원본의 ②–⑤는 미복원이다. 강의에 있는 다른 성장인자를 학습용 오답 보기로 구성했으며, 원래 시험 보기와 동일하다고 주장하지 않는다.",
+            "figure": "question-images/signal-final/23-1-1.webp",
+            "year": "23",
+            "sourcePage": "1",
+            "sourceName": "23학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "23학번",
+              "01번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "지방세포의 분화를 억제하여 처리 시 oil red O staining의 색을 옅게 만드는 것은 무 엇인지 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "BMP"
+              },
+              {
+                "id": "2",
+                "text": "미복원"
+              },
+              {
+                "id": "3",
+                "text": "미복원"
+              },
+              {
+                "id": "4",
+                "text": "미복원"
+              },
+              {
+                "id": "5",
+                "text": "미복원"
+              }
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-22-4",
@@ -3773,7 +6745,45 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의는 TGF-β의 작용이 세포와 상황에 따라 달라질 수 있음을 설명하며, 24쪽에는 세포 증식 억제가 제시되어 있다. 7쪽의 상처 치유·기질 관련 작용만으로 제시된 다섯 설명 중 하나를 단정하기 어렵다. 원본 답 ①을 유지한 채 자동 채점하지 않고 검토 보류한다."
+            "rationale": "[강의 기준] 강의는 TGF-β의 작용이 세포와 상황에 따라 달라질 수 있음을 설명하며, 24쪽에는 세포 증식 억제가 제시되어 있다. 7쪽의 상처 치유·기질 관련 작용만으로 제시된 다섯 설명 중 하나를 단정하기 어렵다. 원본 답 ①을 유지한 채 자동 채점하지 않고 검토 보류한다.",
+            "year": "22",
+            "sourcePage": "2",
+            "sourceName": "22학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "22학번",
+              "04번"
+            ],
+            "originalQuestion": "TGFβ(Transforming growth factor beta)의 기능에 대한 설명으로 옳은 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "결합 조직 세포의 증식을 자극한다"
+              },
+              {
+                "id": "2",
+                "text": "형질 전환을 유도하는 기능이 우선이다"
+              },
+              {
+                "id": "3",
+                "text": "배아 발생기 동안 가장 중요한 성장인자이 다"
+              },
+              {
+                "id": "4",
+                "text": "대부분 세포의 증식을 촉진시키는 효과가 있다"
+              },
+              {
+                "id": "5",
+                "text": "부상 부위로 세포를 유인하는 주화성 (chemotasix)이 우수하다"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review",
+            "sourceReviewAnswer": "원본 답 ① · 강의 기준 확정 보류",
+            "sourceUncertain": true,
+            "uncertain": true,
+            "reviewAnswer": "원본 답 ① · 강의 기준 확정 보류"
           }
         ],
         "aiQuestions": []
@@ -3849,7 +6859,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] Grb2의 SH2는 수용체의 pTyr 서열에, SH3는 Sos의 proline-rich 영역에 결합한다. Sos는 GEF로서 Ras의 GDP–GTP 교환을 촉진한다. Raf·ERK는 하위 키나아제이며 Grb2와 역할이 다르다."
+            "rationale": "[강의 기준] Grb2의 SH2는 수용체의 pTyr 서열에, SH3는 Sos의 proline-rich 영역에 결합한다. Sos는 GEF로서 Ras의 GDP–GTP 교환을 촉진한다. Raf·ERK는 하위 키나아제이며 Grb2와 역할이 다르다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "25학번",
+              "02번"
+            ],
+            "originalQuestion": "활성화된 RTK에서 Sos를 티로신 인산화 부분으로 끌어와 Ras를 활성화시키는 어댑터 단백질은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Raf"
+              },
+              {
+                "id": "2",
+                "text": "Grb2"
+              },
+              {
+                "id": "3",
+                "text": "ERK"
+              },
+              {
+                "id": "4",
+                "text": "PI3K"
+              },
+              {
+                "id": "5",
+                "text": "MNK 1"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-3",
@@ -3870,7 +6914,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 11쪽은 RTK 리간드를 보통 작은 수용성 단백질로 설명하고 autocrine·paracrine 방식의 작용을 제시한다. 큰 막관통 단백질 또는 항상 2가 이온이 필요하다는 설명은 이 강의의 일반적 정의가 아니다."
+            "rationale": "[강의 기준] 11쪽은 RTK 리간드를 보통 작은 수용성 단백질로 설명하고 autocrine·paracrine 방식의 작용을 제시한다. 큰 막관통 단백질 또는 항상 2가 이온이 필요하다는 설명은 이 강의의 일반적 정의가 아니다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "03번"
+            ],
+            "originalQuestion": "다음 중 RTK 리간드의 일반적 특성으로 옳은 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "대부분 큰 막관통 단백질이다"
+              },
+              {
+                "id": "2",
+                "text": "주로 내분비(hormonal)방식으로 장거리에서 작용한다"
+              },
+              {
+                "id": "3",
+                "text": "자가분비(autocrine)및 측분비(paracrine)방식으로 작용한다"
+              },
+              {
+                "id": "4",
+                "text": "항상 2가이온이 결합해야 활성화된다"
+              },
+              {
+                "id": "5",
+                "text": "세포질 내에서 합성 즉시 핵으로 이동한다"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-9",
@@ -3895,7 +6973,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 서로 마주 보는 수용체 키나아제 도메인이 Tyr를 인산화하여 효소 활성과 하위 단백질의 결합을 조절한다. 생성된 pTyr는 SH2 단백질 등의 docking site가 된다. PLCγ를 일괄 억제하거나 리간드 없이 모든 이량체화를 일으키는 기능으로 설명하지 않는다."
+            "rationale": "[강의 기준] 서로 마주 보는 수용체 키나아제 도메인이 Tyr를 인산화하여 효소 활성과 하위 단백질의 결합을 조절한다. 생성된 pTyr는 SH2 단백질 등의 docking site가 된다. PLCγ를 일괄 억제하거나 리간드 없이 모든 이량체화를 일으키는 기능으로 설명하지 않는다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "09번"
+            ],
+            "originalQuestion": "RTK활성 과정 중 autotransphosphorylation의 직접적 기능?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "리간드간 친화성 증가"
+              },
+              {
+                "id": "2",
+                "text": "리간드 결합 없이도 dimerization을 유도"
+              },
+              {
+                "id": "3",
+                "text": "SH2 도킹사이트 생성"
+              },
+              {
+                "id": "4",
+                "text": "PLCr의 활성을 억제"
+              },
+              {
+                "id": "5",
+                "text": "리간드수용체 없이도 구조적안정성 제공"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-10",
@@ -3917,7 +7029,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] RTK의 공통 요소는 세포외 리간드결합 영역, 단일 막관통 영역, 세포질 tyrosine kinase 영역과 조절 영역이다. 세포질의 촉매 영역을 serine/threonine kinase로 설명한 보기가 틀리다."
+            "rationale": "[강의 기준] RTK의 공통 요소는 세포외 리간드결합 영역, 단일 막관통 영역, 세포질 tyrosine kinase 영역과 조절 영역이다. 세포질의 촉매 영역을 serine/threonine kinase로 설명한 보기가 틀리다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "10번"
+            ],
+            "originalQuestion": "다음중 RTK 구조에 대한 설명으로 옳지 않은 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "세포질 외 리간드 도메인"
+              },
+              {
+                "id": "2",
+                "text": "단일 막관통 영역"
+              },
+              {
+                "id": "3",
+                "text": "세포질 내 serine/threonine kinase 영역"
+              },
+              {
+                "id": "4",
+                "text": "세포질 내 tyrosine kinase 영역"
+              },
+              {
+                "id": "5",
+                "text": "Regulatory 도메인"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-7",
@@ -3941,7 +7087,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] SH2는 pTyr를 포함한 서열, SH3는 proline-rich(PxxP) 서열을 인식한다. PH는 인지질 결합, PTB는 인산화 티로신 관련 인식에 관여한다. PLCγ는 PIP₂ 분해를 통해 IP₃·DAG·Ca²⁺ 신호를 연결한다. 원본의 ‘PLC domain’은 ‘PLCγ’로 명확히 했다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] SH2는 pTyr를 포함한 서열, SH3는 proline-rich(PxxP) 서열을 인식한다. PH는 인지질 결합, PTB는 인산화 티로신 관련 인식에 관여한다. PLCγ는 PIP₂ 분해를 통해 IP₃·DAG·Ca²⁺ 신호를 연결한다. 원본의 ‘PLC domain’은 ‘PLCγ’로 명확히 했다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "24",
+            "sourcePage": "3",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "24학번",
+              "07번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "다음 도메인과 연결이 바르게 되어 있는 것을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "PLC domain : IP3, Ca2+ 신호 전달"
+              },
+              {
+                "id": "2",
+                "text": "SH3 domain : phospho-tyrosine 결합"
+              },
+              {
+                "id": "3",
+                "text": "PH domain : phospho-tyrosine 결합"
+              },
+              {
+                "id": "4",
+                "text": "PTB domain : proline-rich region 결합"
+              },
+              {
+                "id": "5",
+                "text": "SH2 domain : proline-rich region 결합"
+              }
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-10",
@@ -3964,7 +7145,45 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의는 리간드에 의해 수용체가 이량체화되고, 서로 마주 보는 키나아제 도메인이 상대 사슬의 Tyr를 인산화하는 과정을 보여 준다. 원본 답 ④는 ‘자기 사슬’의 인산화라는 의도로 보인다. 그러나 ①의 ‘결합하면 리간드가 이량체를 형성한다’도 모든 RTK 리간드에 공통인 설명이 아니므로 원문 그대로는 유일 정답이 명확하지 않다. 보기 자체를 임의로 바꾸지 않고 검토 보류한다."
+            "rationale": "[강의 기준] 강의는 리간드에 의해 수용체가 이량체화되고, 서로 마주 보는 키나아제 도메인이 상대 사슬의 Tyr를 인산화하는 과정을 보여 준다. 원본 답 ④는 ‘자기 사슬’의 인산화라는 의도로 보인다. 그러나 ①의 ‘결합하면 리간드가 이량체를 형성한다’도 모든 RTK 리간드에 공통인 설명이 아니므로 원문 그대로는 유일 정답이 명확하지 않다. 보기 자체를 임의로 바꾸지 않고 검토 보류한다.",
+            "year": "24",
+            "sourcePage": "4",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "24학번",
+              "10번"
+            ],
+            "originalQuestion": "Ligand에 의해 receptor protein tyrosine kinase (RTK)가 활성화되는 과정에 대한 설명으로 틀린 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "ligand가 extracellular domain에 결합하 면 ligand는 dimer를 형성한다"
+              },
+              {
+                "id": "2",
+                "text": "ligand가 extracellular domain에 결합하 면 수용체는 dimer를 형성한다"
+              },
+              {
+                "id": "3",
+                "text": "ligand가 결합하면 Cytoplasmic domain 의 입체 구조가 변한다"
+              },
+              {
+                "id": "4",
+                "text": "수용체는 자신의 domain에 있는 tyrosine 잔기를 인산화시킨다"
+              },
+              {
+                "id": "5",
+                "text": "ligand는 autocrine이나 paracrine을 통 해서 수용체에 주로 작용한다"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review",
+            "sourceReviewAnswer": "원본 답 ④ · 강의 기준 확정 보류",
+            "sourceUncertain": true,
+            "uncertain": true,
+            "reviewAnswer": "원본 답 ④ · 강의 기준 확정 보류"
           },
           {
             "id": "signal-final-24-12",
@@ -3985,7 +7204,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 16쪽 표에서 Grb2는 pY–x–N 계열 서열을 인식한다. 제시된 x–pY–x–N–x가 이에 대응한다. PI3K·Src 등 다른 SH2 단백질의 선호 서열과 구분한다."
+            "rationale": "[강의 기준] 16쪽 표에서 Grb2는 pY–x–N 계열 서열을 인식한다. 제시된 x–pY–x–N–x가 이에 대응한다. PI3K·Src 등 다른 SH2 단백질의 선호 서열과 구분한다.",
+            "year": "24",
+            "sourcePage": "5",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "24학번",
+              "12번"
+            ],
+            "originalQuestion": "다음 아미노산 서열 중 Grb2가 가장 잘 결합하는 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "x-pY-x-x-l"
+              },
+              {
+                "id": "2",
+                "text": "x-pY-x-l-x"
+              },
+              {
+                "id": "3",
+                "text": "x-pY-x-N-x"
+              },
+              {
+                "id": "4",
+                "text": "x-pY-x-x-N"
+              },
+              {
+                "id": "5",
+                "text": "x-pY-x-x-M"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-13",
@@ -4006,7 +7259,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 17쪽의 도식은 어댑터 단백질 p47ᵍᵃᵍ-Crk가 v-Abl과 p130을 연결하여 인산화가 잘 일어나도록 하는 모습을 보여 준다. 어댑터는 효소 촉매 기능보다 단백질 사이의 연결·배치에 중요하다."
+            "rationale": "[강의 기준] 17쪽의 도식은 어댑터 단백질 p47ᵍᵃᵍ-Crk가 v-Abl과 p130을 연결하여 인산화가 잘 일어나도록 하는 모습을 보여 준다. 어댑터는 효소 촉매 기능보다 단백질 사이의 연결·배치에 중요하다.",
+            "figure": "question-images/signal-final/24-5-1.webp",
+            "year": "24",
+            "sourcePage": "5",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "24학번",
+              "13번"
+            ],
+            "originalQuestion": "다음 그림은 A의 존재 여부가 미치는 영 향을 나타낸 것이다. A에 해당하는 것은 무 엇인지 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "SH3 domain"
+              },
+              {
+                "id": "2",
+                "text": "Adaptor protein"
+              },
+              {
+                "id": "3",
+                "text": "Specificity pocket"
+              },
+              {
+                "id": "4",
+                "text": "Catalytic domain"
+              },
+              {
+                "id": "5",
+                "text": "Phosphotyrosine pocket"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-23-6",
@@ -4030,7 +7318,38 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               0,
               3
             ],
-            "rationale": "[강의 기준] 11장 도입에서는 Ser·Thr·Tyr의 인산화를 다룬다. 제시된 네 보기 중 serine과 threonine이 해당한다. Tyrosine은 이 문항의 보기에는 없다. 복원된 보기가 네 개이므로 다섯 번째 보기를 임의로 만들지 않고 복수선택형으로 제시한다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] 11장 도입에서는 Ser·Thr·Tyr의 인산화를 다룬다. 제시된 네 보기 중 serine과 threonine이 해당한다. Tyrosine은 이 문항의 보기에는 없다. 복원된 보기가 네 개이므로 다섯 번째 보기를 임의로 만들지 않고 복수선택형으로 제시한다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "23",
+            "sourcePage": "3",
+            "sourceName": "23학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "1,4",
+            "sourceAnswerLabel": "1,4",
+            "sourceTags": [
+              "23학번",
+              "06번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "다음 중 kinase에 의해 인산화되는 아미 노산에 해당되는 것을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Serine"
+              },
+              {
+                "id": "2",
+                "text": "Alanine"
+              },
+              {
+                "id": "3",
+                "text": "Leucine"
+              },
+              {
+                "id": "4",
+                "text": "Threonine"
+              }
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-23-7",
@@ -4054,7 +7373,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 세포외 리간드결합 영역은 다양하고, 단일 막관통 영역은 α-helix 구조를 갖는다. 활성화된 수용체 이량체에서는 서로 마주 보는 키나아제가 상대 사슬의 Tyr를 인산화하는 trans-phosphorylation이 일어난다. 강의는 같은 사슬을 먼저 인산화한다는 설명과 구분한다."
+            "rationale": "[강의 기준] 세포외 리간드결합 영역은 다양하고, 단일 막관통 영역은 α-helix 구조를 갖는다. 활성화된 수용체 이량체에서는 서로 마주 보는 키나아제가 상대 사슬의 Tyr를 인산화하는 trans-phosphorylation이 일어난다. 강의는 같은 사슬을 먼저 인산화한다는 설명과 구분한다.",
+            "year": "23",
+            "sourcePage": "3",
+            "sourceName": "23학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "23학번",
+              "07번"
+            ],
+            "originalQuestion": "RTK를 구성하는 domain의 특징에 대한 설명으로 틀린 것을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "extracellular ligand-binding domina : 다른 RTK에서 가장 다양한 특징을 가진 다"
+              },
+              {
+                "id": "2",
+                "text": "kinase insert domain : regulatory 기 능을 가지고 있다"
+              },
+              {
+                "id": "3",
+                "text": "single transmembrane domain : alpha helix 구조를 가진다"
+              },
+              {
+                "id": "4",
+                "text": "cytoplasmic tyrosine kinase domain : autophosphorylation을 통해 자신의 tyrosine 잔기를 가장 먼저 인산화시킨다"
+              },
+              {
+                "id": "5",
+                "text": "모두 맞다"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-23-9",
@@ -4079,7 +7432,38 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               1,
               2
             ],
-            "rationale": "[강의 기준] Sos는 Ras의 GDP–GTP 교환을 촉진하는 GEF다. 12장 IgE 수용체 도식에는 Vav가 GEF로 제시된다. Grb2는 어댑터이고 Raf는 하위 키나아제이므로 GEF와 다르다. 두 정답을 모두 선택해야 한다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] Sos는 Ras의 GDP–GTP 교환을 촉진하는 GEF다. 12장 IgE 수용체 도식에는 Vav가 GEF로 제시된다. Grb2는 어댑터이고 Raf는 하위 키나아제이므로 GEF와 다르다. 두 정답을 모두 선택해야 한다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "23",
+            "sourcePage": "4",
+            "sourceName": "23학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2,3",
+            "sourceAnswerLabel": "2,3",
+            "sourceTags": [
+              "23학번",
+              "09번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "다음 중 guanine nucleotide exchange factor(GEF)로 불활성 형태인 단백질-GDP를 단백질-GTP 형태로 활성화시키는 것을 고르 시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Grb2"
+              },
+              {
+                "id": "2",
+                "text": "Sos"
+              },
+              {
+                "id": "3",
+                "text": "Vav"
+              },
+              {
+                "id": "4",
+                "text": "Raf"
+              }
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-22-6",
@@ -4102,7 +7486,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] RTK는 수용체의 세포질 쪽에 티로신 키나아제 활성을 갖는 효소연결 수용체다. 이온통로형 수용체, G단백질연결 수용체, 핵·세포질 내 수용체와 구분한다."
+            "rationale": "[강의 기준] RTK는 수용체의 세포질 쪽에 티로신 키나아제 활성을 갖는 효소연결 수용체다. 이온통로형 수용체, G단백질연결 수용체, 핵·세포질 내 수용체와 구분한다.",
+            "year": "22",
+            "sourcePage": "3",
+            "sourceName": "22학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "22학번",
+              "06번"
+            ],
+            "originalQuestion": "RTK(receptor protein tyrosine kinase) 는 다음의 다양한 수용체 타입 중 어디에 속 하는가?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Ion channel receptor"
+              },
+              {
+                "id": "2",
+                "text": "G-protein coupled receptor"
+              },
+              {
+                "id": "3",
+                "text": "Enzyme-linked receptor"
+              },
+              {
+                "id": "4",
+                "text": "Nuclear receptor"
+              },
+              {
+                "id": "5",
+                "text": "Cytosolic receptor"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-22-7",
@@ -4124,7 +7542,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] RTK family는 세포외 리간드결합 영역의 차이에 따라 분류된다. 단일 막관통 영역과 세포질 티로신 키나아제 영역은 공통 구조인 반면, 세포외 영역은 인식하는 리간드에 따라 다양하다."
+            "rationale": "[강의 기준] RTK family는 세포외 리간드결합 영역의 차이에 따라 분류된다. 단일 막관통 영역과 세포질 티로신 키나아제 영역은 공통 구조인 반면, 세포외 영역은 인식하는 리간드에 따라 다양하다.",
+            "year": "22",
+            "sourcePage": "3",
+            "sourceName": "22학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "22학번",
+              "07번"
+            ],
+            "originalQuestion": "RTK를 구성하는 domain 중 서로 다른 RTK에 따라 발현 양상의 차이가 가장 다르 게 나타나는 곳은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Extracellular ligand-binding domain"
+              },
+              {
+                "id": "2",
+                "text": "kinase insert domain"
+              },
+              {
+                "id": "3",
+                "text": "Single transmembrane domain"
+              },
+              {
+                "id": "4",
+                "text": "Cytoplasmic tyrosine kinase domain"
+              },
+              {
+                "id": "5",
+                "text": "Regulatory domain"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-22-8",
@@ -4146,7 +7598,43 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] SH3 도메인은 프롤린이 풍부한 PxxP 서열에 결합한다. SH2는 인산화된 티로신(pTyr)을 포함한 서열을 인식한다. PTB도 인산화 티로신 관련 결합에 관여하며, PH는 인지질 결합에 관련된다. 따라서 kinase 도메인이 아니라 SH3가 정답이다.\n\n[정답 정정] 원본 답 ⑤ → 강의 기준 ②."
+            "rationale": "[강의 기준] SH3 도메인은 프롤린이 풍부한 PxxP 서열에 결합한다. SH2는 인산화된 티로신(pTyr)을 포함한 서열을 인식한다. PTB도 인산화 티로신 관련 결합에 관여하며, PH는 인지질 결합에 관련된다. 따라서 kinase 도메인이 아니라 SH3가 정답이다.\n\n[정답 정정] 원본 답 ⑤ → 강의 기준 ②.",
+            "year": "22",
+            "sourcePage": "3",
+            "sourceName": "22학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "22학번",
+              "08번",
+              "정답 정정"
+            ],
+            "originalQuestion": "다음 중 proline-rich domain 부분의 결 합에 주로 관여하는 domain은 무엇인가?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "SH2 domain"
+              },
+              {
+                "id": "2",
+                "text": "SH3 domain"
+              },
+              {
+                "id": "3",
+                "text": "PTB domain"
+              },
+              {
+                "id": "4",
+                "text": "PH domain"
+              },
+              {
+                "id": "5",
+                "text": "kinase domain"
+              }
+            ],
+            "converted": false,
+            "answerCorrection": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-22-13",
@@ -4167,7 +7655,44 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] SH2 도메인의 phosphotyrosine pocket은 인산화 티로신을 인식하고, specificity pocket은 그 주변 아미노산 서열의 차이를 구별한다. 서로 다른 결합 특이성을 묻는 이 문항은 specificity pocket이 적절하다. 원문의 ‘서로 다른 RTK가 결합한다’는 표현을 SH2의 서열 인식으로 명확히 했다.\n\n[정답 정정] 원본 답 ② → 강의 기준 ③.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] SH2 도메인의 phosphotyrosine pocket은 인산화 티로신을 인식하고, specificity pocket은 그 주변 아미노산 서열의 차이를 구별한다. 서로 다른 결합 특이성을 묻는 이 문항은 specificity pocket이 적절하다. 원문의 ‘서로 다른 RTK가 결합한다’는 표현을 SH2의 서열 인식으로 명확히 했다.\n\n[정답 정정] 원본 답 ② → 강의 기준 ③.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "22",
+            "sourcePage": "5",
+            "sourceName": "22학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "22학번",
+              "13번",
+              "학습용 복원",
+              "정답 정정"
+            ],
+            "originalQuestion": "서로 다른 RTK는 인산화된 타이로신 잔 기를 인지하고 결합한다는 것은 동일하지만, 서로 겹치지 않게 다른 부위의 타이로신과 결합한다. 이 이유와 가장 관련 깊은 것은 무 엇 때문인가?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "SH3 domain"
+              },
+              {
+                "id": "2",
+                "text": "Adaptor protein"
+              },
+              {
+                "id": "3",
+                "text": "Specificity pocket"
+              },
+              {
+                "id": "4",
+                "text": "Catalytic domain"
+              },
+              {
+                "id": "5",
+                "text": "Phosphotyrosine pocket"
+              }
+            ],
+            "converted": true,
+            "answerCorrection": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           }
         ],
         "aiQuestions": []
@@ -4232,7 +7757,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의 도식의 순서는 Ras → Raf → MEK → ERK다. Ras는 GTP 결합 단백질이고 Raf는 MAPKKK, MEK는 MAPKK, ERK는 MAPK로 이어진다."
+            "rationale": "[강의 기준] 강의 도식의 순서는 Ras → Raf → MEK → ERK다. Ras는 GTP 결합 단백질이고 Raf는 MAPKKK, MEK는 MAPKK, ERK는 MAPK로 이어진다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "25학번",
+              "06번"
+            ],
+            "originalQuestion": "세포 내 신호 전달 순서는?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Raf-Mek-Erk-Ras"
+              },
+              {
+                "id": "2",
+                "text": "Raf-Erk-Mek-Ras"
+              },
+              {
+                "id": "3",
+                "text": "Ras-Mek-Raf-Erk"
+              },
+              {
+                "id": "4",
+                "text": "Ras-Raf-Mek-Erk"
+              },
+              {
+                "id": "5",
+                "text": "Mek-Ras-Raf-Erk"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-5",
@@ -4253,7 +7812,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의 도식의 경로는 ERK → MNK1 → eIF4E다. eIF4E는 mRNA의 5′ cap 인식에 관여한다. 원문은 eIF4E가 poly(A) tail에 직접 결합하여 hairpin을 푼다고 혼재되어 있으므로, 경로를 묻는 핵심을 유지해 문장을 보완했다. eIF4A·eIF4B는 이 문항에서 묻는 MNK1의 표적과 구분한다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] 강의 도식의 경로는 ERK → MNK1 → eIF4E다. eIF4E는 mRNA의 5′ cap 인식에 관여한다. 원문은 eIF4E가 poly(A) tail에 직접 결합하여 hairpin을 푼다고 혼재되어 있으므로, 경로를 묻는 핵심을 유지해 문장을 보완했다. eIF4A·eIF4B는 이 문항에서 묻는 MNK1의 표적과 구분한다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "24",
+            "sourcePage": "2",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "24학번",
+              "05번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "ERK는 단백질 합성 과정 중 번역의 개시 과정에 관여하는데, 인산화된 ERK는 A를 인 산화시키고 A가 B를 인산화시키면서, B가 poly A tail과 결합하면서 mRNA의 hairpin 구조가 펴지고 ribosome에 의한 번역이 시 작된다. 위의 A와 B에 가장 적절한 것을 고 르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "A : MNK1, B : eIF-4A"
+              },
+              {
+                "id": "2",
+                "text": "A : MNK1, B : eIF-4B"
+              },
+              {
+                "id": "3",
+                "text": "A : MNK1, B : eIF-4E"
+              },
+              {
+                "id": "4",
+                "text": "A : p62 TCF, B : eIF-4A"
+              },
+              {
+                "id": "5",
+                "text": "A : p62 TCF, B : eIF-4B"
+              }
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-9",
@@ -4275,7 +7869,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] MEK는 ERK 활성화 고리의 TEY 모티프에서 threonine(Thr)과 tyrosine(Tyr)을 인산화한다. 따라서 순서와 관계없이 Tyr·Thr의 조합이다. Ser·Thr 조합이나 methionine·asparagine 조합은 해당하지 않는다."
+            "rationale": "[강의 기준] MEK는 ERK 활성화 고리의 TEY 모티프에서 threonine(Thr)과 tyrosine(Tyr)을 인산화한다. 따라서 순서와 관계없이 Tyr·Thr의 조합이다. Ser·Thr 조합이나 methionine·asparagine 조합은 해당하지 않는다.",
+            "year": "24",
+            "sourcePage": "4",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "24학번",
+              "09번"
+            ],
+            "originalQuestion": "다음 중 MEK에 의한 ERK의 인산화 부위 를 바르게 짝지은 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "serine, threonine"
+              },
+              {
+                "id": "2",
+                "text": "serine, tyrosine"
+              },
+              {
+                "id": "3",
+                "text": "tyrosine, threonine"
+              },
+              {
+                "id": "4",
+                "text": "tyrosine, methionine"
+              },
+              {
+                "id": "5",
+                "text": "threonine, asparagine"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           }
         ],
         "aiQuestions": []
@@ -4346,7 +7974,45 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의는 여러 nRTK 계열의 도메인 구성과 조절을 비교한다. 원본 답 ⑤의 조절계에 의한 제어는 타당하지만, ① α-helix 구조 요소와 ③ 세포질 위치·다른 단백질에 의한 활성화도 넓은 문장으로 되어 있어 단 하나만 참이라고 확정하기 어렵다. 모든 nRTK가 SH2·SH3를 동일하게 갖는 것은 아니며 모든 활성화가 동일한 이량체화 방식인 것도 아니다. 원문 문구를 보존하고 채점에서 제외한다."
+            "rationale": "[강의 기준] 강의는 여러 nRTK 계열의 도메인 구성과 조절을 비교한다. 원본 답 ⑤의 조절계에 의한 제어는 타당하지만, ① α-helix 구조 요소와 ③ 세포질 위치·다른 단백질에 의한 활성화도 넓은 문장으로 되어 있어 단 하나만 참이라고 확정하기 어렵다. 모든 nRTK가 SH2·SH3를 동일하게 갖는 것은 아니며 모든 활성화가 동일한 이량체화 방식인 것도 아니다. 원문 문구를 보존하고 채점에서 제외한다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "25학번",
+              "07번"
+            ],
+            "originalQuestion": "다음 중 비수용체(non-receptor tyrosine kinase)가 공통적으로 갖는 특징으로 옳은 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "α-helix 구조 요소를 가진다."
+              },
+              {
+                "id": "2",
+                "text": "활성화를 위해 이량체 형성이 필수적이다."
+              },
+              {
+                "id": "3",
+                "text": "세포질에 위치하며 다른 단백질의 도움을 받아 활성화된다."
+              },
+              {
+                "id": "4",
+                "text": "SH2와 SH3 도메인을 가지고 있지 않다."
+              },
+              {
+                "id": "5",
+                "text": "regulatory system의 제어를 받는다."
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review",
+            "sourceReviewAnswer": "원본 답 ⑤ · 강의 기준 확정 보류",
+            "sourceUncertain": true,
+            "uncertain": true,
+            "reviewAnswer": "원본 답 ⑤ · 강의 기준 확정 보류"
           },
           {
             "id": "signal-final-25-15",
@@ -4369,7 +8035,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 20쪽의 IFN-α 수용체에는 JAK1과 TYK2가 연결된다. Lck·ZAP-70은 T세포, Syk는 비만세포 IgE 신호와 구분한다."
+            "rationale": "[강의 기준] 20쪽의 IFN-α 수용체에는 JAK1과 TYK2가 연결된다. Lck·ZAP-70은 T세포, Syk는 비만세포 IgE 신호와 구분한다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "25학번",
+              "15번"
+            ],
+            "originalQuestion": "인터페론알파 신호 전달에 직접 관여하는 비수용체성 티로신 키나아제의 조합은 무엇인가?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Jak1&Tyk2"
+              },
+              {
+                "id": "2",
+                "text": "Lck&Zap70"
+              },
+              {
+                "id": "3",
+                "text": "Jak&Syk"
+              },
+              {
+                "id": "4",
+                "text": "Src&Fyn"
+              },
+              {
+                "id": "5",
+                "text": "Jak&Blk"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-14",
@@ -4391,7 +8091,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 5쪽 도식은 FERM, SH2, pseudokinase, kinase 도메인을 제시한다. SH3는 이 JAK 도식에 포함되지 않는다. Src 계열의 SH3·SH2 구조와 혼동하지 않는다."
+            "rationale": "[강의 기준] 5쪽 도식은 FERM, SH2, pseudokinase, kinase 도메인을 제시한다. SH3는 이 JAK 도식에 포함되지 않는다. Src 계열의 SH3·SH2 구조와 혼동하지 않는다.",
+            "year": "24",
+            "sourcePage": "5",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "24학번",
+              "14번"
+            ],
+            "originalQuestion": "다음 중 janus kinase를 구성하는 도메 인에 해당되지 않는 것을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "FERM domain"
+              },
+              {
+                "id": "2",
+                "text": "SH2 domain"
+              },
+              {
+                "id": "3",
+                "text": "SH3 domain"
+              },
+              {
+                "id": "4",
+                "text": "Kinase domain"
+              },
+              {
+                "id": "5",
+                "text": "Pseudokinase domain"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-23-13",
@@ -4414,7 +8148,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 20쪽은 IFN-α 수용체 신호에 TYK2와 JAK1을 제시한다. 원문의 Jyk2는 TYK2로 교정했다. Syk는 IgE, Lck는 T세포 초기 신호와 구분한다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] 20쪽은 IFN-α 수용체 신호에 TYK2와 JAK1을 제시한다. 원문의 Jyk2는 TYK2로 교정했다. Syk는 IgE, Lck는 T세포 초기 신호와 구분한다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "23",
+            "sourcePage": "5",
+            "sourceName": "23학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "23학번",
+              "13번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "다음 중 IFNα receptor의 활성에 관여 하는 분자로 JAK/STAT 세포전달에 중요한 매개체로 작용하는 것을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Vav"
+              },
+              {
+                "id": "2",
+                "text": "Jyk2"
+              },
+              {
+                "id": "3",
+                "text": "Syk"
+              },
+              {
+                "id": "4",
+                "text": "Lck"
+              },
+              {
+                "id": "5",
+                "text": "Src"
+              }
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-23-15",
@@ -4436,7 +8205,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 10쪽에는 JAK/STAT, PI3K/Akt, Ras–Raf–MEK–ERK 계열이 제시된다. 이 도식에 PLC/IP₃ 경로는 제시되지 않는다. ‘PAS/ERK’는 문맥과 도식에 따라 ‘Ras/ERK’로 교정했다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] 10쪽에는 JAK/STAT, PI3K/Akt, Ras–Raf–MEK–ERK 계열이 제시된다. 이 도식에 PLC/IP₃ 경로는 제시되지 않는다. ‘PAS/ERK’는 문맥과 도식에 따라 ‘Ras/ERK’로 교정했다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "23",
+            "sourcePage": "5",
+            "sourceName": "23학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "23학번",
+              "15번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "다음 중 thrombopoietin에 의한 신호전 달 중 포함되지 않은 것을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "JAK/STAT"
+              },
+              {
+                "id": "2",
+                "text": "PI3K/AKT"
+              },
+              {
+                "id": "3",
+                "text": "PAS/ERK"
+              },
+              {
+                "id": "4",
+                "text": "PLC/IP3"
+              },
+              {
+                "id": "5",
+                "text": "모두 맞음"
+              }
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           }
         ],
         "aiQuestions": []
@@ -4500,7 +8304,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의의 IgE 수용체 도식과 요약표는 Syk를 비만세포 탈과립에 연결한다. T세포의 Lck·ZAP-70, IFN-α 신호의 JAK·TYK와 구분한다. 원문에 혼재된 ‘LAT과 FcεRI를 인산화’ 표현은 수용체 초기 인산화 단계와 혼동할 수 있어, 강의에서 명확히 확인되는 Syk의 하위 신호·탈과립 기능으로 보완했다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] 강의의 IgE 수용체 도식과 요약표는 Syk를 비만세포 탈과립에 연결한다. T세포의 Lck·ZAP-70, IFN-α 신호의 JAK·TYK와 구분한다. 원문에 혼재된 ‘LAT과 FcεRI를 인산화’ 표현은 수용체 초기 인산화 단계와 혼동할 수 있어, 강의에서 명확히 확인되는 Syk의 하위 신호·탈과립 기능으로 보완했다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "04번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "Mast cell의 탈과립 현상과 가장 관련이 깊은 non RTK는?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Lck"
+              },
+              {
+                "id": "2",
+                "text": "Zap70"
+              },
+              {
+                "id": "3",
+                "text": "Syk"
+              },
+              {
+                "id": "4",
+                "text": "Tyk"
+              },
+              {
+                "id": "5",
+                "text": "Jak"
+              }
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-5",
@@ -4521,7 +8360,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 12장 6쪽은 c-Src가 다른 신호를 촉진하여 암 진행과 연결될 수 있다고 설명한다. Src는 증식·분화·생존·이동·혈관형성에 관여한다. DNA polymerase의 기능을 직접 담당하거나 Ras의 신호 종료만을 유도하는 단백질로 설명하지 않는다."
+            "rationale": "[강의 기준] 12장 6쪽은 c-Src가 다른 신호를 촉진하여 암 진행과 연결될 수 있다고 설명한다. Src는 증식·분화·생존·이동·혈관형성에 관여한다. DNA polymerase의 기능을 직접 담당하거나 Ras의 신호 종료만을 유도하는 단백질로 설명하지 않는다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "05번"
+            ],
+            "originalQuestion": "c-Src 활성화 증가가 암 발생과 연관되는 가장 적절한 이유는?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "DNA polymerase 기능 이상을 유도하여 돌연변이를 증가시킨다."
+              },
+              {
+                "id": "2",
+                "text": "세포질 내 사이클린 의존성 키나제(CDK)를 억제한다."
+              },
+              {
+                "id": "3",
+                "text": "다른 키나아제를 활성화시켜 지속적인 세포 증식 신호를 유도한다."
+              },
+              {
+                "id": "4",
+                "text": "RTK의 리간드 결합을 차단하여 정상적인 신호를 방해한다."
+              },
+              {
+                "id": "5",
+                "text": "RAS의 GDPase 활성을 증가시켜 Ras 신호 전달을 억제한다."
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-8",
@@ -4543,7 +8416,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] Lck는 TCR ζ-chain의 ITAM을 인산화한다. 이후 ZAP-70이 결합하여 하위 LAT 등의 신호전달로 이어진다. GTP를 GDP로 교환하는 것이 GEF라는 설명은 방향과 역할이 모두 틀리며, Lck 자체가 핵 전사인자는 아니다."
+            "rationale": "[강의 기준] Lck는 TCR ζ-chain의 ITAM을 인산화한다. 이후 ZAP-70이 결합하여 하위 LAT 등의 신호전달로 이어진다. GTP를 GDP로 교환하는 것이 GEF라는 설명은 방향과 역할이 모두 틀리며, Lck 자체가 핵 전사인자는 아니다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "08번"
+            ],
+            "originalQuestion": "T cell 활성화(Activation) 초기 단계에서, Src family kinase인 Lck의 주된 역할로 가장 적절한 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "하위 신호 전달을 위해 어댑터 단백질인 LAT을 직접 인산화한다."
+              },
+              {
+                "id": "2",
+                "text": "GTP를 GDP로 교환하여 Ras 단백질을 활성화하는 GEF 역할을 한다."
+              },
+              {
+                "id": "3",
+                "text": "TCR 복합체의 Zeta chain(\\zeta-chain)에 존재하는 ITAM을 인산화한다."
+              },
+              {
+                "id": "4",
+                "text": "핵 내로 이동하여 IL-2 유전자의 발현을 유도하는 전사 인자로 작용한다."
+              },
+              {
+                "id": "5",
+                "text": "비만세포(Mast cell)의 IgE 수용체(FcεR1)를 인산화하여 탈과립을 유도한다."
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-30",
@@ -4565,7 +8472,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] Lck가 인산화한 TCR ζ-chain ITAM에 ZAP-70이 결합하여 활성화되고, LAT 등 하위 단백질의 인산화를 통해 신호를 전달한다. TCR의 초기 ITAM 인산화는 Lck 단계다. [보충 설명] 복원 보기의 SLP-76까지 이 슬라이드에 직접 표시된 것은 아니지만, ③의 핵심인 인산화 ITAM 결합과 LAT 신호 연결은 강의와 일치한다."
+            "rationale": "[강의 기준] Lck가 인산화한 TCR ζ-chain ITAM에 ZAP-70이 결합하여 활성화되고, LAT 등 하위 단백질의 인산화를 통해 신호를 전달한다. TCR의 초기 ITAM 인산화는 Lck 단계다. [보충 설명] 복원 보기의 SLP-76까지 이 슬라이드에 직접 표시된 것은 아니지만, ③의 핵심인 인산화 ITAM 결합과 LAT 신호 연결은 강의와 일치한다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "30번"
+            ],
+            "originalQuestion": "T cell 활성화 초기 단계에서, ZAP-70의 역할로 가장 적절한 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "CD28 공동자극 수용체에 결합하여 PI3K 신호를 직접 활성화한다."
+              },
+              {
+                "id": "2",
+                "text": "TCR 복합체의 ITAM을 직접 인산화하여 신호 전달을 개시한다."
+              },
+              {
+                "id": "3",
+                "text": "인산화된 \\zeta-chain ITAM에 결합한 뒤 LAT와 SLP-76을 인산화한다."
+              },
+              {
+                "id": "4",
+                "text": "Ras 단백질의 GTPase 활성을 증가시켜 신호를 종료한다."
+              },
+              {
+                "id": "5",
+                "text": "핵 내로 이동하여 NFAT의 전사를 직접 유도한다."
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-11",
@@ -4587,7 +8528,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] Lck가 먼저 TCR ζ-chain의 ITAM을 인산화하고, ZAP-70이 인산화된 ITAM에 결합하여 활성화된다. 이후 LAT 등 하위 신호 단백질의 인산화를 통해 PLCγ·Ras 및 전사인자 활성화로 이어진다. Lck는 초기 TCR 인산화, ZAP-70은 LAT의 하위 연결이라는 단계 차이를 구분한다."
+            "rationale": "[강의 기준] Lck가 먼저 TCR ζ-chain의 ITAM을 인산화하고, ZAP-70이 인산화된 ITAM에 결합하여 활성화된다. 이후 LAT 등 하위 신호 단백질의 인산화를 통해 PLCγ·Ras 및 전사인자 활성화로 이어진다. Lck는 초기 TCR 인산화, ZAP-70은 LAT의 하위 연결이라는 단계 차이를 구분한다.",
+            "year": "24",
+            "sourcePage": "4",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "24학번",
+              "11번"
+            ],
+            "originalQuestion": "다음 중 T cell 활성에 관여하는 nRTK(non receptor tyrosine kinase)로 adaptor protein인 LAT 단백질을 활성화시 키는 단백질은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Lck"
+              },
+              {
+                "id": "2",
+                "text": "Syk"
+              },
+              {
+                "id": "3",
+                "text": "Vav"
+              },
+              {
+                "id": "4",
+                "text": "Src"
+              },
+              {
+                "id": "5",
+                "text": "Zap70"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-23-12",
@@ -4611,7 +8586,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] T세포 신호 도식에는 Lck·ZAP-70·LAT와 하위 PLCγ·Vav 등이 연결된다. Syk는 같은 강의의 비만세포 IgE 신호에 제시되는 nRTK다. ‘이 도식의 인자 구분’을 묻는 문항이며 모든 세포에서 Syk가 T세포와 절대 무관하다는 뜻은 아니다."
+            "rationale": "[강의 기준] T세포 신호 도식에는 Lck·ZAP-70·LAT와 하위 PLCγ·Vav 등이 연결된다. Syk는 같은 강의의 비만세포 IgE 신호에 제시되는 nRTK다. ‘이 도식의 인자 구분’을 묻는 문항이며 모든 세포에서 Syk가 T세포와 절대 무관하다는 뜻은 아니다.",
+            "year": "23",
+            "sourcePage": "5",
+            "sourceName": "23학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "23학번",
+              "12번"
+            ],
+            "originalQuestion": "다음 중 nRTK(non receptor protein tyrosine kinase)에 의한 T cell 활성에 관 여하는 인자가 아닌 것을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Lck"
+              },
+              {
+                "id": "2",
+                "text": "Syk"
+              },
+              {
+                "id": "3",
+                "text": "Vav"
+              },
+              {
+                "id": "4",
+                "text": "PLCγ"
+              },
+              {
+                "id": "5",
+                "text": "Zap70"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           }
         ],
         "aiQuestions": []
@@ -4682,7 +8691,45 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] 호르몬·신경전달물질·성장인자·eicosanoid는 강의에 제시된 1차 전령물질이다. 그러나 보기 ATP에는 세포 안의 대사 기질인지 세포 밖의 신호물질인지 조건이 없다. ATP가 cAMP 합성 기질로 쓰인다는 사실만으로 모든 ATP를 1차 전령물질에서 제외할 수 없다. 이 여섯 강의자료에서 원본 답 ⑤를 유일 정답으로 확정하기 어려우므로 검토 보류한다."
+            "rationale": "[강의 기준] 호르몬·신경전달물질·성장인자·eicosanoid는 강의에 제시된 1차 전령물질이다. 그러나 보기 ATP에는 세포 안의 대사 기질인지 세포 밖의 신호물질인지 조건이 없다. ATP가 cAMP 합성 기질로 쓰인다는 사실만으로 모든 ATP를 1차 전령물질에서 제외할 수 없다. 이 여섯 강의자료에서 원본 답 ⑤를 유일 정답으로 확정하기 어려우므로 검토 보류한다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "25학번",
+              "16번"
+            ],
+            "originalQuestion": "1차전령물질(First-messenger)에 해당하지 않는 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "호르몬"
+              },
+              {
+                "id": "2",
+                "text": "신경전달물질"
+              },
+              {
+                "id": "3",
+                "text": "성장인자"
+              },
+              {
+                "id": "4",
+                "text": "Eicosanoids"
+              },
+              {
+                "id": "5",
+                "text": "ATP"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review",
+            "sourceReviewAnswer": "원본 답 ⑤ · 강의 기준 확정 보류",
+            "sourceUncertain": true,
+            "uncertain": true,
+            "reviewAnswer": "원본 답 ⑤ · 강의 기준 확정 보류"
           },
           {
             "id": "signal-final-25-21",
@@ -4703,7 +8750,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 14쪽은 GABA와 glycine을 억제성 전달물질로 제시한다. 원문의 ‘저해성 물질 유도’는 기능을 명확히 표현하도록 ‘억제성 신경전달’로 보완했다. 흥분성 신경전달이나 골흡수가 이 문항의 답이 아니다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] 14쪽은 GABA와 glycine을 억제성 전달물질로 제시한다. 원문의 ‘저해성 물질 유도’는 기능을 명확히 표현하도록 ‘억제성 신경전달’로 보완했다. 흥분성 신경전달이나 골흡수가 이 문항의 답이 아니다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "25학번",
+              "21번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "GABA의 특징",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "저해성 물질 유도"
+              },
+              {
+                "id": "2",
+                "text": "세포자살유도"
+              },
+              {
+                "id": "3",
+                "text": "근육수축 촉진"
+              },
+              {
+                "id": "4",
+                "text": "골흡수 촉진"
+              },
+              {
+                "id": "5",
+                "text": "흥분성 물질"
+              }
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-29",
@@ -4724,7 +8806,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 10쪽은 이들을 혈관작용성 물질로 제시하고 혈관확장·국소 혈액순환 증가·혈관 투과성 증가를 설명한다. 항염증이나 골형성만을 공통 작용으로 보지 않는다."
+            "rationale": "[강의 기준] 10쪽은 이들을 혈관작용성 물질로 제시하고 혈관확장·국소 혈액순환 증가·혈관 투과성 증가를 설명한다. 항염증이나 골형성만을 공통 작용으로 보지 않는다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "25학번",
+              "29번"
+            ],
+            "originalQuestion": "히스타민, 세로토닌, bradykinin의 공통점은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "세포자살 유도"
+              },
+              {
+                "id": "2",
+                "text": "혈관 확장 및 투과성 증가"
+              },
+              {
+                "id": "3",
+                "text": "Na+ 통로 억제"
+              },
+              {
+                "id": "4",
+                "text": "항염증"
+              },
+              {
+                "id": "5",
+                "text": "세포 분열 증가"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-32",
@@ -4745,7 +8861,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 11쪽은 eicosanoid를 arachidonic acid 유래 신호물질로 설명하고 prostaglandin·thromboxane·leukotriene을 예로 든다. Amino sugar·collagen·pyrrole ring이 이 계열의 공통 전구체는 아니다."
+            "rationale": "[강의 기준] 11쪽은 eicosanoid를 arachidonic acid 유래 신호물질로 설명하고 prostaglandin·thromboxane·leukotriene을 예로 든다. Amino sugar·collagen·pyrrole ring이 이 계열의 공통 전구체는 아니다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "25학번",
+              "32번"
+            ],
+            "originalQuestion": "Prostaglandin, Leukotrienes, Thrionboxanes의 화학적 기원으로 유사한 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Arachidonic acid"
+              },
+              {
+                "id": "2",
+                "text": "Linoleic acid"
+              },
+              {
+                "id": "3",
+                "text": "Amino sugar"
+              },
+              {
+                "id": "4",
+                "text": "Collagen"
+              },
+              {
+                "id": "5",
+                "text": "Pyrrole ring"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-16",
@@ -4775,7 +8925,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 12주차 자료는 호르몬·신경전달물질·사이토카인·성장인자 등을 세포외 1차 전령물질로 설명한다. IP₃와 DAG는 수용체 활성화 뒤 세포 안에서 생성되는 2차 전령물질이다. 인슐린·아세틸콜린·IFN-α·TGF 또는 IL-1·노르아드레날린·EGF·TSH는 1차 전령물질에 해당한다."
+            "rationale": "[강의 기준] 12주차 자료는 호르몬·신경전달물질·사이토카인·성장인자 등을 세포외 1차 전령물질로 설명한다. IP₃와 DAG는 수용체 활성화 뒤 세포 안에서 생성되는 2차 전령물질이다. 인슐린·아세틸콜린·IFN-α·TGF 또는 IL-1·노르아드레날린·EGF·TSH는 1차 전령물질에 해당한다.",
+            "year": "24",
+            "sourcePage": "6",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "24학번",
+              "16번"
+            ],
+            "originalQuestion": "수용체(receptor)와 결합하여 활성화를 유도하는 세포 외부의 천연 리간드인 1차 전 령물질이 아닌 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "인슐린"
+              },
+              {
+                "id": "2",
+                "text": "아세틸콜린"
+              },
+              {
+                "id": "3",
+                "text": "인터페론 알파"
+              },
+              {
+                "id": "4",
+                "text": "IP3"
+              },
+              {
+                "id": "5",
+                "text": "TGF"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-17",
@@ -4800,7 +8984,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의는 GABA·아세틸콜린 등을 신경전달물질로, 아드레날린·노르아드레날린·도파민을 카테콜아민으로 다룬다. Histidine(히스티딘)은 이 목록의 신경전달물질이 아니라 아미노산이며 histamine(히스타민)과 다른 이름이다. DAG는 세포 내 2차 전령물질이다."
+            "rationale": "[강의 기준] 강의는 GABA·아세틸콜린 등을 신경전달물질로, 아드레날린·노르아드레날린·도파민을 카테콜아민으로 다룬다. Histidine(히스티딘)은 이 목록의 신경전달물질이 아니라 아미노산이며 histamine(히스타민)과 다른 이름이다. DAG는 세포 내 2차 전령물질이다.",
+            "year": "24",
+            "sourcePage": "7",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "24학번",
+              "17번"
+            ],
+            "originalQuestion": "다음 중 1차 전령물질 역할을 하는 신경 전달 물질 (Neurotransmitters)이 아닌 것 은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "GABA"
+              },
+              {
+                "id": "2",
+                "text": "Histidine"
+              },
+              {
+                "id": "3",
+                "text": "Dopamine"
+              },
+              {
+                "id": "4",
+                "text": "Adrenaline"
+              },
+              {
+                "id": "5",
+                "text": "Norepinephrine"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-18",
@@ -4822,7 +9040,45 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] Autocrine은 분비한 신호가 그 세포 자신에 작용하는 방식이다. Paracrine은 인접 세포, endocrine은 혈류를 통해 먼 세포에 작용한다. 그러나 복원 지문에는 신호의 분비 세포·표적 세포가 명확히 제시되지 않았고, 감염 후 사멸한다는 사실만으로 자가분비를 판정할 수 없다. 원본의 자가분비 답은 출제 의도로만 표시하고 채점에서 제외한다."
+            "rationale": "[강의 기준] Autocrine은 분비한 신호가 그 세포 자신에 작용하는 방식이다. Paracrine은 인접 세포, endocrine은 혈류를 통해 먼 세포에 작용한다. 그러나 복원 지문에는 신호의 분비 세포·표적 세포가 명확히 제시되지 않았고, 감염 후 사멸한다는 사실만으로 자가분비를 판정할 수 없다. 원본의 자가분비 답은 출제 의도로만 표시하고 채점에서 제외한다.",
+            "year": "24",
+            "sourcePage": "7",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "24학번",
+              "18번"
+            ],
+            "originalQuestion": "바이러스에 감염된 세포는 신호 전달을 통한 apoptosis 과정을 진행한다. 이때 사용 되는 신호 전달 방법을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "apocrine"
+              },
+              {
+                "id": "2",
+                "text": "endocrine"
+              },
+              {
+                "id": "3",
+                "text": "paracrine"
+              },
+              {
+                "id": "4",
+                "text": "autocrine"
+              },
+              {
+                "id": "5",
+                "text": "signaling across gap junctions"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review",
+            "sourceReviewAnswer": "원본 답 ④ · 강의 기준 확정 보류",
+            "sourceUncertain": true,
+            "uncertain": true,
+            "reviewAnswer": "원본 답 ④ · 강의 기준 확정 보류"
           },
           {
             "id": "signal-final-24-19",
@@ -4846,7 +9102,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] Glucagon·secretin·oxytocin·vasopressin·insulin·PTH는 펩타이드성 호르몬이다. Prostaglandin은 아라키돈산 유래 지질성 신호물질인 eicosanoid에 속하므로 다른 군이다."
+            "rationale": "[강의 기준] Glucagon·secretin·oxytocin·vasopressin·insulin·PTH는 펩타이드성 호르몬이다. Prostaglandin은 아라키돈산 유래 지질성 신호물질인 eicosanoid에 속하므로 다른 군이다.",
+            "year": "24",
+            "sourcePage": "7",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "24학번",
+              "19번"
+            ],
+            "originalQuestion": "다음 1차 전령물질 중 형태 분류가 다른 것을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Insulin"
+              },
+              {
+                "id": "2",
+                "text": "Secretin"
+              },
+              {
+                "id": "3",
+                "text": "Oxytocin"
+              },
+              {
+                "id": "4",
+                "text": "Prostaglandin"
+              },
+              {
+                "id": "5",
+                "text": "Parathyroid hormone"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           }
         ],
         "aiQuestions": []
@@ -4906,7 +9196,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 20–21쪽은 합성 agonist·antagonist에 대한 반응을 이용해 아드레날린 수용체 아형을 구분하는 설명과 표를 제시한다. 연결된 G단백질은 하위 기능 이해에 중요하지만 이 문항이 묻는 약리학적 분류 기준과 구분한다."
+            "rationale": "[강의 기준] 20–21쪽은 합성 agonist·antagonist에 대한 반응을 이용해 아드레날린 수용체 아형을 구분하는 설명과 표를 제시한다. 연결된 G단백질은 하위 기능 이해에 중요하지만 이 문항이 묻는 약리학적 분류 기준과 구분한다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "18번"
+            ],
+            "originalQuestion": "다음 중 adrenaline 수용체의 subtype을 구분하는 가장 결정적인 기준은 무엇인가?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "호르몬 농도"
+              },
+              {
+                "id": "2",
+                "text": "세포막의 지질 조성"
+              },
+              {
+                "id": "3",
+                "text": "합성된 agonist와 antagonist에 대한 반응성"
+              },
+              {
+                "id": "4",
+                "text": "결합하는 G단백질의 종류"
+              },
+              {
+                "id": "5",
+                "text": "수용체의 올리고머화 여부"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-20",
@@ -4932,7 +9256,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의 16쪽은 adrenaline과 noradrenaline이 α·β-adrenergic receptor에 작용한다고 설명한다. Somatostatin·angiotensin·neurokinin·purinergic 수용체는 각각 다른 리간드 계열과 연결된다."
+            "rationale": "[강의 기준] 강의 16쪽은 adrenaline과 noradrenaline이 α·β-adrenergic receptor에 작용한다고 설명한다. Somatostatin·angiotensin·neurokinin·purinergic 수용체는 각각 다른 리간드 계열과 연결된다.",
+            "year": "24",
+            "sourcePage": "7",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "24학번",
+              "20번"
+            ],
+            "originalQuestion": "Catcholamine 종류의 1차 전령 물질들 과 결합하는 수용체는 무엇인지 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Somatostatin receptor"
+              },
+              {
+                "id": "2",
+                "text": "Angiotensin receptor"
+              },
+              {
+                "id": "3",
+                "text": "Adrenergic receptor"
+              },
+              {
+                "id": "4",
+                "text": "Neurokinin receptor"
+              },
+              {
+                "id": "5",
+                "text": "Purinergic receptor"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           }
         ],
         "aiQuestions": []
@@ -4996,7 +9354,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 22–23쪽은 nicotinic receptor를 리간드작동성 이온통로로, muscarinic receptor를 G단백질연결 수용체로 제시한다. 니코틴성 수용체가 직접 Gαq·Gi를 활성화한다는 설명과 구분한다."
+            "rationale": "[강의 기준] 22–23쪽은 nicotinic receptor를 리간드작동성 이온통로로, muscarinic receptor를 G단백질연결 수용체로 제시한다. 니코틴성 수용체가 직접 Gαq·Gi를 활성화한다는 설명과 구분한다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "25학번",
+              "20번"
+            ],
+            "originalQuestion": "아세틸콜린의 니코틴성 수용체의 특징으로 옳은 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "무스카린성 수용체이다"
+              },
+              {
+                "id": "2",
+                "text": "이온 채널이다"
+              },
+              {
+                "id": "3",
+                "text": "Gαq를 활성화한다"
+              },
+              {
+                "id": "4",
+                "text": "Camp 농도 증가 유발"
+              },
+              {
+                "id": "5",
+                "text": "Gi단백질 활성화"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-22",
@@ -5019,7 +9411,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] M₁·M₃·M₅는 Gq–PLC–IP₃/DAG–Ca²⁺·PKC 계열, M₂·M₄는 Gi–AC 억제 계열로 연결된다. 원문의 ‘AC 증가 혹은 감소’는 ‘AC 활성 조절’로, ‘Na⁺ 전압성 통로 작동’은 ‘수용체 자체가 Na⁺ 이온통로’로 보완하여 GPCR과 이온통로형 수용체의 차이를 명확히 했다. GPCR이 간접적으로 이온통로를 조절할 수 없다는 뜻은 아니다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] M₁·M₃·M₅는 Gq–PLC–IP₃/DAG–Ca²⁺·PKC 계열, M₂·M₄는 Gi–AC 억제 계열로 연결된다. 원문의 ‘AC 증가 혹은 감소’는 ‘AC 활성 조절’로, ‘Na⁺ 전압성 통로 작동’은 ‘수용체 자체가 Na⁺ 이온통로’로 보완하여 GPCR과 이온통로형 수용체의 차이를 명확히 했다. GPCR이 간접적으로 이온통로를 조절할 수 없다는 뜻은 아니다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "25학번",
+              "22번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "무스카린성 수용체가 세포내부에서 하는 역할로 적절하지 않은 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "IP3 증가"
+              },
+              {
+                "id": "2",
+                "text": "PKC 활성화"
+              },
+              {
+                "id": "3",
+                "text": "PLC 활성화"
+              },
+              {
+                "id": "4",
+                "text": "AC 증가 혹은 감소"
+              },
+              {
+                "id": "5",
+                "text": "Na+ 전압성 통로 작동"
+              }
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-23",
@@ -5043,7 +9470,21 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 무스카린성 수용체는 7회 막관통 GPCR이다. Atropine은 길항제로 제시되며 수용체 아형에 따라 PLC 경로 또는 AC 억제 경로와 연결된다. 니코틴성 수용체와 같은 이온통로형이라는 설명은 틀리다. 원본 문서 끝의 ㄱ–ㄹ 설명을 이 문항에 재배치했으며, ㄹ의 포괄적인 활성화/억제 표현은 강의 도식에 맞게 보완했다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] 무스카린성 수용체는 7회 막관통 GPCR이다. Atropine은 길항제로 제시되며 수용체 아형에 따라 PLC 경로 또는 AC 억제 경로와 연결된다. 니코틴성 수용체와 같은 이온통로형이라는 설명은 틀리다. 원본 문서 끝의 ㄱ–ㄹ 설명을 이 문항에 재배치했으며, ㄹ의 포괄적인 활성화/억제 표현은 강의 도식에 맞게 보완했다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "25학번",
+              "23번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "아세틸콜린의 무스카린성 수용체 관련된 설명으로 옳은 것은?",
+            "originalChoices": [],
+            "converted": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-24",
@@ -5066,7 +9507,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 24–26쪽은 AChE가 아세틸콜린을 분해하며 억제제가 신호 종료를 방해함을 보여 준다. 신경근접합부에서 초기에는 아세틸콜린 작용 증가로 근육 수축이 증가할 수 있다. 지속적·과도한 억제는 마비로 이어질 수 있어 다음 억제제 문항과 모순이 아니다. [보충 설명] 심박·동공·침·장운동에 대한 모든 선지 효과가 강의에 열거된 것은 아니므로, 이 문항은 신경근 작용을 기준으로 판단한다."
+            "rationale": "[강의 기준] 24–26쪽은 AChE가 아세틸콜린을 분해하며 억제제가 신호 종료를 방해함을 보여 준다. 신경근접합부에서 초기에는 아세틸콜린 작용 증가로 근육 수축이 증가할 수 있다. 지속적·과도한 억제는 마비로 이어질 수 있어 다음 억제제 문항과 모순이 아니다. [보충 설명] 심박·동공·침·장운동에 대한 모든 선지 효과가 강의에 열거된 것은 아니므로, 이 문항은 신경근 작용을 기준으로 판단한다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "25학번",
+              "24번"
+            ],
+            "originalQuestion": "Acetylcholinesterase inhibitor의 생리적 작용은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "심박수 증가"
+              },
+              {
+                "id": "2",
+                "text": "동공 확대"
+              },
+              {
+                "id": "3",
+                "text": "침분비 감소"
+              },
+              {
+                "id": "4",
+                "text": "근육수축 증가"
+              },
+              {
+                "id": "5",
+                "text": "장운동 감소"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-27",
@@ -5089,7 +9564,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] AChE 억제 시 시냅스의 아세틸콜린 제거가 지연된다. 강의 24쪽은 강력한 AChE 억제제가 근섬유를 마비시킬 수 있다고 설명한다. 초기의 수축 증가와 지속적 과자극에 따른 마비는 시간·노출 조건이 다르다. 단순히 아세틸콜린 방출이 감소하는 현상은 아니다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] AChE 억제 시 시냅스의 아세틸콜린 제거가 지연된다. 강의 24쪽은 강력한 AChE 억제제가 근섬유를 마비시킬 수 있다고 설명한다. 초기의 수축 증가와 지속적 과자극에 따른 마비는 시간·노출 조건이 다르다. 단순히 아세틸콜린 방출이 감소하는 현상은 아니다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "25학번",
+              "27번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "acetylcholine esterase 억제제의 작용으로 옳은 것은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "신경전달감소 -> 무력감"
+              },
+              {
+                "id": "2",
+                "text": "아세틸콜린 축적 -> 근섬유 마비"
+              },
+              {
+                "id": "3",
+                "text": "콜린성 수용체의 발현 증가"
+              },
+              {
+                "id": "4",
+                "text": "nocotinic 수용체의 특이적 억제"
+              },
+              {
+                "id": "5",
+                "text": "근육 이완, 체온 저하"
+              }
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-21",
@@ -5112,7 +9622,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] 아세틸콜린 수용체는 nicotinic receptor와 muscarinic receptor로 나뉜다. 전자는 리간드작동성 이온통로이고, 후자는 G단백질연결 수용체다. Purinergic receptor는 아세틸콜린 수용체의 다른 이름이 아니다."
+            "rationale": "[강의 기준] 아세틸콜린 수용체는 nicotinic receptor와 muscarinic receptor로 나뉜다. 전자는 리간드작동성 이온통로이고, 후자는 G단백질연결 수용체다. Purinergic receptor는 아세틸콜린 수용체의 다른 이름이 아니다.",
+            "year": "24",
+            "sourcePage": "8",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "24학번",
+              "21번"
+            ],
+            "originalQuestion": "아세틸콜린과 상호작용을 하는 수용체 (Acetylcholine receptor)는 무엇인지 고르 시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Nicotinic receptor, Purinergic receptor"
+              },
+              {
+                "id": "2",
+                "text": "Purinergic receptor, Muscarinic receptor"
+              },
+              {
+                "id": "3",
+                "text": "Purinergic receptor, Amino acid receptor"
+              },
+              {
+                "id": "4",
+                "text": "Nicotinic receptor, Amino acid receptor"
+              },
+              {
+                "id": "5",
+                "text": "Muscarinic receptor, Nicotinic receptor"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-22",
@@ -5135,7 +9679,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] Acetylcholinesterase(AChE)는 시냅스 틈의 아세틸콜린을 choline과 acetate로 가수분해하여 신호를 종료한다. Choline acetyltransferase는 합성 효소이며 분해 효소와 구분한다. 원문에서 DFP와 sarin을 동일 물질처럼 병기한 표현은 수정했다."
+            "rationale": "[강의 기준] Acetylcholinesterase(AChE)는 시냅스 틈의 아세틸콜린을 choline과 acetate로 가수분해하여 신호를 종료한다. Choline acetyltransferase는 합성 효소이며 분해 효소와 구분한다. 원문에서 DFP와 sarin을 동일 물질처럼 병기한 표현은 수정했다.",
+            "year": "24",
+            "sourcePage": "8",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "24학번",
+              "22번"
+            ],
+            "originalQuestion": "아세틸콜린의 가수분해를 저해하는 화합 물은 대부분 독성이 아주 강한 것으로 알려 져 있다. Tetraethyl prophosphate, diisopropyl fluorophosphate (DFP, sarin) 등과 같은 억제제(inhibitor)들의 타겟이 되는 효소를 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "acethylcholine esterase"
+              },
+              {
+                "id": "2",
+                "text": "acethylcholine kinase"
+              },
+              {
+                "id": "3",
+                "text": "choline acethyltransferase"
+              },
+              {
+                "id": "4",
+                "text": "phosphocholine cytidyltransferase"
+              },
+              {
+                "id": "5",
+                "text": "choline hydrolase"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           }
         ],
         "aiQuestions": []
@@ -5213,7 +9791,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 21–23쪽은 αᵥβ₃ integrin이 골기질 부착과 골흡수에 중요하며, RGD 펩타이드나 차단 항체가 결합을 방해하면 골흡수가 억제됨을 제시한다. 따라서 정상 수용체의 기능은 골흡수를 지지·촉진하는 방향이다."
+            "rationale": "[강의 기준] 21–23쪽은 αᵥβ₃ integrin이 골기질 부착과 골흡수에 중요하며, RGD 펩타이드나 차단 항체가 결합을 방해하면 골흡수가 억제됨을 제시한다. 따라서 정상 수용체의 기능은 골흡수를 지지·촉진하는 방향이다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "25학번",
+              "19번"
+            ],
+            "originalQuestion": "a(알파)vb(베타)3 integrin 수용체가 파골세포 기능에 미치는 영향은 무엇인가요?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "M-CSF 수용체 발현 증가"
+              },
+              {
+                "id": "2",
+                "text": "골흡수 증가"
+              },
+              {
+                "id": "3",
+                "text": "골흡수 억제"
+              },
+              {
+                "id": "4",
+                "text": "RANKL 발현 증가"
+              },
+              {
+                "id": "5",
+                "text": "OPG 발현 억제"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-23",
@@ -5247,7 +9859,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의는 immunoglobulin superfamily, integrin, cadherin, selectin, cartilage-like protein을 세포부착분자군으로 제시한다. β-catenin은 cadherin의 세포질 쪽에 연결되는 세포 내 단백질이며, 독립적인 세포부착분자 family가 아니다."
+            "rationale": "[강의 기준] 강의는 immunoglobulin superfamily, integrin, cadherin, selectin, cartilage-like protein을 세포부착분자군으로 제시한다. β-catenin은 cadherin의 세포질 쪽에 연결되는 세포 내 단백질이며, 독립적인 세포부착분자 family가 아니다.",
+            "year": "24",
+            "sourcePage": "8",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "24학번",
+              "23번"
+            ],
+            "originalQuestion": "세포가 세포외기질 (extracellular matrix)에 결합하거나 다른 세포에 부착되는 현상들은 특이적인 adhesion molecule들을 통해 일어난다. 다음 중 adhesion molecule family에 속하지 않는 molecule을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "cadherin"
+              },
+              {
+                "id": "2",
+                "text": "β-catenin"
+              },
+              {
+                "id": "3",
+                "text": "selectin"
+              },
+              {
+                "id": "4",
+                "text": "integrin"
+              },
+              {
+                "id": "5",
+                "text": "immunoglubulin superfamily"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-24",
@@ -5270,7 +9916,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 파골세포는 αᵥβ₃ integrin을 많이 발현한다. 이 수용체는 osteopontin 등 골기질 단백질과 결합하여 부착·골흡수에 관여한다. α·β 소단위체의 다른 조합과 구분한다."
+            "rationale": "[강의 기준] 파골세포는 αᵥβ₃ integrin을 많이 발현한다. 이 수용체는 osteopontin 등 골기질 단백질과 결합하여 부착·골흡수에 관여한다. α·β 소단위체의 다른 조합과 구분한다.",
+            "year": "24",
+            "sourcePage": "9",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "24학번",
+              "24번"
+            ],
+            "originalQuestion": "파골세포에서 발현되는 integrin subunit의 조합을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "α1β3"
+              },
+              {
+                "id": "2",
+                "text": "αvβ5"
+              },
+              {
+                "id": "3",
+                "text": "α3β1"
+              },
+              {
+                "id": "4",
+                "text": "αvβ3"
+              },
+              {
+                "id": "5",
+                "text": "α1β1"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-25",
@@ -5293,7 +9973,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의의 파골세포 integrin 슬라이드는 Arg–Gly–Asp(RGD) 서열을 제시한다. R은 arginine, G는 glycine, D는 aspartate다. 다른 제시 서열은 이 도식의 대표 인식 서열이 아니다."
+            "rationale": "[강의 기준] 강의의 파골세포 integrin 슬라이드는 Arg–Gly–Asp(RGD) 서열을 제시한다. R은 arginine, G는 glycine, D는 aspartate다. 다른 제시 서열은 이 도식의 대표 인식 서열이 아니다.",
+            "year": "24",
+            "sourcePage": "9",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "24학번",
+              "25번"
+            ],
+            "originalQuestion": "Integrin 단백질은 세포외기질에 있는 단 백질의 특이서열에 결합한다. 이 특이서열을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Arg-Gly-Asp (RGD)"
+              },
+              {
+                "id": "2",
+                "text": "Leu-Met-Asp (LMD)"
+              },
+              {
+                "id": "3",
+                "text": "Phe-Ser-Cys (FSC)"
+              },
+              {
+                "id": "4",
+                "text": "Gin-Thr-Asn (QTN)"
+              },
+              {
+                "id": "5",
+                "text": "Ala-Gly-Tyr (AGY)"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-34",
@@ -5316,7 +10030,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 혈관내피세포의 E-selectin은 백혈구의 리간드와 상호작용하여 rolling을 매개한다. L-selectin은 주로 백혈구 쪽에 발현된다. Fibronectin·vitronectin은 이 그림 A의 내피 selectin에 해당하지 않는다."
+            "rationale": "[강의 기준] 혈관내피세포의 E-selectin은 백혈구의 리간드와 상호작용하여 rolling을 매개한다. L-selectin은 주로 백혈구 쪽에 발현된다. Fibronectin·vitronectin은 이 그림 A의 내피 selectin에 해당하지 않는다.",
+            "figure": "question-images/signal-final/24-12-1.webp",
+            "year": "24",
+            "sourcePage": "12",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "24학번",
+              "34번"
+            ],
+            "originalQuestion": "그림의 A에 들어갈 혈관세포에서 발현되 는 adhesion molecule은 무엇인지 고르시 오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "vironectin"
+              },
+              {
+                "id": "2",
+                "text": "E-selectin"
+              },
+              {
+                "id": "3",
+                "text": "L-selectin"
+              },
+              {
+                "id": "4",
+                "text": "M-selectin"
+              },
+              {
+                "id": "5",
+                "text": "fibronectin"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-35",
@@ -5339,7 +10088,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] LFA-1은 백혈구 표면의 integrin으로, 내피세포의 ICAM에 결합하여 강한 부착에 관여한다. ICAM은 반대쪽 리간드이고, PECAM은 혈관 밖 이동 과정과 관련되므로 그림 B의 LFA-1과 구분한다."
+            "rationale": "[강의 기준] LFA-1은 백혈구 표면의 integrin으로, 내피세포의 ICAM에 결합하여 강한 부착에 관여한다. ICAM은 반대쪽 리간드이고, PECAM은 혈관 밖 이동 과정과 관련되므로 그림 B의 LFA-1과 구분한다.",
+            "figure": "question-images/signal-final/24-12-1.webp",
+            "year": "24",
+            "sourcePage": "12",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "24학번",
+              "35번"
+            ],
+            "originalQuestion": "그림의 B가 가리키는 백혈구 표면에 발 현되는 adhesion molecule은 무엇인지 고르 시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "ICAM-2"
+              },
+              {
+                "id": "2",
+                "text": "vitronectin"
+              },
+              {
+                "id": "3",
+                "text": "NCAM"
+              },
+              {
+                "id": "4",
+                "text": "PECAM"
+              },
+              {
+                "id": "5",
+                "text": "LFA-1"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           }
         ],
         "aiQuestions": []
@@ -5410,7 +10194,44 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 36–37쪽은 adherens junction 손실과 상피세포의 탈분화(de-differentiation)를 연결한다. 원본 답 ④ ‘세포 부착 강화’는 접착 상실과 반대이므로 ③ 탈분화로 정정한다. 접착 상실이 생존에 영향을 줄 수도 있지만, 이 문항에서는 해당 강의 그림의 직접 결과를 묻도록 문장을 명확히 했다.\n\n[정답 정정] 원본 답 ④ → 강의 기준 ③.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] 36–37쪽은 adherens junction 손실과 상피세포의 탈분화(de-differentiation)를 연결한다. 원본 답 ④ ‘세포 부착 강화’는 접착 상실과 반대이므로 ③ 탈분화로 정정한다. 접착 상실이 생존에 영향을 줄 수도 있지만, 이 문항에서는 해당 강의 그림의 직접 결과를 묻도록 문장을 명확히 했다.\n\n[정답 정정] 원본 답 ④ → 강의 기준 ③.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "25학번",
+              "25번",
+              "학습용 복원",
+              "정답 정정"
+            ],
+            "originalQuestion": "Cadherin가 상실되면 어떻게 되는가?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "분화 촉진"
+              },
+              {
+                "id": "2",
+                "text": "세포 자살 증가"
+              },
+              {
+                "id": "3",
+                "text": "탈분화"
+              },
+              {
+                "id": "4",
+                "text": "세포 부착 강화"
+              },
+              {
+                "id": "5",
+                "text": "세포 이동 막기"
+              }
+            ],
+            "converted": true,
+            "answerCorrection": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-25-33",
@@ -5433,7 +10254,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 26쪽은 cadherin이 tumor suppressor로 작용함을 제시하고, 36–37쪽은 접착 상실과 탈분화를 연결한다. 세포 사이 접착을 유지하는 기능이 종양세포의 이탈·전이를 억제하는 방향으로 작용한다. 원문 ⑤의 미복원 부분은 원래 문장으로 확정할 수 없어 학습용 오답 보기로 보완했다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] 26쪽은 cadherin이 tumor suppressor로 작용함을 제시하고, 36–37쪽은 접착 상실과 탈분화를 연결한다. 세포 사이 접착을 유지하는 기능이 종양세포의 이탈·전이를 억제하는 방향으로 작용한다. 원문 ⑤의 미복원 부분은 원래 문장으로 확정할 수 없어 학습용 오답 보기로 보완했다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "33번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "Cadherin이 종양억제자로 사용되는 이유는?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "G 단백질 결합 증가"
+              },
+              {
+                "id": "2",
+                "text": "세포 자살 증가"
+              },
+              {
+                "id": "3",
+                "text": "세포 부착 유지하여 전이를 억제"
+              },
+              {
+                "id": "4",
+                "text": "핵 내 전사 인자 조절"
+              },
+              {
+                "id": "5",
+                "text": "(미복원) 억제"
+              }
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-26",
@@ -5456,7 +10312,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] Cadherin은 calcium-dependent adhesion molecule에서 유래한 이름이다. 세포외 영역의 Ca²⁺ 결합은 접착 기능에 중요하고, 세포질 꼬리는 catenin을 통해 세포골격에 연결된다. Selectin도 Ca²⁺ 의존성이 있지만 catenin과 연결된다는 조건은 cadherin을 가리킨다."
+            "rationale": "[강의 기준] Cadherin은 calcium-dependent adhesion molecule에서 유래한 이름이다. 세포외 영역의 Ca²⁺ 결합은 접착 기능에 중요하고, 세포질 꼬리는 catenin을 통해 세포골격에 연결된다. Selectin도 Ca²⁺ 의존성이 있지만 catenin과 연결된다는 조건은 cadherin을 가리킨다.",
+            "year": "24",
+            "sourcePage": "9",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "24학번",
+              "26번"
+            ],
+            "originalQuestion": "다음 중 칼슘이온(Ca2+) 의존적으로 기능 을 하는 adhesion molecule로 세포외 domain에 칼슘결합부위를 가지고 있고, 세 포질 내에는 catenin과 상호작용하는 것을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "selectin"
+              },
+              {
+                "id": "2",
+                "text": "integrin"
+              },
+              {
+                "id": "3",
+                "text": "cadherin"
+              },
+              {
+                "id": "4",
+                "text": "immunoglobulin superfamily"
+              },
+              {
+                "id": "5",
+                "text": "β-catenin"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-27",
@@ -5478,7 +10368,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 27쪽의 대표 연결은 P-selectin–PSGL-1, E-selectin–sialyl Lewis X, L-selectin–CD34다. 이 표의 대응을 기준으로 E-selectin–sialyl Lewis X를 고른다. 이 문항의 대표 짝을 다른 생물학적 결합이 절대 불가능하다는 의미로 일반화하지 않는다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] 27쪽의 대표 연결은 P-selectin–PSGL-1, E-selectin–sialyl Lewis X, L-selectin–CD34다. 이 표의 대응을 기준으로 E-selectin–sialyl Lewis X를 고른다. 이 문항의 대표 짝을 다른 생물학적 결합이 절대 불가능하다는 의미로 일반화하지 않는다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "24",
+            "sourcePage": "9",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "24학번",
+              "27번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "다음 중 adhesion molecule과 결합하는 ligand 중 연결이 바른 것을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "P-selectin : sialyLewis X"
+              },
+              {
+                "id": "2",
+                "text": "L-selectin : PSGL-1"
+              },
+              {
+                "id": "3",
+                "text": "P-selectin : CD34"
+              },
+              {
+                "id": "4",
+                "text": "E-selectin : sialyLewis X"
+              },
+              {
+                "id": "5",
+                "text": "E-selectin : CD3X"
+              }
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           }
         ],
         "aiQuestions": []
@@ -5539,7 +10464,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 40쪽은 DNA-dependent protein kinase 분해가 DNA 복구를 방해함을 제시한다. DNA-PKcs는 DNA 이중가닥 절단 복구와 관련된다. ICAD 분해에 따른 DNA 분해효소 활성화, lamin 분해에 따른 핵 구조 붕괴와 구분한다."
+            "rationale": "[강의 기준] 40쪽은 DNA-dependent protein kinase 분해가 DNA 복구를 방해함을 제시한다. DNA-PKcs는 DNA 이중가닥 절단 복구와 관련된다. ICAD 분해에 따른 DNA 분해효소 활성화, lamin 분해에 따른 핵 구조 붕괴와 구분한다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "25학번",
+              "26번"
+            ],
+            "originalQuestion": "Caspase 표적 중 DNA Pkcs가 분해될 경우 직접적으로 나타나는 현상은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "DNA 이중가닥 복구 방해"
+              },
+              {
+                "id": "2",
+                "text": "세포막 통로 열림"
+              },
+              {
+                "id": "3",
+                "text": "Nfkb 활성화"
+              },
+              {
+                "id": "4",
+                "text": "세포주기 G0 중지"
+              },
+              {
+                "id": "5",
+                "text": "미토콘드리아 ATP 합성 촉진"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-28",
@@ -5561,7 +10520,45 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 40쪽은 lamin 분해에 의한 핵 구조 붕괴, ICAD 분해에 의한 DNA 분해효소 활성화, DNA-PK 분해에 의한 DNA 복구 억제를 명시한다. 그러나 제시 보기의 integrin과 actin 중 하나만 비표적이라고 확정하는 설명은 없다. 강의에 예시가 없다는 사실만으로 비표적이라고 결론 내릴 수도 없다. 원본의 actin 정답을 확정하지 않고 검토 보류한다. 원문의 ‘표적세포’는 ‘표적 단백질’로 교정했다."
+            "rationale": "[강의 기준] 40쪽은 lamin 분해에 의한 핵 구조 붕괴, ICAD 분해에 의한 DNA 분해효소 활성화, DNA-PK 분해에 의한 DNA 복구 억제를 명시한다. 그러나 제시 보기의 integrin과 actin 중 하나만 비표적이라고 확정하는 설명은 없다. 강의에 예시가 없다는 사실만으로 비표적이라고 결론 내릴 수도 없다. 원본의 actin 정답을 확정하지 않고 검토 보류한다. 원문의 ‘표적세포’는 ‘표적 단백질’로 교정했다.",
+            "year": "24",
+            "sourcePage": "10",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "24학번",
+              "28번"
+            ],
+            "originalQuestion": "세포외기질에 부착하여 성장하는 세포들 은 그 지질과 떨어져 나오는 현탁액 상태에 존재하게 되면 세포 자살이 일어난다. 세포 자살 신호가 세포 내로 전달되면 세포 내 여 러 caspase 단백질들이 inactive한 form에 서 active한 form으로 바뀌는 활성화 cascade 반응을 통해 여러 기질을 분해함으 로써 유발된다. 다음 중 caspase들의 표적세 포가 아닌 것을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "Integrin"
+              },
+              {
+                "id": "2",
+                "text": "Actin"
+              },
+              {
+                "id": "3",
+                "text": "DNA-dependent protein kinase(DNA-PK)"
+              },
+              {
+                "id": "4",
+                "text": "Nuclear lamina (lamin)"
+              },
+              {
+                "id": "5",
+                "text": "Inhitor of deoxyribonuclease(ICAD)"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review",
+            "sourceReviewAnswer": "원본 답 ② · 강의 기준 확정 보류",
+            "sourceUncertain": true,
+            "uncertain": true,
+            "reviewAnswer": "원본 답 ② · 강의 기준 확정 보류"
           },
           {
             "id": "signal-final-24-29",
@@ -5582,7 +10579,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 39쪽은 caspase-3·6·7을 effector로, caspase-8·9·10을 initiator로 표시하며 caspase-2는 initiator/effector로 함께 표시한다. 따라서 caspase-3가 있는 문항은 caspase-3, caspase-3 없이 caspase-2가 있는 23학번 문항은 강의표 기준으로 caspase-2를 고른다. 이는 해당 강의의 분류를 따른 판단이다."
+            "rationale": "[강의 기준] 39쪽은 caspase-3·6·7을 effector로, caspase-8·9·10을 initiator로 표시하며 caspase-2는 initiator/effector로 함께 표시한다. 따라서 caspase-3가 있는 문항은 caspase-3, caspase-3 없이 caspase-2가 있는 23학번 문항은 강의표 기준으로 caspase-2를 고른다. 이는 해당 강의의 분류를 따른 판단이다.",
+            "year": "24",
+            "sourcePage": "10",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "24학번",
+              "29번"
+            ],
+            "originalQuestion": "세포 내 단백질분해효소인 caspase들이 세포 자살(apoptosis)을 일으키는 역할을 하 며 initiator와 effector caspase로 나눌 수 있다. 다음 중 effector caspase는 무엇인지 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "caspase-3"
+              },
+              {
+                "id": "2",
+                "text": "caspase-8"
+              },
+              {
+                "id": "3",
+                "text": "caspase-10"
+              },
+              {
+                "id": "4",
+                "text": "caspase-1"
+              },
+              {
+                "id": "5",
+                "text": "caspase-9"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-23-29",
@@ -5603,7 +10634,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 39쪽은 caspase-3·6·7을 effector로, caspase-8·9·10을 initiator로 표시하며 caspase-2는 initiator/effector로 함께 표시한다. 따라서 caspase-3가 있는 문항은 caspase-3, caspase-3 없이 caspase-2가 있는 23학번 문항은 강의표 기준으로 caspase-2를 고른다. 이는 해당 강의의 분류를 따른 판단이다."
+            "rationale": "[강의 기준] 39쪽은 caspase-3·6·7을 effector로, caspase-8·9·10을 initiator로 표시하며 caspase-2는 initiator/effector로 함께 표시한다. 따라서 caspase-3가 있는 문항은 caspase-3, caspase-3 없이 caspase-2가 있는 23학번 문항은 강의표 기준으로 caspase-2를 고른다. 이는 해당 강의의 분류를 따른 판단이다.",
+            "year": "23",
+            "sourcePage": "10",
+            "sourceName": "23학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "23학번",
+              "29번"
+            ],
+            "originalQuestion": "세포 내 단백질분해효소인 caspase들이 세포 자살(apoptosis)을 일으키는 역할을 하 며 initiator와 effector caspase로 나눌 수 있다. 다음 중 effector caspase는 무엇인지 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "caspase-1"
+              },
+              {
+                "id": "2",
+                "text": "caspase-2"
+              },
+              {
+                "id": "3",
+                "text": "caspase-8"
+              },
+              {
+                "id": "4",
+                "text": "caspase-9"
+              },
+              {
+                "id": "5",
+                "text": "caspase-10"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           }
         ],
         "aiQuestions": []
@@ -5659,7 +10724,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 세번째 수업 6쪽은 TNF-α–NF-κB 경로와 내피세포 부착분자 발현 조절을 제시한다. NF-κB는 면역·염증 관련 유전자 발현에 관여한다. 신경세포 분화나 뼈 형성만을 전용 기능으로 보는 설명과 구분한다."
+            "rationale": "[강의 기준] 세번째 수업 6쪽은 TNF-α–NF-κB 경로와 내피세포 부착분자 발현 조절을 제시한다. NF-κB는 면역·염증 관련 유전자 발현에 관여한다. 신경세포 분화나 뼈 형성만을 전용 기능으로 보는 설명과 구분한다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "25학번",
+              "35번"
+            ],
+            "originalQuestion": "Nf-kb의 기능은?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "지방세포 성장"
+              },
+              {
+                "id": "2",
+                "text": "신경세포 분화촉진"
+              },
+              {
+                "id": "3",
+                "text": "세포자살 활성"
+              },
+              {
+                "id": "4",
+                "text": "면역·염증 반응 조절"
+              },
+              {
+                "id": "5",
+                "text": "뼈 형성 촉진"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-30",
@@ -5681,7 +10780,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] 14주차 도식과 본문에는 fMet-peptide, histamine, C5a, MCP-1 등이 염증 및 백혈구 이동의 매개체로 제시된다. M-CSF는 이 보기 중 해당 도식에 제시된 급성 염증 매개체가 아니다. M-CSF가 면역계에서 아무 역할도 하지 않는다는 뜻은 아니다."
+            "rationale": "[강의 기준] 14주차 도식과 본문에는 fMet-peptide, histamine, C5a, MCP-1 등이 염증 및 백혈구 이동의 매개체로 제시된다. M-CSF는 이 보기 중 해당 도식에 제시된 급성 염증 매개체가 아니다. M-CSF가 면역계에서 아무 역할도 하지 않는다는 뜻은 아니다.",
+            "year": "24",
+            "sourcePage": "10",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "24학번",
+              "30번"
+            ],
+            "originalQuestion": "조직 손상과 세균 감염은 다양한 종류의 세포들로부터 매개체들의 분비를 유도한다. 다음 중 염증매개자가 아닌 것을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "N-formylmethionyl peptide"
+              },
+              {
+                "id": "2",
+                "text": "Histamine"
+              },
+              {
+                "id": "3",
+                "text": "C5a"
+              },
+              {
+                "id": "4",
+                "text": "MCP1"
+              },
+              {
+                "id": "5",
+                "text": "M-CSF"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           }
         ],
         "aiQuestions": []
@@ -5743,7 +10876,42 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] PLC는 PIP₂(phosphatidylinositol 4,5-bisphosphate)를 IP₃와 DAG로 가수분해한다. IP₃는 소포체의 IP₃ 수용체를 통해 Ca²⁺ 방출을 유도하고, DAG는 PKC 활성화에 관여한다. cAMP–PKA는 이 문항의 PLC 생성물 경로와 구분한다. Gα와 Gₒ의 혼재 등 원문의 하위 소단위체 표기는 강의의 공통 PLC 경로를 묻도록 보완했다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다."
+            "rationale": "[강의 기준] PLC는 PIP₂(phosphatidylinositol 4,5-bisphosphate)를 IP₃와 DAG로 가수분해한다. IP₃는 소포체의 IP₃ 수용체를 통해 Ca²⁺ 방출을 유도하고, DAG는 PKC 활성화에 관여한다. cAMP–PKA는 이 문항의 PLC 생성물 경로와 구분한다. Gα와 Gₒ의 혼재 등 원문의 하위 소단위체 표기는 강의의 공통 PLC 경로를 묻도록 보완했다.\n\n[복원 메모] 원본의 오기·모호한 문장 또는 보기 배치를 강의에 맞게 보완했다. 원래 시험 문장과 동일한 복원으로 단정하지 않는다.",
+            "year": "25",
+            "sourcePage": "",
+            "sourceName": "25학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "34번",
+              "학습용 복원"
+            ],
+            "originalQuestion": "아래 그림과 같이 백혈구의 chemokine 수용체에 chemokine이 결합하면 수용체의 G protein이 활성화되고 활성화된 Go subunit에 의해 phospholipase C(PLC)가 활성화된다. 이 PLC는 phosphatidylinositol(4, 5)-bipho sphate(PIP2)를 절단하여 (A)와 (B)를 생성하고, A는 세포 내 칼슘 이온의 농도를 증가시키는 역할을 하고, B는 (C)를 활성화시키는 역할을 한다. 다음 중 (A)~(C)에 차례대로 들어갈 용어는?",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "IP3-cAMP-PK(protein kinase)A"
+              },
+              {
+                "id": "2",
+                "text": "﻿﻿﻿Diacylglycerol(DAG)-сАМР-РКС"
+              },
+              {
+                "id": "3",
+                "text": "﻿﻿﻿IP3-DAG-PKC"
+              },
+              {
+                "id": "4",
+                "text": "﻿﻿﻿cAMP-DAG-PKC"
+              },
+              {
+                "id": "5",
+                "text": "cAMP-IP3-PKA"
+              }
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-31",
@@ -5767,7 +10935,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] MCP-1(CCL2), MCP-2(CCL8), GRO1(CXCL1), IL-8(CXCL8)은 chemokine이다. Ras는 세포 내 소형 GTP 결합 단백질이므로 분비성 주화성 사이토카인과 구분한다."
+            "rationale": "[강의 기준] MCP-1(CCL2), MCP-2(CCL8), GRO1(CXCL1), IL-8(CXCL8)은 chemokine이다. Ras는 세포 내 소형 GTP 결합 단백질이므로 분비성 주화성 사이토카인과 구분한다.",
+            "year": "24",
+            "sourcePage": "11",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "24학번",
+              "31번"
+            ],
+            "originalQuestion": "다음 중 염증반응 시 면역 세포를 염증 장소로 유도하는 주화성 사이토카인 (Chemokine)이 아닌 것을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "MCP-1"
+              },
+              {
+                "id": "2",
+                "text": "IL-8"
+              },
+              {
+                "id": "3",
+                "text": "Gro1"
+              },
+              {
+                "id": "4",
+                "text": "Ras"
+              },
+              {
+                "id": "5",
+                "text": "MCP-2"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           },
           {
             "id": "signal-final-24-32",
@@ -5790,7 +10992,41 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의는 C, CC, CXC, CX₃C 계열을 제시한다. X는 cysteine 사이의 다른 아미노산을 뜻한다. CX₂C는 이 강의에서 제시한 네 계열에 포함되지 않는다."
+            "rationale": "[강의 기준] 강의는 C, CC, CXC, CX₃C 계열을 제시한다. X는 cysteine 사이의 다른 아미노산을 뜻한다. CX₂C는 이 강의에서 제시한 네 계열에 포함되지 않는다.",
+            "year": "24",
+            "sourcePage": "11",
+            "sourceName": "24학번 세포신호전달학개론 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "24학번",
+              "32번"
+            ],
+            "originalQuestion": "Chemokine은 N terminal 근처의 아미 노산 배열에 따라 분류한다. 다음 중 그 분류 에 속하지 않는 것을 고르시오.",
+            "originalChoices": [
+              {
+                "id": "1",
+                "text": "CX3C chemokine"
+              },
+              {
+                "id": "2",
+                "text": "CX2C chemokine"
+              },
+              {
+                "id": "3",
+                "text": "C chemokine"
+              },
+              {
+                "id": "4",
+                "text": "CC chemokine"
+              },
+              {
+                "id": "5",
+                "text": "CXC chemokine"
+              }
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-06-signal-finals-lecture-review"
           }
         ],
         "aiQuestions": []
@@ -5861,7 +11097,25 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "answerIndex": 0,
             "answerIndices": null,
             "shortAnswer": "덩어리 섭취자",
-            "rationale": "[강의 기준] 원본에는 잘못된 연결과 정답 요지만 남아 있다. 사자는 큰 먹이 조각을 먹는 덩어리 섭취자이다. 다른 선지를 임의로 만들지 않고 단답형으로 변환했다."
+            "rationale": "[강의 기준] 원본에는 잘못된 연결과 정답 요지만 남아 있다. 사자는 큰 먹이 조각을 먹는 덩어리 섭취자이다. 다른 선지를 임의로 만들지 않고 단답형으로 변환했다.",
+            "year": "25",
+            "sourcePage": "5",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "부유물 섭취자 / 사자가 고기를 먹는다. (선지 미복원)",
+            "sourceAnswerLabel": "부유물 섭취자 / 사자가 고기를 먹는다. (선지 미복원)",
+            "sourceTags": [
+              "25학번",
+              "16번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread",
+            "acceptedText": [
+              "덩어리 섭취자",
+              "덩어리섭취",
+              "덩어리 섭취",
+              "덩어리섭취자"
+            ]
           },
           {
             "id": "bio-final-25-17",
@@ -5883,7 +11137,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 입과 항문이 분리된 소화관은 먹이를 연속 처리할 수 있고 부위별 기능 분화가 가능하다."
+            "rationale": "[강의 기준] 입과 항문이 분리된 소화관은 먹이를 연속 처리할 수 있고 부위별 기능 분화가 가능하다.",
+            "year": "25",
+            "sourcePage": "5",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "25학번",
+              "17번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-24-2",
@@ -5904,7 +11169,21 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 그림은 입을 벌리고 물속의 먹이 입자를 걸러 먹는 가오리이다. 부유물 섭취에 해당한다. 원본 답 ②를 ①로 정정했다. 애벌레 등의 기질 섭취와 구별한다."
+            "rationale": "[강의 기준] 그림은 입을 벌리고 물속의 먹이 입자를 걸러 먹는 가오리이다. 부유물 섭취에 해당한다. 원본 답 ②를 ①로 정정했다. 애벌레 등의 기질 섭취와 구별한다.",
+            "figure": "question-images/biology-final/24-p1-0.png",
+            "year": "24",
+            "sourcePage": "1",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "24학번",
+              "2번",
+              "정답 정정"
+            ],
+            "converted": false,
+            "answerCorrection": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-23-2",
@@ -5925,7 +11204,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 그림의 애벌레는 먹이인 잎 위에서 살며 먹이를 섭취하는 기질 섭취자이다."
+            "rationale": "[강의 기준] 그림의 애벌레는 먹이인 잎 위에서 살며 먹이를 섭취하는 기질 섭취자이다.",
+            "figure": "question-images/biology-final/23-p8-1.png",
+            "year": "23",
+            "sourcePage": "8",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "2번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           }
         ],
         "aiQuestions": []
@@ -5989,7 +11280,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               2,
               3
             ],
-            "rationale": "[강의 기준] 펩신은 단백질을 분해한다. 원본의 ㄱ·ㄷ·ㄹ을 유지하고, 사라진 조합형 선택지 대신 보기별 복수 선택형으로 보완했다."
+            "rationale": "[강의 기준] 펩신은 단백질을 분해한다. 원본의 ㄱ·ㄷ·ㄹ을 유지하고, 사라진 조합형 선택지 대신 보기별 복수 선택형으로 보완했다.",
+            "year": "25",
+            "sourcePage": "6",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "ㄱ, ㄷ , ㄹ",
+            "sourceAnswerLabel": "ㄱ, ㄷ , ㄹ",
+            "sourceTags": [
+              "25학번",
+              "18번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-25-19",
@@ -6010,7 +11313,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 식물의 세포벽은 분해하기 어려워 초식동물은 일반적으로 긴 소화관과 공생 미생물을 가진다. 원문의 ‘셀룰로스 분해 성분’은 강의의 공생 미생물로 보완했다."
+            "rationale": "[강의 기준] 식물의 세포벽은 분해하기 어려워 초식동물은 일반적으로 긴 소화관과 공생 미생물을 가진다. 원문의 ‘셀룰로스 분해 성분’은 강의의 공생 미생물로 보완했다.",
+            "year": "25",
+            "sourcePage": "6",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "25학번",
+              "19번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-25-25",
@@ -6032,7 +11347,23 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] ⑤의 글루카곤은 혈당을 올리므로 제1형 당뇨의 고혈당을 안정화하는 치료가 아니다. ①도 원문 그대로라면 틀리다. 포도당은 단당류로 소화가 필요 없고, 침 아밀레이스는 녹말을 분해한다. 원문을 보존하고 ①·⑤를 모두 인정한다."
+            "rationale": "[강의 기준] ⑤의 글루카곤은 혈당을 올리므로 제1형 당뇨의 고혈당을 안정화하는 치료가 아니다. ①도 원문 그대로라면 틀리다. 포도당은 단당류로 소화가 필요 없고, 침 아밀레이스는 녹말을 분해한다. 원문을 보존하고 ①·⑤를 모두 인정한다.",
+            "year": "25",
+            "sourcePage": "8",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "25학번",
+              "25번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread",
+            "acceptedAnswerIndices": [
+              0,
+              4
+            ],
+            "answerLabel": "① 또는 ⑤ (복수정답 가능)"
           },
           {
             "id": "bio-final-23-3",
@@ -6053,7 +11384,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 작은창자에서 나온 내용물은 막창자 → 결장 → 곧창자 → 항문 순으로 이동한다. 막창자와 결장, 곧창자는 큰창자에 속한다. 원문의 선택지에서 “큰창자”를 막창자·곧창자와 병렬로 쓴 부분은 “결장”으로 바로잡았다."
+            "rationale": "[강의 기준] 작은창자에서 나온 내용물은 막창자 → 결장 → 곧창자 → 항문 순으로 이동한다. 막창자와 결장, 곧창자는 큰창자에 속한다. 원문의 선택지에서 “큰창자”를 막창자·곧창자와 병렬로 쓴 부분은 “결장”으로 바로잡았다.",
+            "year": "23",
+            "sourcePage": "8",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "3번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           }
         ],
         "aiQuestions": []
@@ -6116,7 +11459,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 렙틴 유전자 돌연변이로 비만해지는 사람은 상대적으로 매우 적다. ㄱ·ㄴ·ㄹ이 옳다."
+            "rationale": "[강의 기준] 렙틴 유전자 돌연변이로 비만해지는 사람은 상대적으로 매우 적다. ㄱ·ㄴ·ㄹ이 옳다.",
+            "year": "25",
+            "sourcePage": "6",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "25학번",
+              "20번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-24-4",
@@ -6137,7 +11491,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 지방세포에서 분비되는 렙틴은 식욕을 억제한다. 렙틴 유전자에 결함이 있는 생쥐는 매우 비만해진다."
+            "rationale": "[강의 기준] 지방세포에서 분비되는 렙틴은 식욕을 억제한다. 렙틴 유전자에 결함이 있는 생쥐는 매우 비만해진다.",
+            "figure": "question-images/biology-final/24-p2-0.png",
+            "year": "24",
+            "sourcePage": "2",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "24학번",
+              "4번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-24-5",
@@ -6158,7 +11524,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 비타민 B₅(판토텐산)는 코엔자임 A의 성분이다. 강의의 비타민 표를 기준으로 판정했다."
+            "rationale": "[강의 기준] 비타민 B₅(판토텐산)는 코엔자임 A의 성분이다. 강의의 비타민 표를 기준으로 판정했다.",
+            "year": "24",
+            "sourcePage": "2",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "24학번",
+              "5번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-23-5",
@@ -6180,7 +11557,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 21장 27–28쪽의 필수 아미노산 설명과 그림에는 라이신·아이소류신·메싸이오닌·트립토판이 제시되고 아르지닌은 포함되지 않는다. 따라서 ②이다.\n\n[보충 설명] 아르지닌은 조건부 필수 아미노산으로 분류하며, 성장 상태 등에 따라 필요성이 달라질 수 있어 문항은 건강한 성인 기준으로 한정했다."
+            "rationale": "[강의 기준] 21장 27–28쪽의 필수 아미노산 설명과 그림에는 라이신·아이소류신·메싸이오닌·트립토판이 제시되고 아르지닌은 포함되지 않는다. 따라서 ②이다.\n\n[보충 설명] 아르지닌은 조건부 필수 아미노산으로 분류하며, 성장 상태 등에 따라 필요성이 달라질 수 있어 문항은 건강한 성인 기준으로 한정했다.",
+            "year": "23",
+            "sourcePage": "9",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "5번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           }
         ],
         "aiQuestions": []
@@ -6239,7 +11628,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 노출군은 테스토스테론과 포접 비율이 감소한다. 대조군은 아트라진에 노출되지 않았다. 식품·음료수 용기와 관련해 언급된 물질은 BPA이다. 원본의 27장 표기는 26장으로 바로잡았다."
+            "rationale": "[강의 기준] 노출군은 테스토스테론과 포접 비율이 감소한다. 대조군은 아트라진에 노출되지 않았다. 식품·음료수 용기와 관련해 언급된 물질은 BPA이다. 원본의 27장 표기는 26장으로 바로잡았다.",
+            "figure": "question-images/biology-final/24-p3-0.png",
+            "year": "24",
+            "sourcePage": "3",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "24학번",
+              "8번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-23-7",
@@ -6262,7 +11663,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 호르몬은 혈류를 통해 표적세포에 전달되어 수용체에 결합한다. 축삭은 신경세포의 전기 신호 전달 구조이다."
+            "rationale": "[강의 기준] 호르몬은 혈류를 통해 표적세포에 전달되어 수용체에 결합한다. 축삭은 신경세포의 전기 신호 전달 구조이다.",
+            "year": "23",
+            "sourcePage": "9",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "7번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-23-8",
@@ -6284,7 +11696,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 스테로이드 호르몬은 세포 내 수용체와 결합하여 유전자 발현을 조절한다. ‘호르몬 자체가 전사인자’라는 원문은 호르몬–수용체 복합체로 정밀하게 보완했다."
+            "rationale": "[강의 기준] 스테로이드 호르몬은 세포 내 수용체와 결합하여 유전자 발현을 조절한다. ‘호르몬 자체가 전사인자’라는 원문은 호르몬–수용체 복합체로 정밀하게 보완했다.",
+            "year": "23",
+            "sourcePage": "9",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "8번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           }
         ],
         "aiQuestions": []
@@ -6352,7 +11776,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 프로락틴은 양서류가 부화 준비를 위해 물 쪽으로 이동하도록 자극하고, 어류에서 염분·수분 조절에 관여한다. 원문의 ‘육지에 머문다’는 설명이 틀리다."
+            "rationale": "[강의 기준] 프로락틴은 양서류가 부화 준비를 위해 물 쪽으로 이동하도록 자극하고, 어류에서 염분·수분 조절에 관여한다. 원문의 ‘육지에 머문다’는 설명이 틀리다.",
+            "year": "25",
+            "sourcePage": "9",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "25학번",
+              "29번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-24-6",
@@ -6375,7 +11810,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의의 내분비샘 표에서 갑상샘 호르몬은 정상적인 성장과 성숙, 칼시토닌은 혈중 칼슘 감소 및 뼈로의 칼슘 침착과 관련된다."
+            "rationale": "[강의 기준] 강의의 내분비샘 표에서 갑상샘 호르몬은 정상적인 성장과 성숙, 칼시토닌은 혈중 칼슘 감소 및 뼈로의 칼슘 침착과 관련된다.",
+            "year": "24",
+            "sourcePage": "3",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "24학번",
+              "6번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-23-6",
@@ -6398,7 +11844,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 전엽의 프로락틴은 유즙 생성을 촉진한다. 후엽은 시상하부에서 만든 ADH와 옥시토신을 저장·방출한다. 옥시토신은 유즙 분출을 촉진한다."
+            "rationale": "[강의 기준] 전엽의 프로락틴은 유즙 생성을 촉진한다. 후엽은 시상하부에서 만든 ADH와 옥시토신을 저장·방출한다. 옥시토신은 유즙 분출을 촉진한다.",
+            "year": "23",
+            "sourcePage": "9",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "6번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-23-10",
@@ -6420,7 +11878,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 26장 16쪽은 기능 항진증과 저하증의 증상을 비교하고, 요오드 결핍에 의한 갑상샘종을 설명한다.\n\n[보충 설명] 갑상샘종은 갑상샘이 커진 상태이며 기능 저하와 일부 기능 항진 상태 모두에서 나타날 수 있으므로 ③이 가장 적절하다. 두 상태 모두에서 반드시 나타나는 증상이라는 뜻은 아니다. 이 공통성 자체는 강의 본문에 직접 명시되어 있지 않다."
+            "rationale": "[강의 기준] 26장 16쪽은 기능 항진증과 저하증의 증상을 비교하고, 요오드 결핍에 의한 갑상샘종을 설명한다.\n\n[보충 설명] 갑상샘종은 갑상샘이 커진 상태이며 기능 저하와 일부 기능 항진 상태 모두에서 나타날 수 있으므로 ③이 가장 적절하다. 두 상태 모두에서 반드시 나타나는 증상이라는 뜻은 아니다. 이 공통성 자체는 강의 본문에 직접 명시되어 있지 않다.",
+            "year": "23",
+            "sourcePage": "10",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "10번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           }
         ],
         "aiQuestions": []
@@ -6483,7 +11952,20 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 27장 9쪽은 제1정모세포가 감수분열을 거쳐 4개의 반수체 세포를 형성하고, 정소에서 지속적으로 만들어진다고 설명한다. 이 문항의 감수분열은 전체 과정을 뜻하므로 ①의 “2개”는 틀리고 ④가 옳다. 난자와 정자의 핵은 모두 반수체이다.\n\n[정답 정정] 원본 기록 ①을 강의 내용에 따라 ④로 정정했다."
+            "rationale": "[강의 기준] 27장 9쪽은 제1정모세포가 감수분열을 거쳐 4개의 반수체 세포를 형성하고, 정소에서 지속적으로 만들어진다고 설명한다. 이 문항의 감수분열은 전체 과정을 뜻하므로 ①의 “2개”는 틀리고 ④가 옳다. 난자와 정자의 핵은 모두 반수체이다.\n\n[정답 정정] 원본 기록 ①을 강의 내용에 따라 ④로 정정했다.",
+            "year": "25",
+            "sourcePage": "8",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "25학번",
+              "26번",
+              "정답 정정"
+            ],
+            "converted": false,
+            "answerCorrection": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-24-1",
@@ -6504,7 +11986,23 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 27장 9쪽의 난자 형성 그림에서는 제1난모세포가 출생 전에 만들어지고, 사춘기 이후 난포의 주기적인 성숙이 진행된다. 배란된 제2난모세포는 정자와 만나야 제2감수분열을 완료한다. 따라서 ④가 옳으며, ②를 성숙 난포로의 주기적 발달을 뜻하는 것으로 읽으면 역시 옳다.\n\n[원문 검토] 원본의 “난포의 성숙”이라는 넓은 표현을 보존하고 ②·④를 모두 정답으로 인정한다. ③의 난포세포는 난모세포와 구별해야 한다."
+            "rationale": "[강의 기준] 27장 9쪽의 난자 형성 그림에서는 제1난모세포가 출생 전에 만들어지고, 사춘기 이후 난포의 주기적인 성숙이 진행된다. 배란된 제2난모세포는 정자와 만나야 제2감수분열을 완료한다. 따라서 ④가 옳으며, ②를 성숙 난포로의 주기적 발달을 뜻하는 것으로 읽으면 역시 옳다.\n\n[원문 검토] 원본의 “난포의 성숙”이라는 넓은 표현을 보존하고 ②·④를 모두 정답으로 인정한다. ③의 난포세포는 난모세포와 구별해야 한다.",
+            "year": "24",
+            "sourcePage": "1",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "24학번",
+              "1번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread",
+            "acceptedAnswerIndices": [
+              1,
+              3
+            ],
+            "answerLabel": "②·④ (복수정답 인정)"
           },
           {
             "id": "bio-final-24-10",
@@ -6526,7 +12024,23 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] 27장 4쪽 필기는 분열의 예로 말미잘을, 분절의 예로 지렁이 등을 구분하여 제시한다. 이 구분을 적용하면 ② “지렁이–분열”과 ⑤ “말미잘–분절”이 모두 틀린 연결이다. 효모는 출아의 예이며, 말미잘은 유성생식도 한다.\n\n[원문 검토] 원본에는 ⑤만 정답으로 기록되어 있으나 강의의 용어 구분에 따라 ②·⑤를 모두 정답으로 인정한다."
+            "rationale": "[강의 기준] 27장 4쪽 필기는 분열의 예로 말미잘을, 분절의 예로 지렁이 등을 구분하여 제시한다. 이 구분을 적용하면 ② “지렁이–분열”과 ⑤ “말미잘–분절”이 모두 틀린 연결이다. 효모는 출아의 예이며, 말미잘은 유성생식도 한다.\n\n[원문 검토] 원본에는 ⑤만 정답으로 기록되어 있으나 강의의 용어 구분에 따라 ②·⑤를 모두 정답으로 인정한다.",
+            "year": "24",
+            "sourcePage": "4",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "24학번",
+              "10번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread",
+            "acceptedAnswerIndices": [
+              1,
+              4
+            ],
+            "answerLabel": "②·⑤ (복수정답 인정)"
           },
           {
             "id": "bio-final-24-11",
@@ -6547,7 +12061,20 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 정자는 부정소(부고환)에서 성숙한다. 원문에 남아 있는 그림의 번호를 보기에 연결해 ③으로 표기했다. (참고: 강의 슬라이드 27장 p.8 그림 번호 기준 ②가 부정소이나 원 시험지 그림 번호에 따라 ③ 표기 유지)"
+            "rationale": "[강의 기준] 정자는 부정소(부고환)에서 성숙한다. 원문에 남아 있는 그림의 번호를 보기에 연결했다. 그림의 ③은 부고환이다.",
+            "figure": "question-images/biology-final/24-p4-0.png",
+            "year": "24",
+            "sourcePage": "4",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "24학번",
+              "11번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-24-12",
@@ -6568,7 +12095,22 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 27장 10쪽은 난포 발달과 배란, 황체의 호르몬 분비 감소 및 월경의 관계를 설명한다.\n\n[검토 보류] 원본 기록 답은 ③이다. 그러나 배란을 유도하는 높은 에스트로겐과 LH 급증의 관계와, 에스트로겐 최고점 이후의 감소를 구별해야 하므로 “배란 시 에스트로겐이 감소한다”만으로 ③을 틀렸다고 단정하기 어렵다. ②의 “배란 전기”와 ⑤의 “LH 분비 중지”도 시기·표현이 불명확하다. 강의자료만으로 이 문항의 유일한 오답을 확정하기 어려워 자동 채점에서 제외한다."
+            "rationale": "[강의 기준] 27장 10쪽은 난포 발달과 배란, 황체의 호르몬 분비 감소 및 월경의 관계를 설명한다.\n\n[검토 보류] 원본 기록 답은 ③이다. 그러나 배란을 유도하는 높은 에스트로겐과 LH 급증의 관계와, 에스트로겐 최고점 이후의 감소를 구별해야 하므로 “배란 시 에스트로겐이 감소한다”만으로 ③을 틀렸다고 단정하기 어렵다. ②의 “배란 전기”와 ⑤의 “LH 분비 중지”도 시기·표현이 불명확하다. 강의자료만으로 이 문항의 유일한 오답을 확정하기 어려워 자동 채점에서 제외한다.",
+            "year": "24",
+            "sourcePage": "5",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "24학번",
+              "12번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread",
+            "sourceReviewAnswer": "단일 정답 확정 보류 (원본 기록 ③)",
+            "sourceUncertain": true,
+            "uncertain": true,
+            "reviewAnswer": "단일 정답 확정 보류 (원본 기록 ③)"
           },
           {
             "id": "bio-final-23-11",
@@ -6584,7 +12126,23 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "answerIndex": 0,
             "answerIndices": null,
             "shortAnswer": "전립샘",
-            "rationale": "[강의 기준] 27장 8쪽은 정낭·전립샘·망울요도샘이 정액에 기여한다고 설명한다.\n\n[학습용 복원] 원본에는 생식기관 그림과 ② 정소라는 선지 일부만 남아 있어 전립샘을 묻는 단답형으로 보완했다. 원문의 영양 공급과 액화 기능을 혼합한 표현을 정리했다.\n\n[보충 설명] 정액의 액화는 전립샘 분비물의 효소와 관련된다. 이 효소 기능은 강의 본문에서 직접 확인되지 않아 보충 설명으로 구분한다."
+            "rationale": "[강의 기준] 27장 8쪽은 정낭·전립샘·망울요도샘이 정액에 기여한다고 설명한다.\n\n[학습용 복원] 원본에는 생식기관 그림과 ② 정소라는 선지 일부만 남아 있어 전립샘을 묻는 단답형으로 보완했다. 원문의 영양 공급과 액화 기능을 혼합한 표현을 정리했다.\n\n[보충 설명] 정액의 액화는 전립샘 분비물의 효소와 관련된다. 이 효소 기능은 강의 본문에서 직접 확인되지 않아 보충 설명으로 구분한다.",
+            "year": "23",
+            "sourcePage": "10",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "11번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread",
+            "acceptedText": [
+              "전립샘",
+              "전립선"
+            ]
           }
         ],
         "aiQuestions": []
@@ -6658,7 +12216,21 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               2,
               4
             ],
-            "rationale": "[강의 기준] 3배엽은 분할이 아닌 낭배형성 중 생긴다. 피부의 표피와 신경계는 외배엽 유래다. 원본 답 ㄱ·ㄷ·ㄹ은 ㄱ·ㄷ·ㅁ으로 정정했다. 조합 선지 미복원으로 보기별 복수 선택형을 사용한다."
+            "rationale": "[강의 기준] 3배엽은 분할이 아닌 낭배형성 중 생긴다. 피부의 표피와 신경계는 외배엽 유래다. 원본 답 ㄱ·ㄷ·ㄹ은 ㄱ·ㄷ·ㅁ으로 정정했다. 조합 선지 미복원으로 보기별 복수 선택형을 사용한다.",
+            "year": "25",
+            "sourcePage": "9",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "ㄱ·ㄷ·ㄹ",
+            "sourceAnswerLabel": "ㄱ·ㄷ·ㄹ",
+            "sourceTags": [
+              "25학번",
+              "27번",
+              "학습용 복원",
+              "정답 정정"
+            ],
+            "converted": true,
+            "answerCorrection": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-25-28",
@@ -6679,7 +12251,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 호미오 유전자는 기관과 조직이 제자리에 형성되는 패턴 형성에 관여한다. 원문은 초파리에 척삭·신경관을 혼합하고 ‘발생’을 ‘발현’으로 잘못 썼다. 강의 27.14에 맞춰 모순된 조건을 제거한 학습용 보완 문항이다."
+            "rationale": "[강의 기준] 호미오 유전자는 기관과 조직이 제자리에 형성되는 패턴 형성에 관여한다. 원문은 초파리에 척삭·신경관을 혼합하고 ‘발생’을 ‘발현’으로 잘못 썼다. 강의 27.14에 맞춰 모순된 조건을 제거한 학습용 보완 문항이다.",
+            "year": "25",
+            "sourcePage": "9",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "25학번",
+              "28번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-24-3",
@@ -6700,7 +12284,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의에서는 척삭이 중심축을 형성하고 대부분의 척삭동물에서 나중에 척추로 대체된다고 설명한다. 신경관은 척삭 위, 체절은 양옆에 쌍으로 형성된다."
+            "rationale": "[강의 기준] 강의에서는 척삭이 중심축을 형성하고 대부분의 척삭동물에서 나중에 척추로 대체된다고 설명한다. 신경관은 척삭 위, 체절은 양옆에 쌍으로 형성된다.",
+            "year": "24",
+            "sourcePage": "2",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "24학번",
+              "3번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-24-7",
@@ -6721,7 +12316,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의는 수정 후 약 8주령의 배를 태아라고 부른다고 설명한다. 산과에서 마지막 월경일로 계산하는 임신 주수와 혼동하지 않도록 수정 후 경과 기준을 명시했다. 원문 선지 ③·④의 14주 중복은 보존했다."
+            "rationale": "[강의 기준] 강의는 수정 후 약 8주령의 배를 태아라고 부른다고 설명한다. 산과에서 마지막 월경일로 계산하는 임신 주수와 혼동하지 않도록 수정 후 경과 기준을 명시했다. 원문 선지 ③·④의 14주 중복은 보존했다.",
+            "year": "24",
+            "sourcePage": "3",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "24학번",
+              "7번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-24-14",
@@ -6742,7 +12349,20 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 난황주머니(난황낭)는 초기 조혈과 관련된다. 남아 있는 원본 그림의 ④가 난황주머니이다. 문항의 번호형 보기를 그림에 맞춰 보완했다."
+            "rationale": "[강의 기준] 난황주머니(난황낭)는 초기 조혈과 관련된다. 남아 있는 원본 그림의 ④가 난황주머니이다. 문항의 번호형 보기를 그림에 맞춰 보완했다.",
+            "figure": "question-images/biology-final/24-p5-0.png",
+            "year": "24",
+            "sourcePage": "5",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "24학번",
+              "14번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-24-15",
@@ -6763,7 +12383,20 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] 프로스타글란딘 증가는 자궁 수축을 촉진하므로 ⑤(프로스타글란딘 감소)는 틀리다. ①의 자궁내막 탈락은 강의 슬라이드(27장 p.24)에서 분만 시 탈락막(산모의 자궁내막)이 밖으로 빠져나가는 과정으로 명시되어 있으므로 ⑤만 단독 정답이다."
+            "rationale": "[강의 기준] 프로스타글란딘 증가는 자궁 수축을 촉진하므로 ⑤(프로스타글란딘 감소)는 틀리다. ①의 자궁내막 탈락은 강의 슬라이드(27장 p.24)에서 분만 시 탈락막(산모의 자궁내막)이 밖으로 빠져나가는 과정으로 명시되어 있으므로 ⑤만 단독 정답이다.",
+            "year": "24",
+            "sourcePage": "6",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "① 또는 ⑤ (복수정답 가능)",
+            "sourceTags": [
+              "24학번",
+              "15번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread",
+            "sourceExplanation": "[강의 기준] 프로스타글란딘 증가는 자궁 수축을 촉진하므로 ⑤는 틀리다. ①의 자궁내막 탈락은 월경의 특징으로, 분만 과정 자체의 대표 변화라고 보기 어렵다. 원본의 단일 정답 ⑤ 외에 ①도 정답으로 인정한다.",
+            "gradingNote": "27장 p.24의 태반·탈락막 배출에 근거한 ⑤ 단독 정답 유지"
           },
           {
             "id": "bio-final-23-13",
@@ -6784,7 +12417,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 중배엽에서는 근육·뼈·순환계·배설계·생식계 등이 형성된다. 표피와 신경계는 외배엽, 소화관 상피와 부속샘 등은 내배엽에서 유래한다."
+            "rationale": "[강의 기준] 중배엽에서는 근육·뼈·순환계·배설계·생식계 등이 형성된다. 표피와 신경계는 외배엽, 소화관 상피와 부속샘 등은 내배엽에서 유래한다.",
+            "year": "23",
+            "sourcePage": "11",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "13번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-23-14",
@@ -6805,7 +12449,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 융모막과 그 융모가 태반의 태아 쪽 구조를 형성한다. 원문의 ‘태반으로부터 발달’은 발생 방향이 뒤바뀌어 바로잡았다."
+            "rationale": "[강의 기준] 융모막과 그 융모가 태반의 태아 쪽 구조를 형성한다. 원문의 ‘태반으로부터 발달’은 발생 방향이 뒤바뀌어 바로잡았다.",
+            "year": "23",
+            "sourcePage": "11",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "14번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-23-15",
@@ -6826,7 +12482,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 강의의 분만 모형에서 에스트로겐은 자궁의 옥시토신 반응성을 높이고 옥시토신·프로스타글란딘은 수축을 촉진한다. 프로게스테론 작용은 감소한다."
+            "rationale": "[강의 기준] 강의의 분만 모형에서 에스트로겐은 자궁의 옥시토신 반응성을 높이고 옥시토신·프로스타글란딘은 수축을 촉진한다. 프로게스테론 작용은 감소한다.",
+            "year": "23",
+            "sourcePage": "11",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "15번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           }
         ],
         "aiQuestions": []
@@ -6891,7 +12558,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 다발성 경화증은 중추신경계의 수초 손상으로 신호 전도가 방해되는 질환이다."
+            "rationale": "[강의 기준] 다발성 경화증은 중추신경계의 수초 손상으로 신호 전도가 방해되는 질환이다.",
+            "year": "25",
+            "sourcePage": "2",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "6번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-25-8",
@@ -6912,7 +12590,20 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] ③은 탈분극 상승기이다. 전압 개폐성 Na⁺ 통로가 열려 Na⁺가 세포 안으로 유입된다. 원본에 답·선지까지 포함된 그림 대신 동일 도식의 24학번 그림 부분을 사용했다."
+            "rationale": "[강의 기준] ③은 탈분극 상승기이다. 전압 개폐성 Na⁺ 통로가 열려 Na⁺가 세포 안으로 유입된다. 원본에 답·선지까지 포함된 그림 대신 동일 도식의 24학번 그림 부분을 사용했다.",
+            "figure": "question-images/biology-final/24-p8-0.png",
+            "year": "25",
+            "sourcePage": "3",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "25학번",
+              "8번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-25-9",
@@ -6934,7 +12625,21 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 원본 ②의 생략된 문장을 강의로 보완하고, 원본 답 ④를 ②로 정정했다. 활동전위의 빠른 Na⁺ 유입은 Na⁺ 통로의 작용이다."
+            "rationale": "[강의 기준] 원본 ②의 생략된 문장을 강의로 보완하고, 원본 답 ④를 ②로 정정했다. 활동전위의 빠른 Na⁺ 유입은 Na⁺ 통로의 작용이다.",
+            "year": "25",
+            "sourcePage": "3",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "25학번",
+              "9번",
+              "학습용 복원",
+              "정답 정정"
+            ],
+            "converted": true,
+            "answerCorrection": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-24-24",
@@ -6955,7 +12660,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] Na⁺–K⁺ 펌프는 ATP를 이용하는 운반 단백질로 능동수송을 수행한다. 원문의 Ka⁺는 K⁺로 교정했다."
+            "rationale": "[강의 기준] Na⁺–K⁺ 펌프는 ATP를 이용하는 운반 단백질로 능동수송을 수행한다. 원문의 Ka⁺는 K⁺로 교정했다.",
+            "year": "24",
+            "sourcePage": "8",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "24학번",
+              "24번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           }
         ],
         "aiQuestions": []
@@ -7015,7 +12731,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
               2,
               4
             ],
-            "rationale": "[강의 기준] ADHD 치료제는 도파민과 노르에피네프린의 재흡수를 억제하는 작용을 한다. 두 개를 모두 선택해야 정답이다."
+            "rationale": "[강의 기준] ADHD 치료제는 도파민과 노르에피네프린의 재흡수를 억제하는 작용을 한다. 두 개를 모두 선택해야 정답이다.",
+            "year": "25",
+            "sourcePage": "2",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "3, 5",
+            "sourceAnswerLabel": "③·⑤",
+            "sourceTags": [
+              "25학번",
+              "7번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-25-10",
@@ -7036,7 +12763,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] SSRI는 세로토닌의 재흡수를 억제하여 시냅스 틈에 세로토닌이 더 오래 남도록 한다."
+            "rationale": "[강의 기준] SSRI는 세로토닌의 재흡수를 억제하여 시냅스 틈에 세로토닌이 더 오래 남도록 한다.",
+            "year": "25",
+            "sourcePage": "3",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "25학번",
+              "10번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           }
         ],
         "aiQuestions": []
@@ -7099,7 +12837,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 회색질은 주로 세포체와 가지돌기, 백색질은 주로 수초로 둘러싸인 축삭으로 이루어진다."
+            "rationale": "[강의 기준] 회색질은 주로 세포체와 가지돌기, 백색질은 주로 수초로 둘러싸인 축삭으로 이루어진다.",
+            "year": "24",
+            "sourcePage": "8",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "24학번",
+              "22번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-23-21",
@@ -7115,7 +12864,22 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             "answerIndex": 0,
             "answerIndices": null,
             "shortAnswer": "도파민",
-            "rationale": "[강의 기준] 원본 ‘바닥체 퇴화’는 바닥핵 관련 표현의 오기이며 직접 기전이 부정확했다. 강의에 명시된 도파민 뉴런 소실을 묻는 단답형으로 보완했다."
+            "rationale": "[강의 기준] 원본 ‘바닥체 퇴화’는 바닥핵 관련 표현의 오기이며 직접 기전이 부정확했다. 강의에 명시된 도파민 뉴런 소실을 묻는 단답형으로 보완했다.",
+            "year": "23",
+            "sourcePage": "12",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "21번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread",
+            "acceptedText": [
+              "도파민"
+            ]
           },
           {
             "id": "bio-final-23-22",
@@ -7136,7 +12900,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 백색질은 주로 수초로 둘러싸인 축삭으로 이루어진다."
+            "rationale": "[강의 기준] 백색질은 주로 수초로 둘러싸인 축삭으로 이루어진다.",
+            "year": "23",
+            "sourcePage": "12",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "22번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           }
         ],
         "aiQuestions": []
@@ -7205,7 +12980,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] 29장 15쪽은 반고리관을 포함한 속귀의 평형기관을 설명한다.\n\n[보충 설명] 이석증은 떨어져 나온 이석이 반고리관으로 들어가 평형감각을 교란하여 발생한다. 이석증의 발생 기전 자체는 해당 강의 본문에 직접 명시되어 있지 않다."
+            "rationale": "[강의 기준] 29장 15쪽은 반고리관을 포함한 속귀의 평형기관을 설명한다.\n\n[보충 설명] 이석증은 떨어져 나온 이석이 반고리관으로 들어가 평형감각을 교란하여 발생한다. 이석증의 발생 기전 자체는 해당 강의 본문에 직접 명시되어 있지 않다.",
+            "year": "25",
+            "sourcePage": "4",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "25학번",
+              "12번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-25-15",
@@ -7226,7 +13012,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 유스타키오관(귀인두관)은 중이와 인두를 연결하고 중이의 압력을 조절한다."
+            "rationale": "[강의 기준] 유스타키오관(귀인두관)은 중이와 인두를 연결하고 중이의 압력을 조절한다.",
+            "year": "25",
+            "sourcePage": "5",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "4",
+            "sourceAnswerLabel": "④",
+            "sourceTags": [
+              "25학번",
+              "15번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-24-26",
@@ -7247,7 +13044,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 광수용기는 빛이라는 전자기파를 감지하므로 전자기수용기로 분류한다."
+            "rationale": "[강의 기준] 광수용기는 빛이라는 전자기파를 감지하므로 전자기수용기로 분류한다.",
+            "year": "24",
+            "sourcePage": "9",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "24학번",
+              "26번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-23-26",
@@ -7270,7 +13078,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 청각은 소리 진동에 의한 털세포의 변형을 감지하므로 기계적 감각이다."
+            "rationale": "[강의 기준] 청각은 소리 진동에 의한 털세포의 변형을 감지하므로 기계적 감각이다.",
+            "year": "23",
+            "sourcePage": "13",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "26번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           }
         ],
         "aiQuestions": []
@@ -7336,7 +13155,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 근거리 조절 시 모양체 근육이 수축하고 인대의 장력이 줄어 수정체가 두꺼워진다. 굴절력이 커져 가까운 물체의 상을 망막에 맺는다."
+            "rationale": "[강의 기준] 근거리 조절 시 모양체 근육이 수축하고 인대의 장력이 줄어 수정체가 두꺼워진다. 굴절력이 커져 가까운 물체의 상을 망막에 맺는다.",
+            "year": "25",
+            "sourcePage": "4",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "25학번",
+              "11번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-25-13",
@@ -7357,7 +13187,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 원시는 가까운 물체의 상이 망막 뒤에 맺히므로 볼록렌즈로 교정한다."
+            "rationale": "[강의 기준] 원시는 가까운 물체의 상이 망막 뒤에 맺히므로 볼록렌즈로 교정한다.",
+            "year": "25",
+            "sourcePage": "4",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "25학번",
+              "13번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-25-14",
@@ -7378,7 +13219,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 백내장은 수정체가 혼탁해져 시야가 흐려지는 질환이다."
+            "rationale": "[강의 기준] 백내장은 수정체가 혼탁해져 시야가 흐려지는 질환이다.",
+            "year": "25",
+            "sourcePage": "5",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "14번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-24-28",
@@ -7399,7 +13251,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 모양체 근육이 이완하고 인대가 팽팽해져 수정체가 얇고 평평해진다."
+            "rationale": "[강의 기준] 모양체 근육이 이완하고 인대가 팽팽해져 수정체가 얇고 평평해진다.",
+            "year": "24",
+            "sourcePage": "10",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "24학번",
+              "28번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-23-28",
@@ -7420,7 +13283,23 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 가까운 물체를 볼 때 모양체 근육이 수축하고 인대가 느슨해져 수정체가 두꺼워진다. ⑤의 ‘발산하는 광선을 굴절’도 근거리 물체의 빛을 다룬 일반 설명으로 성립할 수 있다. 원본 정답 표기는 없으며 ①·⑤를 모두 인정한다."
+            "rationale": "[강의 기준] 가까운 물체를 볼 때 모양체 근육이 수축하고 인대가 느슨해져 수정체가 두꺼워진다. ⑤의 ‘발산하는 광선을 굴절’도 근거리 물체의 빛을 다룬 일반 설명으로 성립할 수 있다. 원본 정답 표기는 없으며 ①·⑤를 모두 인정한다.",
+            "year": "23",
+            "sourcePage": "13",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "28번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread",
+            "acceptedAnswerIndices": [
+              0,
+              4
+            ],
+            "answerLabel": "① 또는 ⑤ (표현상 복수정답)"
           }
         ],
         "aiQuestions": []
@@ -7487,7 +13366,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 힘줄은 근육과 뼈를 연결한다. 인대는 뼈와 뼈를 연결한다."
+            "rationale": "[강의 기준] 힘줄은 근육과 뼈를 연결한다. 인대는 뼈와 뼈를 연결한다.",
+            "year": "25",
+            "sourcePage": "1",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "25학번",
+              "1번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-25-3",
@@ -7508,7 +13398,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 해면뼈의 적색골수에서 조혈이 일어난다. 원문의 ‘분비’는 ‘생성’으로, 긴뼈 전체와 뼈몸통을 혼용한 diaphysis 표기는 삭제했다."
+            "rationale": "[강의 기준] 해면뼈의 적색골수에서 조혈이 일어난다. 원문의 ‘분비’는 ‘생성’으로, 긴뼈 전체와 뼈몸통을 혼용한 diaphysis 표기는 삭제했다.",
+            "year": "25",
+            "sourcePage": "1",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "2",
+            "sourceAnswerLabel": "②",
+            "sourceTags": [
+              "25학번",
+              "3번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-24-16",
@@ -7529,7 +13431,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 한 평면에서 굽힘·폄을 하는 것은 경첩관절(번접관절)이다. 중쇠관절(차축관절)은 축을 중심으로 회전한다."
+            "rationale": "[강의 기준] 한 평면에서 굽힘·폄을 하는 것은 경첩관절(번접관절)이다. 중쇠관절(차축관절)은 축을 중심으로 회전한다.",
+            "year": "24",
+            "sourcePage": "6",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "24학번",
+              "16번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-23-18",
@@ -7551,7 +13464,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 1,
             "answerIndices": null,
-            "rationale": "[강의 기준] 인대는 뼈와 뼈를, 힘줄은 근육과 뼈를 연결한다. ‘뼈와 관절 사이’라는 모호한 표현을 보완했다."
+            "rationale": "[강의 기준] 인대는 뼈와 뼈를, 힘줄은 근육과 뼈를 연결한다. ‘뼈와 관절 사이’라는 모호한 표현을 보완했다.",
+            "year": "23",
+            "sourcePage": "11",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "18번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           }
         ],
         "aiQuestions": []
@@ -7616,7 +13541,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 근절과 명대는 짧아지고 암대는 일정하다. 원문의 ‘Z선 감소’는 Z선 자체가 아니라 두 Z선 사이 거리 감소로 보완했다."
+            "rationale": "[강의 기준] 근절과 명대는 짧아지고 암대는 일정하다. 원문의 ‘Z선 감소’는 Z선 자체가 아니라 두 Z선 사이 거리 감소로 보완했다.",
+            "year": "25",
+            "sourcePage": "1",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "1",
+            "sourceAnswerLabel": "①",
+            "sourceTags": [
+              "25학번",
+              "2번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-25-4",
@@ -7637,7 +13574,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] Ca²⁺가 트로포닌에 결합하면 트로포미오신의 위치가 변해 액틴의 미오신 결합 부위가 노출된다."
+            "rationale": "[강의 기준] Ca²⁺가 트로포닌에 결합하면 트로포미오신의 위치가 변해 액틴의 미오신 결합 부위가 노출된다.",
+            "year": "25",
+            "sourcePage": "2",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "4번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-25-5",
@@ -7658,7 +13606,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 2,
             "answerIndices": null,
-            "rationale": "[강의 기준] 속근섬유는 빠르게 수축하고 해당과정·젖산발효를 활용하여 짧고 강한 운동을 수행한다."
+            "rationale": "[강의 기준] 속근섬유는 빠르게 수축하고 해당과정·젖산발효를 활용하여 짧고 강한 운동을 수행한다.",
+            "year": "25",
+            "sourcePage": "2",
+            "sourceName": "25학번 기말고사",
+            "sourceAnswer": "3",
+            "sourceAnswerLabel": "③",
+            "sourceTags": [
+              "25학번",
+              "5번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-24-17",
@@ -7680,7 +13639,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 4,
             "answerIndices": null,
-            "rationale": "[강의 기준] 액틴과 미오신 필라멘트 자체의 길이는 변하지 않는다. 두 Z선 사이 거리인 근절이 짧아진다. 원문의 sacromere는 sarcomere의 오기이다."
+            "rationale": "[강의 기준] 액틴과 미오신 필라멘트 자체의 길이는 변하지 않는다. 두 Z선 사이 거리인 근절이 짧아진다. 원문의 sacromere는 sarcomere의 오기이다.",
+            "year": "24",
+            "sourcePage": "6",
+            "sourceName": "24학번 기말고사",
+            "sourceAnswer": "5",
+            "sourceAnswerLabel": "⑤",
+            "sourceTags": [
+              "24학번",
+              "17번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-23-17",
@@ -7701,7 +13671,19 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 0,
             "answerIndices": null,
-            "rationale": "[강의 기준] 가는 필라멘트는 Z선에 고정된다. 모호했던 원문 표현을 강의의 근절 구조에 맞춰 보완했다."
+            "rationale": "[강의 기준] 가는 필라멘트는 Z선에 고정된다. 모호했던 원문 표현을 강의의 근절 구조에 맞춰 보완했다.",
+            "year": "23",
+            "sourcePage": "11",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "17번",
+              "학습용 복원"
+            ],
+            "converted": true,
+            "auditRevision": "2026-11-05-lecture-proofread"
           },
           {
             "id": "bio-final-23-20",
@@ -7722,7 +13704,18 @@ export const DENTAL_COLLEGE_SUBJECTS = [
             ],
             "answerIndex": 3,
             "answerIndices": null,
-            "rationale": "[강의 기준] 지근섬유는 모세혈관과 미오글로빈이 풍부하며 산소를 이용한 세포호흡으로 ATP를 공급한다. 마라톤처럼 오래 지속하는 운동에 적합하다."
+            "rationale": "[강의 기준] 지근섬유는 모세혈관과 미오글로빈이 풍부하며 산소를 이용한 세포호흡으로 ATP를 공급한다. 마라톤처럼 오래 지속하는 운동에 적합하다.",
+            "year": "23",
+            "sourcePage": "12",
+            "sourceName": "18–23학번 합본",
+            "sourceAnswer": "표기 없음",
+            "sourceAnswerLabel": "표기 없음",
+            "sourceTags": [
+              "23학번",
+              "20번"
+            ],
+            "converted": false,
+            "auditRevision": "2026-11-05-lecture-proofread"
           }
         ],
         "aiQuestions": []
