@@ -256,31 +256,6 @@ function renderDashboard() {
           </div>
         </div>
 
-        <!-- Stats Row (Linear/Notion KPI strip) -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div class="bg-white dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 flex items-center gap-4">
-            <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/60 text-blue-600 dark:text-blue-400 flex items-center justify-center text-lg">📚</div>
-            <div>
-              <div class="text-xs font-medium text-slate-500 dark:text-slate-400">마스터한 핵심 개념</div>
-              <div class="text-xl font-extrabold tabular-nums">${masteredCount} <span class="text-sm font-medium text-slate-400">/ ${totalConcepts}</span></div>
-            </div>
-          </div>
-          <div class="bg-white dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 flex items-center gap-4">
-            <div class="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-100 dark:border-emerald-900/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg">🎯</div>
-            <div>
-              <div class="text-xs font-medium text-slate-500 dark:text-slate-400">누적 정답률</div>
-              <div class="text-xl font-extrabold tabular-nums">${accuracy}% <span class="text-sm font-medium text-slate-400">(${solvedIds.length}문항)</span></div>
-            </div>
-          </div>
-          <div class="bg-white dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 flex items-center gap-4">
-            <div class="w-11 h-11 rounded-xl bg-violet-50 dark:bg-violet-950/60 border border-violet-100 dark:border-violet-900/60 text-violet-600 dark:text-violet-400 flex items-center justify-center text-lg">📑</div>
-            <div>
-              <div class="text-xs font-medium text-slate-500 dark:text-slate-400">원문 PDF 슬라이드</div>
-              <div class="text-xl font-extrabold tabular-nums">727p <span class="text-sm font-medium text-slate-400">19개 자료</span></div>
-            </div>
-          </div>
-        </div>
-
         <!-- Exam Term Menu -->
         <div>
           <div class="flex items-center justify-between mb-4">
